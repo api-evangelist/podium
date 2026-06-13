@@ -1,0 +1,64 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "podium": "https://docs.podium.com/reference/",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "Organization": "schema:Organization",
+    "WebAPI": "schema:WebAPI",
+    "EntryPoint": "schema:EntryPoint",
+    "ContactPoint": "schema:ContactPoint",
+    "SoftwareApplication": "schema:SoftwareApplication",
+    "provider": {
+      "@id": "schema:provider",
+      "@type": "@id"
+    },
+    "documentation": {
+      "@id": "schema:documentation",
+      "@type": "@id"
+    },
+    "termsOfService": {
+      "@id": "schema:termsOfService",
+      "@type": "@id"
+    },
+    "Conversation": "podium:Conversation",
+    "Message": "podium:Message",
+    "Review": "podium:Review",
+    "Payment": "podium:Payment",
+    "Contact": "podium:Contact",
+    "Location": "podium:Location",
+    "Webhook": "podium:Webhook",
+    "Automation": "podium:Automation",
+    "Webchat": "podium:Webchat",
+    "LeadForm": "podium:LeadForm"
+  },
+  "@type": "WebAPI",
+  "name": "Podium API",
+  "description": "REST API for managing customer communications including messaging, reviews, payments, webchat, contacts, automations, and webhooks for local businesses.",
+  "url": "https://api.podium.com/v4/",
+  "provider": {
+    "@type": "Organization",
+    "name": "Podium",
+    "url": "https://www.podium.com/",
+    "sameAs": [
+      "https://twitter.com/podiumhq/",
+      "https://www.linkedin.com/company/podiumhq/",
+      "https://github.com/podium"
+    ]
+  },
+  "documentation": "https://docs.podium.com/reference/introduction",
+  "termsOfService": "https://www.podium.com/legal/",
+  "EntryPoint": {
+    "@type": "EntryPoint",
+    "urlTemplate": "https://api.podium.com/v4/{resource}",
+    "httpMethod": ["GET", "POST", "PUT", "PATCH", "DELETE"]
+  },
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "serviceUrl": "https://api.podium.com/v4/"
+  }
+}

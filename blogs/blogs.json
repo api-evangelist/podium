@@ -1,0 +1,67 @@
+{
+  "provider": "podium",
+  "blogURL": "https://www.podium.com/blog/",
+  "fetched": "2026-06-13",
+  "posts": [
+    {
+      "title": "The End of Code as the Bottleneck",
+      "url": "https://www.podium.com/article/the-end-of-code-as-the-bottleneck/",
+      "date": null,
+      "tags": ["AI", "Development"]
+    },
+    {
+      "title": "What is a Brand Strategy? 10 Strategies, Tips and Examples",
+      "url": "https://www.podium.com/article/types-of-branding-strategies/",
+      "date": null,
+      "tags": ["Marketing", "Branding"]
+    },
+    {
+      "title": "How to Create Effective SMS Marketing Campaigns: Benefits and Best Practices",
+      "url": "https://www.podium.com/article/a-beginners-guide-to-sms-marketing/",
+      "date": null,
+      "tags": ["SMS", "Marketing"]
+    },
+    {
+      "title": "11 Ways to Generate More Collision Center Leads",
+      "url": "https://www.podium.com/article/generate-leads-for-collision-centers/",
+      "date": null,
+      "tags": ["Lead Generation", "Automotive"]
+    },
+    {
+      "title": "How to Get Google Reviews: 5 Proven, Easy Ways to Receive Better Ratings for Your Business",
+      "url": "https://www.podium.com/article/google-reviews/",
+      "date": null,
+      "tags": ["Reviews", "Google", "Reputation Management"]
+    },
+    {
+      "title": "Business Phone Etiquette: 14 Professional Call Answering Rules and Tips",
+      "url": "https://www.podium.com/article/answer-business-phone-calls-professionally/",
+      "date": null,
+      "tags": ["Communication", "Business"]
+    },
+    {
+      "title": "NPS Software: What It Is, How to Use It and How to Choose the Best One",
+      "url": "https://www.podium.com/article/nps-software/",
+      "date": null,
+      "tags": ["NPS", "Customer Experience", "Software"]
+    },
+    {
+      "title": "Texting vs. Messaging: Differences, Pros and Cons of Each Communication Method",
+      "url": "https://www.podium.com/article/texting-vs-messaging/",
+      "date": null,
+      "tags": ["SMS", "Messaging", "Communication"]
+    },
+    {
+      "title": "How to use demand generation marketing to your advantage",
+      "url": "https://www.podium.com/article/demand-generation-marketing/",
+      "date": null,
+      "tags": ["Marketing", "Lead Generation"]
+    },
+    {
+      "title": "How To Implement Local Marketing To Boost Visits",
+      "url": "https://www.podium.com/article/what-is-local-marketing/",
+      "date": null,
+      "tags": ["Marketing", "Local Business"]
+    }
+  ]
+}
