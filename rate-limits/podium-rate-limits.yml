@@ -1,0 +1,39 @@
+name: Podium API Rate Limits
+description: >-
+  Podium enforces rate limits on API requests to ensure platform stability.
+  Most routes allow 300 requests per minute. Some routes may have different
+  limits which are not publicly documented. Exceeding the rate limit returns
+  a rate_limit error code. All requests must be made over HTTPS.
+url: https://docs.podium.com/docs/errors
+created: '2026-06-13'
+modified: '2026-06-13'
+rateLimits:
+  - name: Standard Rate Limit
+    description: >-
+      Default rate limit applied to most API routes. When exceeded the API
+      returns a rate_limit error and the request is throttled.
+    requests: 300
+    period: minute
+    scope: route
+    notes: >-
+      Some routes may have exceptions to the 300 requests per minute limit.
+      Specific exceptions are not publicly documented.
+errorCodes:
+  - code: rate_limit
+    description: Request throttled due to exceeding the rate limit
+    httpStatus: 429
+headers:
+  - name: Authorization
+    description: Bearer token required on every request using OAuth 2.0 access token
+    required: true
+    format: 'Bearer {access_token}'
+  - name: podium-version
+    description: >-
+      API version date header. Requests without this header default to the
+      most recent version which may include breaking changes. Recommended
+      to include on every request.
+    required: false
+    example: '2024-01-01'
+security:
+  - protocol: HTTPS required for all requests; plain HTTP calls will fail
+  - tokenExpiry: Access tokens are valid for 1 hour and must be refreshed via OAuth flow

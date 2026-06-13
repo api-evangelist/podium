@@ -1,0 +1,87 @@
+name: Podium Plans and Pricing
+description: >-
+  Podium offers three pricing tiers for local businesses, structured around
+  the number of locations, users, and messaging volume. All plans include
+  core communication features such as unified inbox, review management, and
+  AI-driven tools. API access is available on all plans with more robust
+  custom integrations on higher tiers.
+url: https://www.podium.com/getpricing
+created: '2026-06-13'
+modified: '2026-06-13'
+plans:
+  - name: Core
+    description: >-
+      Entry-level plan for small local businesses with up to 2 locations.
+      Includes unified inbox, review management, basic automations, AI lead
+      conversion tools, and up to 5 phone numbers.
+    price: 399
+    unit: month
+    currency: USD
+    locations: 2
+    users: '1-4'
+    bulkMessages: 250
+    features:
+      - Unified inbox (text, webchat, social messaging)
+      - Review request and management
+      - Basic automations for follow-ups and reminders
+      - AI-driven lead conversion tools
+      - Up to 5 phone numbers
+      - Unlimited contacts
+    additionalCosts:
+      - item: Extra location
+        price: 50
+        unit: month
+      - item: Additional users beyond plan limit
+        price: 25
+        unit: month
+      - item: Phone system integration
+        price: 30
+        unit: user/month
+      - item: Extra phone numbers
+        price: 5
+        unit: month
+      - item: 10DLC fee (US locations)
+        price: 5
+        unit: month
+  - name: Pro
+    description: >-
+      Mid-tier plan for growing businesses with up to 5 locations and
+      unlimited users. Includes advanced automations, AI reputation management,
+      multi-location reporting, and higher messaging volume.
+    price: 599
+    unit: month
+    currency: USD
+    locations: 5
+    users: unlimited
+    bulkMessages: 500
+    features:
+      - Everything in Core
+      - Advanced automations for lead routing
+      - AI reputation management for review responses
+      - Multi-location reporting and analytics
+      - Unlimited users
+      - Higher volume messaging
+    additionalCosts:
+      - item: Extra location beyond 5
+        price: 50
+        unit: month
+  - name: Signature
+    description: >-
+      Enterprise-level plan for large or multi-location businesses requiring
+      custom branding, white-label options, high-volume messaging, advanced
+      chatbots, and dedicated support. Pricing is custom based on business
+      needs.
+    price: custom
+    unit: month
+    currency: USD
+    locations: unlimited
+    users: unlimited
+    features:
+      - Everything in Pro
+      - Unlimited locations
+      - Custom branding and white-label options
+      - High-volume messaging
+      - Advanced chatbots
+      - Automatic sentiment analysis at scale
+      - Dedicated support and custom onboarding
+      - Robust API access and custom integrations

@@ -1,0 +1,71 @@
+name: Podium FinOps
+description: >-
+  Financial operations guidance for teams consuming the Podium API. Podium
+  uses subscription-based pricing tied to locations, users, and messaging
+  volume rather than per-API-call billing. Cost management focuses on plan
+  tier selection, add-on monitoring, and messaging volume tracking to avoid
+  overages. Custom integrations and robust API access are available on
+  higher-tier Signature plans.
+url: https://www.podium.com/getpricing
+created: '2026-06-13'
+modified: '2026-06-13'
+billingModel:
+  type: subscription
+  description: >-
+    Podium charges a flat monthly subscription fee based on the chosen plan
+    tier. There are no per-API-call charges. Additional costs arise from
+    extra locations, users beyond plan limits, phone numbers, phone system
+    integration, and messaging overages.
+  billingCycle: monthly
+  currency: USD
+costDrivers:
+  - name: Plan Tier
+    description: >-
+      Primary cost driver. Selecting Core ($399/mo), Pro ($599/mo), or
+      Signature (custom) determines the baseline cost and included features.
+    impact: high
+  - name: Number of Locations
+    description: >-
+      Core supports 2 locations, Pro supports 5. Additional locations cost
+      $50/month each beyond the plan limit.
+    impact: high
+    overage: 50
+    overageUnit: location/month
+  - name: Bulk Messaging Volume
+    description: >-
+      Core plan includes 250 bulk messages per month and Pro includes 500.
+      Exceeding these limits may incur messaging overage charges.
+    impact: medium
+  - name: Additional Users
+    description: >-
+      Core plan supports 1-4 users. Additional users beyond plan limits cost
+      $25-$30/month per user.
+    impact: medium
+    overage: 25
+    overageUnit: user/month
+  - name: Phone Numbers
+    description: >-
+      Each plan includes a set number of phone numbers. Extra numbers cost
+      $5/month each. US locations also incur a $5/month 10DLC registration fee.
+    impact: low
+    overage: 5
+    overageUnit: number/month
+  - name: Phone System Integration
+    description: >-
+      Optional add-on for integrating with business phone systems at
+      $30/user/month.
+    impact: medium
+    overage: 30
+    overageUnit: user/month
+costOptimization:
+  - recommendation: Right-size your plan to actual location count before committing annually
+  - recommendation: Monitor bulk messaging usage to stay within plan limits and avoid overages
+  - recommendation: Limit phone numbers to only those actively used to reduce add-on costs
+  - recommendation: Evaluate whether 10DLC fees apply for all US locations or only messaging-active ones
+  - recommendation: For API-heavy integrations requiring custom access, negotiate Signature plan pricing
+  - recommendation: Consider consolidating locations under a single account to maximize plan tier value
+apiAccessNotes:
+  - note: Basic integrations are available on Core and Pro plans
+  - note: Robust API access and custom integrations are associated with the Signature (Enterprise) tier
+  - note: Developer Portal access requires a separate application approval process at developer.podium.com
+  - note: There are no per-API-call charges; API usage is included in the subscription

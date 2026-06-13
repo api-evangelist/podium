@@ -1,0 +1,87 @@
+aid: podium
+name: Podium
+description: >-
+  Podium is a customer communication platform providing a REST API for local
+  businesses to manage text-based conversations, reviews, payment requests,
+  lead capture forms, webchat, and AI-driven lead conversion. The API is
+  organized around REST with predictable resource-oriented URLs, JSON-encoded
+  responses, and OAuth 2.0 authentication.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/podium/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Customer Communication
+  - Reviews
+  - Messaging
+  - Payments
+  - Webchat
+  - Local Business
+  - SMS
+  - Lead Generation
+apis:
+  - aid: podium:podium-api
+    name: Podium API
+    description: >-
+      REST API for managing customer communications including messaging,
+      reviews, payments, webchat, contacts, automations, and webhooks for
+      local businesses. Base URL is https://api.podium.com/v4/ and uses
+      OAuth 2.0 bearer token authentication with a rate limit of 300
+      requests per minute on most routes.
+    humanURL: https://docs.podium.com/reference/introduction
+    baseURL: https://api.podium.com/v4/
+    tags:
+      - Messaging
+      - Reviews
+      - Payments
+      - Contacts
+      - Webhooks
+      - Automations
+    properties:
+      - type: Documentation
+        url: https://docs.podium.com/reference/introduction
+      - type: GettingStarted
+        url: https://docs.podium.com/docs/getting-started
+      - type: Authentication
+        url: https://docs.podium.com/reference/authentication
+      - type: Versioning
+        url: https://docs.podium.com/docs/api-version
+      - type: Errors
+        url: https://docs.podium.com/docs/errors
+      - type: Webhooks
+        url: https://docs.podium.com/reference/webhookget-1
+      - type: PostmanWorkspace
+        url: https://www.postman.com/podiumhq/podium-s-api-workspace
+    contact:
+      - FN: Podium Developer Support
+        url: https://developer.podium.com/
+common:
+  - type: Website
+    url: https://www.podium.com/
+  - type: Documentation
+    url: https://docs.podium.com/reference/introduction
+  - type: DeveloperPortal
+    url: https://developer.podium.com/
+  - type: GitHubOrg
+    url: https://github.com/podium
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/podiumhq/
+  - type: Blog
+    url: https://www.podium.com/resource-center
+  - type: Pricing
+    url: https://www.podium.com/getpricing
+  - type: StatusPage
+    url: https://status.podium.com
+  - type: X
+    url: https://twitter.com/podiumhq/
+  - type: Plans
+    url: plans/podium-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/podium-rate-limits.yml
+  - type: FinOps
+    url: finops/podium-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
