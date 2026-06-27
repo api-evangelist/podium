@@ -48,7 +48,7 @@ apis:
         url: https://docs.podium.com/reference/authentication
       - type: Versioning
         url: https://docs.podium.com/docs/api-version
-      - type: Errors
+      - type: ErrorCodes
         url: https://docs.podium.com/docs/errors
       - type: Webhooks
         url: https://docs.podium.com/reference/webhookget-1
