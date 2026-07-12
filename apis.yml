@@ -58,6 +58,8 @@ apis:
       - FN: Podium Developer Support
         url: https://developer.podium.com/
 common:
+  - type: DomainSecurity
+    url: security/podium-domain-security.yml
   - type: Website
     url: https://www.podium.com/
   - type: Documentation
