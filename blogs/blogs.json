@@ -2,19 +2,11 @@
   "repo": "podium",
   "feeds": [
     {
-      "source": "https://www.podium.com/resource-center",
-      "feed_url": "",
-      "saved": 0,
-      "method": "agent-scrape"
-    },
-    {
-      "source": "https://www.podium.com/blog/",
-      "feed_url": "",
-      "saved": 0,
-      "method": "agent-scrape"
+      "source": "https://www.linkedin.com/company/podiumhq/",
+      "error": "HTTPError"
     }
   ],
   "post_count": 19,
-  "fetched": "2026-06-27T13:03:08Z",
-  "agent_pulled": "2026-06-27"
+  "fetched": "2026-07-11T11:50:51Z",
+  "agent_pulled": "2026-07-04"
 }
