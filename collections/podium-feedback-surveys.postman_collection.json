@@ -1,0 +1,364 @@
+{
+  "item": [
+    {
+      "id": "80a7636a-dd0e-4c06-babf-99d2441dfd59",
+      "name": "Feedback",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ecee611e-bb4d-46e2-abf6-276c20df60dd",
+          "name": "List all feedback surveys.",
+          "request": {
+            "name": "List all feedback surveys.",
+            "description": {
+              "content": "List of all the feedback surveys that the caller has access to. The surveys are sorted by `createdAt` date, with the most recent appearing first.\n\nIf the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.\n\nRequired scope: `read_feedback`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "feedback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "createdAt[gt]",
+                  "value": "<dateTime>",
+                  "description": "Filter on the `createdAt` date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt[gte]",
+                  "value": "<dateTime>",
+                  "description": "Filter on the `createdAt` date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt[lt]",
+                  "value": "<dateTime>",
+                  "description": "Filter on the `createdAt` date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt[lte]",
+                  "value": "<dateTime>",
+                  "description": "Filter on the `createdAt` date."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Max number of items to return per request. Defaults to `10`."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Retrieves the page of items that comes after the `cursor`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b222cf33-db92-427c-927e-4f766eb7da13",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "feedback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createdAt[gt]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "createdAt[gte]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "createdAt[lt]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "createdAt[lte]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"adjustedScore\": 100,\n      \"archived\": false,\n      \"attributions\": [\n        {\n          \"type\": \"final\",\n          \"userName\": \"John Apple\",\n          \"userUid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        {\n          \"type\": \"final\",\n          \"userName\": \"John Apple\",\n          \"userUid\": \"00000000-0000-0000-0000-000000000000\"\n        }\n      ],\n      \"channel\": {\n        \"identifier\": \"email@email.com\",\n        \"type\": \"email\"\n      },\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"currentStep\": \"start\",\n      \"customerName\": \"Joe Orange\",\n      \"firstResponseReceivedAt\": \"2015-01-23T23:50:07Z\",\n      \"flowUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"location\": {\n        \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"messages\": [\n        \"wonderful.\",\n        \"wonderful.\"\n      ],\n      \"score\": 5,\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\"\n    },\n    {\n      \"adjustedScore\": 100,\n      \"archived\": false,\n      \"attributions\": [\n        {\n          \"type\": \"final\",\n          \"userName\": \"John Apple\",\n          \"userUid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        {\n          \"type\": \"final\",\n          \"userName\": \"John Apple\",\n          \"userUid\": \"00000000-0000-0000-0000-000000000000\"\n        }\n      ],\n      \"channel\": {\n        \"identifier\": \"email@email.com\",\n        \"type\": \"email\"\n      },\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"currentStep\": \"follow_up\",\n      \"customerName\": \"Joe Orange\",\n      \"firstResponseReceivedAt\": \"2015-01-23T23:50:07Z\",\n      \"flowUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"location\": {\n        \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"messages\": [\n        \"wonderful.\",\n        \"wonderful.\"\n      ],\n      \"score\": 5,\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\"\n    }\n  ],\n  \"metadata\": {\n    \"nextCursor\": \"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw\",\n    \"previousCursor\": \"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw\",\n    \"totalItems\": 4819,\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5e3014d-90c2-4a60-bb6f-81d439697277",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "feedback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createdAt[gt]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "createdAt[gte]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "createdAt[lt]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "createdAt[lte]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8916,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5d72bae-5fc2-455c-a292-5ad9f7418f4f",
+          "name": "Create a feedback survey.",
+          "request": {
+            "name": "Create a feedback survey.",
+            "description": {
+              "content": "Create a feedback survey. The survey is created asynchronously, so only the UID is returned.\n\nRequired scope: `write_feedback`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "feedback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"<string>\",\n  \"locationUid\": \"<uuid>\",\n  \"phoneNumber\": \"<string>\",\n  \"flowUid\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a4039424-1c1f-4c23-84a2-eafcc7fd9b9c",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "feedback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerName\": \"<string>\",\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"phoneNumber\": \"<string>\",\n  \"flowUid\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"uid\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04b86f65-d67f-49c5-9782-6fa557769e50",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "feedback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerName\": \"<string>\",\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"phoneNumber\": \"<string>\",\n  \"flowUid\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8916,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.podium.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fd401ac9-aa2c-459d-b5c8-f464556655d1",
+    "name": "Feedback (Surveys)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

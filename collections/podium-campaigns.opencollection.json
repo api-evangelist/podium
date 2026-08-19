@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Campaigns",
+    "version": "2021.04.01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Campaign Interaction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List campaign interactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/campaign_interactions",
+            "params": [
+              {
+                "name": "campaignUid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "contactUid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interactionType",
+                "value": "",
+                "type": "query",
+                "description": "The type of interaction this record represents"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of items to return per request. Defaults to `10`."
+              },
+              {
+                "name": "locationUid",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List the campaign interactions that the caller has access to.\n\nIf the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.\n\nInteractions can be filtered by type, uid of the associated resource, or timestamp.\n\nRequired scope: `read_campaigns`.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Campaign",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all campaigns.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/campaigns",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Status of the campaign"
+              }
+            ]
+          },
+          "docs": "List of all the campaigns that the caller has access to. The campaigns are sorted by the `updatedAt` date, in descending order\n\nCampaigns can be filtered by their status using the `status` query parameter\n\nRequired scope: `read_campaigns`."
+        },
+        {
+          "info": {
+            "name": "Create a campaign.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/campaigns",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a campaign.\n\nRequired scope: `write_campaigns`."
+        },
+        {
+          "info": {
+            "name": "Get a campaign.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/campaigns/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "UID of the campaign"
+              }
+            ]
+          },
+          "docs": "Get a single campaign for the given uid. \n\n\n        Required scope: `read_campaigns`."
+        },
+        {
+          "info": {
+            "name": "Update a campaign.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.podium.com/v4/campaigns/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for a campaign."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "update a campaign.\n\nRequired scope: `write_campaigns`."
+        },
+        {
+          "info": {
+            "name": "Delete a campaign.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.podium.com/v4/campaigns/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "UID of the campaign"
+              }
+            ]
+          },
+          "docs": "Delete an existing campaign.\n\nRequired scope: `write_campaigns`."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Message",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a message for a given campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/campaigns/:uid/messages",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for campaign."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a message through a campaign.\n\nRequired scope: `write_campaign_messages`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

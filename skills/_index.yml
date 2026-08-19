@@ -1,0 +1,87 @@
+generated: '2026-08-14'
+method: generated
+source: openapi/ (12 definitions, 86 operations) + docs.podium.com guides
+note: Packaged agent skills for Podium's marquee flows. Every operationId referenced was grepped out of the harvested
+  OpenAPI definitions; the conventions, error, idempotency and webhook rules come from conventions/podium-conventions.yml
+  and Podium's own guides. Podium publishes no AGENTS.md or first-party skills.
+skill_count: 4
+skills:
+- file: podium-invoice-and-collect-payment.md
+  name: Invoice a customer and collect payment
+  description: Create a Podium invoice, set up the payment method, charge it idempotently, and handle refunds and
+    cancellations — the one Podium flow with a real idempotency contract.
+  api: openapi/podium-payments-openapi.yml
+  operations:
+  - invoice.create
+  - invoice.setup
+  - invoice.charge
+  - invoice.get
+  - invoice.index
+  - invoice.cancel
+  - invoice.refund
+  - payment.get
+  - Refund.create
+  - Refund.get
+  - reader.get
+  scopes:
+  - read_payments
+  - write_payments
+- file: podium-request-and-respond-to-reviews.md
+  name: Request a review and respond to it
+  description: Send a review invite from a Podium location, watch for the review to land, and post or update the
+    business response — the full local-reputation loop.
+  api: openapi/podium-reviews-openapi.yml
+  operations:
+  - review_invite.create
+  - review_invite.index
+  - review_invite.get
+  - review.index
+  - review.get
+  - review_response.create
+  - review_response.update
+  - review_summary.index
+  - review_sites_summary.index
+  scopes:
+  - read_reviews
+  - write_reviews
+- file: podium-send-a-message.md
+  name: Send a message to a customer
+  description: Find or create a contact, locate or open the conversation, and send an SMS/email message from a Podium
+    location — including the opt-in and 10DLC constraints that make most first attempts fail.
+  api: openapi/podium-messenger-openapi.yml
+  operations:
+  - contact.index
+  - contact.create
+  - conversation.index
+  - message.send
+  - message.send_with_attachment
+  - message.index
+  scopes:
+  - read_contacts
+  - write_contacts
+  - read_messages
+  - write_messages
+- file: podium-sync-contacts.md
+  name: Sync contacts, attributes and tags
+  description: Keep an external CRM and Podium contacts in step — create and update contacts, manage the organization-level
+    attribute and tag vocabularies, and apply them per contact.
+  api: openapi/podium-contacts-openapi.yml
+  operations:
+  - contact.index
+  - contact.get
+  - contact.create
+  - contact.update
+  - contact.delete
+  - contact_entity_attribute.index
+  - contact_entity_attribute.create
+  - contact_entity_attribute.update
+  - contact_entity_attribute.delete
+  - contact_entity_tag.list
+  - contact_entity_tag.create
+  - contact_entity_tag.update
+  - contact_attribute.create
+  - contact_attribute.update
+  - contact_attribute.delete
+  scopes:
+  - read_contacts
+  - write_contacts

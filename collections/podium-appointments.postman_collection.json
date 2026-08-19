@@ -1,0 +1,169 @@
+{
+  "item": [
+    {
+      "id": "123835c3-8143-4955-aa5d-1fed2074928b",
+      "name": "Appointment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "11f3c30e-c8b6-459e-8db0-d7f2c525b65b",
+          "name": "Create an appointment.",
+          "request": {
+            "name": "Create an appointment.",
+            "description": {
+              "content": "Create an appointment.\n\nRequired scope: `write_appointments`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "appointments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contactName\": \"<string>\",\n  \"contactPhoneNumber\": \"<string>\",\n  \"datetime\": \"<dateTime>\",\n  \"locationUid\": \"<uuid>\",\n  \"assignedUserUid\": \"<uuid>\",\n  \"durationMin\": \"<integer>\",\n  \"note\": \"<string>\",\n  \"status\": \"unconfirmed\",\n  \"type\": \"in_person\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2399b285-fa45-4752-b59e-6cba20cdca9a",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "appointments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contactName\": \"John Doe\",\n  \"contactPhoneNumber\": \"+17626765098\",\n  \"datetime\": \"2015-01-23T23:50:07Z\",\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"durationMin\": \"<integer>\",\n  \"note\": \"Note for the appointment.\",\n  \"status\": \"unconfirmed\",\n  \"type\": \"in_person\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"assignedUser\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"contactName\": \"string\",\n    \"contactPhoneNumber\": \"string\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"datetime\": \"2015-01-23T23:50:07Z\",\n    \"durationMin\": 6795,\n    \"location\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"note\": \"string\",\n    \"status\": \"completed\",\n    \"type\": \"virtual\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6efc117e-cce9-4fa0-bc30-f606f6da00d6",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "appointments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contactName\": \"John Doe\",\n  \"contactPhoneNumber\": \"+17626765098\",\n  \"datetime\": \"2015-01-23T23:50:07Z\",\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"durationMin\": \"<integer>\",\n  \"note\": \"Note for the appointment.\",\n  \"status\": \"unconfirmed\",\n  \"type\": \"in_person\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5923,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.podium.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d0250b06-6302-4b4c-a857-4a03f24bf306",
+    "name": "Appointments",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.podium.com/docs/webhooks
+spec_type: none
+asyncapi_published: false
+note: >-
+  Podium documents a full webhook surface — 26 event types, HMAC-SHA256 signing, a documented
+  retry policy and CRUD management endpoints — but publishes no AsyncAPI document, and none was
+  found on any host, in the github.com/podium organization, or at /asyncapi.yaml. No AsyncAPI is
+  authored here. The event catalog below is transcribed verbatim from the enum in
+  openapi/podium-webhooks-openapi.yml and from Podium's own webhook guides.
+transport: https webhook (POST to a subscriber-supplied URL)
+management:
+  openapi: openapi/podium-webhooks-openapi.yml
+  operations:
+    - {operationId: webhook.index, method: GET, path: "/v4/webhooks", scope: null}
+    - {operationId: webhook.create, method: POST, path: "/v4/webhooks", scope: null}
+    - {operationId: webhook.get, method: GET, path: "/v4/webhooks/{uid}", scope: null}
+    - {operationId: webhook.update, method: PUT, path: "/v4/webhooks/{uid}", scope: null}
+    - {operationId: webhook.delete, method: DELETE, path: "/v4/webhooks/{uid}", scope: null}
+  subscription: >-
+    A webhook is created with a destination URL, at least one event type, and an optional secret
+    used to sign deliveries.
+security:
+  signing:
+    algorithm: HMAC-SHA256
+    headers: [podium-timestamp, podium-signature]
+    signed_payload: '{podium-timestamp}.{raw JSON request body}'
+    secret: optional per-webhook secret; deliveries are unsigned when no secret is set
+    timestamp_tolerance: not documented
+    docs: https://docs.podium.com/docs/verifying-webhook-signatures
+delivery:
+  success_criteria: 2xx response
+  retries: ~15 attempts
+  window: ~8 hours
+  ordering: further events are paused while a failed delivery is being retried
+  on_exhaustion: the webhook is disabled and an email notification is sent
+  docs: https://docs.podium.com/docs/webhook-retries
+event_count: 26
+events:
+  - {name: call.completed, resource: call}
+  - {name: call.missed, resource: call}
+  - {name: call.received, resource: call}
+  - {name: call.voicemail_left, resource: call}
+  - {name: contact.created, resource: contact}
+  - {name: contact.deleted, resource: contact}
+  - {name: contact.merged, resource: contact}
+  - {name: contact.unchanged, resource: contact}
+  - {name: contact.updated, resource: contact}
+  - {name: invoice.created, resource: invoice}
+  - {name: invoice.disabled, resource: invoice}
+  - {name: invoice.marked_as_paid, resource: invoice}
+  - {name: invoice.payment_created, resource: invoice}
+  - {name: invoice.payment_failed, resource: invoice}
+  - {name: invoice.payment_succeeded, resource: invoice}
+  - {name: invoice.refund_created, resource: invoice}
+  - {name: invoice.refund_failed, resource: invoice}
+  - {name: message.failed, resource: message}
+  - {name: message.received, resource: message}
+  - {name: message.sent, resource: message}
+  - {name: review.created, resource: review}
+  - {name: review.invite_link_created, resource: review}
+  - {name: review.invite_link_updated, resource: review}
+  - {name: review.response_created, resource: review}
+  - {name: review.response_updated, resource: review}
+  - {name: review.updated, resource: review}
+event_source: openapi/podium-webhooks-openapi.yml (event type enum, verbatim)
+docs:
+  overview: https://docs.podium.com/docs/webhooks
+  signatures: https://docs.podium.com/docs/verifying-webhook-signatures
+  retries: https://docs.podium.com/docs/webhook-retries
+  reference: https://docs.podium.com/reference/webhookget-1

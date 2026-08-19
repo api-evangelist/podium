@@ -1,0 +1,459 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Contacts",
+    "version": "2021.04.01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contact Attribute",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List contact attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/contact_attributes"
+          },
+          "docs": "List contact attributes that are tied to the ownerResource on the token.\n\nRequired scope: `read_contacts`.\n"
+        },
+        {
+          "info": {
+            "name": "Create a contact attribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/contact_attributes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an application or organization level attribute to be used on contacts.\n\nRequired scope: `write_contacts`.\n"
+        },
+        {
+          "info": {
+            "name": "Gets a contact attribute by uid",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/contact_attributes/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Contacts attribute uid"
+              }
+            ]
+          },
+          "docs": "Gets an application or organization level attribute by its uid, to be used on contacts.\n\nRequired scope: `read_contacts`.\n"
+        },
+        {
+          "info": {
+            "name": "Update a contact attribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.podium.com/v4/contact_attributes/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for attribute."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an application or organization level attribute to be used on contacts.\n\nRequired scope: `write_contacts`.\n"
+        },
+        {
+          "info": {
+            "name": "Delete a contact attribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.podium.com/v4/contact_attributes/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for attribute."
+              }
+            ]
+          },
+          "docs": "Delete a contact attribute with its uid.\n\nRequired scope: `write_contacts`."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Contact Tag",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all tags for the organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/contact_tags"
+          },
+          "docs": "List all tags for the organization.\n\nRequired scope: `read_contacts`.\n"
+        },
+        {
+          "info": {
+            "name": "Create a contact tag for an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/contact_tags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an organization level tag for a contact.\n\nRequired scope: `write_contacts`.\n"
+        },
+        {
+          "info": {
+            "name": "Get a contact tag for an organization given an uid",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/contact_tags/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Contacts tags uid"
+              }
+            ]
+          },
+          "docs": "Get a organization level tag given the provided uid.\n\nRequired scope: `read_contacts`.\n"
+        },
+        {
+          "info": {
+            "name": "Update a contact tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.podium.com/v4/contact_tags/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for tag."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an organization level tag to be used on contacts.\n\nRequired scope: `write_contacts`.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Contact",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/contacts",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Retrieves the page of items that comes after the `cursor`."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of items to return per request. Defaults to `10`."
+              },
+              {
+                "name": "updated_at",
+                "value": "",
+                "type": "query",
+                "description": "Filter contacts by updated_at. It will retrieve contacts updated after the provided date. Format: `YYYY-MM-DDTHH:MM:SSZ`"
+              }
+            ]
+          },
+          "docs": "List all contacts.\n\nRequired scope: `read_contacts`."
+        },
+        {
+          "info": {
+            "name": "Create a contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/contacts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a contact. If a contact with the same phone number, email, or conversation uid is found it will update the contact.\n\nRequired scope: `write_contacts`.\n"
+        },
+        {
+          "info": {
+            "name": "Opt in a contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/contacts/campaigns/opt_in",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Opt in a contact into receiving campaign messages.\n         Note: this endpoint requires your application to be whitelisted.\n          Please contact our support team to get your application whitelisted.\n\nRequired scope: write_contacts"
+        },
+        {
+          "info": {
+            "name": "Opt out a contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/contacts/campaigns/opt_out",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Opt out a contact from receiving campaign messages.\n         Note: this endpoint requires your application to be whitelisted.\n          Please contact our support team to get your application whitelisted.\n\nRequired scope: write_contacts"
+        },
+        {
+          "info": {
+            "name": "Retrieve a contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/contacts/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Conversation uid, phone number, or email to identify the contact. Phone number should be formatted as '+15555555555'"
+              }
+            ]
+          },
+          "docs": "Get a contact with a conversation uid, email, or phone number.\n\nRequired scope: `read_contacts`."
+        },
+        {
+          "info": {
+            "name": "Update a contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.podium.com/v4/contacts/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Conversation uid, phone number, or email to identify the contact. Phone number should be formatted as '+15555555555'"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a contact with using a conversation uid, email, or phone number as an identifier.\n\nRequired scope: `write_contacts`."
+        },
+        {
+          "info": {
+            "name": "Delete a contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.podium.com/v4/contacts/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "Conversation uid, phone number, or email to identify the contact. Phone number should be formatted as '+15555555555'"
+              }
+            ]
+          },
+          "docs": "Delete a contact with a conversation uid, email, or phone number.\n\nRequired scope: `write_contacts`."
+        },
+        {
+          "info": {
+            "name": "Add a contact attribute to a contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/contacts/:identifier/attributes/:uid",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "john.doe@podium.com",
+                "type": "path",
+                "description": "Contact identifier"
+              },
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for attribute."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add an existing attribute to an existing contact.\n\nRequired scope: `write_contacts`.\n"
+        },
+        {
+          "info": {
+            "name": "Update a contact attribute inside a contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.podium.com/v4/contacts/:identifier/attributes/:uid",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "john.doe@podium.com",
+                "type": "path",
+                "description": "Contact identifier"
+              },
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for attribute."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the value of an existing attribute inside an existing contact.\n\nRequired scope: `write_contacts`.\n"
+        },
+        {
+          "info": {
+            "name": "Remove an attribute from a contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.podium.com/v4/contacts/:identifier/attributes/:uid",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "john.doe@podium.com",
+                "type": "path",
+                "description": "Contact identifier"
+              },
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for attribute."
+              }
+            ]
+          },
+          "docs": "Remove an attribute from a contact.\n\nRequired scope: `write_contacts`.\n"
+        },
+        {
+          "info": {
+            "name": "Add an existing tag to an existing contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/contacts/:identifier/tags/:uid",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "john.doe@podium.com",
+                "type": "path",
+                "description": "Contact identifier"
+              },
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for tag."
+              }
+            ]
+          },
+          "docs": "Add an existing tag to an existing contact.\n\nRequired scope: `write_contacts`.\n"
+        },
+        {
+          "info": {
+            "name": "Remove an existing tag from an existing contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.podium.com/v4/contacts/:identifier/tags/:uid",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "john.doe@podium.com",
+                "type": "path",
+                "description": "Contact identifier"
+              },
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for tag."
+              }
+            ]
+          },
+          "docs": "Remove an existing tag from an existing contact.\n\nRequired scope: `write_contacts`.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

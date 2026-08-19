@@ -1,0 +1,1776 @@
+{
+  "item": [
+    {
+      "id": "c365e058-6798-4d59-94cf-57894290ad3b",
+      "name": "Invoice",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "87f4b40f-0376-4f58-9639-900c9ea30c63",
+          "name": "Get all invoices.",
+          "request": {
+            "name": "Get all invoices.",
+            "description": {
+              "content": "List of all invoices that match the query parameters.\n\nRequired scope: `read_payments`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locationUid",
+                  "value": "<uuid>",
+                  "description": "Podium unique identifier for location."
+                },
+                {
+                  "disabled": false,
+                  "key": "datePaid",
+                  "value": "<dateTime>",
+                  "description": "Return invoices with a payment whose `createdAt` is greater or equal to this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateRefunded",
+                  "value": "<dateTime>",
+                  "description": "Return invoices with a refund whose `createdAt` is greater or equal to this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateCreated",
+                  "value": "<dateTime>",
+                  "description": "Return invoices whose `createdAt` is greater or equal to this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Max number of items to return per request. Defaults to `10`."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Retrieves the page of items that comes after or before the `cursor`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "473daf06-2e82-460b-91c5-2d0e30ddb223",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locationUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "datePaid",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "dateRefunded",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "dateCreated",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"allowedPaymentMethods\": [\n        \"string\",\n        \"string\"\n      ],\n      \"amount\": 2000,\n      \"canceledAt\": \"2015-01-23T23:50:07Z\",\n      \"canceledNote\": \"The wrong amount was entered.\",\n      \"channel\": {\n        \"identifier\": \"email@email.com\",\n        \"type\": \"email\"\n      },\n      \"conversationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"currencyRef\": \"USD\",\n      \"customerName\": \"Joe Orange\",\n      \"invoiceNumber\": \"abc-12345-def\",\n      \"invoiceServiceChargeItems\": [\n        {\n          \"amount\": 1099,\n          \"flatChargeAmount\": 1099,\n          \"name\": \"UT sales tax\",\n          \"percentageChargeRate\": \"3\",\n          \"serviceChargeClassification\": \"SERVICE_CHARGE\",\n          \"serviceChargeType\": \"PERCENTAGE_BASED\"\n        },\n        {\n          \"amount\": 1099,\n          \"flatChargeAmount\": 1099,\n          \"name\": \"UT sales tax\",\n          \"percentageChargeRate\": \"3\",\n          \"serviceChargeClassification\": \"SALES_TAX\",\n          \"serviceChargeType\": \"FLAT_RATE\"\n        }\n      ],\n      \"lineItems\": [\n        {\n          \"amount\": 1099,\n          \"description\": \"Total\"\n        },\n        {\n          \"amount\": 1099,\n          \"description\": \"Total\"\n        }\n      ],\n      \"location\": {\n        \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"paidAt\": \"2015-01-23T23:50:07Z\",\n      \"paymentNet\": 1000,\n      \"payments\": [\n        {\n          \"bankAccountLast4\": \"1245\",\n          \"bankAccountName\": \"The Bank\",\n          \"cardBrand\": \"visa\",\n          \"cardFunding\": \"CREDIT\",\n          \"cardLast4\": \"4242\",\n          \"createdAt\": \"2015-01-23T23:50:07Z\",\n          \"declineCode\": \"card_not_supported\",\n          \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n          \"fee\": 99,\n          \"feeBillingType\": \"per_deposit\",\n          \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n          \"interchangeFee\": 50,\n          \"paidWithCardOnFile\": true,\n          \"refunds\": [\n            {\n              \"amount\": 100,\n              \"createdAt\": \"2015-01-23T23:50:07Z\",\n              \"notes\": [\n                \"The product did not function properly.\",\n                \"The product did not function properly.\"\n              ],\n              \"reason\": \"duplicate\",\n              \"refundedSurchargeAmount\": 50,\n              \"settledAt\": \"2015-01-23T23:50:07Z\",\n              \"status\": \"succeeded\"\n            },\n            {\n              \"amount\": 100,\n              \"createdAt\": \"2015-01-23T23:50:07Z\",\n              \"notes\": [\n                \"The product did not function properly.\",\n                \"The product did not function properly.\"\n              ],\n              \"reason\": \"canceled\",\n              \"refundedSurchargeAmount\": 50,\n              \"settledAt\": \"2015-01-23T23:50:07Z\",\n              \"status\": \"failed_unknown\"\n            }\n          ],\n          \"settledAt\": \"2015-01-23T23:50:07Z\",\n          \"status\": \"partial_refund\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        {\n          \"bankAccountLast4\": \"1245\",\n          \"bankAccountName\": \"The Bank\",\n          \"cardBrand\": \"visa\",\n          \"cardFunding\": \"CREDIT\",\n          \"cardLast4\": \"4242\",\n          \"createdAt\": \"2015-01-23T23:50:07Z\",\n          \"declineCode\": \"card_not_supported\",\n          \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n          \"fee\": 99,\n          \"feeBillingType\": \"per_deposit\",\n          \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n          \"interchangeFee\": 50,\n          \"paidWithCardOnFile\": true,\n          \"refunds\": [\n            {\n              \"amount\": 100,\n              \"createdAt\": \"2015-01-23T23:50:07Z\",\n              \"notes\": [\n                \"The product did not function properly.\",\n                \"The product did not function properly.\"\n              ],\n              \"reason\": \"fraudulent\",\n              \"refundedSurchargeAmount\": 50,\n              \"settledAt\": \"2015-01-23T23:50:07Z\",\n              \"status\": \"succeeded\"\n            },\n            {\n              \"amount\": 100,\n              \"createdAt\": \"2015-01-23T23:50:07Z\",\n              \"notes\": [\n                \"The product did not function properly.\",\n                \"The product did not function properly.\"\n              ],\n              \"reason\": \"other\",\n              \"refundedSurchargeAmount\": 50,\n              \"settledAt\": \"2015-01-23T23:50:07Z\",\n              \"status\": \"failed_charge_for_pending_refund_disputed\"\n            }\n          ],\n          \"settledAt\": \"2015-01-23T23:50:07Z\",\n          \"status\": \"under_review\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        }\n      ],\n      \"readerUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"requester\": \"John Apple\",\n      \"status\": \"paid\",\n      \"surchargeAmount\": 350,\n      \"surchargeRate\": 0.035,\n      \"tipAmount\": 200,\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    {\n      \"allowedPaymentMethods\": [\n        \"string\",\n        \"string\"\n      ],\n      \"amount\": 2000,\n      \"canceledAt\": \"2015-01-23T23:50:07Z\",\n      \"canceledNote\": \"The wrong amount was entered.\",\n      \"channel\": {\n        \"identifier\": \"email@email.com\",\n        \"type\": \"email\"\n      },\n      \"conversationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"currencyRef\": \"USD\",\n      \"customerName\": \"Joe Orange\",\n      \"invoiceNumber\": \"abc-12345-def\",\n      \"invoiceServiceChargeItems\": [\n        {\n          \"amount\": 1099,\n          \"flatChargeAmount\": 1099,\n          \"name\": \"UT sales tax\",\n          \"percentageChargeRate\": \"3\",\n          \"serviceChargeClassification\": \"SALES_TAX\",\n          \"serviceChargeType\": \"PERCENTAGE_BASED\"\n        },\n        {\n          \"amount\": 1099,\n          \"flatChargeAmount\": 1099,\n          \"name\": \"UT sales tax\",\n          \"percentageChargeRate\": \"3\",\n          \"serviceChargeClassification\": \"SERVICE_CHARGE\",\n          \"serviceChargeType\": \"PERCENTAGE_BASED\"\n        }\n      ],\n      \"lineItems\": [\n        {\n          \"amount\": 1099,\n          \"description\": \"Total\"\n        },\n        {\n          \"amount\": 1099,\n          \"description\": \"Total\"\n        }\n      ],\n      \"location\": {\n        \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"paidAt\": \"2015-01-23T23:50:07Z\",\n      \"paymentNet\": 1000,\n      \"payments\": [\n        {\n          \"bankAccountLast4\": \"1245\",\n          \"bankAccountName\": \"The Bank\",\n          \"cardBrand\": \"visa\",\n          \"cardFunding\": \"CREDIT\",\n          \"cardLast4\": \"4242\",\n          \"createdAt\": \"2015-01-23T23:50:07Z\",\n          \"declineCode\": \"card_not_supported\",\n          \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n          \"fee\": 99,\n          \"feeBillingType\": \"per_deposit\",\n          \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n          \"interchangeFee\": 50,\n          \"paidWithCardOnFile\": true,\n          \"refunds\": [\n            {\n              \"amount\": 100,\n              \"createdAt\": \"2015-01-23T23:50:07Z\",\n              \"notes\": [\n                \"The product did not function properly.\",\n                \"The product did not function properly.\"\n              ],\n              \"reason\": \"duplicate\",\n              \"refundedSurchargeAmount\": 50,\n              \"settledAt\": \"2015-01-23T23:50:07Z\",\n              \"status\": \"failed_lost_or_stolen\"\n            },\n            {\n              \"amount\": 100,\n              \"createdAt\": \"2015-01-23T23:50:07Z\",\n              \"notes\": [\n                \"The product did not function properly.\",\n                \"The product did not function properly.\"\n              ],\n              \"reason\": \"fraudulent\",\n              \"refundedSurchargeAmount\": 50,\n              \"settledAt\": \"2015-01-23T23:50:07Z\",\n              \"status\": \"failed_expired_or_cancelled\"\n            }\n          ],\n          \"settledAt\": \"2015-01-23T23:50:07Z\",\n          \"status\": \"failed\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        {\n          \"bankAccountLast4\": \"1245\",\n          \"bankAccountName\": \"The Bank\",\n          \"cardBrand\": \"visa\",\n          \"cardFunding\": \"CREDIT\",\n          \"cardLast4\": \"4242\",\n          \"createdAt\": \"2015-01-23T23:50:07Z\",\n          \"declineCode\": \"card_not_supported\",\n          \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n          \"fee\": 99,\n          \"feeBillingType\": \"per_deposit\",\n          \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n          \"interchangeFee\": 50,\n          \"paidWithCardOnFile\": true,\n          \"refunds\": [\n            {\n              \"amount\": 100,\n              \"createdAt\": \"2015-01-23T23:50:07Z\",\n              \"notes\": [\n                \"The product did not function properly.\",\n                \"The product did not function properly.\"\n              ],\n              \"reason\": \"fraudulent\",\n              \"refundedSurchargeAmount\": 50,\n              \"settledAt\": \"2015-01-23T23:50:07Z\",\n              \"status\": \"succeeded\"\n            },\n            {\n              \"amount\": 100,\n              \"createdAt\": \"2015-01-23T23:50:07Z\",\n              \"notes\": [\n                \"The product did not function properly.\",\n                \"The product did not function properly.\"\n              ],\n              \"reason\": \"duplicate\",\n              \"refundedSurchargeAmount\": 50,\n              \"settledAt\": \"2015-01-23T23:50:07Z\",\n              \"status\": \"failed_unknown\"\n            }\n          ],\n          \"settledAt\": \"2015-01-23T23:50:07Z\",\n          \"status\": \"failed\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        }\n      ],\n      \"readerUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"requester\": \"John Apple\",\n      \"status\": \"pending\",\n      \"surchargeAmount\": 350,\n      \"surchargeRate\": 0.035,\n      \"tipAmount\": 200,\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ],\n  \"metadata\": {\n    \"nextCursor\": \"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw\",\n    \"previousCursor\": \"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw\",\n    \"totalItems\": 1447,\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8e4b67f-b34b-4ea6-9c17-cd87a2b538da",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locationUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "datePaid",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "dateRefunded",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "dateCreated",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7200,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26943356-7329-4a51-8ae3-24328260e6a5",
+          "name": "Create an invoice.",
+          "request": {
+            "name": "Create an invoice.",
+            "description": {
+              "content": "Creates an invoice which is either a `card_present` or a `card_not_present` invoice.\nProviding the `reader_uid` property will create a `card_present` invoice, but if no `reader_uid`\nis provided a `card_not_present` invoice will be created.\n\n\n### Card Present Invoice\n\nA card-present-invoice is used to process an invoice through a card reader. After the invoice\nis created, there is a callback to the card reader to complete the transaction. If no\n`accountUid` is given, the card reader's default account is used.\n\n### Card Not Present Invoice\n\nA card-not-present-invoice is used to process an invoice asynchronously. After the invoice is\ncreated, a payment link is sent to the customer from the merchants Podium account. The customer\ncan click on the link to complete the transaction. If no `accountUid` is given, the most\nrecently created account is used.\n\nRequired scope: `write_payments`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channelIdentifier\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"invoiceNumber\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"amount\": \"<integer>\",\n      \"description\": \"Total\"\n    }\n  ],\n  \"locationUid\": \"<uuid>\",\n  \"accountUid\": \"<uuid>\",\n  \"allowedPaymentOptions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"readerUid\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8f0a754b-8742-4e03-b5c3-8c82b37c1d8d",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelIdentifier\": \"email@email.com\",\n  \"customerName\": \"Barry Grape\",\n  \"invoiceNumber\": \"abc-12345-def\",\n  \"lineItems\": [\n    {\n      \"amount\": 4186,\n      \"description\": \"Oil change.\"\n    }\n  ],\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"accountUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"allowedPaymentOptions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"readerUid\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"allowedPaymentMethods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"amount\": 2000,\n    \"canceledAt\": \"2015-01-23T23:50:07Z\",\n    \"canceledNote\": \"The wrong amount was entered.\",\n    \"channel\": {\n      \"identifier\": \"email@email.com\",\n      \"type\": \"email\"\n    },\n    \"conversationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"currencyRef\": \"USD\",\n    \"customerName\": \"Joe Orange\",\n    \"invoiceNumber\": \"abc-12345-def\",\n    \"invoiceServiceChargeItems\": [\n      {\n        \"amount\": 1099,\n        \"flatChargeAmount\": 1099,\n        \"name\": \"UT sales tax\",\n        \"percentageChargeRate\": \"3\",\n        \"serviceChargeClassification\": \"SALES_TAX\",\n        \"serviceChargeType\": \"PERCENTAGE_BASED\"\n      },\n      {\n        \"amount\": 1099,\n        \"flatChargeAmount\": 1099,\n        \"name\": \"UT sales tax\",\n        \"percentageChargeRate\": \"3\",\n        \"serviceChargeClassification\": \"RETAIL_SALES_TAX\",\n        \"serviceChargeType\": \"FLAT_RATE\"\n      }\n    ],\n    \"lineItems\": [\n      {\n        \"amount\": 1099,\n        \"description\": \"Total\"\n      },\n      {\n        \"amount\": 1099,\n        \"description\": \"Total\"\n      }\n    ],\n    \"location\": {\n      \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"paidAt\": \"2015-01-23T23:50:07Z\",\n    \"paymentNet\": 1000,\n    \"payments\": [\n      {\n        \"bankAccountLast4\": \"1245\",\n        \"bankAccountName\": \"The Bank\",\n        \"cardBrand\": \"visa\",\n        \"cardFunding\": \"CREDIT\",\n        \"cardLast4\": \"4242\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"declineCode\": \"card_not_supported\",\n        \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n        \"fee\": 99,\n        \"feeBillingType\": \"per_deposit\",\n        \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n        \"interchangeFee\": 50,\n        \"paidWithCardOnFile\": true,\n        \"refunds\": [\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"duplicate\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_unknown\"\n          },\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"canceled\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_charge_for_pending_refund_disputed\"\n          }\n        ],\n        \"settledAt\": \"2015-01-23T23:50:07Z\",\n        \"status\": \"partial_refund\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"bankAccountLast4\": \"1245\",\n        \"bankAccountName\": \"The Bank\",\n        \"cardBrand\": \"visa\",\n        \"cardFunding\": \"CREDIT\",\n        \"cardLast4\": \"4242\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"declineCode\": \"card_not_supported\",\n        \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n        \"fee\": 99,\n        \"feeBillingType\": \"per_deposit\",\n        \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n        \"interchangeFee\": 50,\n        \"paidWithCardOnFile\": true,\n        \"refunds\": [\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"canceled\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_expired_or_cancelled\"\n          },\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"fraudulent\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_lost_or_stolen\"\n          }\n        ],\n        \"settledAt\": \"2015-01-23T23:50:07Z\",\n        \"status\": \"dispute_lost\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"readerUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"requester\": \"John Apple\",\n    \"status\": \"refund_pending\",\n    \"surchargeAmount\": 350,\n    \"surchargeRate\": 0.035,\n    \"tipAmount\": 200,\n    \"uid\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "336b36e4-bf55-4580-8333-291eaee22661",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelIdentifier\": \"email@email.com\",\n  \"customerName\": \"Barry Grape\",\n  \"invoiceNumber\": \"abc-12345-def\",\n  \"lineItems\": [\n    {\n      \"amount\": 4186,\n      \"description\": \"Oil change.\"\n    }\n  ],\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"accountUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"allowedPaymentOptions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"readerUid\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7200,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "752aafa0-4cef-4ce1-926e-3d73c26c1bdb",
+          "name": "Get an invoice.",
+          "request": {
+            "name": "Get an invoice.",
+            "description": {
+              "content": "Gets an invoice that has previously been created.\n\nRequired scope: `read_payments`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "invoices",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locationUid",
+                  "value": "<uuid>",
+                  "description": "(Required) Podium unique identifier for location."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for invoice."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a515b380-862e-407e-a832-2ed5be901981",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "invoices",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locationUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for invoice."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"allowedPaymentMethods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"amount\": 2000,\n    \"canceledAt\": \"2015-01-23T23:50:07Z\",\n    \"canceledNote\": \"The wrong amount was entered.\",\n    \"channel\": {\n      \"identifier\": \"email@email.com\",\n      \"type\": \"email\"\n    },\n    \"conversationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"currencyRef\": \"USD\",\n    \"customerName\": \"Joe Orange\",\n    \"invoiceNumber\": \"abc-12345-def\",\n    \"invoiceServiceChargeItems\": [\n      {\n        \"amount\": 1099,\n        \"flatChargeAmount\": 1099,\n        \"name\": \"UT sales tax\",\n        \"percentageChargeRate\": \"3\",\n        \"serviceChargeClassification\": \"SALES_TAX\",\n        \"serviceChargeType\": \"PERCENTAGE_BASED\"\n      },\n      {\n        \"amount\": 1099,\n        \"flatChargeAmount\": 1099,\n        \"name\": \"UT sales tax\",\n        \"percentageChargeRate\": \"3\",\n        \"serviceChargeClassification\": \"RETAIL_SALES_TAX\",\n        \"serviceChargeType\": \"FLAT_RATE\"\n      }\n    ],\n    \"lineItems\": [\n      {\n        \"amount\": 1099,\n        \"description\": \"Total\"\n      },\n      {\n        \"amount\": 1099,\n        \"description\": \"Total\"\n      }\n    ],\n    \"location\": {\n      \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"paidAt\": \"2015-01-23T23:50:07Z\",\n    \"paymentNet\": 1000,\n    \"payments\": [\n      {\n        \"bankAccountLast4\": \"1245\",\n        \"bankAccountName\": \"The Bank\",\n        \"cardBrand\": \"visa\",\n        \"cardFunding\": \"CREDIT\",\n        \"cardLast4\": \"4242\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"declineCode\": \"card_not_supported\",\n        \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n        \"fee\": 99,\n        \"feeBillingType\": \"per_deposit\",\n        \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n        \"interchangeFee\": 50,\n        \"paidWithCardOnFile\": true,\n        \"refunds\": [\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"duplicate\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_unknown\"\n          },\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"canceled\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_charge_for_pending_refund_disputed\"\n          }\n        ],\n        \"settledAt\": \"2015-01-23T23:50:07Z\",\n        \"status\": \"partial_refund\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"bankAccountLast4\": \"1245\",\n        \"bankAccountName\": \"The Bank\",\n        \"cardBrand\": \"visa\",\n        \"cardFunding\": \"CREDIT\",\n        \"cardLast4\": \"4242\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"declineCode\": \"card_not_supported\",\n        \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n        \"fee\": 99,\n        \"feeBillingType\": \"per_deposit\",\n        \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n        \"interchangeFee\": 50,\n        \"paidWithCardOnFile\": true,\n        \"refunds\": [\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"canceled\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_expired_or_cancelled\"\n          },\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"fraudulent\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_lost_or_stolen\"\n          }\n        ],\n        \"settledAt\": \"2015-01-23T23:50:07Z\",\n        \"status\": \"dispute_lost\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"readerUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"requester\": \"John Apple\",\n    \"status\": \"refund_pending\",\n    \"surchargeAmount\": 350,\n    \"surchargeRate\": 0.035,\n    \"tipAmount\": 200,\n    \"uid\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f912a277-a32a-4342-a6a5-16562c1d9f99",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "invoices",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locationUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for invoice."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7200,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3243bbc-697c-4bdf-ad89-a04637bbf6b0",
+          "name": "Cancel an invoice.",
+          "request": {
+            "name": "Cancel an invoice.",
+            "description": {
+              "content": "Cancels an invoice. The seller cannot collect payments for the canceled invoice.\n\nRequired scope: `write_payments`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "invoices",
+                ":uid",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for invoice."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"locationUid\": \"<uuid>\",\n  \"note\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53ea39f0-88a4-4372-a62b-c582b1a01312",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "invoices",
+                    ":uid",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for invoice."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"note\": \"Voided invoice.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"allowedPaymentMethods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"amount\": 2000,\n    \"canceledAt\": \"2015-01-23T23:50:07Z\",\n    \"canceledNote\": \"The wrong amount was entered.\",\n    \"channel\": {\n      \"identifier\": \"email@email.com\",\n      \"type\": \"email\"\n    },\n    \"conversationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"currencyRef\": \"USD\",\n    \"customerName\": \"Joe Orange\",\n    \"invoiceNumber\": \"abc-12345-def\",\n    \"invoiceServiceChargeItems\": [\n      {\n        \"amount\": 1099,\n        \"flatChargeAmount\": 1099,\n        \"name\": \"UT sales tax\",\n        \"percentageChargeRate\": \"3\",\n        \"serviceChargeClassification\": \"SALES_TAX\",\n        \"serviceChargeType\": \"PERCENTAGE_BASED\"\n      },\n      {\n        \"amount\": 1099,\n        \"flatChargeAmount\": 1099,\n        \"name\": \"UT sales tax\",\n        \"percentageChargeRate\": \"3\",\n        \"serviceChargeClassification\": \"RETAIL_SALES_TAX\",\n        \"serviceChargeType\": \"FLAT_RATE\"\n      }\n    ],\n    \"lineItems\": [\n      {\n        \"amount\": 1099,\n        \"description\": \"Total\"\n      },\n      {\n        \"amount\": 1099,\n        \"description\": \"Total\"\n      }\n    ],\n    \"location\": {\n      \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"paidAt\": \"2015-01-23T23:50:07Z\",\n    \"paymentNet\": 1000,\n    \"payments\": [\n      {\n        \"bankAccountLast4\": \"1245\",\n        \"bankAccountName\": \"The Bank\",\n        \"cardBrand\": \"visa\",\n        \"cardFunding\": \"CREDIT\",\n        \"cardLast4\": \"4242\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"declineCode\": \"card_not_supported\",\n        \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n        \"fee\": 99,\n        \"feeBillingType\": \"per_deposit\",\n        \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n        \"interchangeFee\": 50,\n        \"paidWithCardOnFile\": true,\n        \"refunds\": [\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"duplicate\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_unknown\"\n          },\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"canceled\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_charge_for_pending_refund_disputed\"\n          }\n        ],\n        \"settledAt\": \"2015-01-23T23:50:07Z\",\n        \"status\": \"partial_refund\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"bankAccountLast4\": \"1245\",\n        \"bankAccountName\": \"The Bank\",\n        \"cardBrand\": \"visa\",\n        \"cardFunding\": \"CREDIT\",\n        \"cardLast4\": \"4242\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"declineCode\": \"card_not_supported\",\n        \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n        \"fee\": 99,\n        \"feeBillingType\": \"per_deposit\",\n        \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n        \"interchangeFee\": 50,\n        \"paidWithCardOnFile\": true,\n        \"refunds\": [\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"canceled\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_expired_or_cancelled\"\n          },\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"fraudulent\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_lost_or_stolen\"\n          }\n        ],\n        \"settledAt\": \"2015-01-23T23:50:07Z\",\n        \"status\": \"dispute_lost\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"readerUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"requester\": \"John Apple\",\n    \"status\": \"refund_pending\",\n    \"surchargeAmount\": 350,\n    \"surchargeRate\": 0.035,\n    \"tipAmount\": 200,\n    \"uid\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34ec95ad-b188-4474-b385-0a56d5a21b7d",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "invoices",
+                    ":uid",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for invoice."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"note\": \"Voided invoice.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7200,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d413a4bf-2635-488b-b487-494823754b3b",
+          "name": "Charge an invoice.",
+          "request": {
+            "name": "Charge an invoice.",
+            "description": {
+              "content": "Charges an existing invoice using keyed-in payment details from a Stripe payment method ID.\n\nRequired scope: `write_payments`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "invoices",
+                ":uid",
+                "charge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for invoice."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"locationUid\": \"<uuid>\",\n  \"paymentMethodId\": \"<string>\",\n  \"idempotencyUid\": \"<uuid>\",\n  \"shouldSaveCardOnFile\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f4474051-3743-438b-85ef-75ffc4a81e77",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "invoices",
+                    ":uid",
+                    "charge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for invoice."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"paymentMethodId\": \"pm_1GTWhCELrVx5KpCHKXoM6XSj\",\n  \"idempotencyUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"shouldSaveCardOnFile\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"allowedPaymentMethods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"amount\": 2000,\n    \"canceledAt\": \"2015-01-23T23:50:07Z\",\n    \"canceledNote\": \"The wrong amount was entered.\",\n    \"channel\": {\n      \"identifier\": \"email@email.com\",\n      \"type\": \"email\"\n    },\n    \"conversationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"currencyRef\": \"USD\",\n    \"customerName\": \"Joe Orange\",\n    \"invoiceNumber\": \"abc-12345-def\",\n    \"invoiceServiceChargeItems\": [\n      {\n        \"amount\": 1099,\n        \"flatChargeAmount\": 1099,\n        \"name\": \"UT sales tax\",\n        \"percentageChargeRate\": \"3\",\n        \"serviceChargeClassification\": \"SALES_TAX\",\n        \"serviceChargeType\": \"PERCENTAGE_BASED\"\n      },\n      {\n        \"amount\": 1099,\n        \"flatChargeAmount\": 1099,\n        \"name\": \"UT sales tax\",\n        \"percentageChargeRate\": \"3\",\n        \"serviceChargeClassification\": \"RETAIL_SALES_TAX\",\n        \"serviceChargeType\": \"FLAT_RATE\"\n      }\n    ],\n    \"lineItems\": [\n      {\n        \"amount\": 1099,\n        \"description\": \"Total\"\n      },\n      {\n        \"amount\": 1099,\n        \"description\": \"Total\"\n      }\n    ],\n    \"location\": {\n      \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"paidAt\": \"2015-01-23T23:50:07Z\",\n    \"paymentNet\": 1000,\n    \"payments\": [\n      {\n        \"bankAccountLast4\": \"1245\",\n        \"bankAccountName\": \"The Bank\",\n        \"cardBrand\": \"visa\",\n        \"cardFunding\": \"CREDIT\",\n        \"cardLast4\": \"4242\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"declineCode\": \"card_not_supported\",\n        \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n        \"fee\": 99,\n        \"feeBillingType\": \"per_deposit\",\n        \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n        \"interchangeFee\": 50,\n        \"paidWithCardOnFile\": true,\n        \"refunds\": [\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"duplicate\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_unknown\"\n          },\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"canceled\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_charge_for_pending_refund_disputed\"\n          }\n        ],\n        \"settledAt\": \"2015-01-23T23:50:07Z\",\n        \"status\": \"partial_refund\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"bankAccountLast4\": \"1245\",\n        \"bankAccountName\": \"The Bank\",\n        \"cardBrand\": \"visa\",\n        \"cardFunding\": \"CREDIT\",\n        \"cardLast4\": \"4242\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"declineCode\": \"card_not_supported\",\n        \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n        \"fee\": 99,\n        \"feeBillingType\": \"per_deposit\",\n        \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n        \"interchangeFee\": 50,\n        \"paidWithCardOnFile\": true,\n        \"refunds\": [\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"canceled\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_expired_or_cancelled\"\n          },\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"fraudulent\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_lost_or_stolen\"\n          }\n        ],\n        \"settledAt\": \"2015-01-23T23:50:07Z\",\n        \"status\": \"dispute_lost\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"readerUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"requester\": \"John Apple\",\n    \"status\": \"refund_pending\",\n    \"surchargeAmount\": 350,\n    \"surchargeRate\": 0.035,\n    \"tipAmount\": 200,\n    \"uid\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c669f379-f256-4c68-9d42-658b1e135bb9",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "invoices",
+                    ":uid",
+                    "charge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for invoice."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"paymentMethodId\": \"pm_1GTWhCELrVx5KpCHKXoM6XSj\",\n  \"idempotencyUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"shouldSaveCardOnFile\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7200,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "551264f3-5688-4203-a6af-00f7b405fc78",
+          "name": "Refund an invoice",
+          "request": {
+            "name": "Refund an invoice",
+            "description": {
+              "content": "Refunds an invoice. The invoice must currently have a `status` of `paid`.If an invoice has a `status` of `created` it cannot be refunded, but can be canceled. An invoice can have multiple refunds. The total refunded amount cannot exceed the invoice's `amount`.\n\nRequired scope: `write_payments`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "invoices",
+                ":uid",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for invoice."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\",\n  \"locationUid\": \"<uuid>\",\n  \"paymentUid\": \"<uuid>\",\n  \"reason\": \"<string>\",\n  \"note\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "220039c1-0f4b-4dc7-8bc9-83e61c67700f",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "invoices",
+                    ":uid",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for invoice."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 4186,\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"paymentUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"reason\": \"<string>\",\n  \"note\": \"incorrect amount\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"allowedPaymentMethods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"amount\": 2000,\n    \"canceledAt\": \"2015-01-23T23:50:07Z\",\n    \"canceledNote\": \"The wrong amount was entered.\",\n    \"channel\": {\n      \"identifier\": \"email@email.com\",\n      \"type\": \"email\"\n    },\n    \"conversationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"currencyRef\": \"USD\",\n    \"customerName\": \"Joe Orange\",\n    \"invoiceNumber\": \"abc-12345-def\",\n    \"invoiceServiceChargeItems\": [\n      {\n        \"amount\": 1099,\n        \"flatChargeAmount\": 1099,\n        \"name\": \"UT sales tax\",\n        \"percentageChargeRate\": \"3\",\n        \"serviceChargeClassification\": \"SALES_TAX\",\n        \"serviceChargeType\": \"PERCENTAGE_BASED\"\n      },\n      {\n        \"amount\": 1099,\n        \"flatChargeAmount\": 1099,\n        \"name\": \"UT sales tax\",\n        \"percentageChargeRate\": \"3\",\n        \"serviceChargeClassification\": \"RETAIL_SALES_TAX\",\n        \"serviceChargeType\": \"FLAT_RATE\"\n      }\n    ],\n    \"lineItems\": [\n      {\n        \"amount\": 1099,\n        \"description\": \"Total\"\n      },\n      {\n        \"amount\": 1099,\n        \"description\": \"Total\"\n      }\n    ],\n    \"location\": {\n      \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"paidAt\": \"2015-01-23T23:50:07Z\",\n    \"paymentNet\": 1000,\n    \"payments\": [\n      {\n        \"bankAccountLast4\": \"1245\",\n        \"bankAccountName\": \"The Bank\",\n        \"cardBrand\": \"visa\",\n        \"cardFunding\": \"CREDIT\",\n        \"cardLast4\": \"4242\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"declineCode\": \"card_not_supported\",\n        \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n        \"fee\": 99,\n        \"feeBillingType\": \"per_deposit\",\n        \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n        \"interchangeFee\": 50,\n        \"paidWithCardOnFile\": true,\n        \"refunds\": [\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"duplicate\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_unknown\"\n          },\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"canceled\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_charge_for_pending_refund_disputed\"\n          }\n        ],\n        \"settledAt\": \"2015-01-23T23:50:07Z\",\n        \"status\": \"partial_refund\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"bankAccountLast4\": \"1245\",\n        \"bankAccountName\": \"The Bank\",\n        \"cardBrand\": \"visa\",\n        \"cardFunding\": \"CREDIT\",\n        \"cardLast4\": \"4242\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"declineCode\": \"card_not_supported\",\n        \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n        \"fee\": 99,\n        \"feeBillingType\": \"per_deposit\",\n        \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n        \"interchangeFee\": 50,\n        \"paidWithCardOnFile\": true,\n        \"refunds\": [\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"canceled\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_expired_or_cancelled\"\n          },\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"fraudulent\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_lost_or_stolen\"\n          }\n        ],\n        \"settledAt\": \"2015-01-23T23:50:07Z\",\n        \"status\": \"dispute_lost\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"readerUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"requester\": \"John Apple\",\n    \"status\": \"refund_pending\",\n    \"surchargeAmount\": 350,\n    \"surchargeRate\": 0.035,\n    \"tipAmount\": 200,\n    \"uid\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b8e596e-c198-4144-b0f7-a5158d6f99a8",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "invoices",
+                    ":uid",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for invoice."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 4186,\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"paymentUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"reason\": \"<string>\",\n  \"note\": \"incorrect amount\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7200,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4085e69f-05c3-48e4-b018-9f047d13bdf7",
+          "name": "Create invoice setup intent.",
+          "request": {
+            "name": "Create invoice setup intent.",
+            "description": {
+              "content": "Creates a setup intent so clients can tokenize card details with Stripe.js and obtain a `paymentMethodId` for manual entry charging.\n\nRequired scope: `write_payments`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "invoices",
+                ":uid",
+                "setup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for invoice."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"locationUid\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fff40195-65ff-4970-9c3f-71ad3bdeb738",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "invoices",
+                    ":uid",
+                    "setup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for invoice."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"allowedPaymentMethods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"amount\": 2000,\n    \"canceledAt\": \"2015-01-23T23:50:07Z\",\n    \"canceledNote\": \"The wrong amount was entered.\",\n    \"channel\": {\n      \"identifier\": \"email@email.com\",\n      \"type\": \"email\"\n    },\n    \"conversationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"currencyRef\": \"USD\",\n    \"customerName\": \"Joe Orange\",\n    \"invoiceNumber\": \"abc-12345-def\",\n    \"invoiceServiceChargeItems\": [\n      {\n        \"amount\": 1099,\n        \"flatChargeAmount\": 1099,\n        \"name\": \"UT sales tax\",\n        \"percentageChargeRate\": \"3\",\n        \"serviceChargeClassification\": \"SALES_TAX\",\n        \"serviceChargeType\": \"PERCENTAGE_BASED\"\n      },\n      {\n        \"amount\": 1099,\n        \"flatChargeAmount\": 1099,\n        \"name\": \"UT sales tax\",\n        \"percentageChargeRate\": \"3\",\n        \"serviceChargeClassification\": \"RETAIL_SALES_TAX\",\n        \"serviceChargeType\": \"FLAT_RATE\"\n      }\n    ],\n    \"lineItems\": [\n      {\n        \"amount\": 1099,\n        \"description\": \"Total\"\n      },\n      {\n        \"amount\": 1099,\n        \"description\": \"Total\"\n      }\n    ],\n    \"location\": {\n      \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"paidAt\": \"2015-01-23T23:50:07Z\",\n    \"paymentNet\": 1000,\n    \"payments\": [\n      {\n        \"bankAccountLast4\": \"1245\",\n        \"bankAccountName\": \"The Bank\",\n        \"cardBrand\": \"visa\",\n        \"cardFunding\": \"CREDIT\",\n        \"cardLast4\": \"4242\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"declineCode\": \"card_not_supported\",\n        \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n        \"fee\": 99,\n        \"feeBillingType\": \"per_deposit\",\n        \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n        \"interchangeFee\": 50,\n        \"paidWithCardOnFile\": true,\n        \"refunds\": [\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"duplicate\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_unknown\"\n          },\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"canceled\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_charge_for_pending_refund_disputed\"\n          }\n        ],\n        \"settledAt\": \"2015-01-23T23:50:07Z\",\n        \"status\": \"partial_refund\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"bankAccountLast4\": \"1245\",\n        \"bankAccountName\": \"The Bank\",\n        \"cardBrand\": \"visa\",\n        \"cardFunding\": \"CREDIT\",\n        \"cardLast4\": \"4242\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"declineCode\": \"card_not_supported\",\n        \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n        \"fee\": 99,\n        \"feeBillingType\": \"per_deposit\",\n        \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n        \"interchangeFee\": 50,\n        \"paidWithCardOnFile\": true,\n        \"refunds\": [\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"canceled\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_expired_or_cancelled\"\n          },\n          {\n            \"amount\": 100,\n            \"createdAt\": \"2015-01-23T23:50:07Z\",\n            \"notes\": [\n              \"The product did not function properly.\",\n              \"The product did not function properly.\"\n            ],\n            \"reason\": \"fraudulent\",\n            \"refundedSurchargeAmount\": 50,\n            \"settledAt\": \"2015-01-23T23:50:07Z\",\n            \"status\": \"failed_lost_or_stolen\"\n          }\n        ],\n        \"settledAt\": \"2015-01-23T23:50:07Z\",\n        \"status\": \"dispute_lost\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"readerUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"requester\": \"John Apple\",\n    \"status\": \"refund_pending\",\n    \"surchargeAmount\": 350,\n    \"surchargeRate\": 0.035,\n    \"tipAmount\": 200,\n    \"uid\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4e70249-09dd-450a-8ebc-6c8b611c37e6",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "invoices",
+                    ":uid",
+                    "setup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for invoice."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7200,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3cc2af01-e005-4d4e-b96d-354d11185d5b",
+      "name": "Payment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a3d9ab9b-052e-47c4-8c71-f0c415afc62e",
+          "name": "Get a payment.",
+          "request": {
+            "name": "Get a payment.",
+            "description": {
+              "content": "Gets a single payment by its uid.\n\nRequired scope: `read_payments`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "payments",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for payment."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6cdfbc1-820d-4832-aeda-fc30c2be78d7",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "payments",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for payment."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"bankAccountLast4\": \"1234\",\n    \"bankAccountName\": \"The Bank\",\n    \"cardBrand\": \"visa\",\n    \"cardFunding\": \"CREDIT\",\n    \"cardLast4\": \"4242\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"declineCode\": \"card_not_supported\",\n    \"declineCodeMessage\": \"The card does not support this type of purchase.\",\n    \"fee\": 99,\n    \"feeBillingType\": \"MONTHLY\",\n    \"feeCollectedAt\": \"2015-01-23T23:50:07Z\",\n    \"interchangeFee\": 50,\n    \"paidWithCardOnFile\": true,\n    \"refunds\": [\n      {\n        \"amount\": 100,\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"notes\": [\n          \"The product did not function properly.\",\n          \"The product did not function properly.\"\n        ],\n        \"reason\": \"canceled\",\n        \"settledAt\": \"2015-01-23T23:50:07Z\",\n        \"status\": \"failed_lost_or_stolen\"\n      },\n      {\n        \"amount\": 100,\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"notes\": [\n          \"The product did not function properly.\",\n          \"The product did not function properly.\"\n        ],\n        \"reason\": \"canceled\",\n        \"settledAt\": \"2015-01-23T23:50:07Z\",\n        \"status\": \"failed_unknown\"\n      }\n    ],\n    \"settledAt\": \"2015-01-23T23:50:07Z\",\n    \"status\": \"failed\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd0cc7d9-e74b-414c-9984-214358832ac1",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "payments",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for payment."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7200,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d4744e5c-8346-47e7-ad30-d5b9e520ef8c",
+      "name": "Reader",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "69b0d4d0-7a22-481d-b704-d0a7f43b6029",
+          "name": "Get a card reader.",
+          "request": {
+            "name": "Get a card reader.",
+            "description": {
+              "content": "Gets a single card reader by its uid.\n\nRequired scope: `read_payments`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "readers",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for reader."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffb54039-7125-4ae3-8953-b6a8cebdb92f",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "readers",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for reader."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"label\": \"string\",\n    \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"status\": \"active\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a47bd83-01aa-4ee7-9c4a-54168ab3301a",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "readers",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for reader."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7200,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d50a1f75-e912-4ab9-b64f-c310dfeb7f56",
+      "name": "Refund",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1e509480-9314-487e-8b64-1391fbf5dbce",
+          "name": "Create a refund.",
+          "request": {
+            "name": "Create a refund.",
+            "description": {
+              "content": "Creates a refund. (see note)\n\n  **Use with caution.** This action creates an Unlinked Refund that is not associated with an\n  Podium Invoice or Payment. This current implementation *only works*\n  with a Podium Payment Card Reader, reading the customer's credit card data\n  before debiting the refunded amount.\n\n  **Balance requirements.** This action requires that your account have on hand an amount\n  equal to or greater than the amount of the refund. The amount for this refund will be\n  deducted from the amount still to pay out from the account. If the account does not have\n  sufficient funds, the refund will fail.\n\n  **Upcoming change:** When this resource supports refunding a Podium Invoice,\n  `/invoices/uid/refund` is planned to be deprecated.\n\n  Required scope: `write_payments`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "refunds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\",\n  \"channelIdentifier\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"locationUid\": \"<uuid>\",\n  \"readerUid\": \"<uuid>\",\n  \"reason\": \"<string>\",\n  \"accountUid\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "01cb20bb-91f6-4026-9825-eb1365d0259d",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "refunds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 4186,\n  \"channelIdentifier\": \"email@email.com\",\n  \"customerName\": \"Barry Grape\",\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"readerUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"reason\": \"<string>\",\n  \"accountUid\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"amount\": 100,\n    \"cardBrand\": \"visa\",\n    \"cardLast4\": \"4242\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"location\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"notes\": [\n      \"The product did not function properly.\",\n      \"The product did not function properly.\"\n    ],\n    \"reason\": \"requested_by_customer\",\n    \"settledAt\": \"2015-01-23T23:50:07Z\",\n    \"status\": \"failed_charge_for_pending_refund_disputed\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81721257-541a-473a-8ef4-f9e0f90c71ee",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "refunds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 4186,\n  \"channelIdentifier\": \"email@email.com\",\n  \"customerName\": \"Barry Grape\",\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"readerUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"reason\": \"<string>\",\n  \"accountUid\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7200,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46b56f17-f336-4af8-a627-02586c76c86b",
+          "name": "Get a refund.",
+          "request": {
+            "name": "Get a refund.",
+            "description": {
+              "content": "Gets a refund that has previously been created.\n\nRequired scope: `read_payments`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "refunds",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locationUid",
+                  "value": "<uuid>",
+                  "description": "(Required) Podium unique identifier for location."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for refund."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cbdc78fc-234e-44ff-b371-45356dea123e",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "refunds",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locationUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for refund."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"amount\": 100,\n    \"cardBrand\": \"visa\",\n    \"cardLast4\": \"4242\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"location\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"notes\": [\n      \"The product did not function properly.\",\n      \"The product did not function properly.\"\n    ],\n    \"reason\": \"fraudulent\",\n    \"settledAt\": \"2015-01-23T23:50:07Z\",\n    \"status\": \"failed_expired_or_cancelled\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1866afd0-d65b-4fb7-9863-b205b7e5bf8d",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "refunds",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locationUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for refund."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7200,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.podium.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "491cdab1-e392-4894-ba2c-bc15929c22a2",
+    "name": "Payments",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,301 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Payments",
+    "version": "2021.04.01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invoice",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all invoices.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/invoices",
+            "params": [
+              {
+                "name": "locationUid",
+                "value": "",
+                "type": "query",
+                "description": "Podium unique identifier for location."
+              },
+              {
+                "name": "datePaid",
+                "value": "",
+                "type": "query",
+                "description": "Return invoices with a payment whose `createdAt` is greater or equal to this date."
+              },
+              {
+                "name": "dateRefunded",
+                "value": "",
+                "type": "query",
+                "description": "Return invoices with a refund whose `createdAt` is greater or equal to this date."
+              },
+              {
+                "name": "dateCreated",
+                "value": "",
+                "type": "query",
+                "description": "Return invoices whose `createdAt` is greater or equal to this date."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of items to return per request. Defaults to `10`."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Retrieves the page of items that comes after or before the `cursor`."
+              }
+            ]
+          },
+          "docs": "List of all invoices that match the query parameters.\n\nRequired scope: `read_payments`."
+        },
+        {
+          "info": {
+            "name": "Create an invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/invoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an invoice which is either a `card_present` or a `card_not_present` invoice.\nProviding the `reader_uid` property will create a `card_present` invoice, but if no `reader_uid`\nis provided a `card_not_present` invoice will be created.\n\n\n### Card Present Invoice\n\nA card-present-invoice is used to process an invoice through a card reader. After the invoice\nis created, there is a callback to the card reader to complete the transaction. If no\n`accountUid` is given, the card reader's default acc"
+        },
+        {
+          "info": {
+            "name": "Get an invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/invoices/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for invoice."
+              },
+              {
+                "name": "locationUid",
+                "value": "",
+                "type": "query",
+                "description": "Podium unique identifier for location."
+              }
+            ]
+          },
+          "docs": "Gets an invoice that has previously been created.\n\nRequired scope: `read_payments`."
+        },
+        {
+          "info": {
+            "name": "Cancel an invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/invoices/:uid/cancel",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for invoice."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels an invoice. The seller cannot collect payments for the canceled invoice.\n\nRequired scope: `write_payments`."
+        },
+        {
+          "info": {
+            "name": "Charge an invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/invoices/:uid/charge",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for invoice."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Charges an existing invoice using keyed-in payment details from a Stripe payment method ID.\n\nRequired scope: `write_payments`."
+        },
+        {
+          "info": {
+            "name": "Refund an invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/invoices/:uid/refund",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for invoice."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refunds an invoice. The invoice must currently have a `status` of `paid`.If an invoice has a `status` of `created` it cannot be refunded, but can be canceled. An invoice can have multiple refunds. The total refunded amount cannot exceed the invoice's `amount`.\n\nRequired scope: `write_payments`."
+        },
+        {
+          "info": {
+            "name": "Create invoice setup intent.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/invoices/:uid/setup",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for invoice."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a setup intent so clients can tokenize card details with Stripe.js and obtain a `paymentMethodId` for manual entry charging.\n\nRequired scope: `write_payments`."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a payment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/payments/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for payment."
+              }
+            ]
+          },
+          "docs": "Gets a single payment by its uid.\n\nRequired scope: `read_payments`."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reader",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a card reader.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/readers/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for reader."
+              }
+            ]
+          },
+          "docs": "Gets a single card reader by its uid.\n\nRequired scope: `read_payments`."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Refund",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a refund.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/refunds",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a refund. (see note)\n\n  **Use with caution.** This action creates an Unlinked Refund that is not associated with an\n  Podium Invoice or Payment. This current implementation *only works*\n  with a Podium Payment Card Reader, reading the customer's credit card data\n  before debiting the refunded amount.\n\n  **Balance requirements.** This action requires that your account have on hand an amount\n  equal to or greater than the amount of the refund. The amount for this refund will be\n  deducted "
+        },
+        {
+          "info": {
+            "name": "Get a refund.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/refunds/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for refund."
+              },
+              {
+                "name": "locationUid",
+                "value": "",
+                "type": "query",
+                "description": "Podium unique identifier for location."
+              }
+            ]
+          },
+          "docs": "Gets a refund that has previously been created.\n\nRequired scope: `read_payments`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

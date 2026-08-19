@@ -1,0 +1,167 @@
+{
+  "item": [
+    {
+      "id": "fe8d773b-d9bc-4210-a836-bf800a4c2201",
+      "name": "Call",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "278e00ff-97d6-4eae-b3f4-9af4933a71fc",
+          "name": "Get a call.",
+          "request": {
+            "name": "Get a call.",
+            "description": {
+              "content": "Gets a call by UID.\n\nRequired scope: `read_phones`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "calls",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for call."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60068c6e-ffd8-479e-b594-f3f91232213c",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "calls",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for call."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"conversationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"customerPhoneNumber\": \"+18017580580\",\n    \"direction\": \"inbound\",\n    \"durationSeconds\": 134,\n    \"endedAt\": \"2015-01-23T23:50:07Z\",\n    \"hasVoicemail\": false,\n    \"isPrivate\": false,\n    \"locationPhoneNumber\": \"+18017580580\",\n    \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"startedAt\": \"2015-01-23T23:50:07Z\",\n    \"status\": \"internal_call\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"userUid\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8273735d-f326-4dff-9cb5-7864e22516a4",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "calls",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for call."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7424,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.podium.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6b590d7c-b7ae-4c70-9b3a-b2617bfd3300",
+    "name": "Phones",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

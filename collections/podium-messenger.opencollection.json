@@ -1,0 +1,213 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Messenger",
+    "version": "2021.04.01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Message",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve messages from a conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/conversations/:conversation_uid/messages",
+            "params": [
+              {
+                "name": "conversation_uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for conversation."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve limited number of messages from a conversation.\n\nRequired scope: `read_messages`."
+        },
+        {
+          "info": {
+            "name": "Retreive a message from a conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/conversations/:conversation_uid/messages/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for message."
+              },
+              {
+                "name": "conversation_uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for conversation."
+              }
+            ]
+          },
+          "docs": "Retrieve a message from a conversation.\n\nRequired scope: `read_messages`."
+        },
+        {
+          "info": {
+            "name": "Import a message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/import/messages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Import a message from a different system. NOTE: This does not send a message to number, just imports it into a conversation on Podium's system.\n\nRequired scope: `write_messages`.\n"
+        },
+        {
+          "info": {
+            "name": "Send a message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/messages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a message. A message can only be sent on behalf of a user if they have the necessary permissions to send\nmessages in: conversations assigned to them, conversations assigned to others, and unassigned conversations.\n\nRequired scope: `write_messages`.\n"
+        },
+        {
+          "info": {
+            "name": "Send a message with attachment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/messages/attachment",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "attachment",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "data",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Send a message with an attachment. A message can only be sent on behalf of a user if they have the necessary permissions to send\nmessages in: conversations assigned to them, conversations assigned to others, and unassigned conversations.\n\nRequired scope: `write_messages`.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Template",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/templates",
+            "params": [
+              {
+                "name": "types",
+                "value": "",
+                "type": "query",
+                "description": "Filter by types: \"custom\", \"review_invite\", or \"review_invite_backup\", defaults to \"custom\"\n"
+              },
+              {
+                "name": "locationUid",
+                "value": "",
+                "type": "query",
+                "description": "Podium unique identifier for location."
+              }
+            ]
+          },
+          "docs": "List all templates.\n\nRequired scope: `read_templates`."
+        },
+        {
+          "info": {
+            "name": "Create a message template.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a message template.\n\nRequired scope: `write_templates`.\n"
+        },
+        {
+          "info": {
+            "name": "Update a message template.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.podium.com/v4/templates/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Template uid"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "update a message template.\n\nRequired scope: `write_templates`.\n"
+        },
+        {
+          "info": {
+            "name": "Delete a template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.podium.com/v4/templates/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for templates."
+              }
+            ]
+          },
+          "docs": "Deletes a template by the given uid. \n\nRequired scope: `write_templates`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

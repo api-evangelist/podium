@@ -1,0 +1,29 @@
+generated: '2026-08-14'
+method: probed
+probe: true
+url: https://trust.podium.com
+source: https://trust.podium.com
+platform: Vanta
+title: Podium Trust Center
+http_status: 200
+checked: '2026-08-14'
+certifications: []
+note: >-
+  trust.podium.com resolves to a live Vanta-hosted trust center titled "Podium Trust Center" whose
+  meta description reads "At Podium, trust is at the core of everything we do. We're committed to
+  protecting your data and maintaining the highest standards of security, privacy, and
+  reliability." The page body is rendered entirely client-side (4.8 KB shell, Vite/Vanta bundle)
+  and Vanta's data API requires authorization, so the certification list could not be read
+  without executing JavaScript. Presence of the trust center is verified; the specific
+  certifications are NOT, and none are asserted here.
+evidence:
+  - source: https://trust.podium.com
+    http_status: 200
+    content_type: text/html
+    keywords: [trust center, security, compliance, privacy]
+    rendered: client-side
+related:
+  legal_center: https://legal.podium.com/
+  baa: https://legal.podium.com/#baa
+  dpa: https://legal.podium.com/#dpa
+  developer_security_sla: https://legal.podium.com/#developersla

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appointments",
+    "version": "2021.04.01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Appointment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an appointment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/appointments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an appointment.\n\nRequired scope: `write_appointments`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

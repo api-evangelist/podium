@@ -1,0 +1,72 @@
+generated: '2026-08-14'
+method: searched
+source: >-
+  hex.pm registry metadata, the github.com/podium organization listing, and
+  https://docs.podium.com/docs/getting-started
+note: >-
+  Podium ships exactly one first-party API client library — podium_ex, an Elixir package on
+  hex.pm — and it is ABANDONED: latest release 0.7.0 published 2020-02-13, and the source repo
+  github.com/podium/podium_ex was archived (read-only) with its last push on 2024-03-22. The
+  library therefore predates the v4 / 2021.04.01 API generation that Podium's own reference now
+  documents. No official JavaScript, Python, Ruby, PHP, Java, Go, .NET or Rust SDK exists: the
+  npm, PyPI and RubyGems packages named "podium" belong to unrelated projects (podium-lib
+  micro-frontends, @hapi/podium, a PyBee presentation tool, and a podlet gem) and are recorded
+  below as explicit non-matches so a future run does not re-adopt them. Podium's published
+  integration path is raw HTTP plus a Postman workspace and two JavaScript sample repos.
+package_count: 1
+official_count: 1
+packages:
+  - language: elixir
+    registry: hex
+    name: podium_ex
+    url: https://hex.pm/packages/podium_ex
+    repository: https://github.com/podium/podium_ex
+    install: '{:podium_ex, "~> 0.7.0"}'
+    official: true
+    status: abandoned
+    version: 0.7.0
+    published: '2020-02-13'
+    repo_archived: true
+    repo_last_push: '2024-03-22'
+    downloads_all_time: 4036
+    description: An Elixir library for interfacing with the Podium API.
+    note: >-
+      Last release 2020-02-13, six years before this probe and before the 2021.04.01 dated API
+      version the current reference documents. Repository archived by Podium.
+samples:
+  - name: podium-api-sample-contacts
+    language: javascript
+    url: https://github.com/podium/podium-api-sample-contacts
+    official: true
+    kind: sample
+    last_push: '2025-06-09'
+    version: null
+    published: null
+    note: Sample request code for the contacts endpoints; not published to a registry, so no version metadata exists.
+  - name: podium-api-sample-messages
+    language: javascript
+    url: https://github.com/podium/podium-api-sample-messages
+    official: true
+    kind: sample
+    last_push: '2025-06-09'
+    version: null
+    published: null
+    note: Sample request code for the messages endpoints; not published to a registry.
+collections:
+  - kind: postman
+    name: Podium's API Workspace
+    url: https://www.postman.com/podiumhq/podium-s-api-workspace
+    official: true
+non_matches:
+  - {registry: npm, name: "@hapi/podium", reason: "hapi.js event emitter, unrelated to Podium.com"}
+  - {registry: npm, name: "@podium/layout", reason: "podium-lib micro-frontend framework (podium-lib.io), unrelated"}
+  - {registry: npm, name: "@podium-sdk/node-sdk", reason: "third-party (kiki-world-01/podium-elysia), not published by Podium"}
+  - {registry: pypi, name: podium, reason: "PyBee presentation tool for developers, unrelated"}
+  - {registry: rubygems, name: podium, reason: "gingermusketeer podlet library, unrelated"}
+registries_checked: [npm, pypi, rubygems, hex, packagist, crates.io, nuget]
+registries_unreachable:
+  - {registry: maven-central, reason: "search.maven.org solrsearch timed out during this pass"}
+non_matches_other_registries:
+  - {registry: packagist, name: bizley/podium, reason: "Yii2 forum module, unrelated"}
+  - {registry: crates.io, name: podium, reason: "ctron/podium, unrelated"}
+  - {registry: nuget, name: PodiumClientSDK, reason: "pointepestcontrol/PodiumClient, third-party, not published by Podium"}

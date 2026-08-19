@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Webhooks",
+    "version": "2021.04.01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhook",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List webhooks.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/webhooks"
+          },
+          "docs": "List webhooks that are tied to user who has authorized the application.\n\nRequired scope: none.\n"
+        },
+        {
+          "info": {
+            "name": "Create a webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new webhook to receive events from a location or an organization. One of `locationUid` or\n`organizationUid` is required. If both are given the `organizationUid` will be used.\n\nRequired scope: The required scope(s) will depend on the event type(s) you are subscribing too. See the WEBHOOK EVENT TYPES section.\n"
+        },
+        {
+          "info": {
+            "name": "Get a webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/webhooks/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for webhook."
+              }
+            ]
+          },
+          "docs": "Get a webhook based on its uid.\n\nRequired scope: none.\n"
+        },
+        {
+          "info": {
+            "name": "Update a webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.podium.com/v4/webhooks/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for webhook."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing webhook.\nThe location uid and organization uid cannot be updated.\nAll other parameters not provided will be left unchanged.\n\nRequired scope: The required scope(s) will depend on the event type(s) you are subscribing too. See the WEBHOOK EVENT TYPES section.\n"
+        },
+        {
+          "info": {
+            "name": "Delete a webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.podium.com/v4/webhooks/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for webhook."
+              }
+            ]
+          },
+          "docs": "Deletes an existing webhook.\n\nRequired scope: none.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

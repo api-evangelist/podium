@@ -1,0 +1,59 @@
+generated: '2026-08-14'
+method: probed
+source: live probes of every Podium host in apis.yml + OpenAPI servers[]
+checked: '2026-08-14'
+result: none
+note: >-
+  No /.well-known document is served anywhere on Podium's surface. api.podium.com answers every
+  path with its Kong gateway 404 envelope ({"code":"route_not_found"}); www.podium.com and
+  docs.podium.com return their 404 pages. developer.podium.com and auth.podium.com are
+  single-page apps whose catch-all route answers HTTP 200 with the SPA HTML shell for EVERY
+  /.well-known/* path — including agent-card.json — so those 200s are NOT documents and are
+  recorded as misses. No WellKnown, SecurityTxt or AgentCard pointer is emitted from this probe.
+hosts:
+  - host: https://api.podium.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://www.podium.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://docs.podium.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://developer.podium.com
+    spa_catch_all: true
+    documents:
+      - {path: /.well-known/security.txt, status: 200, document: false, body: SPA HTML shell}
+      - {path: /.well-known/openid-configuration, status: 200, document: false, body: SPA HTML shell}
+      - {path: /.well-known/oauth-authorization-server, status: 200, document: false, body: SPA HTML shell}
+      - {path: /.well-known/oauth-protected-resource, status: 200, document: false, body: SPA HTML shell}
+      - {path: /.well-known/api-catalog, status: 200, document: false, body: SPA HTML shell}
+      - {path: /.well-known/ai-plugin.json, status: 200, document: false, body: SPA HTML shell}
+      - {path: /.well-known/agent-card.json, status: 200, document: false, body: SPA HTML shell}
+      - {path: /.well-known/agent.json, status: 200, document: false, body: SPA HTML shell}
+  - host: https://auth.podium.com
+    spa_catch_all: true
+    documents:
+      - {path: /.well-known/openid-configuration, status: 200, document: false, body: SPA HTML shell}
+      - {path: /.well-known/oauth-authorization-server, status: 200, document: false, body: SPA HTML shell}

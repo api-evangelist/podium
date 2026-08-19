@@ -1,0 +1,1105 @@
+{
+  "item": [
+    {
+      "id": "62aec42a-648a-4ff0-a383-5d9c64c48b2c",
+      "name": "Conversation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8f9f290a-4b82-4663-b7a5-edafd04cd18b",
+          "name": "List conversations.",
+          "request": {
+            "name": "List conversations.",
+            "description": {
+              "content": "List all conversations. \n\nIf the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.\n\nRequired scope: `read_messages`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "conversations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Retrieves the page of items that comes after the `cursor`."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Max number of items to return per request. Defaults to `10`."
+                },
+                {
+                  "disabled": false,
+                  "key": "locationUid",
+                  "value": "<uuid>",
+                  "description": "Podium unique identifier for location."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e217713d-eb04-492d-a64e-91d74ae9ba1f",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "locationUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"assigneeUids\": [\n      \"00000000-0000-0000-0000-000000000000\",\n      \"00000000-0000-0000-0000-000000000000\"\n    ],\n    \"channel\": {\n      \"identifier\": \"email@email.com\",\n      \"type\": \"email\"\n    },\n    \"closed\": true,\n    \"contactName\": \"string\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"lastItemAt\": \"2015-01-23T23:50:07Z\",\n    \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e203c758-7da5-4fd4-95b2-de7d47e644e8",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "locationUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6927,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a0102c7-f278-48f0-910f-539d06224383",
+          "name": "Get a conversation.",
+          "request": {
+            "name": "Get a conversation.",
+            "description": {
+              "content": "Gets a conversation that has previously been created.\n\nRequired scope: `read_messages`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "conversations",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for conversation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "370d3a70-486f-4c54-b643-6f956cc3d996",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for conversation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"assigneeUids\": [\n      \"00000000-0000-0000-0000-000000000000\",\n      \"00000000-0000-0000-0000-000000000000\"\n    ],\n    \"channel\": {\n      \"identifier\": \"email@email.com\",\n      \"type\": \"email\"\n    },\n    \"closed\": true,\n    \"contactName\": \"string\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"lastItemAt\": \"2015-01-23T23:50:07Z\",\n    \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "365d9f6c-72c7-417a-9435-58d0c80b2554",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for conversation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6927,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8783cfeb-0249-40bf-9f19-28285dda4388",
+          "name": "Update a conversation.",
+          "request": {
+            "name": "Update a conversation.",
+            "description": {
+              "content": "Update a conversation.\n\nRequired scope: `write_messages`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "conversations",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for conversation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assignedByName\": \"<string>\",\n  \"assignedUserUid\": \"<uuid>\",\n  \"closed\": \"<boolean>\",\n  \"conversationAssigneeUids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c4dbd7a0-7887-4833-8b4e-e8bb09cc0be4",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for conversation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assignedByName\": \"<string>\",\n  \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"closed\": false,\n  \"conversationAssigneeUids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"assigneeUids\": [\n      \"00000000-0000-0000-0000-000000000000\",\n      \"00000000-0000-0000-0000-000000000000\"\n    ],\n    \"channel\": {\n      \"identifier\": \"email@email.com\",\n      \"type\": \"email\"\n    },\n    \"closed\": true,\n    \"contactName\": \"string\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"lastItemAt\": \"2015-01-23T23:50:07Z\",\n    \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "597ae661-6c57-4c03-a7e0-4d59f0638fd4",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for conversation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assignedByName\": \"<string>\",\n  \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"closed\": false,\n  \"conversationAssigneeUids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6927,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b40e77d-bf89-4df7-b8b1-f59b3224cb40",
+          "name": "Writeback lead",
+          "request": {
+            "name": "Writeback lead",
+            "description": {
+              "content": "Writeback lead to the connected CRM.\n\nRequired scope: `write_writebacks`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "conversations",
+                ":uid",
+                "lead_writeback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Conversation uid of the lead."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "407d5642-b6f0-41d9-8b13-91d1681472b8",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":uid",
+                    "lead_writeback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Conversation uid of the lead."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"conversation\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c1c9ac6-5a4d-4831-b367-8af64a15acc7",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":uid",
+                    "lead_writeback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Conversation uid of the lead."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6927,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "219effcb-8cd7-40a6-a9a9-7b847dd188f3",
+          "name": "Create a note for given conversation.",
+          "request": {
+            "name": "Create a note for given conversation.",
+            "description": {
+              "content": "Creates a note for the given conversation.\n\nRequired scope: `write_messages`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "conversations",
+                ":uid",
+                "notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for conversation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": \"<string>\",\n  \"senderName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0fecf9eb-d27c-4f3b-8611-e4d3d80ec869",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":uid",
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for conversation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"This is a note\",\n  \"senderName\": \"John Doe\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"body\": \"string\",\n    \"conversation\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"location\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"senderName\": \"string\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2a3b1e9-5783-4f99-8f29-5fec51184e40",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":uid",
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for conversation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"This is a note\",\n  \"senderName\": \"John Doe\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6927,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f2370fb9-0389-4d4d-b33c-53d2600d7720",
+      "name": "Conversation Assignee",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3a7dcdf2-c897-4fac-b6bb-084423a2964d",
+          "name": "Get conversation assignees.",
+          "request": {
+            "name": "Get conversation assignees.",
+            "description": {
+              "content": "Get conversation assignees.\n\nRequired scope: `read_messages`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "conversations",
+                ":uid",
+                "assignees"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for conversation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1e0b1de-cdee-44bf-8453-878007db9422",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":uid",
+                    "assignees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for conversation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"assigneeType\": \"user\",\n    \"assigneeUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"assignees\": [\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ]\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f73680e4-76ab-4240-9272-60d1fa2ec508",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":uid",
+                    "assignees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for conversation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6927,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfadbda2-f619-4e3b-abde-f9e4d6673110",
+          "name": "Update a conversation assignee.",
+          "request": {
+            "name": "Update a conversation assignee.",
+            "description": {
+              "content": "Update a conversation assignee.\n\nRequired scope: `write_messages`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "conversations",
+                ":uid",
+                "assignees"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for conversation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assigneeUids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keepAiAssignment\": \"<boolean>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b313f32-6189-4f19-ac2d-cf4363d23aa2",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":uid",
+                    "assignees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for conversation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assigneeUids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"keepAiAssignment\": \"<boolean>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"assigneeType\": \"user\",\n      \"assigneeUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"assignees\": [\n        {\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        {\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        }\n      ]\n    },\n    {\n      \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"assigneeType\": \"user\",\n      \"assigneeUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"assignees\": [\n        {\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        {\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d6f12ad-ab76-4cab-baff-145fe5505d5b",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":uid",
+                    "assignees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for conversation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assigneeUids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"keepAiAssignment\": \"<boolean>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6927,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.podium.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "44d0d236-0110-41b6-861b-4571d7c641d0",
+    "name": "Conversations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

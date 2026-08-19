@@ -1,0 +1,767 @@
+components:
+  responses: {}
+  schemas:
+    Error:
+      properties:
+        code:
+          description: Podium code for the error.
+          type: integer
+        message:
+          description: Specific details about the error.
+          nullable: true
+          type: string
+        moreInfo:
+          description: URL providing more information about the error.
+          type: string
+      title: Error
+      type: object
+    location:
+      properties:
+        address:
+          deprecated: true
+          description: Address of the physical location.
+          example: 1650 Digital Dr, Lehi, UT 84043
+          nullable: true
+          type: string
+        addressDetails:
+          description: Details of the address such as state, country, postal code, etc
+          properties:
+            city:
+              description: City of the location's address.
+              nullable: true
+              type: string
+            country:
+              description: Country of the location's address.
+              nullable: true
+              type: string
+            countryLongName:
+              description: Long country name of the location's address.
+              nullable: true
+              type: string
+            houseNumber:
+              description: House number of the location's address.
+              nullable: true
+              type: string
+            postalCode:
+              description: Postal code of the location's address.
+              nullable: true
+              type: string
+            road:
+              description: Road of the location's address.
+              nullable: true
+              type: string
+            state:
+              description: State of the location's address.
+              nullable: true
+              type: string
+            stateLongName:
+              description: Long state name of the location's address.
+              nullable: true
+              type: string
+            unit:
+              description: Unit of the location's address.
+              nullable: true
+              type: string
+          type: object
+        archived:
+          description: If the location has been archived.
+          example: false
+          nullable: true
+          type: boolean
+        archivedAt:
+          description: When the location was archived.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        createdAt:
+          description: When the location was created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        displayName:
+          description: Name of the location that is displayed in the user interface.
+          example: Podium, Inc.
+          nullable: true
+          type: string
+        name:
+          description: Name of the location.
+          nullable: true
+          type: string
+        organizationUid:
+          description: Podium unique identifier for organization.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          nullable: true
+          type: string
+        phoneNumber:
+          description: Phone number of the location.
+          example: '+18017580580'
+          nullable: true
+          type: string
+        podiumPhoneNumber:
+          description: "Podium phone number of the location. \nThis is the number that customer's will\
+            \ see on their phone's when receiving a message from this location."
+          example: '+18017580580'
+          nullable: true
+          type: string
+        uid:
+          description: Podium unique identifier for location.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the location was updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+      title: location
+      type: object
+    organization:
+      properties:
+        archived:
+          description: If the organization has been archived.
+          example: false
+          nullable: true
+          type: boolean
+        businessName:
+          description: Business name of the organization that is displayed in the user interface.
+          example: Podium, Inc.
+          nullable: true
+          type: string
+        createdAt:
+          description: When the organization was created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        uid:
+          description: Podium unique identifier for organization.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the organization was updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+      title: organization
+      type: object
+    user:
+      properties:
+        archived:
+          description: Weather the current user is archived.
+          example: false
+          nullable: true
+          type: boolean
+        createdAt:
+          description: When the user was created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        email:
+          description: The email of the current user.
+          example: bob.ross@gmail.com
+          nullable: true
+          type: string
+        firstName:
+          description: The first name of the current user.
+          example: Bob
+          nullable: true
+          type: string
+        lastName:
+          description: The last name of the current user.
+          example: Ross
+          nullable: true
+          type: string
+        locations:
+          items:
+            description: All locations the user is assigned to.
+            nullable: true
+            properties:
+              uid:
+                description: Podium unique identifier for location.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type: string
+            type: object
+          type: array
+        phone:
+          description: The phone number of the user.
+          example: '+18013586533'
+          nullable: true
+          type: string
+        role:
+          description: The current positon of the user in the company.
+          example: Account Owner
+          nullable: true
+          type: string
+        uid:
+          description: Podium unique identifier for user.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the user was updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+      title: user
+      type: object
+info:
+  title: Accounts
+  version: 2021.04.01
+openapi: 3.0.0
+paths:
+  /v4/locations:
+    get:
+      callbacks: {}
+      description: 'List of all the locations that the caller has access to.
+
+
+        If the `cursor` parameter is used then all other parameters will be ignored. This is to avoid
+        confusion if passing both a `cursor` and other parameters which would change what data is being
+        returned.
+
+
+        Required scope: `read_locations`.'
+      operationId: location.index
+      parameters:
+      - description: String you would like to search for in the `searchFields` parameter.
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+      - description: A list of the fields where you want to search for the `search` parameters. e.g. ?searchFields[]=name&searchFields[]=displayname
+        in: query
+        name: searchFields
+        required: false
+        schema:
+          default:
+          - name
+          items:
+            enum:
+            - address
+            - displayName
+            - name
+            - podiumPhoneNumber
+            type: string
+          type: array
+      - description: Max number of items to return per request. Defaults to `10`.
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: integer
+      - description: Only return locations that have been updated after the given date.
+        in: query
+        name: updatedAfter
+        required: false
+        schema:
+          description: Date time in Coordinated Universal Time (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type: string
+      - description: Retrieves the page of items that comes after the `cursor`.
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: Cursor used to access next or previous page in pagination.
+          example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/location'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      nextCursor:
+                        description: Cursor to get next set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      previousCursor:
+                        description: Cursor to get previous set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      totalItems:
+                        description: Total number of items available.
+                        type: integer
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List all locations.
+      tags:
+      - Location
+  /v4/locations/{uid}:
+    get:
+      callbacks: {}
+      description: 'Gets a single location by its uid.
+
+
+        Required scope: `read_locations`.'
+      operationId: location.get
+      parameters:
+      - description: Podium unique identifier for location.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/location'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a location.
+      tags:
+      - Location
+    patch:
+      callbacks: {}
+      description: "Update a single location by its uid. \n\nRequired scope: `write_locations`.\n\nBe\
+        \ aware: The `addressDetails` property follows the ISO convention. You might see errors\n\nif\
+        \ trying to update a location's address with an invalid address.\n"
+      operationId: location.update
+      parameters:
+      - description: Podium unique identifier for location.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              minProperties: 1
+              properties:
+                addressDetails:
+                  description: Address of the location with details
+                  properties:
+                    city:
+                      description: The city of the location's address
+                      example: Sao Paulo
+                      type: string
+                    country:
+                      description: The country of the location's address
+                      example: BR
+                      type: string
+                    countryLongName:
+                      description: The long country name of the location's address
+                      example: Brazil
+                      type: string
+                    houseNumber:
+                      description: The house number of the location's address
+                      example: '195'
+                      type: string
+                    postalCode:
+                      description: The postal code of the location's address
+                      example: '84093'
+                      type: string
+                    road:
+                      description: The road of the location's address
+                      example: Digital Dr
+                      type: string
+                    state:
+                      description: The state of the location's address
+                      example: SP
+                      type: string
+                    stateLongName:
+                      description: The long state name of the location's address
+                      example: Sao Paulo
+                      type: string
+                    unit:
+                      description: The unit of the location's address
+                      example: '123'
+                      type: string
+                  type: object
+                displayName:
+                  description: The display name of the resource
+                  example: Podium US
+                  type: string
+                name:
+                  description: The name of the resource
+                  example: Podium
+                  type: string
+                phoneNumber:
+                  description: The phone number of the resource
+                  example: '+18884441234'
+                  pattern: ^\+[1-9]\d{1,15}$
+                  type: string
+              type: object
+        description: Update location params
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/location'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Update a location.
+      tags:
+      - Location
+  /v4/organizations/{uid}:
+    get:
+      callbacks: {}
+      description: 'Gets a single organization by its uid.
+
+
+        Required scope: `read_organizations`.'
+      operationId: organization.get
+      parameters:
+      - description: Podium unique identifier for organization.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/organization'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get an organization.
+      tags:
+      - Organization
+  /v4/users:
+    get:
+      callbacks: {}
+      description: 'List of all the users that belong to any of the locations that the caller has access
+        to.
+
+
+        If the `cursor` parameter is used then all other parameters will be ignored. This is to avoid
+        confusion if passing both a `cursor` and other parameters which would change what data is being
+        returned.
+
+
+        Required scope: `read_users`.
+
+        '
+      operationId: user.index
+      parameters:
+      - description: String you would like to search for in the `searchFields` parameter.
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+      - description: Filter on the `createdAt` date.
+        in: query
+        name: createdAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      - description: A list of the fields where you want to search for the `search` parameters. e.g. ?searchFields[]=name&searchFields[]=displayname
+        in: query
+        name: searchFields
+        required: false
+        schema:
+          default:
+          - fullName
+          items:
+            enum:
+            - address
+            - phone
+            - fullName
+            type: string
+          type: array
+      - description: Max number of items to return per request. Defaults to `10`.
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: integer
+      - description: Retrieves the page of items that comes after the `cursor`.
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: Cursor used to access next or previous page in pagination.
+          example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+          type: string
+      - description: Include users with ai_agent role. Defaults to true if not specified.
+        in: query
+        name: includeAgents
+        required: false
+        schema:
+          default: true
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/user'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      nextCursor:
+                        description: Cursor to get next set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      previousCursor:
+                        description: Cursor to get previous set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      totalItems:
+                        description: Total number of items available.
+                        type: integer
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List all users.
+      tags:
+      - User
+  /v4/users/{uid}:
+    get:
+      callbacks: {}
+      description: 'Gets a user.
+
+
+        Required scope: `read_users`.'
+      operationId: user.get
+      parameters:
+      - description: Podium unique identifier for user.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/user'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a user.
+      tags:
+      - User
+security: []
+servers:
+- url: https://api.podium.com
+  variables: {}
+tags: []

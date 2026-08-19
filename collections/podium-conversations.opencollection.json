@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Conversations",
+    "version": "2021.04.01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Conversation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List conversations.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/conversations",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Retrieves the page of items that comes after the `cursor`."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of items to return per request. Defaults to `10`."
+              },
+              {
+                "name": "locationUid",
+                "value": "",
+                "type": "query",
+                "description": "Podium unique identifier for location."
+              }
+            ]
+          },
+          "docs": "List all conversations. \n\nIf the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.\n\nRequired scope: `read_messages`."
+        },
+        {
+          "info": {
+            "name": "Get a conversation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/conversations/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for conversation."
+              }
+            ]
+          },
+          "docs": "Gets a conversation that has previously been created.\n\nRequired scope: `read_messages`."
+        },
+        {
+          "info": {
+            "name": "Update a conversation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.podium.com/v4/conversations/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for conversation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a conversation.\n\nRequired scope: `write_messages`."
+        },
+        {
+          "info": {
+            "name": "Writeback lead",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/conversations/:uid/lead_writeback",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Conversation uid of the lead."
+              }
+            ]
+          },
+          "docs": "Writeback lead to the connected CRM.\n\nRequired scope: `write_writebacks`."
+        },
+        {
+          "info": {
+            "name": "Create a note for given conversation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/conversations/:uid/notes",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for conversation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a note for the given conversation.\n\nRequired scope: `write_messages`."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Conversation Assignee",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get conversation assignees.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/conversations/:uid/assignees",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for conversation."
+              }
+            ]
+          },
+          "docs": "Get conversation assignees.\n\nRequired scope: `read_messages`."
+        },
+        {
+          "info": {
+            "name": "Update a conversation assignee.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.podium.com/v4/conversations/:uid/assignees",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for conversation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a conversation assignee.\n\nRequired scope: `write_messages`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,125 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.podium.com/reference/introduction
+note: >-
+  Cross-cutting request/response semantics for the Podium v4 REST API, read from Podium's own
+  reference guides (introduction, authentication, pagination, response body, errors, api-version,
+  webhooks) and confirmed against the 12 OpenAPI definitions in openapi/.
+base_url: https://api.podium.com/v4/
+transport:
+  https_required: true
+  content_type: application/json
+  request_media_types:
+    - application/json
+    - multipart/form-data      # message.send_with_attachment, Product.upload_images only
+  response_media_type: application/json
+authentication:
+  style: oauth2-bearer
+  header: Authorization
+  format: 'Bearer {access_token}'
+  scopes: per-operation, declared in each operation description as "Required scope:"
+  artifact: authentication/podium-authentication.yml
+  docs: https://docs.podium.com/reference/authentication
+idempotency:
+  supported: partial
+  mechanism: request-body field
+  field: idempotencyUid
+  type: uuid
+  operations:
+    - invoice.charge          # POST /v4/invoices/{uid}/charge
+  scope: single operation (payments charge); no account-wide Idempotency-Key header
+  retention: not documented
+  source: openapi/podium-payments-openapi.yml
+  note: >-
+    Podium documents no Idempotency-Key request header. The only idempotency contract in the
+    published surface is the optional `idempotencyUid` body field on invoice.charge, described in
+    the spec as "Optional idempotency identifier to make retries safe." Every other write
+    operation (contacts, messages, campaigns, reviews, webhooks, refunds) is non-idempotent as
+    published.
+pagination:
+  style: cursor
+  request_params:
+    - name: limit
+      in: query
+      default: 10
+      min: 1
+      max: 100
+    - name: cursor
+      in: query
+      description: Opaque string that defines your place in the list.
+  response_fields:
+    envelope: data
+    metadata: metadata
+    next: metadata.nextCursor
+  direction: forward-only
+  docs: https://docs.podium.com/reference/pagination
+response_envelope:
+  list: '{ "data": [ ... ], "metadata": { "nextCursor": "..." } }'
+  single: '{ "data": { ... } }'
+  docs: https://docs.podium.com/reference/response-body
+filtering:
+  common_query_params:
+    - locationUid
+    - locationUids
+    - createdAt
+    - updatedAt
+    - search
+    - searchFields
+  note: Filter parameters are per-resource; there is no global filter grammar.
+field_expansion:
+  supported: false
+  note: No expand / sparse-fieldset parameter is documented or present in the specs.
+metadata:
+  custom_metadata: false
+  note: >-
+    Contacts carry user-defined attributes and tags (contact_entity_attribute.*,
+    contact_entity_tag.*) rather than a generic metadata map.
+request_tracing:
+  request_id_header: not documented
+versioning:
+  scheme: dated header
+  header: podium-version
+  current: '2021.04.01'
+  example: '2024-01-01'
+  default_behavior: >-
+    Requests without the header default to the most recent version, which can contain
+    backwards-incompatible changes.
+  backwards_compatible_changes:
+    - new resources and optional request parameters
+    - additional response properties
+    - reordering of properties
+    - changes to string formats and object id length (up to 255 characters)
+    - new webhook event types
+  docs: https://docs.podium.com/docs/api-version
+  artifact: lifecycle/podium-lifecycle.yml
+errors:
+  envelope_fields: [code, message, moreInfo]
+  format: custom (not RFC 9457 application/problem+json)
+  content_type: application/json
+  artifact: errors/podium-problem-types.yml
+  docs: https://docs.podium.com/docs/errors
+rate_limiting:
+  limit: 300 requests per minute on most routes
+  error_code: rate_limit
+  headers: not documented
+  artifact: rate-limits/podium-rate-limits.yml
+  docs: https://docs.podium.com/docs/errors
+webhooks:
+  signature:
+    headers: [podium-timestamp, podium-signature]
+    algorithm: HMAC-SHA256
+    signed_payload: '{podium-timestamp}.{raw JSON body}'
+    secret: optional per-webhook `secret`; unsigned when omitted
+    docs: https://docs.podium.com/docs/verifying-webhook-signatures
+  retries:
+    attempts: ~15
+    window: ~8 hours
+    success: 2xx only
+    on_exhaustion: webhook disabled and an email notification sent
+    ordering: subsequent events are paused while a failed attempt is retried
+    docs: https://docs.podium.com/docs/webhook-retries
+  artifact: asyncapi/podium-webhooks.yml
+identifiers:
+  style: uuid
+  path_params: [uid, identifier, conversation_uid, review_uid]
+  note: Contacts additionally accept an `identifier` (phone/email based) in place of a uid.

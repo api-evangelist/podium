@@ -1,0 +1,668 @@
+{
+  "item": [
+    {
+      "id": "6b43225f-b8e2-424d-a2c1-2e355ba2f0d7",
+      "name": "Product",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0c149825-b060-48d9-ad02-82c41f6ece2b",
+          "name": "List all products.",
+          "request": {
+            "name": "List all products.",
+            "description": {
+              "content": "List of all the products that the caller has access to.Required scope: `read_products`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locationUid",
+                  "value": "<uuid>",
+                  "description": "Podium unique identifier for location."
+                },
+                {
+                  "disabled": false,
+                  "key": "xid",
+                  "value": "<string>",
+                  "description": "External id of the product."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Max number of items to return per request. Defaults to `10`."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Retrieves the page of items that comes after the `cursor`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6bbffe16-d84b-42c7-b03a-50595437ac20",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locationUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "xid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"archivedAt\": \"2015-01-23T23:50:07Z\",\n      \"description\": \"string\",\n      \"images\": [\n        {\n          \"isPrimary\": true,\n          \"productUid\": \"00000000-0000-0000-0000-000000000000\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\",\n          \"url\": \"string\"\n        },\n        {\n          \"isPrimary\": true,\n          \"productUid\": \"00000000-0000-0000-0000-000000000000\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\",\n          \"url\": \"string\"\n        }\n      ],\n      \"insertedAt\": \"2015-01-23T23:50:07Z\",\n      \"name\": \"string\",\n      \"price\": \"string\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\",\n      \"xid\": \"string\"\n    },\n    {\n      \"archivedAt\": \"2015-01-23T23:50:07Z\",\n      \"description\": \"string\",\n      \"images\": [\n        {\n          \"isPrimary\": true,\n          \"productUid\": \"00000000-0000-0000-0000-000000000000\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\",\n          \"url\": \"string\"\n        },\n        {\n          \"isPrimary\": true,\n          \"productUid\": \"00000000-0000-0000-0000-000000000000\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\",\n          \"url\": \"string\"\n        }\n      ],\n      \"insertedAt\": \"2015-01-23T23:50:07Z\",\n      \"name\": \"string\",\n      \"price\": \"string\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\",\n      \"xid\": \"string\"\n    }\n  ],\n  \"metadata\": {\n    \"nextCursor\": \"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw\",\n    \"previousCursor\": \"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw\",\n    \"totalItems\": 8105,\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a4f623f-0615-425d-a4be-3f7165b51172",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locationUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "xid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8753,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a4b9b78-e8b8-4aa1-928d-75a8a28f4e34",
+          "name": "Get a product.",
+          "request": {
+            "name": "Get a product.",
+            "description": {
+              "content": "Get a product.Required scope: `read_products`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "products",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for product."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "591cf406-150a-4ab0-a998-2a4198618556",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "products",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for product."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"archivedAt\": \"2015-01-23T23:50:07Z\",\n    \"description\": \"string\",\n    \"images\": [\n      {\n        \"isPrimary\": true,\n        \"productUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\",\n        \"url\": \"string\"\n      },\n      {\n        \"isPrimary\": true,\n        \"productUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\",\n        \"url\": \"string\"\n      }\n    ],\n    \"insertedAt\": \"2015-01-23T23:50:07Z\",\n    \"name\": \"string\",\n    \"price\": \"string\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\",\n    \"xid\": \"string\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb1c1d13-fdbc-4720-87f4-7d0e07707b13",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "products",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for product."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8753,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87994791-0828-4622-a4fe-e728f867ad57",
+          "name": "Deletes images from a product.",
+          "request": {
+            "name": "Deletes images from a product.",
+            "description": {
+              "content": "Delete images from a product.Required scope: `write_products`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "products",
+                ":uid",
+                "delete_images"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for product."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"locationUid\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8c9e4ff9-809f-44f1-b39a-d09657711738",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "products",
+                    ":uid",
+                    "delete_images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for product."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"isPrimary\": true,\n      \"productUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"url\": \"string\"\n    },\n    {\n      \"isPrimary\": true,\n      \"productUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80d08f9a-9072-4c4c-b878-49dd21c5f9d9",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "products",
+                    ":uid",
+                    "delete_images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for product."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8753,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "975e6a1b-b460-48c8-8fab-15d42a2e54b3",
+          "name": "Upload images to a product.",
+          "request": {
+            "name": "Upload images to a product.",
+            "description": {
+              "content": "This endpoint allow developers to upload images to a productRequired scope: `write_products`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "products",
+                ":uid",
+                "upload_images"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for product."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"images\": [\n    {\n      \"data\": \"<string>\",\n      \"isPrimary\": \"<boolean>\"\n    },\n    {\n      \"data\": \"<string>\",\n      \"isPrimary\": \"<boolean>\"\n    }\n  ],\n  \"locationUid\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "40961fc8-8f48-45a9-9c67-bf54bed947cc",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "products",
+                    ":uid",
+                    "upload_images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for product."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"images\": [\n    {\n      \"data\": \"<string>\",\n      \"isPrimary\": true\n    },\n    {\n      \"data\": \"<string>\",\n      \"isPrimary\": true\n    }\n  ],\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"identifier\": \"string\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4d87a69-d6e9-4717-9f62-fc9d1006a937",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "products",
+                    ":uid",
+                    "upload_images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for product."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"images\": [\n    {\n      \"data\": \"<string>\",\n      \"isPrimary\": true\n    },\n    {\n      \"data\": \"<string>\",\n      \"isPrimary\": true\n    }\n  ],\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8753,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.podium.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "56d86249-94d4-461a-8412-81267f6a0aee",
+    "name": "Products",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

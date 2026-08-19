@@ -1,0 +1,65 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.podium.com/docs/oauth
+docs: https://docs.podium.com/docs/oauth
+note: >-
+  The 12 OpenAPI definitions Podium publishes through its ReadMe project declare no
+  `components.securitySchemes` and carry an empty top-level `security: []`, so the auth model
+  could not be derived from the contract. It was read instead from Podium's own OAuth guide,
+  authentication reference and getting-started guide, and the operation descriptions inside the
+  specs (each names its `Required scope:`).
+summary:
+  types:
+    - oauth2
+  api_key_in: []
+  oauth2_flows:
+    - authorizationCode
+    - refreshToken
+  bearer_only: true
+  spec_declares_security: false
+schemes:
+  - name: OAuth2
+    type: oauth2
+    description: >-
+      Podium API requests are authenticated with an OAuth 2.0 bearer access token issued to a
+      developer application against a Podium user's organization/locations. There is no API-key
+      alternative documented.
+    sources:
+      - https://docs.podium.com/docs/oauth
+      - https://docs.podium.com/reference/authentication
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://api.podium.com/oauth/authorize
+        tokenUrl: https://api.podium.com/oauth/token
+        parameters: [client_id, redirect_uri, scope, state]
+        token_exchange_parameters: [client_id, client_secret, redirect_uri, code, grant_type]
+        grant_type: authorization_code
+        scope_count: 25
+      - flow: refreshToken
+        tokenUrl: https://api.podium.com/oauth/token
+        parameters: [client_id, client_secret, refresh_token, grant_type]
+        grant_type: refresh_token
+token:
+  transport: header
+  header: Authorization
+  format: 'Bearer {access_token}'
+  type: JWT
+  lifetime: 10 hours
+  lifetime_source: https://docs.podium.com/docs/oauth
+  refresh: >-
+    A refresh_token is returned alongside the access_token and is exchanged at the same token
+    endpoint with grant_type=refresh_token.
+registration:
+  model: developer-portal application
+  portal: https://developer.podium.com/
+  steps:
+    - Request access to the Podium Developer Portal and wait for approval
+    - Create an app in the developer dashboard (icon, redirect URL)
+    - Select the app's scopes, following least privilege
+    - Copy the Client ID and Client Secret (the secret cannot be retrieved again)
+    - Request test organization/location access, then complete the OAuth flow
+  source: https://docs.podium.com/docs/getting-started
+transport:
+  https_required: true
+  note: All API requests must be made over HTTPS; plain HTTP calls fail.
+scopes_artifact: scopes/podium-scopes.yml

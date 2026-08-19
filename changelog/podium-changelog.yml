@@ -1,0 +1,63 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.podium.com/changelog
+scheme: dated API versions (podium-version) with a per-release developer changelog
+current_version: '2021.04.01'
+latest_entry: '2022-10-25'
+entry_count: 10
+note: >-
+  Podium's developer changelog is a ReadMe changelog with ten published entries, all additive
+  ("Added"), authored by Matthew Rine. The most recent entry is dated 2022-10-25, so the changelog
+  has been dormant for nearly four years even though the underlying OpenAPI definitions were
+  re-published on 2026-07-09. Dates were read from the changelog's own created_at metadata.
+entries:
+  - date: '2022-10-25'
+    type: added
+    title: 'New Endpoints: Created and Update Review Response'
+    breaking: false
+    url: https://docs.podium.com/changelog/new-endpoints-created-and-update-review-response
+  - date: '2022-10-21'
+    type: added
+    title: 'New Feature: Test Accounts for Developers'
+    breaking: false
+    url: https://docs.podium.com/changelog/new-feature-test-accounts-for-developers
+  - date: '2022-10-14'
+    type: added
+    title: 'New Endpoints: Adjust Review Attribution'
+    breaking: false
+    url: https://docs.podium.com/changelog/new-endpoints-adjust-review-attribution
+  - date: '2022-08-31'
+    type: added
+    title: 'New Endpoint: List Review Responses'
+    breaking: false
+    url: https://docs.podium.com/changelog/new-endpoint-list-review-responses
+  - date: '2022-08-12'
+    type: added
+    title: 'New Webhooks: Review Invitations'
+    breaking: false
+    url: https://docs.podium.com/changelog/new-webhooks-review-invites
+  - date: '2022-07-29'
+    type: added
+    title: 'New Endpoints: Create, Update, Delete, & List Templates'
+    breaking: false
+    url: https://docs.podium.com/changelog/new-endpoints-create-update-delete-list-templates
+  - date: '2022-06-24'
+    type: added
+    title: 'New Endpoints: CRUD Campaigns'
+    breaking: false
+    url: https://docs.podium.com/changelog/new-endpoints-crud-campaigns
+  - date: '2022-06-13'
+    type: added
+    title: 'New Webhooks: Contacts'
+    breaking: false
+    url: https://docs.podium.com/changelog/new-webhooks-contacts
+  - date: '2022-06-10'
+    type: added
+    title: 'New Endpoints: List Webhooks & List Campaign Interactions'
+    breaking: false
+    url: https://docs.podium.com/changelog/new-endpoints-list-webhooks-list-campaign-interactions
+  - date: '2022-05-20'
+    type: added
+    title: 'New Endpoints: Add/Remove/Update Attribute Values and Tags on a Contact'
+    breaking: false
+    url: https://docs.podium.com/changelog/new-endpoints-addremoveupdate-attribute-values-and-tags-on-a-contact

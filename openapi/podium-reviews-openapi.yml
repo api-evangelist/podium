@@ -1,0 +1,1531 @@
+components:
+  responses: {}
+  schemas:
+    Error:
+      properties:
+        code:
+          description: Podium code for the error.
+          type: integer
+        message:
+          description: Specific details about the error.
+          nullable: true
+          type: string
+        moreInfo:
+          description: URL providing more information about the error.
+          type: string
+      title: Error
+      type: object
+    review:
+      properties:
+        attributions:
+          items:
+            description: Podium user that has been attributed to the review rating e.g. technician that
+              visited the client would be associated to the review rating.
+            properties:
+              apiClientUid:
+                description: Podium unique identifier for api client.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                nullable: true
+                type: string
+              reviewInvitationUid:
+                description: Podium unique identifier for review invitation.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                nullable: true
+                type: string
+              userUid:
+                description: Podium unique identifier for user.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                nullable: true
+                type: string
+            type: object
+          type: array
+        author:
+          description: Author of the review.
+          properties:
+            id:
+              description: Review site's unique identifier for the author.
+              example: '2412341'
+              nullable: true
+              type: string
+            name:
+              description: Name of the author.
+              example: Joe Orange
+              nullable: true
+              type: string
+          type: object
+        createdAt:
+          description: When the review was created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        isRecommendation:
+          description: Whether or not the review is recommendation based, as opposed to being a star rating.
+          example: false
+          nullable: true
+          type: boolean
+        locations:
+          items:
+            description: Podium location that the review is associated to.
+            properties:
+              uid:
+                description: Podium unique identifier for location.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                nullable: true
+                type: string
+            type: object
+          type: array
+        needsResponse:
+          description: Whether or not the review needs a response.
+          example: false
+          nullable: true
+          type: boolean
+        responses:
+          items:
+            description: Response from the business to the reviewer.
+            properties:
+              body:
+                description: Response's body
+                example: Thanks Joe for leaving us a review!
+                nullable: true
+                type: string
+              createdAt:
+                description: When the response was created.
+                example: '2015-01-23T23:50:07Z'
+                format: date-time
+                nullable: true
+                type: string
+              siteAuthorName:
+                description: Name of the response author.
+                example: John Apple
+                nullable: true
+                type: string
+            type: object
+          type: array
+        review:
+          description: Review object
+          properties:
+            body:
+              description: Comments left as a part of the review.
+              example: We love our new sofa from Sofa Plus! It is comfortable and stylish.
+              nullable: true
+              type: string
+            rating:
+              description: Rating on 5 star scale. 5 = high; 1 = low. Note that recommendations have adjusted
+                scores of 5 for recommended; 1 for not recommended.
+              example: 5
+              nullable: true
+              type: number
+            siteName:
+              description: Name of the review site.
+              example: Google
+              nullable: true
+              type: string
+            siteReviewId:
+              description: Review site's unique identifier for the review posted.
+              example: 2390afs293fj
+              nullable: true
+              type: string
+            url:
+              description: URL for the individual review that was posted.
+              example: https://www.podium.com/
+              nullable: true
+              type: string
+          type: object
+        uid:
+          description: Podium unique identifier for review.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the review was last updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+      title: review
+      type: object
+    review_attribution:
+      description: A review attribution.
+      properties:
+        createdAt:
+          description: When the review was attributed.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        editedByUser:
+          properties:
+            uid:
+              description: Podium unique identifier for user.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              nullable: true
+              type: string
+          type: object
+        isDeleted:
+          description: If the attribution is deleted
+          nullable: true
+          type: boolean
+        reviewInvite:
+          properties:
+            uid:
+              description: Podium unique identifier for review invite.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              nullable: true
+              type: string
+          type: object
+        siteReviewId:
+          description: Review site's unique identifier for the review posted.
+          nullable: true
+          type: string
+        uid:
+          description: Podium unique identifier for review attribution.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          nullable: true
+          type: string
+        updatedAt:
+          description: When the attribution was updated
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type: string
+        user:
+          properties:
+            uid:
+              description: Podium unique identifier for user.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              nullable: true
+              type: string
+          type: object
+      title: review_attribution
+      type: object
+    review_invite:
+      description: A review invite.
+      properties:
+        attributions:
+          items:
+            description: Review that was created from the invite.
+            properties:
+              reviewAuthor:
+                description: Name of person who created the review.
+                example: Joe Orange
+                nullable: true
+                type: string
+              reviewBody:
+                description: Body of the review.
+                example: Great service!
+                nullable: true
+                type: string
+              reviewPublishedAt:
+                description: When the review was published.
+                example: '2015-01-23T23:50:07Z'
+                format: date-time
+                nullable: true
+                type: string
+              reviewRating:
+                description: Rating of the review.
+                example: 5
+                nullable: true
+                type: number
+              reviewUid:
+                description: Podium unique identifier for review.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                nullable: true
+                type: string
+              siteName:
+                description: Name of the site that the review was published on.
+                example: google
+                nullable: true
+                type: string
+            type: object
+          type: array
+        channel:
+          description: Channel the review invite was sent through
+          properties:
+            identifier:
+              description: Identifies the Messenger channel. Must be a valid email address or a phone
+                number. Non-US/Canada numbers must include the country code (e.g. +61 for AUS)
+              example: email@email.com
+              nullable: true
+              type: string
+            type:
+              description: Messenger channel for the conversation.
+              enum:
+              - apple
+              - car_wars
+              - email
+              - facebook
+              - fallback_email
+              - google
+              - google_brand
+              - iframe
+              - instagram
+              - phone
+              - secure
+              - sms
+              - text
+              - whatsapp
+              example: email
+              nullable: true
+              type: string
+          type: object
+        conversationItemUid:
+          description: Podium unique identifier for conversation item.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          nullable: true
+          type: string
+        createdAt:
+          description: When the review invite was created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        customerName:
+          description: The name of the customer that the review invite was sent to.
+          example: John Apple
+          nullable: true
+          type: string
+        deliveryStatus:
+          description: Delivery status of the review invite.
+          enum:
+          - failed
+          - pending
+          - sent
+          - delivered
+          nullable: true
+          type: string
+        languages:
+          items:
+            description: Language of the review invite message.
+            example: en
+            type: string
+          type: array
+        linkClicked:
+          description: Whether or not the review invite link has been clicked.
+          example: false
+          nullable: true
+          type: boolean
+        linkClickedAt:
+          description: When the review invite link was clicked.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        location:
+          description: Location that the review invite was created on behalf of.
+          properties:
+            organizationUid:
+              description: Podium unique identifier for organization.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              nullable: true
+              type: string
+            uid:
+              description: Podium unique identifier for location.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              nullable: true
+              type: string
+          type: object
+        sender:
+          description: Podium user who sent the review invite
+          properties:
+            name:
+              description: Name of the employee that sent the review invite. If it was an automated invite
+                the value will be `external`.
+              example: Jack Grape
+              nullable: true
+              type: string
+            sentThrough:
+              description: Podium product that the review invite was sent through.
+              enum:
+              - client_app
+              - feedback
+              - generated_link_only
+              - integrations
+              - payments
+              - email
+              - sms
+              - mms
+              - external
+              nullable: true
+              type: string
+            type:
+              description: Type of entity that sent the review invite.
+              enum:
+              - user
+              - integration
+              nullable: true
+              type: string
+            uid:
+              description: Podium unique identifier for user or integration.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              nullable: true
+              type: string
+          type: object
+        shortUrl:
+          description: Short form url to view the review invite in Podium.
+          example: https://podium.co/QDNrE1v
+          nullable: true
+          type: string
+        test:
+          description: Whether or not the review invite was a test.
+          example: false
+          nullable: true
+          type: boolean
+        uid:
+          description: Podium unique identifier for review invite.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the review invite was updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        url:
+          description: Url to view the review invite in Podium.
+          example: http://app.podium.com/#/91f85f79-185c-46cb-830d-79f259bb2822?v2=true
+          nullable: true
+          type: string
+      title: review_invite
+      type: object
+    review_response:
+      description: A response to a review
+      properties:
+        body:
+          description: Body of the message.
+          example: Thank you for the kind review!
+          nullable: true
+          type: string
+        isDeleted:
+          description: Indicate whether the review response is deleted
+          example: false
+          nullable: false
+          type: boolean
+        likeCount:
+          description: Number of likes the review response has received
+          example: 0
+          nullable: true
+          type: integer
+        publishDate:
+          description: When the review response was published
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type: string
+        siteAuthorName:
+          description: Name of the author of the site
+          example: Happy Place Furniture
+          nullable: true
+          type: string
+        source:
+          description: Source of the review response
+          example: EXTERNAL
+          nullable: true
+          type: string
+        uid:
+          description: Podium unique identifier for review_response.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          nullable: false
+          type: string
+      title: review_response
+      type: object
+    review_sites_summary:
+      properties:
+        averageRating:
+          description: Average of all review ratings.
+          example: 4.839542760372566
+          type: number
+        reviewCount:
+          description: Number of reviews.
+          example: 2362
+          type: integer
+        siteName:
+          description: Name of the site.
+          example: google
+          type: string
+      title: review_sites_summary
+      type: object
+    review_summary:
+      properties:
+        averageRating:
+          description: Average of all review ratings.
+          example: 4.839542760372566
+          nullable: true
+          type: number
+        locationUid:
+          description: Podium unique identifier for location.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        reviewCount:
+          description: Number of reviews.
+          example: 2362
+          type: integer
+      title: review_summary
+      type: object
+info:
+  title: Reviews
+  version: 2021.04.01
+openapi: 3.0.0
+paths:
+  /v4/reviews:
+    get:
+      callbacks: {}
+      description: 'List of all the reviews that you have access to. The reviews are sorted by `createdAt`
+        date, with the most recent appearing first.
+
+
+        If the `cursor` parameter is used then all other parameters will be ignored. This is to avoid
+        confusion if passing both a `cursor` and other parameters which would change what data is being
+        returned.
+
+
+        Required scope: `read_reviews`.'
+      operationId: review.index
+      parameters:
+      - description: Filter on the `createdAt` date.
+        in: query
+        name: createdAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      - description: Retrieves the page of items that comes after the `cursor`.
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: Cursor used to access next or previous page in pagination.
+          example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+          type: string
+      - description: Max number of items to return per request. Defaults to `10`.
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: integer
+      - description: Filter on the `updatedAt` date.
+        in: query
+        name: updatedAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/review'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      nextCursor:
+                        description: Cursor to get next set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      previousCursor:
+                        description: Cursor to get previous set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      totalItems:
+                        description: Total number of items available.
+                        type: integer
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List all reviews.
+      tags:
+      - Review
+  /v4/reviews/invites:
+    get:
+      callbacks: {}
+      description: 'List of all the review invites that you have access to. The review invites are sorted
+        by `createdAt` date, with the most recent appearing first.
+
+
+        If the `cursor` parameter is used then all other parameters will be ignored. This is to avoid
+        confusion if passing both a `cursor` and other parameters which would change what data is being
+        returned.
+
+
+        Required scope: `read_reviews`.'
+      operationId: review_invite.index
+      parameters:
+      - description: Filter on the `createdAt` date.
+        in: query
+        name: createdAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      - description: Filter by the senderUid
+        in: query
+        name: senderUid
+        required: false
+        schema:
+          description: Podium unique identifier for user.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      - description: Max number of items to return per request. Defaults to `10`.
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: integer
+      - description: Retrieves the page of items that comes after the `cursor`.
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: Cursor used to access next or previous page in pagination.
+          example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+          type: string
+      - description: Filter on the `updatedAt` date.
+        in: query
+        name: updatedAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/review_invite'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      nextCursor:
+                        description: Cursor to get next set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      previousCursor:
+                        description: Cursor to get previous set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      totalItems:
+                        description: Total number of items available.
+                        type: integer
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List all review invites.
+      tags:
+      - Review Invite
+    post:
+      callbacks: {}
+      description: 'Create a review invite link.
+
+
+        Required scope: `write_reviews`.'
+      operationId: review_invite.create
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  description: The customer email. Required if phoneNumber not present
+                  example: john.doe@podium.com
+                  type: string
+                locationUid:
+                  description: Podium location identifier that review invite link will be created for
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                phoneNumber:
+                  description: The customer phone number.
+                  example: '+17626765098'
+                  type: string
+              required:
+              - locationUid
+              type: object
+        description: Create review invite link params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/review_invite'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create a review invite link.
+      tags:
+      - Review Invite
+  /v4/reviews/invites/{uid}:
+    get:
+      callbacks: {}
+      description: 'Get a single review invite by its uid.
+
+
+        Required scope: `read_reviews`.'
+      operationId: review_invite.get
+      parameters:
+      - description: Podium unique identifier for review invite.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/review_invite'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a review invite.
+      tags:
+      - Review Invite
+  /v4/reviews/sites/summary:
+    get:
+      callbacks: {}
+      description: 'Returns a summary of reviews grouped by the site they are from.
+
+        NOTE: Our docs provider has a bug that doesn''t show the correct usage of the `locationUids` parameter.In
+        order for the request to succeed, for each locationUid you are querying for add a `&locationUids[]`
+        parameter to the url.For example: `https://api.podium.com/v4/reviews/sites/summary?locationUids[]=00000000-0000-0000-0000-000000000000&locationUids[]=00000000-0000-0000-0000-000000000001`
+
+        If no `locationUids` parameter is used then the data will be based on all locations that the caller
+        has access to.
+
+
+        Required scope: `read_reviews`.'
+      operationId: review_sites_summary.index
+      parameters:
+      - description: Filter on the `createdAt` date.
+        in: query
+        name: createdAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      - description: List of locations to filter the results by.
+        in: query
+        name: locationUids
+        required: false
+        schema:
+          items:
+            example: 00000000-0000-0000-0000-000000000000
+            format: uuid
+            type: string
+          type: array
+      - description: Filter on the user uid that the reviews are attributed to.
+        in: query
+        name: userUid
+        required: false
+        schema:
+          description: Podium unique identifier for user.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/review_sites_summary'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Summary of all connected review sites.
+      tags:
+      - Review Sites Summary
+  /v4/reviews/summary:
+    get:
+      callbacks: {}
+      description: 'Returns a summary of reviews for each location. If the`locationUids` parameter is
+        not used then the data will be based on all locations that the caller has access to.
+
+
+        Required scope: `read_reviews`.'
+      operationId: review_summary.index
+      parameters:
+      - description: Filter on the `createdAt` date.
+        in: query
+        name: createdAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      - description: List of locations to filter the results by.
+        in: query
+        name: locationUids
+        required: false
+        schema:
+          items:
+            example: 00000000-0000-0000-0000-000000000000
+            format: uuid
+            type: string
+          type: array
+      - description: Filter on the user uid that the reviews are attributed to.
+        in: query
+        name: userUid
+        required: false
+        schema:
+          description: Podium unique identifier for user.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/review_summary'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Summary of all reviews
+      tags:
+      - Review Summary
+  /v4/reviews/{review_uid}/responses/{uid}:
+    patch:
+      callbacks: {}
+      description: 'Update a review response.
+
+
+        Required scope: `write_reviews`.
+
+        '
+      operationId: review_response.update
+      parameters:
+      - description: Review UID you are updating the response for.
+        in: path
+        name: review_uid
+        required: true
+        schema:
+          description: Podium unique identifier for review.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      - description: Review response UID you are updating the response with.
+        in: path
+        name: uid
+        required: true
+        schema:
+          description: Podium unique identifier for review response.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                body:
+                  description: The review response body
+                  example: Body for test
+                  type: string
+              required:
+              - body
+              type: object
+        description: Update review response params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/review_response'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Update response for a given review
+      tags:
+      - Review Response
+  /v4/reviews/{uid}:
+    get:
+      callbacks: {}
+      description: 'Gets a single review by its uid.
+
+
+        Required scope: `read_reviews`.'
+      operationId: review.get
+      parameters:
+      - description: Podium unique identifier for review.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/review'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a review.
+      tags:
+      - Review
+  /v4/reviews/{uid}/attributions:
+    delete:
+      callbacks: {}
+      description: 'Remove a user attribution from a review.
+
+
+        Required scope: `write_reviews`.'
+      operationId: review_attribution.delete
+      parameters:
+      - description: Podium unique identifier for review.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                userUid:
+                  description: Podium user identifier that review will be attributed to.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+              required:
+              - userUid
+              type: object
+        description: Delete review attribution body params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/review_attribution'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Remove a user attribution for a given review
+      tags:
+      - Review Attribution
+    post:
+      callbacks: {}
+      description: 'Attributes a user to a review.
+
+
+        Required scope: `write_reviews`.'
+      operationId: review_attribution.create
+      parameters:
+      - description: Podium unique identifier for review.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                locationUid:
+                  description: Podium location identifier that review attribution will be tied to.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                userUid:
+                  description: Podium user identifier that review will be attributed to.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+              required:
+              - locationUid
+              - userUid
+              type: object
+        description: Create review attribution body params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/review_attribution'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Attribute a user to a review
+      tags:
+      - Review Attribution
+  /v4/reviews/{uid}/responses:
+    get:
+      callbacks: {}
+      description: 'List the responses of a given review.
+
+
+        Required scope: `read_reviews`.'
+      operationId: review_response.index
+      parameters:
+      - description: Review UID you are requesting the responses of.
+        in: path
+        name: uid
+        required: true
+        schema:
+          description: Podium unique identifier for review.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/review_response'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List Responses of a given review
+      tags:
+      - Review Response
+    post:
+      callbacks: {}
+      description: 'Create a response for a given review.
+
+
+        Required scope: `write_reviews`.'
+      operationId: review_response.create
+      parameters:
+      - description: Review UID you are creating the response for
+        in: path
+        name: uid
+        required: true
+        schema:
+          description: Podium unique identifier for review.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                body:
+                  description: The review response body
+                  example: Body for test
+                  type: string
+              required:
+              - body
+              type: object
+        description: Create review response params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/review_response'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create response for a given review
+      tags:
+      - Review Response
+security: []
+servers:
+- url: https://api.podium.com
+  variables: {}
+tags: []

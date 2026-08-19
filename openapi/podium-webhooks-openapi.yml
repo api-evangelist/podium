@@ -1,0 +1,504 @@
+components:
+  responses: {}
+  schemas:
+    Error:
+      properties:
+        code:
+          description: Podium code for the error.
+          type: integer
+        message:
+          description: Specific details about the error.
+          nullable: true
+          type: string
+        moreInfo:
+          description: URL providing more information about the error.
+          type: string
+      title: Error
+      type: object
+    webhook:
+      description: A webhook.
+      properties:
+        createdAt:
+          description: When the webhook was created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        disabled:
+          description: Whether the webhook is disabled or not.
+          type: boolean
+        eventTypes:
+          items:
+            description: Event types that will be sent to webhook.
+            enum:
+            - call.completed
+            - call.missed
+            - call.received
+            - call.voicemail_left
+            - contact.created
+            - contact.deleted
+            - contact.merged
+            - contact.unchanged
+            - contact.updated
+            - invoice.created
+            - invoice.disabled
+            - invoice.marked_as_paid
+            - invoice.payment_created
+            - invoice.payment_failed
+            - invoice.payment_succeeded
+            - invoice.refund_created
+            - invoice.refund_failed
+            - message.failed
+            - message.received
+            - message.sent
+            - review.created
+            - review.invite_link_created
+            - review.invite_link_updated
+            - review.response_created
+            - review.response_updated
+            - review.updated
+            type: string
+          minItems: 1
+          type: array
+        locationUid:
+          description: Podium unique identifier for location.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          nullable: true
+          type: string
+        organizationUid:
+          description: Podium unique identifier for location.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          nullable: true
+          type: string
+        secret:
+          description: Secret used to sign webhook events.
+          nullable: true
+          type: string
+        uid:
+          description: Podium unique identifier for webhook.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the webhook was last updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        url:
+          description: URL that webhook events will be sent to.
+          example: https://www.podium.com/
+          nullable: true
+          type: string
+      title: webhook
+      type: object
+info:
+  title: Webhooks
+  version: 2021.04.01
+openapi: 3.0.0
+paths:
+  /v4/webhooks:
+    get:
+      callbacks: {}
+      description: 'List webhooks that are tied to user who has authorized the application.
+
+
+        Required scope: none.
+
+        '
+      operationId: webhook.index
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/webhook'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List webhooks.
+      tags:
+      - Webhook
+    post:
+      callbacks: {}
+      description: 'Create a new webhook to receive events from a location or an organization. One of
+        `locationUid` or
+
+        `organizationUid` is required. If both are given the `organizationUid` will be used.
+
+
+        Required scope: The required scope(s) will depend on the event type(s) you are subscribing too.
+        See the WEBHOOK EVENT TYPES section.
+
+        '
+      operationId: webhook.create
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                eventTypes:
+                  items:
+                    description: Event types that will be sent to webhook.
+                    enum:
+                    - call.completed
+                    - call.missed
+                    - call.received
+                    - call.voicemail_left
+                    - contact.created
+                    - contact.deleted
+                    - contact.merged
+                    - contact.unchanged
+                    - contact.updated
+                    - invoice.created
+                    - invoice.disabled
+                    - invoice.marked_as_paid
+                    - invoice.payment_created
+                    - invoice.payment_failed
+                    - invoice.payment_succeeded
+                    - invoice.refund_created
+                    - invoice.refund_failed
+                    - message.failed
+                    - message.received
+                    - message.sent
+                    - review.created
+                    - review.invite_link_created
+                    - review.invite_link_updated
+                    - review.response_created
+                    - review.response_updated
+                    - review.updated
+                    type: string
+                  minItems: 1
+                  type: array
+                locationUid:
+                  description: Podium unique identifier for location.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                organizationUid:
+                  description: Podium unique identifier for organization.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                secret:
+                  description: Secret used to sign webhook events.
+                  example: something-no-one-will-know
+                  type: string
+                url:
+                  description: URL that webhook events will be sent to.
+                  example: https://www.podium.com/
+                  nullable: true
+                  type: string
+              required:
+              - eventTypes
+              - url
+              type: object
+        description: Create webhook params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/webhook'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create a webhook.
+      tags:
+      - Webhook
+  /v4/webhooks/{uid}:
+    delete:
+      callbacks: {}
+      description: 'Deletes an existing webhook.
+
+
+        Required scope: none.
+
+        '
+      operationId: webhook.delete
+      parameters:
+      - description: Podium unique identifier for webhook.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/webhook'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Delete a webhook.
+      tags:
+      - Webhook
+    get:
+      callbacks: {}
+      description: 'Get a webhook based on its uid.
+
+
+        Required scope: none.
+
+        '
+      operationId: webhook.get
+      parameters:
+      - description: Podium unique identifier for webhook.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/webhook'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a webhook.
+      tags:
+      - Webhook
+    put:
+      callbacks: {}
+      description: 'Updates an existing webhook.
+
+        The location uid and organization uid cannot be updated.
+
+        All other parameters not provided will be left unchanged.
+
+
+        Required scope: The required scope(s) will depend on the event type(s) you are subscribing too.
+        See the WEBHOOK EVENT TYPES section.
+
+        '
+      operationId: webhook.update
+      parameters:
+      - description: Podium unique identifier for webhook.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                disabled:
+                  description: Disable or enable the webhook.
+                  type: boolean
+                eventTypes:
+                  items:
+                    description: Event types that will be sent to webhook.
+                    enum:
+                    - call.completed
+                    - call.missed
+                    - call.received
+                    - call.voicemail_left
+                    - contact.created
+                    - contact.deleted
+                    - contact.merged
+                    - contact.unchanged
+                    - contact.updated
+                    - invoice.created
+                    - invoice.disabled
+                    - invoice.marked_as_paid
+                    - invoice.payment_created
+                    - invoice.payment_failed
+                    - invoice.payment_succeeded
+                    - invoice.refund_created
+                    - invoice.refund_failed
+                    - message.failed
+                    - message.received
+                    - message.sent
+                    - review.created
+                    - review.invite_link_created
+                    - review.invite_link_updated
+                    - review.response_created
+                    - review.response_updated
+                    - review.updated
+                    type: string
+                  minItems: 1
+                  type: array
+                secret:
+                  description: Secret used to sign webhook events.
+                  example: something-no-one-will-know
+                  type: string
+                url:
+                  description: URL that webhook events will be sent to.
+                  example: https://www.podium.com/
+                  nullable: true
+                  type: string
+              type: object
+        description: Update webhook params
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/webhook'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Update a webhook.
+      tags:
+      - Webhook
+security: []
+servers:
+- url: https://api.podium.com
+  variables: {}
+tags: []

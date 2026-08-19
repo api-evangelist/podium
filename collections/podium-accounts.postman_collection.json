@@ -1,0 +1,1041 @@
+{
+  "item": [
+    {
+      "id": "8b97c8d0-73b8-4297-9c72-45a0cb6be6b6",
+      "name": "Location",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7b5616e8-360a-42a6-a40c-d4b3593502ea",
+          "name": "List all locations.",
+          "request": {
+            "name": "List all locations.",
+            "description": {
+              "content": "List of all the locations that the caller has access to.\n\nIf the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.\n\nRequired scope: `read_locations`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "String you would like to search for in the `searchFields` parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchFields",
+                  "value": "name",
+                  "description": "A list of the fields where you want to search for the `search` parameters. e.g. ?searchFields[]=name&searchFields[]=displayname"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Max number of items to return per request. Defaults to `10`."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAfter",
+                  "value": "<dateTime>",
+                  "description": "Only return locations that have been updated after the given date."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Retrieves the page of items that comes after the `cursor`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed4139c8-0e21-478b-91ce-7293b1c941bf",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchFields",
+                      "value": "name"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "updatedAfter",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"address\": \"1650 Digital Dr, Lehi, UT 84043\",\n      \"addressDetails\": {\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"countryLongName\": \"string\",\n        \"houseNumber\": \"string\",\n        \"postalCode\": \"string\",\n        \"road\": \"string\",\n        \"state\": \"string\",\n        \"stateLongName\": \"string\",\n        \"unit\": \"string\"\n      },\n      \"archived\": false,\n      \"archivedAt\": \"2015-01-23T23:50:07Z\",\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"displayName\": \"Podium, Inc.\",\n      \"name\": \"string\",\n      \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"phoneNumber\": \"+18017580580\",\n      \"podiumPhoneNumber\": \"+18017580580\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\"\n    },\n    {\n      \"address\": \"1650 Digital Dr, Lehi, UT 84043\",\n      \"addressDetails\": {\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"countryLongName\": \"string\",\n        \"houseNumber\": \"string\",\n        \"postalCode\": \"string\",\n        \"road\": \"string\",\n        \"state\": \"string\",\n        \"stateLongName\": \"string\",\n        \"unit\": \"string\"\n      },\n      \"archived\": false,\n      \"archivedAt\": \"2015-01-23T23:50:07Z\",\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"displayName\": \"Podium, Inc.\",\n      \"name\": \"string\",\n      \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"phoneNumber\": \"+18017580580\",\n      \"podiumPhoneNumber\": \"+18017580580\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\"\n    }\n  ],\n  \"metadata\": {\n    \"nextCursor\": \"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw\",\n    \"previousCursor\": \"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw\",\n    \"totalItems\": 9349,\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9640cf47-5ad0-4428-a821-7e684ff24387",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchFields",
+                      "value": "name"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "updatedAfter",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9124,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1348f6c8-77c0-4bd8-ae7f-25ba7217504e",
+          "name": "Get a location.",
+          "request": {
+            "name": "Get a location.",
+            "description": {
+              "content": "Gets a single location by its uid.\n\nRequired scope: `read_locations`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "locations",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for location."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34e53861-94de-4de4-b357-bb393a799af8",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "locations",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for location."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"address\": \"1650 Digital Dr, Lehi, UT 84043\",\n    \"addressDetails\": {\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"countryLongName\": \"string\",\n      \"houseNumber\": \"string\",\n      \"postalCode\": \"string\",\n      \"road\": \"string\",\n      \"state\": \"string\",\n      \"stateLongName\": \"string\",\n      \"unit\": \"string\"\n    },\n    \"archived\": false,\n    \"archivedAt\": \"2015-01-23T23:50:07Z\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"displayName\": \"Podium, Inc.\",\n    \"name\": \"string\",\n    \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"phoneNumber\": \"+18017580580\",\n    \"podiumPhoneNumber\": \"+18017580580\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c798960-16b3-44d1-9a63-8336b57b23f6",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "locations",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for location."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9124,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64bb3920-c107-4269-bb77-beb89ca37af2",
+          "name": "Update a location.",
+          "request": {
+            "name": "Update a location.",
+            "description": {
+              "content": "Update a single location by its uid. \n\nRequired scope: `write_locations`.\n\nBe aware: The `addressDetails` property follows the ISO convention. You might see errors\n\nif trying to update a location's address with an invalid address.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "locations",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for location."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"addressDetails\": {\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"countryLongName\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"road\": \"<string>\",\n    \"state\": \"<string>\",\n    \"stateLongName\": \"<string>\",\n    \"unit\": \"<string>\"\n  },\n  \"displayName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "20fcf86a-83c9-45e1-ab12-449079c535d0",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "locations",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for location."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressDetails\": {\n    \"city\": \"Sao Paulo\",\n    \"country\": \"BR\",\n    \"countryLongName\": \"Brazil\",\n    \"houseNumber\": \"195\",\n    \"postalCode\": \"84093\",\n    \"road\": \"Digital Dr\",\n    \"state\": \"SP\",\n    \"stateLongName\": \"Sao Paulo\",\n    \"unit\": \"123\"\n  },\n  \"displayName\": \"Podium US\",\n  \"name\": \"Podium\",\n  \"phoneNumber\": \"+18884441234\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"address\": \"1650 Digital Dr, Lehi, UT 84043\",\n    \"addressDetails\": {\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"countryLongName\": \"string\",\n      \"houseNumber\": \"string\",\n      \"postalCode\": \"string\",\n      \"road\": \"string\",\n      \"state\": \"string\",\n      \"stateLongName\": \"string\",\n      \"unit\": \"string\"\n    },\n    \"archived\": false,\n    \"archivedAt\": \"2015-01-23T23:50:07Z\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"displayName\": \"Podium, Inc.\",\n    \"name\": \"string\",\n    \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"phoneNumber\": \"+18017580580\",\n    \"podiumPhoneNumber\": \"+18017580580\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f51cd2ea-1c54-4c8c-a2e6-2aba3cc34935",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "locations",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for location."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressDetails\": {\n    \"city\": \"Sao Paulo\",\n    \"country\": \"BR\",\n    \"countryLongName\": \"Brazil\",\n    \"houseNumber\": \"195\",\n    \"postalCode\": \"84093\",\n    \"road\": \"Digital Dr\",\n    \"state\": \"SP\",\n    \"stateLongName\": \"Sao Paulo\",\n    \"unit\": \"123\"\n  },\n  \"displayName\": \"Podium US\",\n  \"name\": \"Podium\",\n  \"phoneNumber\": \"+18884441234\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9124,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2c300d4a-a22e-4c49-b0ee-9007295711c8",
+      "name": "Organization",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "37c04f16-e1e3-4d34-ac40-5ec3e57ae93f",
+          "name": "Get an organization.",
+          "request": {
+            "name": "Get an organization.",
+            "description": {
+              "content": "Gets a single organization by its uid.\n\nRequired scope: `read_organizations`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "organizations",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af6f11c9-6163-4650-b1b4-ecd64d565842",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"archived\": false,\n    \"businessName\": \"Podium, Inc.\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1847eb65-e28e-413b-9baa-c3338fc9808f",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "organizations",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9124,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "fe37d6ac-a108-49f5-b7cf-f9681380775f",
+      "name": "User",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "610a3af6-88d3-4874-b1be-0ce4d807d318",
+          "name": "List all users.",
+          "request": {
+            "name": "List all users.",
+            "description": {
+              "content": "List of all the users that belong to any of the locations that the caller has access to.\n\nIf the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.\n\nRequired scope: `read_users`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "String you would like to search for in the `searchFields` parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt[gt]",
+                  "value": "<dateTime>",
+                  "description": "Filter on the `createdAt` date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt[gte]",
+                  "value": "<dateTime>",
+                  "description": "Filter on the `createdAt` date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt[lt]",
+                  "value": "<dateTime>",
+                  "description": "Filter on the `createdAt` date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt[lte]",
+                  "value": "<dateTime>",
+                  "description": "Filter on the `createdAt` date."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchFields",
+                  "value": "fullName",
+                  "description": "A list of the fields where you want to search for the `search` parameters. e.g. ?searchFields[]=name&searchFields[]=displayname"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Max number of items to return per request. Defaults to `10`."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Retrieves the page of items that comes after the `cursor`."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeAgents",
+                  "value": "true",
+                  "description": "Include users with ai_agent role. Defaults to true if not specified."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a8a40ff-528a-4909-b330-27fcc90cdf4b",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gt]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "createdAt[gte]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "createdAt[lt]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "createdAt[lte]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "searchFields",
+                      "value": "fullName"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    },
+                    {
+                      "key": "includeAgents",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"archived\": false,\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"email\": \"bob.ross@gmail.com\",\n      \"firstName\": \"Bob\",\n      \"lastName\": \"Ross\",\n      \"locations\": [\n        {\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        {\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        }\n      ],\n      \"phone\": \"+18013586533\",\n      \"role\": \"Account Owner\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\"\n    },\n    {\n      \"archived\": false,\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"email\": \"bob.ross@gmail.com\",\n      \"firstName\": \"Bob\",\n      \"lastName\": \"Ross\",\n      \"locations\": [\n        {\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        {\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        }\n      ],\n      \"phone\": \"+18013586533\",\n      \"role\": \"Account Owner\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\"\n    }\n  ],\n  \"metadata\": {\n    \"nextCursor\": \"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw\",\n    \"previousCursor\": \"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw\",\n    \"totalItems\": 847,\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e46aa935-36c0-44b2-9442-5ec959f3cc39",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gt]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "createdAt[gte]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "createdAt[lt]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "createdAt[lte]",
+                      "value": "2015-01-23T23:50:07Z"
+                    },
+                    {
+                      "key": "searchFields",
+                      "value": "fullName"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    },
+                    {
+                      "key": "includeAgents",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9124,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "016f3656-4385-4573-be95-0804d13a9476",
+          "name": "Get a user.",
+          "request": {
+            "name": "Get a user.",
+            "description": {
+              "content": "Gets a user.\n\nRequired scope: `read_users`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "users",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1001835-ec6c-4997-abda-9d945a66f9ca",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "users",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"archived\": false,\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"email\": \"bob.ross@gmail.com\",\n    \"firstName\": \"Bob\",\n    \"lastName\": \"Ross\",\n    \"locations\": [\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"phone\": \"+18013586533\",\n    \"role\": \"Account Owner\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10064701-eab5-409e-a759-604bc324915a",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "users",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9124,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.podium.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d43de3a9-6dac-41c9-94cd-163df015991f",
+    "name": "Accounts",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

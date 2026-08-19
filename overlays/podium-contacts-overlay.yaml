@@ -1,0 +1,42 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Podium Contacts
+  version: 1.0.0
+extends: openapi/podium-contacts-openapi.yml
+x-generated: '2026-08-14'
+x-method: generated
+x-source: apis.yml + repo artifacts (docs-sourced facts the published spec omits)
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: podium
+    x-apievangelist-domain: Contacts
+    x-apievangelist-docs: https://docs.podium.com/reference/introduction
+    x-apievangelist-harvested-from: https://docs.podium.com (ReadMe API registry)
+- target: $
+  update:
+    security:
+    - podiumOAuth2: []
+    x-apievangelist-note: The published definition declares no securitySchemes; the scheme below is transcribed
+      from https://docs.podium.com/docs/oauth and is an API Evangelist enhancement, not part of Podium's published
+      spec.
+- target: $.components
+  update:
+    securitySchemes:
+      podiumOAuth2:
+        type: oauth2
+        description: Podium OAuth 2.0 authorization code flow. Access tokens are valid for 10 hours.
+        flows:
+          authorizationCode:
+            authorizationUrl: https://api.podium.com/oauth/authorize
+            tokenUrl: https://api.podium.com/oauth/token
+            refreshUrl: https://api.podium.com/oauth/token
+            scopes:
+              read_contacts: Grant access to all contact data for the user's locations.
+              write_contacts: Grant access to create, update, and delete contact data for the user's locations.
+- target: $.info
+  update:
+    x-apievangelist-errors: errors/podium-problem-types.yml
+    x-apievangelist-conventions: conventions/podium-conventions.yml
+    x-apievangelist-scopes: scopes/podium-scopes.yml
+    x-apievangelist-rate-limit: 300 requests per minute on most routes

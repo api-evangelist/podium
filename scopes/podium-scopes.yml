@@ -1,0 +1,326 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.podium.com/docs/oauth-scopes
+docs: https://docs.podium.com/docs/oauth-scopes
+note: Union of the 17 scopes published on Podium's OAuth scopes reference page and the 24 scopes named
+  in `Required scope:` lines inside the 12 harvested OpenAPI definitions. Eight scopes are enforced by
+  operations but absent from the published reference page (read_phones, read_products, read_templates,
+  write_campaigns, write_feedback, write_products, write_templates, write_writebacks); one scope (write_data_feed_event)
+  is published but has no operation in the harvested specs.
+schemes:
+- name: OAuth2
+  type: oauth2
+  source: https://docs.podium.com/docs/oauth
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.podium.com/oauth/authorize
+    tokenUrl: https://api.podium.com/oauth/token
+    refreshUrl: https://api.podium.com/oauth/token
+scope_count: 25
+undocumented_scope_count: 8
+scopes:
+- scope: read_campaigns
+  description: Grant access to read campaign data for the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - campaign.get
+  - campaign.index
+  - campaign_interaction.index
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-campaigns-openapi.yml
+- scope: read_contacts
+  description: Grant access to all contact data for the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - contact.get
+  - contact.index
+  - contact_entity_attribute.get
+  - contact_entity_attribute.index
+  - contact_entity_tag.get
+  - contact_entity_tag.list
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-contacts-openapi.yml
+- scope: read_feedback
+  description: Grant access to all feedback data for the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - feedback.index
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-feedback-surveys-openapi.yml
+- scope: read_locations
+  description: Grant access to the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - location.get
+  - location.index
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-accounts-openapi.yml
+- scope: read_messages
+  description: Grant access to all messages for the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - conversation.get
+  - conversation.index
+  - conversation_assignee.get
+  - message.get
+  - message.index
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-conversations-openapi.yml
+  - openapi/podium-messenger-openapi.yml
+- scope: read_organizations
+  description: Grant access to the user's organization.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - organization.get
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-accounts-openapi.yml
+- scope: read_payments
+  description: Grant access to all payment data for to the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - Refund.get
+  - invoice.get
+  - invoice.index
+  - payment.get
+  - reader.get
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-payments-openapi.yml
+- scope: read_phones
+  description: Scope required by the operations listed below; not present on the published scopes reference
+    page.
+  documented: false
+  flows:
+  - authorizationCode
+  operations:
+  - call.get
+  sources:
+  - openapi/podium-phones-openapi.yml
+- scope: read_products
+  description: Scope required by the operations listed below; not present on the published scopes reference
+    page.
+  documented: false
+  flows:
+  - authorizationCode
+  operations:
+  - Product.get
+  - Product.index
+  sources:
+  - openapi/podium-products-openapi.yml
+- scope: read_reviews
+  description: Grant access to all review data for the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - review.get
+  - review.index
+  - review_invite.get
+  - review_invite.index
+  - review_response.index
+  - review_sites_summary.index
+  - review_summary.index
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-reviews-openapi.yml
+- scope: read_templates
+  description: Scope required by the operations listed below; not present on the published scopes reference
+    page.
+  documented: false
+  flows:
+  - authorizationCode
+  operations:
+  - Template.index
+  sources:
+  - openapi/podium-messenger-openapi.yml
+- scope: read_users
+  description: Grant access to all user data for the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - user.get
+  - user.index
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-accounts-openapi.yml
+- scope: write_appointments
+  description: Grant access to create appointments in the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - appointment.create
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-appointments-openapi.yml
+- scope: write_campaign_messages
+  description: Grant access to write campaign messages for the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - message.create_campaign_message
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-campaigns-openapi.yml
+- scope: write_campaigns
+  description: Scope required by the operations listed below; not present on the published scopes reference
+    page.
+  documented: false
+  flows:
+  - authorizationCode
+  operations:
+  - campaign.create
+  - campaign.delete
+  - campaign.update
+  sources:
+  - openapi/podium-campaigns-openapi.yml
+- scope: write_contacts
+  description: Grant access to create, update, and delete contact data for the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - contact.create
+  - contact.delete
+  - contact.update
+  - contact_attribute.create
+  - contact_attribute.delete
+  - contact_attribute.update
+  - contact_entity_attribute.create
+  - contact_entity_attribute.delete
+  - contact_entity_attribute.update
+  - contact_entity_tag.create
+  - contact_entity_tag.update
+  - contact_tag.create
+  - contact_tag.create (2)
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-contacts-openapi.yml
+- scope: write_data_feed_event
+  description: Grant access to trigger data feed events for the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations: []
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+- scope: write_feedback
+  description: Scope required by the operations listed below; not present on the published scopes reference
+    page.
+  documented: false
+  flows:
+  - authorizationCode
+  operations:
+  - feedback_creation.create
+  sources:
+  - openapi/podium-feedback-surveys-openapi.yml
+- scope: write_locations
+  description: Grant access to write locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - location.update
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-accounts-openapi.yml
+- scope: write_messages
+  description: Grant access to write messages in the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - conversation.update
+  - conversation_assignee.update
+  - conversation_note.create_conversation_note
+  - message.import
+  - message.send
+  - message.send_with_attachment
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-conversations-openapi.yml
+  - openapi/podium-messenger-openapi.yml
+- scope: write_payments
+  description: Grant access to create payments for all the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - Refund.create
+  - invoice.cancel
+  - invoice.charge
+  - invoice.create
+  - invoice.refund
+  - invoice.setup
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-payments-openapi.yml
+- scope: write_products
+  description: Scope required by the operations listed below; not present on the published scopes reference
+    page.
+  documented: false
+  flows:
+  - authorizationCode
+  operations:
+  - Product.upload_images
+  - product_image.delete
+  sources:
+  - openapi/podium-products-openapi.yml
+- scope: write_reviews
+  description: Grant access to create reviews data for all the user's locations.
+  documented: true
+  flows:
+  - authorizationCode
+  operations:
+  - review_attribution.create
+  - review_attribution.delete
+  - review_invite.create
+  - review_response.create
+  - review_response.update
+  sources:
+  - https://docs.podium.com/docs/oauth-scopes
+  - openapi/podium-reviews-openapi.yml
+- scope: write_templates
+  description: Scope required by the operations listed below; not present on the published scopes reference
+    page.
+  documented: false
+  flows:
+  - authorizationCode
+  operations:
+  - Template.create
+  - Template.delete
+  - Template.update
+  sources:
+  - openapi/podium-messenger-openapi.yml
+- scope: write_writebacks
+  description: Scope required by the operations listed below; not present on the published scopes reference
+    page.
+  documented: false
+  flows:
+  - authorizationCode
+  operations:
+  - lead_writeback.get
+  sources:
+  - openapi/podium-conversations-openapi.yml

@@ -1,0 +1,1122 @@
+{
+  "item": [
+    {
+      "id": "74c39943-4858-4030-8120-76b494c062a0",
+      "name": "Campaign Interaction",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "27b7c9a1-d5b3-479f-a965-faee999ec3fb",
+          "name": "List campaign interactions",
+          "request": {
+            "name": "List campaign interactions",
+            "description": {
+              "content": "List the campaign interactions that the caller has access to.\n\nIf the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.\n\nInteractions can be filtered by type, uid of the associated resource, or timestamp.\n\nRequired scope: `read_campaigns`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "campaign_interactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "campaignUid",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "contactUid",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "interactionType",
+                  "value": "<string>",
+                  "description": "The type of interaction this record represents"
+                },
+                {
+                  "disabled": false,
+                  "key": "interactionType",
+                  "value": "<string>",
+                  "description": "The type of interaction this record represents"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Max number of items to return per request. Defaults to `10`."
+                },
+                {
+                  "disabled": false,
+                  "key": "locationUid",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b1c90a1-1650-47ef-8fdd-2709ba6b9ad5",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "campaign_interactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campaignUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "contactUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    },
+                    {
+                      "key": "interactionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interactionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "locationUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"campaign\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"contact\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"conversation\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"interactionType\": \"sent\",\n      \"location\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\"\n    },\n    {\n      \"campaign\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"contact\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"conversation\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"interactionType\": \"link_clicked\",\n      \"location\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\"\n    }\n  ],\n  \"metadata\": {\n    \"nextCursor\": \"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw\",\n    \"previousCursor\": \"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw\",\n    \"totalItems\": 9312,\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a84588f-8a2c-4e3b-9395-a46468a221b7",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "campaign_interactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campaignUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "contactUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    },
+                    {
+                      "key": "interactionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interactionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "locationUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5393,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "745b0c27-5761-46a3-80ab-b21f63d8dd57",
+      "name": "Campaign",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b75ad140-a165-4444-a2c0-1fd05ef5fe9c",
+          "name": "List all campaigns.",
+          "request": {
+            "name": "List all campaigns.",
+            "description": {
+              "content": "List of all the campaigns that the caller has access to. The campaigns are sorted by the `updatedAt` date, in descending order\n\nCampaigns can be filtered by their status using the `status` query parameter\n\nRequired scope: `read_campaigns`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "campaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Status of the campaign"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3baaac92-e32b-4886-bbf5-785772c815d8",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"endedAt\": \"2015-01-23T23:50:07Z\",\n      \"locations\": [\n        {\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        {\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        }\n      ],\n      \"message\": \"Get 50% off this memorial day weekend!\",\n      \"name\": \"Memorial Day sale\",\n      \"organization\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"startedAt\": \"2015-01-23T23:50:07Z\",\n      \"status\": \"SUSPENDED\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\"\n    },\n    {\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"endedAt\": \"2015-01-23T23:50:07Z\",\n      \"locations\": [\n        {\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        {\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        }\n      ],\n      \"message\": \"Get 50% off this memorial day weekend!\",\n      \"name\": \"Memorial Day sale\",\n      \"organization\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"startedAt\": \"2015-01-23T23:50:07Z\",\n      \"status\": \"COMPLETED\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\"\n    }\n  ],\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d190519-5aeb-497f-bde9-8fa4a85b3428",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5393,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb4b3aa3-240c-405a-846b-bf096cf19200",
+          "name": "Create a campaign.",
+          "request": {
+            "name": "Create a campaign.",
+            "description": {
+              "content": "Create a campaign.\n\nRequired scope: `write_campaigns`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "campaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"locations\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"includeActiveConversations\": false,\n  \"message\": \"<string>\",\n  \"recentlySentSubscriberOverride\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d6bb74cf-ff2f-4f72-b64b-fc3675c5fd11",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locations\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"name\": \"Memorial Day sale\",\n  \"status\": \"<string>\",\n  \"includeActiveConversations\": false,\n  \"message\": \"Get 50% off this memorial day weekend!\",\n  \"recentlySentSubscriberOverride\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"endedAt\": \"2015-01-23T23:50:07Z\",\n    \"locations\": [\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"message\": \"Get 50% off this memorial day weekend!\",\n    \"name\": \"Memorial Day sale\",\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"startedAt\": \"2015-01-23T23:50:07Z\",\n    \"status\": \"ERROR\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3626cd7-b176-41e7-b3b4-f1a31255ccd7",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locations\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"name\": \"Memorial Day sale\",\n  \"status\": \"<string>\",\n  \"includeActiveConversations\": false,\n  \"message\": \"Get 50% off this memorial day weekend!\",\n  \"recentlySentSubscriberOverride\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5393,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "273ff6e6-8f72-44d8-82d1-218bc38c1108",
+          "name": "Delete a campaign.",
+          "request": {
+            "name": "Delete a campaign.",
+            "description": {
+              "content": "Delete an existing campaign.\n\nRequired scope: `write_campaigns`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "campaigns",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) UID of the campaign"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca8c7786-7094-4a7f-92a7-0ab8a0dcbc6d",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "campaigns",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) UID of the campaign"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"endedAt\": \"2015-01-23T23:50:07Z\",\n    \"locations\": [\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"message\": \"Get 50% off this memorial day weekend!\",\n    \"name\": \"Memorial Day sale\",\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"startedAt\": \"2015-01-23T23:50:07Z\",\n    \"status\": \"ERROR\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a3c1e26-7465-41af-a4f2-18216f76b292",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "campaigns",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) UID of the campaign"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5393,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e95fb19-c113-4003-afc3-a4082f864c3e",
+          "name": "Get a campaign.",
+          "request": {
+            "name": "Get a campaign.",
+            "description": {
+              "content": "Get a single campaign for the given uid. \n\n\n        Required scope: `read_campaigns`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "campaigns",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) UID of the campaign"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3a078a2-c561-4cc7-b2ac-16ded4cc8b6a",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "campaigns",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) UID of the campaign"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"endedAt\": \"2015-01-23T23:50:07Z\",\n    \"locations\": [\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"message\": \"Get 50% off this memorial day weekend!\",\n    \"name\": \"Memorial Day sale\",\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"startedAt\": \"2015-01-23T23:50:07Z\",\n    \"status\": \"ERROR\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24fd3e9a-66af-4099-bc30-e81dbfcaf5ed",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "campaigns",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) UID of the campaign"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5393,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "690b27c8-3912-4b19-8ecd-c2d3d6e5eac0",
+          "name": "Update a campaign.",
+          "request": {
+            "name": "Update a campaign.",
+            "description": {
+              "content": "update a campaign.\n\nRequired scope: `write_campaigns`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "campaigns",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for a campaign."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"locations\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"includeActiveConversations\": false,\n  \"message\": \"<string>\",\n  \"recentlySentSubscriberOverride\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b359e381-a851-4bd6-94d4-1cadcbc8d533",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "campaigns",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for a campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locations\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"name\": \"Memorial Day sale\",\n  \"status\": \"<string>\",\n  \"includeActiveConversations\": false,\n  \"message\": \"Get 50% off this memorial day weekend!\",\n  \"recentlySentSubscriberOverride\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"endedAt\": \"2015-01-23T23:50:07Z\",\n    \"locations\": [\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"message\": \"Get 50% off this memorial day weekend!\",\n    \"name\": \"Memorial Day sale\",\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"startedAt\": \"2015-01-23T23:50:07Z\",\n    \"status\": \"ERROR\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "139e2a61-c138-4f97-9207-58702c2dabc4",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "campaigns",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for a campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locations\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"name\": \"Memorial Day sale\",\n  \"status\": \"<string>\",\n  \"includeActiveConversations\": false,\n  \"message\": \"Get 50% off this memorial day weekend!\",\n  \"recentlySentSubscriberOverride\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5393,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0708cae9-a4d1-46e4-a28c-5b627f7e5348",
+      "name": "Message",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3f2585d1-ac73-44a7-8584-e23c93296178",
+          "name": "Create a message for a given campaign",
+          "request": {
+            "name": "Create a message for a given campaign",
+            "description": {
+              "content": "Send a message through a campaign.\n\nRequired scope: `write_campaign_messages`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "campaigns",
+                ":uid",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for campaign."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channelIdentifier\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "db23da49-2ccf-48f9-a0b9-636634ab0915",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "campaigns",
+                    ":uid",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelIdentifier\": \"email@email.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"attachmentUrl\": \"https://www.podium.com/\",\n    \"body\": \"Hello there.\",\n    \"contact\": {\n      \"externalIdentifier\": \"123-abc\",\n      \"name\": \"Joe Orange\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"contactName\": \"Joe Orange\",\n    \"conversation\": {\n      \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"channel\": {\n        \"identifier\": \"email@email.com\",\n        \"type\": \"email\"\n      },\n      \"startedAt\": \"2015-01-23T23:50:07Z\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"failureReason\": \"Attempted to send SMS to a landline.\",\n    \"items\": [\n      {\n        \"attachmentContentType\": \"image/png\",\n        \"attachmentUrl\": \"https://www.podium.com/image.png\",\n        \"body\": \"https://www.podium.com/image.png\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"deliveryStatus\": \"sent\",\n        \"encryptedAt\": \"2015-01-23T23:50:07Z\",\n        \"sendBody\": \"null\",\n        \"sourceType\": \"outbound\",\n        \"type\": \"attachment\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"attachmentContentType\": \"image/png\",\n        \"attachmentUrl\": \"https://www.podium.com/image.png\",\n        \"body\": \"https://www.podium.com/image.png\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"deliveryStatus\": \"sent\",\n        \"encryptedAt\": \"2015-01-23T23:50:07Z\",\n        \"sendBody\": \"null\",\n        \"sourceType\": \"outbound\",\n        \"type\": \"attachment\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"location\": {\n      \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"sender\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"senderUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"webchatUrl\": \"https://www.example.com/contact\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6911ff63-664f-4e87-b718-70e765c4d45e",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "campaigns",
+                    ":uid",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for campaign."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelIdentifier\": \"email@email.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5393,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.podium.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "70b82c8b-f43d-4132-b55f-dc248c653e20",
+    "name": "Campaigns",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

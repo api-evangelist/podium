@@ -1,0 +1,52 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.podium.com/docs/api-version
+versioning:
+  scheme: dated header
+  header: podium-version
+  current: '2021.04.01'
+  spec_info_version: '2021.04.01'
+  path_version: /v4
+  default: latest when the header is omitted
+  docs: https://docs.podium.com/docs/api-version
+  policy: >-
+    Podium releases a new dated version whenever the API changes in a backwards-incompatible way.
+    Additive changes (new resources, new optional parameters, new response properties, property
+    reordering, string format changes, object id length up to 255 characters, new webhook event
+    types) are shipped inside the current version and are not considered breaking.
+deprecation:
+  policy_url: https://docs.podium.com/docs/api-version
+  formal_policy: false
+  sunset_header: false
+  deprecation_header: false
+  notice_period: not published
+  note: >-
+    Podium publishes a versioning/backwards-compatibility policy but no deprecation policy: no
+    sunset window, no RFC 8594 Sunset/Deprecation header support, and no end-of-life schedule for
+    older dated versions is documented.
+deprecated_operations: []
+status_page:
+  url: https://status.podium.com
+  http_status: 200
+  checked: '2026-08-14'
+sla:
+  url: https://legal.podium.com/#developersla
+  name: Developer Security & SLA Requirements
+  uptime_target: not published
+  note: >-
+    The legal centre publishes "Developer Security & SLA Requirements" that bind developers
+    building on the API; Podium publishes no customer-facing uptime commitment for the API itself.
+changelog:
+  url: https://docs.podium.com/changelog
+  artifact: changelog/podium-changelog.yml
+  latest_entry: '2022-10-25'
+  staleness: >-
+    The developer changelog has not been updated since 2022-10-25 — nearly four years — while the
+    reference OpenAPI definitions were last re-published 2026-07-09.
+support:
+  developer_portal: https://developer.podium.com/
+  community: Podium Developer Community on Discord (referenced from the test-accounts guide)
+  help_center: https://www.podium.com/knowledgebase/s
+spec_freshness:
+  definitions_updated: '2026-07-09'
+  source: docs.podium.com ReadMe project metadata (apiDefinitions[].updated_at)

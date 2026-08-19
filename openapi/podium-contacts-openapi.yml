@@ -1,0 +1,1942 @@
+components:
+  responses: {}
+  schemas:
+    Error:
+      properties:
+        code:
+          description: Podium code for the error.
+          type: integer
+        message:
+          description: Specific details about the error.
+          nullable: true
+          type: string
+        moreInfo:
+          description: URL providing more information about the error.
+          type: string
+      title: Error
+      type: object
+    contact:
+      description: A contact.
+      nullable: true
+      properties:
+        address:
+          description: The address of the contact.
+          nullable: true
+          properties:
+            addressLine1:
+              description: The first line of the address.
+              nullable: true
+              type: string
+            addressLine2:
+              description: The second line of the address.
+              nullable: true
+              type: string
+            city:
+              description: The city of the address.
+              nullable: true
+              type: string
+            country:
+              description: The country of the address.
+              nullable: true
+              type: string
+            postalCode:
+              description: The postal code of the address.
+              nullable: true
+              type: string
+            state:
+              description: The state of the address.
+              nullable: true
+              type: string
+          type: object
+        attributes:
+          items:
+            description: List of attribute resources of the contact.
+            nullable: true
+            properties:
+              dataType:
+                description: The data type for the attribute value.
+                nullable: true
+                type: string
+              label:
+                description: The label of the attribute.
+                type: string
+              ownerResource:
+                description: The owner of the attribute resource.
+                properties:
+                  type:
+                    description: Product or organization
+                    nullable: true
+                    type: string
+                  uid:
+                    description: Podium unique identifier for attribute.
+                    example: 00000000-0000-0000-0000-000000000000
+                    format: uuid
+                    nullable: true
+                    type: string
+                type: object
+              uid:
+                description: Podium unique identifier for attribute.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type: string
+              value:
+                description: The value of the attribute.
+                nullable: true
+            type: object
+          type: array
+        channels:
+          description: List of channels for the contact.
+          items:
+            properties:
+              createdAt:
+                description: Time at which the resource was created. Date time is in Coordinated Universal
+                  Time (UTC).
+                example: '2015-01-23T23:50:07Z'
+                format: date-time
+                nullable: true
+                type: string
+              identifier:
+                description: The unique identifier for the channel.
+                example: '+15555555555'
+                type: string
+              label:
+                description: A label for the channel.
+                nullable: true
+                type: string
+              marketingOptedInLocationUids:
+                description: List of location UIDs where the contact is opted in for marketing messages
+                items:
+                  description: Location UIDs where marketing messages are opted in for the contact channel.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                type: array
+              transactionalOptedOutAt:
+                description: Timestamp when the contact channel opted out of transactional messages.
+                example: '2015-01-23T23:50:07Z'
+                format: date-time
+                nullable: true
+                type: string
+              type:
+                description: The type of the channel.
+                nullable: true
+                type: string
+              updatedAt:
+                description: Time at which the resource was updated. Date time is in Coordinated Universal
+                  Time (UTC).
+                example: '2015-01-23T23:50:07Z'
+                format: date-time
+                nullable: true
+                type: string
+            type: object
+          type: array
+        conversations:
+          items:
+            description: Reference to the conversation resource.
+            properties:
+              uid:
+                description: Podium unique identifier for the referenced resource.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type: string
+            type: object
+          type: array
+        createdAt:
+          description: Time at which the resource was created. Date time is in Coordinated Universal Time
+            (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type: string
+        emails:
+          description: List of the contacts email addresses.
+          items:
+            type: string
+          nullable: true
+          type: array
+        locations:
+          items:
+            description: Reference to the location resource.
+            properties:
+              uid:
+                description: Podium unique identifier for the referenced resource.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type: string
+            type: object
+          type: array
+        name:
+          description: The name of the contact resource.
+          nullable: true
+          type: string
+        organization:
+          description: Reference to the organization resource.
+          properties:
+            uid:
+              description: Podium unique identifier for the referenced resource.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type: string
+          type: object
+        phoneNumbers:
+          description: List of the contacts phone numbers.
+          items:
+            type: string
+          nullable: true
+          type: array
+        tags:
+          items:
+            description: List of tag resources of the contact.
+            nullable: true
+            properties:
+              description:
+                description: Description of the tag.
+                nullable: true
+                type: string
+              label:
+                description: The label of the attribute.
+                type: string
+              uid:
+                description: Podium unique identifier for tag.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type: string
+            type: object
+          type: array
+        uid:
+          description: Podium unique identifier for contact.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: Time at which the resource was updated. Date time is in Coordinated Universal Time
+            (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type: string
+      title: contact
+      type: object
+    contact_attribute:
+      description: Contact identifier
+      properties:
+        identifier:
+          description: Identifier of the contact that can be used to retrieve the contact
+          type: string
+      title: contact_attribute
+      type: object
+    contact_entity_attribute:
+      description: A contact attribute.
+      properties:
+        createdAt:
+          description: Time at which the resource was created. Date time is in Coordinated Universal Time
+            (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type: string
+        dataType:
+          description: The data type of the attribute value
+          enum:
+          - ADDRESS
+          - BOOLEAN
+          - DATETIME
+          - FLOAT
+          - INTEGER
+          - STRING
+          - UUID
+          - SINGLE_SELECT
+          - MULTI_SELECT
+          type: string
+        isEncrypted:
+          default: true
+          description: If the attribute is encrypted it cannot be used as a filter. Attributes that will
+            have sensitive information, such as PII or PHI, should be encrypted.
+          type: boolean
+        label:
+          description: The label of the attribute.
+          type: string
+        ownerResource:
+          properties:
+            type:
+              enum:
+              - PRODUCT
+              - ORGANIZATION
+              nullable: true
+              type: string
+            uid:
+              description: The unique identify of the owner resource. Either an application uid or organization
+                uid.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              nullable: true
+              type: string
+          type: object
+        uid:
+          description: Podium unique identifier for attribute.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: Time at which the resource was updated. Date time is in Coordinated Universal Time
+            (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type: string
+      title: contact_entity_attribute
+      type: object
+    contact_entity_tag:
+      description: A contact tag.
+      properties:
+        createdAt:
+          description: Time at which the resource was created. Date time is in Coordinated Universal Time
+            (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        description:
+          description: Description of the tag.
+          nullable: true
+          type: string
+        label:
+          description: The label of the tag.
+          nullable: true
+          type: string
+        organization:
+          description: Reference to the organization resource.
+          nullable: true
+          properties:
+            uid:
+              description: Podium unique identifier for the referenced resource.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type: string
+          type: object
+        uid:
+          description: Podium unique identifier for tag.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          nullable: true
+          type: string
+        updatedAt:
+          description: Time at which the resource was updated. Date time is in Coordinated Universal Time
+            (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+      title: contact_entity_tag
+      type: object
+    contact_tag:
+      description: Contact identifier
+      properties:
+        identifier:
+          description: Identifier of the contact that can be used to retrieve the contact
+          type: string
+      title: contact_tag
+      type: object
+    contact_upsert:
+      description: Contact identifier
+      properties:
+        identifier:
+          description: Identifier of the contact that can be used to retrieve the contact
+          type: string
+      title: contact_upsert
+      type: object
+info:
+  title: Contacts
+  version: 2021.04.01
+openapi: 3.0.0
+paths:
+  /v4/contact_attributes:
+    get:
+      callbacks: {}
+      description: 'List contact attributes that are tied to the ownerResource on the token.
+
+
+        Required scope: `read_contacts`.
+
+        '
+      operationId: contact_entity_attribute.index
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/contact_entity_attribute'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List contact attributes
+      tags:
+      - Contact Attribute
+    post:
+      callbacks: {}
+      description: 'Create an application or organization level attribute to be used on contacts.
+
+
+        Required scope: `write_contacts`.
+
+        '
+      operationId: contact_entity_attribute.create
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                dataType:
+                  description: The data type of the attribute value
+                  enum:
+                  - ADDRESS
+                  - BOOLEAN
+                  - DATETIME
+                  - FLOAT
+                  - INTEGER
+                  - STRING
+                  - UUID
+                  - SINGLE_SELECT
+                  - MULTI_SELECT
+                  type: string
+                isEncrypted:
+                  default: true
+                  description: If the attribute is encrypted it cannot be used as a filter. Attributes
+                    that will have sensitive information, such as PII or PHI, should be encrypted. Defaults
+                    to true.
+                  type: boolean
+                label:
+                  description: The label of the attribute.
+                  example: Internal Contact ID
+                  minLength: 1
+                  nullable: false
+                  type: string
+                ownerResourceType:
+                  enum:
+                  - PRODUCT
+                  - ORGANIZATION
+                  type: string
+              required:
+              - dataType
+              - label
+              - ownerResourceType
+              type: object
+        description: Create contact attribute params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_entity_attribute'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create a contact attribute
+      tags:
+      - Contact Attribute
+  /v4/contact_attributes/{uid}:
+    delete:
+      callbacks: {}
+      description: 'Delete a contact attribute with its uid.
+
+
+        Required scope: `write_contacts`.'
+      operationId: contact_entity_attribute.delete
+      parameters:
+      - description: Podium unique identifier for attribute.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_entity_attribute'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Delete a contact attribute
+      tags:
+      - Contact Attribute
+    get:
+      callbacks: {}
+      description: 'Gets an application or organization level attribute by its uid, to be used on contacts.
+
+
+        Required scope: `read_contacts`.
+
+        '
+      operationId: contact_entity_attribute.get
+      parameters:
+      - description: Contacts attribute uid
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_entity_attribute'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Gets a contact attribute by uid
+      tags:
+      - Contact Attribute
+    patch:
+      callbacks: {}
+      description: 'Update an application or organization level attribute to be used on contacts.
+
+
+        Required scope: `write_contacts`.
+
+        '
+      operationId: contact_entity_attribute.update
+      parameters:
+      - description: Podium unique identifier for attribute.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                dataType:
+                  description: The data type of the attribute value.
+                  enum:
+                  - ADDRESS
+                  - BOOLEAN
+                  - DATETIME
+                  - FLOAT
+                  - INTEGER
+                  - STRING
+                  - UUID
+                  - SINGLE_SELECT
+                  - MULTI_SELECT
+                  type: string
+                isEncrypted:
+                  description: If the attribute is encrypted it cannot be used as a filter. Attributes
+                    that will have sensitive information, such as PII or PHI, should be encrypted.
+                  type: boolean
+                label:
+                  description: The label of the attribute.
+                  example: Internal Contact ID
+                  type: string
+                ownerResourceType:
+                  description: Owner resource object
+                  enum:
+                  - PRODUCT
+                  - ORGANIZATION
+                  type: string
+              type: object
+        description: Update contact attribute params
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_entity_attribute'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Update a contact attribute
+      tags:
+      - Contact Attribute
+  /v4/contact_tags:
+    get:
+      callbacks: {}
+      description: 'List all tags for the organization.
+
+
+        Required scope: `read_contacts`.
+
+        '
+      operationId: contact_entity_tag.list
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/contact_entity_tag'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List all tags for the organization
+      tags:
+      - Contact Tag
+    post:
+      callbacks: {}
+      description: 'Create an organization level tag for a contact.
+
+
+        Required scope: `write_contacts`.
+
+        '
+      operationId: contact_entity_tag.create
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                description:
+                  description: The description of the tag
+                  example: High priority contacts
+                  type: string
+                label:
+                  description: The label value for the tag
+                  example: priority
+                  minLength: 1
+                  nullable: false
+                  type: string
+              required:
+              - label
+              - description
+              type: object
+        description: Create contact tag params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_entity_tag'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create a contact tag for an organization
+      tags:
+      - Contact Tag
+  /v4/contact_tags/{uid}:
+    get:
+      callbacks: {}
+      description: 'Get a organization level tag given the provided uid.
+
+
+        Required scope: `read_contacts`.
+
+        '
+      operationId: contact_entity_tag.get
+      parameters:
+      - description: Contacts tags uid
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_entity_tag'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a contact tag for an organization given an uid
+      tags:
+      - Contact Tag
+    patch:
+      callbacks: {}
+      description: 'Update an organization level tag to be used on contacts.
+
+
+        Required scope: `write_contacts`.
+
+        '
+      operationId: contact_entity_tag.update
+      parameters:
+      - description: Podium unique identifier for tag.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              minProperties: 1
+              properties:
+                description:
+                  description: The description of the tag
+                  example: High priority contacts
+                  type: string
+                label:
+                  description: The label value for the tag
+                  example: priority
+                  type: string
+              type: object
+        description: Update contact tag params
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_entity_tag'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Update a contact tag
+      tags:
+      - Contact Tag
+  /v4/contacts:
+    get:
+      callbacks: {}
+      description: 'List all contacts.
+
+
+        Required scope: `read_contacts`.'
+      operationId: contact.index
+      parameters:
+      - description: Retrieves the page of items that comes after the `cursor`.
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: Cursor used to access next or previous page in pagination.
+          example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+          type: string
+      - description: Max number of items to return per request. Defaults to `10`.
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: integer
+      - description: 'Filter contacts by updated_at. It will retrieve contacts updated after the provided
+          date. Format: `YYYY-MM-DDTHH:MM:SSZ`'
+        in: query
+        name: updated_at
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List all contacts
+      tags:
+      - Contact
+    post:
+      callbacks: {}
+      description: 'Create a contact. If a contact with the same phone number, email, or conversation
+        uid is found it will update the contact.
+
+
+        Required scope: `write_contacts`.
+
+        '
+      operationId: contact.create
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                address:
+                  description: The address of the resource
+                  nullable: true
+                  properties:
+                    addressLine1:
+                      description: The first line of the address
+                      example: 123 Main St
+                      nullable: true
+                      type: string
+                    addressLine2:
+                      description: The second line of the address
+                      example: Apt 101
+                      nullable: true
+                      type: string
+                    city:
+                      description: The city of the address
+                      example: Lehi
+                      nullable: true
+                      type: string
+                    country:
+                      description: The country of the address
+                      example: US
+                      nullable: true
+                      type: string
+                    postalCode:
+                      description: The postal code of the address
+                      example: '84043'
+                      nullable: true
+                      type: string
+                    state:
+                      description: The state of the address
+                      example: UT
+                      nullable: true
+                      type: string
+                  type: object
+                attributes:
+                  description: List of attribute objects
+                  items:
+                    description: An attribute contact
+                    properties:
+                      uid:
+                        description: Podium unique identifier for attribute.
+                        example: 00000000-0000-0000-0000-000000000000
+                        format: uuid
+                        type: string
+                      value:
+                        description: The value of the attribute
+                        example: Brown eyes
+                        type: string
+                    type: object
+                  type: array
+                contactStatus:
+                  description: A contact status, you need either the name or uid
+                  properties:
+                    name:
+                      description: The status of the contact
+                      example: Prospect
+                      type: string
+                    uid:
+                      description: Podium unique identifier for contact status.
+                      example: 00000000-0000-0000-0000-000000000000
+                      format: uuid
+                      type: string
+                  type: object
+                email:
+                  description: The email address of the resource
+                  example: john.doe@podium.com
+                  pattern: (.+)@(.+)\.(.+)
+                  type: string
+                locations:
+                  description: List of location UIDs
+                  items:
+                    description: Podium unique identifier for location.
+                    example: 00000000-0000-0000-0000-000000000000
+                    format: uuid
+                    type: string
+                  type: array
+                name:
+                  description: The name of the resource
+                  example: John Doe
+                  type: string
+                phoneNumber:
+                  description: The phone number of the resource
+                  example: '+18884441234'
+                  pattern: ^\+[1-9]\d{1,15}$
+                  type: string
+                tags:
+                  description: List of tag UIDs
+                  items:
+                    description: Podium unique identifier for tag.
+                    example: 00000000-0000-0000-0000-000000000000
+                    format: uuid
+                    type: string
+                  type: array
+              required:
+              - locations
+              - name
+              type: object
+        description: Create contact params
+        required: true
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_upsert'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create a contact
+      tags:
+      - Contact
+  /v4/contacts/campaigns/opt_in:
+    post:
+      callbacks: {}
+      description: "Opt in a contact into receiving campaign messages.\n         Note: this endpoint requires\
+        \ your application to be whitelisted.\n          Please contact our support team to get your application\
+        \ whitelisted.\n\nRequired scope: write_contacts"
+      operationId: contact.opt_in
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                channel:
+                  properties:
+                    identifier:
+                      description: Identifier of the communication channel
+                      example: '+15555555555'
+                      type: string
+                    type:
+                      description: Type of communication channel
+                      enum:
+                      - PHONE
+                      type: string
+                  required:
+                  - identifier
+                  - type
+                  type: object
+                locationUid:
+                  description: Podium unique identifier for the location opted in from
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                name:
+                  description: Contacts name
+                  type: string
+                tags:
+                  description: Campaign tags.
+                  items:
+                    type: string
+                  type: array
+              required:
+              - channel
+              - locationUid
+              type: object
+        description: Contact campaign opt in params
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Opt in a contact
+      tags:
+      - Contact
+  /v4/contacts/campaigns/opt_out:
+    post:
+      callbacks: {}
+      description: "Opt out a contact from receiving campaign messages.\n         Note: this endpoint\
+        \ requires your application to be whitelisted.\n          Please contact our support team to get\
+        \ your application whitelisted.\n\nRequired scope: write_contacts"
+      operationId: contact.opt_out
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                channel:
+                  properties:
+                    identifier:
+                      description: Identifier of the communication channel
+                      example: '+15555555555'
+                      type: string
+                    type:
+                      description: Type of communication channel
+                      enum:
+                      - PHONE
+                      type: string
+                  required:
+                  - identifier
+                  - type
+                  type: object
+              required:
+              - channel
+              type: object
+        description: Contact campaign opt out params
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Opt out a contact
+      tags:
+      - Contact
+  /v4/contacts/{identifier}:
+    delete:
+      callbacks: {}
+      description: 'Delete a contact with a conversation uid, email, or phone number.
+
+
+        Required scope: `write_contacts`.'
+      operationId: contact.delete
+      parameters:
+      - description: Conversation uid, phone number, or email to identify the contact. Phone number should
+          be formatted as '+15555555555'
+        in: path
+        name: identifier
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_upsert'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Delete a contact
+      tags:
+      - Contact
+    get:
+      callbacks: {}
+      description: 'Get a contact with a conversation uid, email, or phone number.
+
+
+        Required scope: `read_contacts`.'
+      operationId: contact.get
+      parameters:
+      - description: Conversation uid, phone number, or email to identify the contact. Phone number should
+          be formatted as '+15555555555'
+        in: path
+        name: identifier
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Retrieve a contact
+      tags:
+      - Contact
+    patch:
+      callbacks: {}
+      description: 'Update a contact with using a conversation uid, email, or phone number as an identifier.
+
+
+        Required scope: `write_contacts`.'
+      operationId: contact.update
+      parameters:
+      - description: Conversation uid, phone number, or email to identify the contact. Phone number should
+          be formatted as '+15555555555'
+        in: path
+        name: identifier
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              minProperties: 1
+              properties:
+                address:
+                  description: The address of the resource
+                  nullable: true
+                  properties:
+                    addressLine1:
+                      description: The first line of the address
+                      example: 123 Main St
+                      nullable: true
+                      type: string
+                    addressLine2:
+                      description: The second line of the address
+                      example: Apt 101
+                      nullable: true
+                      type: string
+                    city:
+                      description: The city of the address
+                      example: Lehi
+                      nullable: true
+                      type: string
+                    country:
+                      description: The country of the address
+                      example: US
+                      nullable: true
+                      type: string
+                    postalCode:
+                      description: The postal code of the address
+                      example: '84043'
+                      nullable: true
+                      type: string
+                    state:
+                      description: The state of the address
+                      example: UT
+                      nullable: true
+                      type: string
+                  type: object
+                contactStatus:
+                  description: A contact status, you need either the name or uid
+                  properties:
+                    name:
+                      description: The status of the contact
+                      example: Prospect
+                      type: string
+                    uid:
+                      description: Podium unique identifier for contact status.
+                      example: 00000000-0000-0000-0000-000000000000
+                      format: uuid
+                      type: string
+                  type: object
+                conversationUid:
+                  description: Podium unique identifier for conversation.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                email:
+                  description: The email address of the resource
+                  example: john.doe@podium.com
+                  pattern: (.+)@(.+)\.(.+)
+                  type: string
+                locations:
+                  description: List of location UIDs
+                  items:
+                    description: Podium unique identifier for location.
+                    example: 00000000-0000-0000-0000-000000000000
+                    format: uuid
+                    type: string
+                  type: array
+                name:
+                  description: The name of the resource
+                  example: John Doe
+                  type: string
+                phoneNumber:
+                  description: The phone number of the resource
+                  example: '+18884441234'
+                  pattern: ^\+[1-9]\d{1,15}$
+                  type: string
+              type: object
+        description: Update contact params
+        required: false
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_upsert'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Update a contact
+      tags:
+      - Contact
+  /v4/contacts/{identifier}/attributes/{uid}:
+    delete:
+      callbacks: {}
+      description: 'Remove an attribute from a contact.
+
+
+        Required scope: `write_contacts`.
+
+        '
+      operationId: contact_attribute.delete
+      parameters:
+      - description: Contact identifier
+        example: john.doe@podium.com
+        in: path
+        name: identifier
+        required: true
+        schema:
+          type: string
+      - description: Podium unique identifier for attribute.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_attribute'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Remove an attribute from a contact
+      tags:
+      - Contact
+    patch:
+      callbacks: {}
+      description: 'Update the value of an existing attribute inside an existing contact.
+
+
+        Required scope: `write_contacts`.
+
+        '
+      operationId: contact_attribute.update
+      parameters:
+      - description: Contact identifier
+        example: john.doe@podium.com
+        in: path
+        name: identifier
+        required: true
+        schema:
+          type: string
+      - description: Podium unique identifier for attribute.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                value:
+                  description: The value of the attribute.
+                  example: Internal Contact ID
+                  type: string
+              required:
+              - value
+              type: object
+        description: Update an attribute params
+        required: true
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_attribute'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Update a contact attribute inside a contact
+      tags:
+      - Contact
+    post:
+      callbacks: {}
+      description: 'Add an existing attribute to an existing contact.
+
+
+        Required scope: `write_contacts`.
+
+        '
+      operationId: contact_attribute.create
+      parameters:
+      - description: Contact identifier
+        example: john.doe@podium.com
+        in: path
+        name: identifier
+        required: true
+        schema:
+          type: string
+      - description: Podium unique identifier for attribute.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                value:
+                  description: The value of the attribute.
+                  example: Internal Contact ID
+                  type: string
+              required:
+              - value
+              type: object
+        description: Add an attribute params
+        required: true
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_attribute'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Add a contact attribute to a contact
+      tags:
+      - Contact
+  /v4/contacts/{identifier}/tags/{uid}:
+    delete:
+      callbacks: {}
+      description: 'Remove an existing tag from an existing contact.
+
+
+        Required scope: `write_contacts`.
+
+        '
+      operationId: contact_tag.create
+      parameters:
+      - description: Contact identifier
+        example: john.doe@podium.com
+        in: path
+        name: identifier
+        required: true
+        schema:
+          type: string
+      - description: Podium unique identifier for tag.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_tag'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Remove an existing tag from an existing contact
+      tags:
+      - Contact
+    post:
+      callbacks: {}
+      description: 'Add an existing tag to an existing contact.
+
+
+        Required scope: `write_contacts`.
+
+        '
+      operationId: contact_tag.create (2)
+      parameters:
+      - description: Contact identifier
+        example: john.doe@podium.com
+        in: path
+        name: identifier
+        required: true
+        schema:
+          type: string
+      - description: Podium unique identifier for tag.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_tag'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Add an existing tag to an existing contact
+      tags:
+      - Contact
+security: []
+servers:
+- url: https://api.podium.com
+  variables: {}
+tags: []

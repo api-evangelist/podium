@@ -1,0 +1,73 @@
+generated: '2026-08-14'
+method: derived
+source: openapi/ + https://docs.podium.com/
+note: >-
+  Standards posture derived from the 12 harvested OpenAPI definitions and Podium's own reference
+  docs. Podium publishes no certification list that could be read without JavaScript (see
+  security/podium-trust-center.yml), so no compliance-program claims are asserted here.
+standards:
+  - id: openapi-3.0
+    conforms: true
+    evidence: All 12 published definitions declare openapi 3.0.0 with paths and components.schemas.
+  - id: oauth2-authorization-code
+    conforms: true
+    evidence: >-
+      Authorization code + refresh token flows documented at https://docs.podium.com/docs/oauth
+      (authorize https://api.podium.com/oauth/authorize, token https://api.podium.com/oauth/token).
+  - id: oauth2-scopes
+    conforms: true
+    evidence: 25 scopes; each operation declares its required scope in the description. scopes/podium-scopes.yml
+  - id: oidc
+    conforms: false
+    evidence: No /.well-known/openid-configuration served on any Podium host (all probes 404 or SPA HTML).
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: false
+    evidence: /.well-known/oauth-authorization-server returns 404 on api.podium.com.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors are a custom {code, message, moreInfo} JSON envelope served as application/json, not
+      application/problem+json. errors/podium-problem-types.yml
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404 on api.podium.com, www.podium.com and docs.podium.com.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset or Deprecation header support documented; no deprecation policy published.
+  - id: cursor-pagination
+    conforms: true
+    evidence: limit (1-100, default 10) + opaque cursor, with metadata.nextCursor in the envelope.
+  - id: idempotency
+    conforms: partial
+    evidence: >-
+      Optional idempotencyUid body field on invoice.charge only; no Idempotency-Key header on any
+      other write operation.
+  - id: webhook-signature-hmac-sha256
+    conforms: true
+    evidence: >-
+      podium-timestamp + podium-signature headers over "{timestamp}.{raw body}" using the
+      per-webhook secret. https://docs.podium.com/docs/verifying-webhook-signatures
+  - id: asyncapi
+    conforms: false
+    evidence: 26 webhook event types are documented but no AsyncAPI document is published.
+  - id: scim2
+    conforms: unknown
+    evidence: >-
+      The ReadMe project lists a scim.json API definition among its 15 uploaded specs, but no SCIM
+      reference page is published in the public navigation and the definition could not be
+      retrieved, so SCIM 2.0 conformance cannot be asserted.
+  - id: hipaa-baa
+    conforms: true
+    evidence: >-
+      Podium publishes a Business Associate Agreement and a Downstream BAA in its legal centre
+      (https://legal.podium.com/#baa, #sub-baa) — a contractual HIPAA posture, not a certification.
+  - id: pci-dss
+    conforms: unknown
+    evidence: >-
+      Podium Payments processes cards (invoice.charge, card readers) and publishes Payments Service
+      Terms, but no PCI DSS attestation is published on a machine-readable surface.
+  - id: 10dlc-a2p
+    conforms: true
+    evidence: >-
+      10DLC A2P registration requirements are enforced on messaging and documented in the test
+      account guide. https://docs.podium.com/docs/podium-test-accounts

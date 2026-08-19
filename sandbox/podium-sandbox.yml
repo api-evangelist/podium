@@ -1,0 +1,46 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.podium.com/docs/podium-test-accounts
+docs: https://docs.podium.com/docs/podium-test-accounts
+model: test-account
+note: >-
+  Podium has no separate sandbox host and no test-mode key prefix: production credentials call
+  https://api.podium.com/v4/ and isolation is achieved by pointing an OAuth app at a *test
+  account* — a real, free Podium organization created from the developer dashboard. There are no
+  published magic test values (no test card numbers, no test phone numbers).
+separation:
+  test_base_url: https://api.podium.com/v4/
+  live_base_url: https://api.podium.com/v4/
+  separate_host: false
+  key_prefix: none
+  mechanism: >-
+    Test isolation is per-account, not per-key: an OAuth token issued against a test organization
+    only reaches test-account data.
+provisioning:
+  included_with: developer account
+  how: Developer dashboard -> "Create Test Account" -> supply a name and a number of locations
+  portal: https://developer.podium.com/
+  login_host: auth.podium.com
+  account_email_pattern: '{your-developer-email}+testaccountX@example.com (plus-alias of your developer email)'
+  password: set from the welcome email sent to the alias
+constraints:
+  - All contacts in a test account are unsubscribed from receiving messages by default.
+  - To message a phone number, text START to the test account's Podium number to opt it in.
+  - >-
+    Due to 10DLC A2P requirements, outbound messages to a mobile device will not be successfully
+    received from a test account.
+  - Some products are not enabled by default; access is requested through the Podium Developer
+    Community on Discord.
+  - Only one Podium account can be signed in per browser instance.
+test_values: []
+time_simulation:
+  supported: false
+fixtures:
+  supported: false
+  note: No event-trigger or fixture tooling is published; webhook events must be produced by real activity in the test account.
+oauth_testing:
+  tool: Postman
+  auth_url: https://api.podium.com/oauth/authorize
+  token_url: https://api.podium.com/oauth/token
+  collection: https://www.postman.com/podiumhq
+  source: https://docs.podium.com/docs/getting-started

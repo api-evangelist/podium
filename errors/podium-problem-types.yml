@@ -1,0 +1,86 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.podium.com/docs/errors
+docs: https://docs.podium.com/docs/errors
+format: custom
+media_type: application/json
+note: >-
+  Podium does not use RFC 9457 problem+json. Every error is returned as a JSON object carrying a
+  machine-readable `code`, a human `message`, and a `moreInfo` deep-link back into this error
+  reference. The codes below are the ones Podium publishes; the envelope shape was confirmed
+  against live 404 responses observed on api.podium.com during discovery
+  (e.g. {"code":"route_not_found","message":"no Route matched with those values",
+  "moreInfo":"https://docs.podium.com/docs/errors#route_not_found"}).
+envelope:
+  fields:
+    - name: code
+      description: Stable machine-readable error identifier.
+    - name: message
+      description: Specific details about what went wrong.
+    - name: moreInfo
+      description: URL to the matching section of the published error reference.
+  example: |
+    {
+      "code": "route_not_found",
+      "message": "no Route matched with those values",
+      "moreInfo": "https://docs.podium.com/docs/errors#route_not_found"
+    }
+http_status_codes_doc: https://docs.podium.com/reference/http-status-codes
+problems:
+  - code: bad_request
+    title: Bad request
+    description: There is something wrong with the request.
+    remediation: Check the message field for specifics.
+    type: https://docs.podium.com/docs/errors#bad_request
+  - code: invalid_request_values
+    title: Invalid request values
+    description: There are invalid values in the request parameters and/or body.
+    remediation: Review the message field and correct the offending parameters.
+    type: https://docs.podium.com/docs/errors#invalid_request_values
+  - code: invalid_header_version
+    title: Invalid version header
+    description: An invalid version was specified in the podium-version header.
+    remediation: Send a supported dated version, or omit the header to use the latest.
+    type: https://docs.podium.com/docs/errors#invalid_header_version
+  - code: invalid_cursor
+    title: Invalid pagination cursor
+    description: The cursor passed in for pagination is invalid. It might have expired.
+    remediation: Retry the request without the cursor parameter and paginate again.
+    type: https://docs.podium.com/docs/errors#invalid_cursor
+  - code: unauthenticated
+    title: Unauthenticated
+    description: The request could not be authenticated.
+    remediation: Refresh the OAuth access token and resend with a valid Bearer token.
+    type: https://docs.podium.com/docs/errors#unauthenticated
+  - code: unauthorized
+    title: Unauthorized
+    description: The request is not authorized to be performed by the requestor.
+    remediation: Check that the token carries the scope named in the operation description.
+    type: https://docs.podium.com/docs/errors#unauthorized
+  - code: resource_not_found
+    title: Resource not found
+    description: The resource requested could not be found. This is generally due to a bad uid parameter.
+    remediation: Verify the uid/identifier path parameter.
+    type: https://docs.podium.com/docs/errors#resource_not_found
+  - code: route_not_found
+    title: Route not found
+    description: The endpoint does not exist.
+    remediation: Consult the API reference for the correct path and method.
+    type: https://docs.podium.com/docs/errors#route_not_found
+  - code: rate_limit
+    title: Rate limited
+    description: The request was throttled; most endpoints allow 300 requests per minute.
+    remediation: Back off and retry; see rate-limits/podium-rate-limits.yml.
+    type: https://docs.podium.com/docs/errors#rate_limit
+  - code: internal_server_error
+    title: Internal server error
+    description: Something went wrong on Podium's end. This is rare.
+    remediation: Retry, then contact support if it persists.
+    type: https://docs.podium.com/docs/errors#internal_server_error
+spec_coverage:
+  operations_total: 86
+  operations_with_4xx_or_5xx_responses: 0
+  note: >-
+    None of the 12 published OpenAPI definitions declare a single 4xx or 5xx response. Each
+    operation declares only 200/202 plus a `default` response, so the error contract exists only
+    in prose on the docs site and is not machine-readable from the spec.

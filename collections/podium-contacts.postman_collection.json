@@ -1,0 +1,3155 @@
+{
+  "item": [
+    {
+      "id": "3d666c43-f25a-4974-a046-f145c5870c6b",
+      "name": "Contact Attribute",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ee998a79-4751-4af3-9aad-c559d335ba59",
+          "name": "List contact attributes",
+          "request": {
+            "name": "List contact attributes",
+            "description": {
+              "content": "List contact attributes that are tied to the ownerResource on the token.\n\nRequired scope: `read_contacts`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contact_attributes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc30e137-58f1-4fd7-9591-205606dfb20c",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"dataType\": \"FLOAT\",\n      \"isEncrypted\": true,\n      \"label\": \"string\",\n      \"ownerResource\": {\n        \"type\": \"ORGANIZATION\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\"\n    },\n    {\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"dataType\": \"ADDRESS\",\n      \"isEncrypted\": true,\n      \"label\": \"string\",\n      \"ownerResource\": {\n        \"type\": \"PRODUCT\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\"\n    }\n  ],\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2dced654-13ff-4403-bce9-37be975a9d52",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "500e7633-72bc-4a09-a3f6-ed73b8011114",
+          "name": "Create a contact attribute",
+          "request": {
+            "name": "Create a contact attribute",
+            "description": {
+              "content": "Create an application or organization level attribute to be used on contacts.\n\nRequired scope: `write_contacts`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contact_attributes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataType\": \"<string>\",\n  \"label\": \"<string>\",\n  \"ownerResourceType\": \"<string>\",\n  \"isEncrypted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5995dd22-0d00-4c8d-a52a-2525ab30cd9c",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataType\": \"<string>\",\n  \"label\": \"Internal Contact ID\",\n  \"ownerResourceType\": \"<string>\",\n  \"isEncrypted\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"dataType\": \"STRING\",\n    \"isEncrypted\": true,\n    \"label\": \"string\",\n    \"ownerResource\": {\n      \"type\": \"PRODUCT\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8140cd6f-230f-4ae8-b8a8-64bd8f1a81c0",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataType\": \"<string>\",\n  \"label\": \"Internal Contact ID\",\n  \"ownerResourceType\": \"<string>\",\n  \"isEncrypted\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "616c1355-14e7-41e7-b405-2ef78bba4a19",
+          "name": "Delete a contact attribute",
+          "request": {
+            "name": "Delete a contact attribute",
+            "description": {
+              "content": "Delete a contact attribute with its uid.\n\nRequired scope: `write_contacts`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contact_attributes",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for attribute."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e2ef97b2-1d97-4592-894f-7b4bca153861",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_attributes",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for attribute."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"dataType\": \"STRING\",\n    \"isEncrypted\": true,\n    \"label\": \"string\",\n    \"ownerResource\": {\n      \"type\": \"PRODUCT\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8ea245a-46a3-40ea-9f6b-f394cc08856f",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_attributes",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for attribute."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd0574c9-eed4-449f-b38a-6b93618e2c81",
+          "name": "Gets a contact attribute by uid",
+          "request": {
+            "name": "Gets a contact attribute by uid",
+            "description": {
+              "content": "Gets an application or organization level attribute by its uid, to be used on contacts.\n\nRequired scope: `read_contacts`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contact_attributes",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Contacts attribute uid"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12c58daf-67b3-4643-9a19-937da9aa6a91",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_attributes",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Contacts attribute uid"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"dataType\": \"STRING\",\n    \"isEncrypted\": true,\n    \"label\": \"string\",\n    \"ownerResource\": {\n      \"type\": \"PRODUCT\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8376ec21-ebe7-4f22-94b2-e7f0f4ee06f0",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_attributes",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Contacts attribute uid"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c90655b-e0a3-4a7b-90bc-10996287297f",
+          "name": "Update a contact attribute",
+          "request": {
+            "name": "Update a contact attribute",
+            "description": {
+              "content": "Update an application or organization level attribute to be used on contacts.\n\nRequired scope: `write_contacts`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contact_attributes",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for attribute."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataType\": \"<string>\",\n  \"isEncrypted\": \"<boolean>\",\n  \"label\": \"<string>\",\n  \"ownerResourceType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ab2e7a7d-4d8a-4c49-a2b2-65228d6cfcc5",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_attributes",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for attribute."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataType\": \"<string>\",\n  \"isEncrypted\": \"<boolean>\",\n  \"label\": \"Internal Contact ID\",\n  \"ownerResourceType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"dataType\": \"STRING\",\n    \"isEncrypted\": true,\n    \"label\": \"string\",\n    \"ownerResource\": {\n      \"type\": \"PRODUCT\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "701697da-8719-4e23-8b1f-0ffdcd485dce",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_attributes",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for attribute."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataType\": \"<string>\",\n  \"isEncrypted\": \"<boolean>\",\n  \"label\": \"Internal Contact ID\",\n  \"ownerResourceType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "72ef07ea-d18a-4160-aff5-5031a674b546",
+      "name": "Contact Tag",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fea47fe5-8921-4e93-bba9-ac0da6177dd5",
+          "name": "List all tags for the organization",
+          "request": {
+            "name": "List all tags for the organization",
+            "description": {
+              "content": "List all tags for the organization.\n\nRequired scope: `read_contacts`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contact_tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ead8b87e-1375-44f8-b7a7-02bc4a882f1c",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"description\": \"string\",\n      \"label\": \"string\",\n      \"organization\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\"\n    },\n    {\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"description\": \"string\",\n      \"label\": \"string\",\n      \"organization\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\"\n    }\n  ],\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38fd679b-0be2-49d9-ab7d-8a18bcba099c",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dfbe95d5-136a-4add-b934-c619c8616d05",
+          "name": "Create a contact tag for an organization",
+          "request": {
+            "name": "Create a contact tag for an organization",
+            "description": {
+              "content": "Create an organization level tag for a contact.\n\nRequired scope: `write_contacts`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contact_tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"label\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c8885e30-62dc-4e99-88da-ba50080ad0bb",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": \"priority\",\n  \"description\": \"High priority contacts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"description\": \"string\",\n    \"label\": \"string\",\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2239afb5-51f6-4903-a3d4-76c4f8ea4924",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": \"priority\",\n  \"description\": \"High priority contacts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2319a5fb-4f06-41cc-ae56-e583fcc794a0",
+          "name": "Get a contact tag for an organization given an uid",
+          "request": {
+            "name": "Get a contact tag for an organization given an uid",
+            "description": {
+              "content": "Get a organization level tag given the provided uid.\n\nRequired scope: `read_contacts`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contact_tags",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Contacts tags uid"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5992c4f0-5ca9-4954-abb4-7d65e017b981",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_tags",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Contacts tags uid"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"description\": \"string\",\n    \"label\": \"string\",\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1adcbae3-ca8a-423a-bf8f-2cc4a88a6257",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_tags",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Contacts tags uid"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18b45630-8193-4c17-a457-d7c8536268e4",
+          "name": "Update a contact tag",
+          "request": {
+            "name": "Update a contact tag",
+            "description": {
+              "content": "Update an organization level tag to be used on contacts.\n\nRequired scope: `write_contacts`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contact_tags",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for tag."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"label\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5fb3bc9a-a234-40e3-9c13-9b1066a15c88",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_tags",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"High priority contacts\",\n  \"label\": \"priority\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"description\": \"string\",\n    \"label\": \"string\",\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a08b32da-2cd7-4689-bf08-28df87d4dbdc",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contact_tags",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"High priority contacts\",\n  \"label\": \"priority\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "905915c2-715c-4d6f-ac2c-39c8965cc15f",
+      "name": "Contact",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "942da35b-78bd-4874-8812-55610b706e8a",
+          "name": "List all contacts",
+          "request": {
+            "name": "List all contacts",
+            "description": {
+              "content": "List all contacts.\n\nRequired scope: `read_contacts`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Retrieves the page of items that comes after the `cursor`."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Max number of items to return per request. Defaults to `10`."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_at",
+                  "value": "<string>",
+                  "description": "Filter contacts by updated_at. It will retrieve contacts updated after the provided date. Format: `YYYY-MM-DDTHH:MM:SSZ`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "20ca34d8-e539-49a6-8726-bac360ef7eda",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "updated_at",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"address\": {\n      \"addressLine1\": \"string\",\n      \"addressLine2\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"postalCode\": \"string\",\n      \"state\": \"string\"\n    },\n    \"attributes\": [\n      {\n        \"dataType\": \"string\",\n        \"label\": \"string\",\n        \"ownerResource\": {\n          \"type\": \"string\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        \"uid\": \"00000000-0000-0000-0000-000000000000\",\n        \"value\": {}\n      },\n      {\n        \"dataType\": \"string\",\n        \"label\": \"string\",\n        \"ownerResource\": {\n          \"type\": \"string\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        \"uid\": \"00000000-0000-0000-0000-000000000000\",\n        \"value\": {}\n      }\n    ],\n    \"channels\": [\n      {\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"identifier\": \"+15555555555\",\n        \"label\": \"string\",\n        \"marketingOptedInLocationUids\": [\n          \"00000000-0000-0000-0000-000000000000\",\n          \"00000000-0000-0000-0000-000000000000\"\n        ],\n        \"transactionalOptedOutAt\": \"2015-01-23T23:50:07Z\",\n        \"type\": \"string\",\n        \"updatedAt\": \"2015-01-23T23:50:07Z\"\n      },\n      {\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"identifier\": \"+15555555555\",\n        \"label\": \"string\",\n        \"marketingOptedInLocationUids\": [\n          \"00000000-0000-0000-0000-000000000000\",\n          \"00000000-0000-0000-0000-000000000000\"\n        ],\n        \"transactionalOptedOutAt\": \"2015-01-23T23:50:07Z\",\n        \"type\": \"string\",\n        \"updatedAt\": \"2015-01-23T23:50:07Z\"\n      }\n    ],\n    \"conversations\": [\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"emails\": [\n      \"string\",\n      \"string\"\n    ],\n    \"locations\": [\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"name\": \"string\",\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"phoneNumbers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tags\": [\n      {\n        \"description\": \"string\",\n        \"label\": \"string\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"description\": \"string\",\n        \"label\": \"string\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce2e7979-326f-44d7-bae1-6b03d187053a",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "updated_at",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef394914-8b09-41b4-88f3-41c8c6ef63ec",
+          "name": "Create a contact",
+          "request": {
+            "name": "Create a contact",
+            "description": {
+              "content": "Create a contact. If a contact with the same phone number, email, or conversation uid is found it will update the contact.\n\nRequired scope: `write_contacts`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"locations\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"name\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"state\": \"<string>\"\n  },\n  \"attributes\": [\n    {\n      \"uid\": \"<uuid>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"uid\": \"<uuid>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"contactStatus\": {\n    \"name\": \"<string>\",\n    \"uid\": \"<uuid>\"\n  },\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"tags\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "31457a8f-2068-4175-8fae-877d26e2b457",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locations\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"name\": \"John Doe\",\n  \"address\": {\n    \"addressLine1\": \"123 Main St\",\n    \"addressLine2\": \"Apt 101\",\n    \"city\": \"Lehi\",\n    \"country\": \"US\",\n    \"postalCode\": \"84043\",\n    \"state\": \"UT\"\n  },\n  \"attributes\": [\n    {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"value\": \"Brown eyes\"\n    },\n    {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"value\": \"Brown eyes\"\n    }\n  ],\n  \"contactStatus\": {\n    \"name\": \"Prospect\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"email\": \"john.doe@podium.com\",\n  \"phoneNumber\": \"+18884441234\",\n  \"tags\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"identifier\": \"string\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17a04c5d-c492-443d-8b9f-ed2d523664a8",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locations\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"name\": \"John Doe\",\n  \"address\": {\n    \"addressLine1\": \"123 Main St\",\n    \"addressLine2\": \"Apt 101\",\n    \"city\": \"Lehi\",\n    \"country\": \"US\",\n    \"postalCode\": \"84043\",\n    \"state\": \"UT\"\n  },\n  \"attributes\": [\n    {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"value\": \"Brown eyes\"\n    },\n    {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"value\": \"Brown eyes\"\n    }\n  ],\n  \"contactStatus\": {\n    \"name\": \"Prospect\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"email\": \"john.doe@podium.com\",\n  \"phoneNumber\": \"+18884441234\",\n  \"tags\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07ce17f6-fc71-406f-9337-580c574103a1",
+          "name": "Opt in a contact",
+          "request": {
+            "name": "Opt in a contact",
+            "description": {
+              "content": "Opt in a contact into receiving campaign messages.\n         Note: this endpoint requires your application to be whitelisted.\n          Please contact our support team to get your application whitelisted.\n\nRequired scope: write_contacts",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contacts",
+                "campaigns",
+                "opt_in"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": {\n    \"identifier\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"locationUid\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7a50f57d-846b-4d72-9c7f-4b5e840aa786",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    "campaigns",
+                    "opt_in"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"identifier\": \"+15555555555\",\n    \"type\": \"<string>\"\n  },\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"address\": {\n      \"addressLine1\": \"string\",\n      \"addressLine2\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"postalCode\": \"string\",\n      \"state\": \"string\"\n    },\n    \"attributes\": [\n      {\n        \"dataType\": \"string\",\n        \"label\": \"string\",\n        \"ownerResource\": {\n          \"type\": \"string\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        \"uid\": \"00000000-0000-0000-0000-000000000000\",\n        \"value\": {}\n      },\n      {\n        \"dataType\": \"string\",\n        \"label\": \"string\",\n        \"ownerResource\": {\n          \"type\": \"string\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        \"uid\": \"00000000-0000-0000-0000-000000000000\",\n        \"value\": {}\n      }\n    ],\n    \"channels\": [\n      {\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"identifier\": \"+15555555555\",\n        \"label\": \"string\",\n        \"marketingOptedInLocationUids\": [\n          \"00000000-0000-0000-0000-000000000000\",\n          \"00000000-0000-0000-0000-000000000000\"\n        ],\n        \"transactionalOptedOutAt\": \"2015-01-23T23:50:07Z\",\n        \"type\": \"string\",\n        \"updatedAt\": \"2015-01-23T23:50:07Z\"\n      },\n      {\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"identifier\": \"+15555555555\",\n        \"label\": \"string\",\n        \"marketingOptedInLocationUids\": [\n          \"00000000-0000-0000-0000-000000000000\",\n          \"00000000-0000-0000-0000-000000000000\"\n        ],\n        \"transactionalOptedOutAt\": \"2015-01-23T23:50:07Z\",\n        \"type\": \"string\",\n        \"updatedAt\": \"2015-01-23T23:50:07Z\"\n      }\n    ],\n    \"conversations\": [\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"emails\": [\n      \"string\",\n      \"string\"\n    ],\n    \"locations\": [\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"name\": \"string\",\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"phoneNumbers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tags\": [\n      {\n        \"description\": \"string\",\n        \"label\": \"string\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"description\": \"string\",\n        \"label\": \"string\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb483acc-1e05-448a-9c92-910f51d7103a",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    "campaigns",
+                    "opt_in"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"identifier\": \"+15555555555\",\n    \"type\": \"<string>\"\n  },\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07901a1c-a7ca-4688-842f-1948670d9d77",
+          "name": "Opt out a contact",
+          "request": {
+            "name": "Opt out a contact",
+            "description": {
+              "content": "Opt out a contact from receiving campaign messages.\n         Note: this endpoint requires your application to be whitelisted.\n          Please contact our support team to get your application whitelisted.\n\nRequired scope: write_contacts",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contacts",
+                "campaigns",
+                "opt_out"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": {\n    \"identifier\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3a23b31d-40be-43ba-b9b5-1c025fc805be",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    "campaigns",
+                    "opt_out"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"identifier\": \"+15555555555\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"address\": {\n      \"addressLine1\": \"string\",\n      \"addressLine2\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"postalCode\": \"string\",\n      \"state\": \"string\"\n    },\n    \"attributes\": [\n      {\n        \"dataType\": \"string\",\n        \"label\": \"string\",\n        \"ownerResource\": {\n          \"type\": \"string\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        \"uid\": \"00000000-0000-0000-0000-000000000000\",\n        \"value\": {}\n      },\n      {\n        \"dataType\": \"string\",\n        \"label\": \"string\",\n        \"ownerResource\": {\n          \"type\": \"string\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        \"uid\": \"00000000-0000-0000-0000-000000000000\",\n        \"value\": {}\n      }\n    ],\n    \"channels\": [\n      {\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"identifier\": \"+15555555555\",\n        \"label\": \"string\",\n        \"marketingOptedInLocationUids\": [\n          \"00000000-0000-0000-0000-000000000000\",\n          \"00000000-0000-0000-0000-000000000000\"\n        ],\n        \"transactionalOptedOutAt\": \"2015-01-23T23:50:07Z\",\n        \"type\": \"string\",\n        \"updatedAt\": \"2015-01-23T23:50:07Z\"\n      },\n      {\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"identifier\": \"+15555555555\",\n        \"label\": \"string\",\n        \"marketingOptedInLocationUids\": [\n          \"00000000-0000-0000-0000-000000000000\",\n          \"00000000-0000-0000-0000-000000000000\"\n        ],\n        \"transactionalOptedOutAt\": \"2015-01-23T23:50:07Z\",\n        \"type\": \"string\",\n        \"updatedAt\": \"2015-01-23T23:50:07Z\"\n      }\n    ],\n    \"conversations\": [\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"emails\": [\n      \"string\",\n      \"string\"\n    ],\n    \"locations\": [\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"name\": \"string\",\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"phoneNumbers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tags\": [\n      {\n        \"description\": \"string\",\n        \"label\": \"string\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"description\": \"string\",\n        \"label\": \"string\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea9c4359-ed46-4c8d-821b-840f3013bf5c",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    "campaigns",
+                    "opt_out"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"identifier\": \"+15555555555\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bcff3f38-125b-498d-bb26-72048785e8c6",
+          "name": "Delete a contact",
+          "request": {
+            "name": "Delete a contact",
+            "description": {
+              "content": "Delete a contact with a conversation uid, email, or phone number.\n\nRequired scope: `write_contacts`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contacts",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Conversation uid, phone number, or email to identify the contact. Phone number should be formatted as '+15555555555'"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d819e10-0d30-4494-8953-21587d267c9a",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Conversation uid, phone number, or email to identify the contact. Phone number should be formatted as '+15555555555'"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"identifier\": \"string\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c326c48a-5e0e-4363-bf83-4df6db3fd976",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Conversation uid, phone number, or email to identify the contact. Phone number should be formatted as '+15555555555'"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9dc1360f-badf-4bc7-8ed8-1b4d1a82f8f1",
+          "name": "Retrieve a contact",
+          "request": {
+            "name": "Retrieve a contact",
+            "description": {
+              "content": "Get a contact with a conversation uid, email, or phone number.\n\nRequired scope: `read_contacts`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contacts",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Conversation uid, phone number, or email to identify the contact. Phone number should be formatted as '+15555555555'"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b0a5383-9bf3-46f1-9134-ebcb7595eaab",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Conversation uid, phone number, or email to identify the contact. Phone number should be formatted as '+15555555555'"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"address\": {\n      \"addressLine1\": \"string\",\n      \"addressLine2\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"postalCode\": \"string\",\n      \"state\": \"string\"\n    },\n    \"attributes\": [\n      {\n        \"dataType\": \"string\",\n        \"label\": \"string\",\n        \"ownerResource\": {\n          \"type\": \"string\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        \"uid\": \"00000000-0000-0000-0000-000000000000\",\n        \"value\": {}\n      },\n      {\n        \"dataType\": \"string\",\n        \"label\": \"string\",\n        \"ownerResource\": {\n          \"type\": \"string\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        \"uid\": \"00000000-0000-0000-0000-000000000000\",\n        \"value\": {}\n      }\n    ],\n    \"channels\": [\n      {\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"identifier\": \"+15555555555\",\n        \"label\": \"string\",\n        \"marketingOptedInLocationUids\": [\n          \"00000000-0000-0000-0000-000000000000\",\n          \"00000000-0000-0000-0000-000000000000\"\n        ],\n        \"transactionalOptedOutAt\": \"2015-01-23T23:50:07Z\",\n        \"type\": \"string\",\n        \"updatedAt\": \"2015-01-23T23:50:07Z\"\n      },\n      {\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"identifier\": \"+15555555555\",\n        \"label\": \"string\",\n        \"marketingOptedInLocationUids\": [\n          \"00000000-0000-0000-0000-000000000000\",\n          \"00000000-0000-0000-0000-000000000000\"\n        ],\n        \"transactionalOptedOutAt\": \"2015-01-23T23:50:07Z\",\n        \"type\": \"string\",\n        \"updatedAt\": \"2015-01-23T23:50:07Z\"\n      }\n    ],\n    \"conversations\": [\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"emails\": [\n      \"string\",\n      \"string\"\n    ],\n    \"locations\": [\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"name\": \"string\",\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"phoneNumbers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tags\": [\n      {\n        \"description\": \"string\",\n        \"label\": \"string\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"description\": \"string\",\n        \"label\": \"string\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "667af11e-206e-423e-ac54-b78b4aba2cc5",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Conversation uid, phone number, or email to identify the contact. Phone number should be formatted as '+15555555555'"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8125827-8686-4ad4-8179-df4eee093d0c",
+          "name": "Update a contact",
+          "request": {
+            "name": "Update a contact",
+            "description": {
+              "content": "Update a contact with using a conversation uid, email, or phone number as an identifier.\n\nRequired scope: `write_contacts`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contacts",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Conversation uid, phone number, or email to identify the contact. Phone number should be formatted as '+15555555555'"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"state\": \"<string>\"\n  },\n  \"contactStatus\": {\n    \"name\": \"<string>\",\n    \"uid\": \"<uuid>\"\n  },\n  \"conversationUid\": \"<uuid>\",\n  \"email\": \"<string>\",\n  \"locations\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "266dfa9d-3f82-4cc0-a700-cb9435c68d8f",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Conversation uid, phone number, or email to identify the contact. Phone number should be formatted as '+15555555555'"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"addressLine1\": \"123 Main St\",\n    \"addressLine2\": \"Apt 101\",\n    \"city\": \"Lehi\",\n    \"country\": \"US\",\n    \"postalCode\": \"84043\",\n    \"state\": \"UT\"\n  },\n  \"contactStatus\": {\n    \"name\": \"Prospect\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"conversationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"email\": \"john.doe@podium.com\",\n  \"locations\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"name\": \"John Doe\",\n  \"phoneNumber\": \"+18884441234\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"identifier\": \"string\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8e85522-de06-4310-ab3a-a25925e32abc",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Conversation uid, phone number, or email to identify the contact. Phone number should be formatted as '+15555555555'"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"addressLine1\": \"123 Main St\",\n    \"addressLine2\": \"Apt 101\",\n    \"city\": \"Lehi\",\n    \"country\": \"US\",\n    \"postalCode\": \"84043\",\n    \"state\": \"UT\"\n  },\n  \"contactStatus\": {\n    \"name\": \"Prospect\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\"\n  },\n  \"conversationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"email\": \"john.doe@podium.com\",\n  \"locations\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"name\": \"John Doe\",\n  \"phoneNumber\": \"+18884441234\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a5b4d0b-380e-4c50-a779-3419475702a1",
+          "name": "Remove an attribute from a contact",
+          "request": {
+            "name": "Remove an attribute from a contact",
+            "description": {
+              "content": "Remove an attribute from a contact.\n\nRequired scope: `write_contacts`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contacts",
+                ":identifier",
+                "attributes",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Contact identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for attribute."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f898634e-0094-4809-a3d8-91f243fabcba",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier",
+                    "attributes",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Contact identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for attribute."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"identifier\": \"string\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2acd1554-5a8c-4798-857d-b9bddee0beb4",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier",
+                    "attributes",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Contact identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for attribute."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d9e095b-2268-47e4-bc7a-f9c707dc7d48",
+          "name": "Update a contact attribute inside a contact",
+          "request": {
+            "name": "Update a contact attribute inside a contact",
+            "description": {
+              "content": "Update the value of an existing attribute inside an existing contact.\n\nRequired scope: `write_contacts`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contacts",
+                ":identifier",
+                "attributes",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Contact identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for attribute."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "586c3ce3-122e-47aa-a46a-09090fd64d78",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier",
+                    "attributes",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Contact identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for attribute."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"Internal Contact ID\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"identifier\": \"string\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19303c53-9be2-4f25-a77a-aac9084d9085",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier",
+                    "attributes",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Contact identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for attribute."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"Internal Contact ID\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5cf4540d-647f-41e1-b537-fadc9d784f3c",
+          "name": "Add a contact attribute to a contact",
+          "request": {
+            "name": "Add a contact attribute to a contact",
+            "description": {
+              "content": "Add an existing attribute to an existing contact.\n\nRequired scope: `write_contacts`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contacts",
+                ":identifier",
+                "attributes",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Contact identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for attribute."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cd26d4c2-8e8f-483e-9a91-188e083b2133",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier",
+                    "attributes",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Contact identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for attribute."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"Internal Contact ID\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"identifier\": \"string\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2fb301b4-d8ee-4c86-84c0-b13d1676531c",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier",
+                    "attributes",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Contact identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for attribute."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"Internal Contact ID\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54f87e02-255f-470c-8f53-3929432a49bb",
+          "name": "Remove an existing tag from an existing contact",
+          "request": {
+            "name": "Remove an existing tag from an existing contact",
+            "description": {
+              "content": "Remove an existing tag from an existing contact.\n\nRequired scope: `write_contacts`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contacts",
+                ":identifier",
+                "tags",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Contact identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for tag."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91cf7a93-02aa-407e-af73-fcee7c81e7cc",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier",
+                    "tags",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Contact identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"identifier\": \"string\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05b9e6ce-c907-4200-9c6f-09205dc35585",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier",
+                    "tags",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Contact identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eff3b967-61f3-4841-8d19-a7ce1808a75b",
+          "name": "Add an existing tag to an existing contact",
+          "request": {
+            "name": "Add an existing tag to an existing contact",
+            "description": {
+              "content": "Add an existing tag to an existing contact.\n\nRequired scope: `write_contacts`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "contacts",
+                ":identifier",
+                "tags",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) Contact identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for tag."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "75248ed4-d890-4751-af5d-56fd7a35e1e9",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier",
+                    "tags",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Contact identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"identifier\": \"string\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f57dfb3d-0034-46d1-9098-16ad40d49bd0",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "contacts",
+                    ":identifier",
+                    "tags",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) Contact identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for tag."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7087,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.podium.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a9af893e-0ddc-40ce-ab1a-816586d5f732",
+    "name": "Contacts",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

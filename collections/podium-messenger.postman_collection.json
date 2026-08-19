@@ -1,0 +1,1400 @@
+{
+  "item": [
+    {
+      "id": "efd36995-b2b4-4315-91b8-8b1d2109645e",
+      "name": "Message",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6030216e-6239-41ae-b282-32b375f6447f",
+          "name": "Retrieve messages from a conversation",
+          "request": {
+            "name": "Retrieve messages from a conversation",
+            "description": {
+              "content": "Retrieve limited number of messages from a conversation.\n\nRequired scope: `read_messages`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "conversations",
+                ":conversation_uid",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "conversation_uid",
+                  "description": "(Required) Podium unique identifier for conversation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "041f37de-81bc-4d9b-97ff-ceca94c232f3",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":conversation_uid",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "conversation_uid",
+                      "description": "(Required) Podium unique identifier for conversation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"attachmentUrl\": \"https://www.podium.com/\",\n      \"body\": \"Hello there.\",\n      \"contact\": {\n        \"externalIdentifier\": \"123-abc\",\n        \"name\": \"Joe Orange\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"contactName\": \"Joe Orange\",\n      \"conversation\": {\n        \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"channel\": {\n          \"identifier\": \"email@email.com\",\n          \"type\": \"email\"\n        },\n        \"startedAt\": \"2015-01-23T23:50:07Z\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"failureReason\": \"Attempted to send SMS to a landline.\",\n      \"items\": [\n        {\n          \"attachmentContentType\": \"image/png\",\n          \"attachmentUrl\": \"https://www.podium.com/image.png\",\n          \"body\": \"https://www.podium.com/image.png\",\n          \"createdAt\": \"2015-01-23T23:50:07Z\",\n          \"deliveryStatus\": \"sent\",\n          \"encryptedAt\": \"2015-01-23T23:50:07Z\",\n          \"sendBody\": \"null\",\n          \"sourceType\": \"outbound\",\n          \"type\": \"attachment\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        {\n          \"attachmentContentType\": \"image/png\",\n          \"attachmentUrl\": \"https://www.podium.com/image.png\",\n          \"body\": \"https://www.podium.com/image.png\",\n          \"createdAt\": \"2015-01-23T23:50:07Z\",\n          \"deliveryStatus\": \"sent\",\n          \"encryptedAt\": \"2015-01-23T23:50:07Z\",\n          \"sendBody\": \"null\",\n          \"sourceType\": \"outbound\",\n          \"type\": \"attachment\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        }\n      ],\n      \"location\": {\n        \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"sender\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"senderUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"webchatUrl\": \"https://www.example.com/contact\"\n    },\n    {\n      \"attachmentUrl\": \"https://www.podium.com/\",\n      \"body\": \"Hello there.\",\n      \"contact\": {\n        \"externalIdentifier\": \"123-abc\",\n        \"name\": \"Joe Orange\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"contactName\": \"Joe Orange\",\n      \"conversation\": {\n        \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"channel\": {\n          \"identifier\": \"email@email.com\",\n          \"type\": \"email\"\n        },\n        \"startedAt\": \"2015-01-23T23:50:07Z\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"failureReason\": \"Attempted to send SMS to a landline.\",\n      \"items\": [\n        {\n          \"attachmentContentType\": \"image/png\",\n          \"attachmentUrl\": \"https://www.podium.com/image.png\",\n          \"body\": \"https://www.podium.com/image.png\",\n          \"createdAt\": \"2015-01-23T23:50:07Z\",\n          \"deliveryStatus\": \"sent\",\n          \"encryptedAt\": \"2015-01-23T23:50:07Z\",\n          \"sendBody\": \"null\",\n          \"sourceType\": \"outbound\",\n          \"type\": \"attachment\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        {\n          \"attachmentContentType\": \"image/png\",\n          \"attachmentUrl\": \"https://www.podium.com/image.png\",\n          \"body\": \"https://www.podium.com/image.png\",\n          \"createdAt\": \"2015-01-23T23:50:07Z\",\n          \"deliveryStatus\": \"sent\",\n          \"encryptedAt\": \"2015-01-23T23:50:07Z\",\n          \"sendBody\": \"null\",\n          \"sourceType\": \"outbound\",\n          \"type\": \"attachment\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        }\n      ],\n      \"location\": {\n        \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"sender\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"senderUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"webchatUrl\": \"https://www.example.com/contact\"\n    }\n  ],\n  \"metadata\": {\n    \"nextCursor\": \"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw\",\n    \"previousCursor\": \"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw\",\n    \"totalItems\": 9159,\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bbbb6eaf-a682-4851-a9a6-7b78919348b7",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":conversation_uid",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "conversation_uid",
+                      "description": "(Required) Podium unique identifier for conversation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6578,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23afd115-98d4-44bf-9abb-e6fec1801343",
+          "name": "Retreive a message from a conversation",
+          "request": {
+            "name": "Retreive a message from a conversation",
+            "description": {
+              "content": "Retrieve a message from a conversation.\n\nRequired scope: `read_messages`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "conversations",
+                ":conversation_uid",
+                "messages",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for message."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "conversation_uid",
+                  "description": "(Required) Podium unique identifier for conversation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "901bd70d-2313-45ae-9d81-ea663f421ca8",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":conversation_uid",
+                    "messages",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for message."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "conversation_uid",
+                      "description": "(Required) Podium unique identifier for conversation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"attachmentUrl\": \"https://www.podium.com/\",\n    \"body\": \"Hello there.\",\n    \"contact\": {\n      \"externalIdentifier\": \"123-abc\",\n      \"name\": \"Joe Orange\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"contactName\": \"Joe Orange\",\n    \"conversation\": {\n      \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"channel\": {\n        \"identifier\": \"email@email.com\",\n        \"type\": \"email\"\n      },\n      \"startedAt\": \"2015-01-23T23:50:07Z\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"failureReason\": \"Attempted to send SMS to a landline.\",\n    \"items\": [\n      {\n        \"attachmentContentType\": \"image/png\",\n        \"attachmentUrl\": \"https://www.podium.com/image.png\",\n        \"body\": \"https://www.podium.com/image.png\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"deliveryStatus\": \"sent\",\n        \"encryptedAt\": \"2015-01-23T23:50:07Z\",\n        \"sendBody\": \"null\",\n        \"sourceType\": \"outbound\",\n        \"type\": \"attachment\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"attachmentContentType\": \"image/png\",\n        \"attachmentUrl\": \"https://www.podium.com/image.png\",\n        \"body\": \"https://www.podium.com/image.png\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"deliveryStatus\": \"sent\",\n        \"encryptedAt\": \"2015-01-23T23:50:07Z\",\n        \"sendBody\": \"null\",\n        \"sourceType\": \"outbound\",\n        \"type\": \"attachment\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"location\": {\n      \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"sender\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"senderUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"webchatUrl\": \"https://www.example.com/contact\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01dc5444-759e-42c8-b527-e631fc160495",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "conversations",
+                    ":conversation_uid",
+                    "messages",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for message."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "conversation_uid",
+                      "description": "(Required) Podium unique identifier for conversation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6578,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e743f73a-648f-40c8-b52d-c969beca1edb",
+          "name": "Import a message.",
+          "request": {
+            "name": "Import a message.",
+            "description": {
+              "content": "Import a message from a different system. NOTE: This does not send a message to number, just imports it into a conversation on Podium's system.\n\nRequired scope: `write_messages`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "import",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": \"<string>\",\n  \"channel\": {\n    \"identifier\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"contactName\": \"<string>\",\n  \"direction\": \"<string>\",\n  \"locationUid\": \"<uuid>\",\n  \"publishedAt\": \"<dateTime>\",\n  \"subject\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "18762d8e-f785-4460-87db-fb6a71943c33",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "import",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"Just a reminder that your appointment is today!\",\n  \"channel\": {\n    \"identifier\": \"email@email.com\",\n    \"type\": \"email\"\n  },\n  \"contactName\": \"Joe Orange\",\n  \"direction\": \"inbound\",\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"publishedAt\": \"2015-01-23T23:50:07Z\",\n  \"subject\": \"Appointment reminder\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"attachmentUrl\": \"https://www.podium.com/\",\n    \"body\": \"Hello there.\",\n    \"contact\": {\n      \"externalIdentifier\": \"123-abc\",\n      \"name\": \"Joe Orange\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"contactName\": \"Joe Orange\",\n    \"conversation\": {\n      \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"channel\": {\n        \"identifier\": \"email@email.com\",\n        \"type\": \"email\"\n      },\n      \"startedAt\": \"2015-01-23T23:50:07Z\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"failureReason\": \"Attempted to send SMS to a landline.\",\n    \"items\": [\n      {\n        \"attachmentContentType\": \"image/png\",\n        \"attachmentUrl\": \"https://www.podium.com/image.png\",\n        \"body\": \"https://www.podium.com/image.png\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"deliveryStatus\": \"sent\",\n        \"encryptedAt\": \"2015-01-23T23:50:07Z\",\n        \"sendBody\": \"null\",\n        \"sourceType\": \"outbound\",\n        \"type\": \"attachment\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"attachmentContentType\": \"image/png\",\n        \"attachmentUrl\": \"https://www.podium.com/image.png\",\n        \"body\": \"https://www.podium.com/image.png\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"deliveryStatus\": \"sent\",\n        \"encryptedAt\": \"2015-01-23T23:50:07Z\",\n        \"sendBody\": \"null\",\n        \"sourceType\": \"outbound\",\n        \"type\": \"attachment\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"location\": {\n      \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"sender\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"senderUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"webchatUrl\": \"https://www.example.com/contact\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "606b251a-83b5-4b91-94bd-b69309703241",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "import",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"Just a reminder that your appointment is today!\",\n  \"channel\": {\n    \"identifier\": \"email@email.com\",\n    \"type\": \"email\"\n  },\n  \"contactName\": \"Joe Orange\",\n  \"direction\": \"inbound\",\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"publishedAt\": \"2015-01-23T23:50:07Z\",\n  \"subject\": \"Appointment reminder\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6578,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94975425-500a-4500-bcd8-4ec5b6422de7",
+          "name": "Send a message.",
+          "request": {
+            "name": "Send a message.",
+            "description": {
+              "content": "Send a message. A message can only be sent on behalf of a user if they have the necessary permissions to send\nmessages in: conversations assigned to them, conversations assigned to others, and unassigned conversations.\n\nRequired scope: `write_messages`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": \"<string>\",\n  \"channel\": {\n    \"identifier\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"locationUid\": \"<uuid>\",\n  \"contactName\": \"<string>\",\n  \"senderName\": \"<string>\",\n  \"setOpenInbox\": false,\n  \"subject\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "249d933c-e339-4897-aded-763191ebc7d3",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"Just a reminder that your appointment is today!\",\n  \"channel\": {\n    \"identifier\": \"email@email.com\",\n    \"type\": \"email\"\n  },\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"contactName\": \"Joe Orange\",\n  \"senderName\": \"Bot1234\",\n  \"setOpenInbox\": true,\n  \"subject\": \"Appointment reminder\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"attachmentUrl\": \"https://www.podium.com/\",\n    \"body\": \"Hello there.\",\n    \"contact\": {\n      \"externalIdentifier\": \"123-abc\",\n      \"name\": \"Joe Orange\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"contactName\": \"Joe Orange\",\n    \"conversation\": {\n      \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"channel\": {\n        \"identifier\": \"email@email.com\",\n        \"type\": \"email\"\n      },\n      \"startedAt\": \"2015-01-23T23:50:07Z\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"failureReason\": \"Attempted to send SMS to a landline.\",\n    \"items\": [\n      {\n        \"attachmentContentType\": \"image/png\",\n        \"attachmentUrl\": \"https://www.podium.com/image.png\",\n        \"body\": \"https://www.podium.com/image.png\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"deliveryStatus\": \"sent\",\n        \"encryptedAt\": \"2015-01-23T23:50:07Z\",\n        \"sendBody\": \"null\",\n        \"sourceType\": \"outbound\",\n        \"type\": \"attachment\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"attachmentContentType\": \"image/png\",\n        \"attachmentUrl\": \"https://www.podium.com/image.png\",\n        \"body\": \"https://www.podium.com/image.png\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"deliveryStatus\": \"sent\",\n        \"encryptedAt\": \"2015-01-23T23:50:07Z\",\n        \"sendBody\": \"null\",\n        \"sourceType\": \"outbound\",\n        \"type\": \"attachment\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"location\": {\n      \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"sender\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"senderUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"webchatUrl\": \"https://www.example.com/contact\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "101c19ac-e23b-4595-907a-778c997993bb",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"Just a reminder that your appointment is today!\",\n  \"channel\": {\n    \"identifier\": \"email@email.com\",\n    \"type\": \"email\"\n  },\n  \"locationUid\": \"00000000-0000-0000-0000-000000000000\",\n  \"contactName\": \"Joe Orange\",\n  \"senderName\": \"Bot1234\",\n  \"setOpenInbox\": true,\n  \"subject\": \"Appointment reminder\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6578,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "548aae8a-7c02-4bc5-af00-3653c4accdd4",
+          "name": "Send a message with attachment.",
+          "request": {
+            "name": "Send a message with attachment.",
+            "description": {
+              "content": "Send a message with an attachment. A message can only be sent on behalf of a user if they have the necessary permissions to send\nmessages in: conversations assigned to them, conversations assigned to others, and unassigned conversations.\n\nRequired scope: `write_messages`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "messages",
+                "attachment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "data",
+                  "value": "{\"body\":\"<string>\",\"channel\":{\"identifier\":\"<string>\",\"type\":\"<string>\"},\"locationUid\":\"<uuid>\",\"contactName\":\"<string>\",\"senderName\":\"<string>\",\"subject\":\"<string>\"}",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "attachment",
+                  "type": "file",
+                  "description": "The attachment content."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0a8aae02-9316-4a8d-9797-80d33ee1b53d",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "messages",
+                    "attachment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "data",
+                      "value": "{\"body\":\"Just a reminder that your appointment is today!\",\"channel\":{\"identifier\":\"email@email.com\",\"type\":\"email\"},\"locationUid\":\"00000000-0000-0000-0000-000000000000\",\"contactName\":\"Joe Orange\",\"senderName\":\"Bot1234\",\"subject\":\"Appointment reminder\"}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The attachment content.",
+                        "type": "text/plain"
+                      },
+                      "key": "attachment",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"attachmentUrl\": \"https://www.podium.com/\",\n    \"body\": \"Hello there.\",\n    \"contact\": {\n      \"externalIdentifier\": \"123-abc\",\n      \"name\": \"Joe Orange\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"contactName\": \"Joe Orange\",\n    \"conversation\": {\n      \"assignedUserUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"channel\": {\n        \"identifier\": \"email@email.com\",\n        \"type\": \"email\"\n      },\n      \"startedAt\": \"2015-01-23T23:50:07Z\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"failureReason\": \"Attempted to send SMS to a landline.\",\n    \"items\": [\n      {\n        \"attachmentContentType\": \"image/png\",\n        \"attachmentUrl\": \"https://www.podium.com/image.png\",\n        \"body\": \"https://www.podium.com/image.png\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"deliveryStatus\": \"sent\",\n        \"encryptedAt\": \"2015-01-23T23:50:07Z\",\n        \"sendBody\": \"null\",\n        \"sourceType\": \"outbound\",\n        \"type\": \"attachment\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"attachmentContentType\": \"image/png\",\n        \"attachmentUrl\": \"https://www.podium.com/image.png\",\n        \"body\": \"https://www.podium.com/image.png\",\n        \"createdAt\": \"2015-01-23T23:50:07Z\",\n        \"deliveryStatus\": \"sent\",\n        \"encryptedAt\": \"2015-01-23T23:50:07Z\",\n        \"sendBody\": \"null\",\n        \"sourceType\": \"outbound\",\n        \"type\": \"attachment\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"location\": {\n      \"organizationUid\": \"00000000-0000-0000-0000-000000000000\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"sender\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"senderUid\": \"00000000-0000-0000-0000-000000000000\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"webchatUrl\": \"https://www.example.com/contact\"\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99ddd9d4-b1f2-4019-b9f2-6a2d7e0f8d70",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "messages",
+                    "attachment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "data",
+                      "value": "{\"body\":\"Just a reminder that your appointment is today!\",\"channel\":{\"identifier\":\"email@email.com\",\"type\":\"email\"},\"locationUid\":\"00000000-0000-0000-0000-000000000000\",\"contactName\":\"Joe Orange\",\"senderName\":\"Bot1234\",\"subject\":\"Appointment reminder\"}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The attachment content.",
+                        "type": "text/plain"
+                      },
+                      "key": "attachment",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6578,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ad654824-d998-4266-97c7-b9d36aa12e7b",
+      "name": "Template",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1770a35-a4cb-4da1-a9ea-d9f97ebfcf38",
+          "name": "List all templates",
+          "request": {
+            "name": "List all templates",
+            "description": {
+              "content": "List all templates.\n\nRequired scope: `read_templates`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "types",
+                  "value": "<string>",
+                  "description": "Filter by types: \"custom\", \"review_invite\", or \"review_invite_backup\", defaults to \"custom\"\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "types",
+                  "value": "<string>",
+                  "description": "Filter by types: \"custom\", \"review_invite\", or \"review_invite_backup\", defaults to \"custom\"\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "locationUid",
+                  "value": "<uuid>",
+                  "description": "Podium unique identifier for location."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3876763-08bd-4e1e-8575-0284ac59826a",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"accessLevel\": \"location\",\n      \"attachmentUrl\": \"https://www.podium.com/\",\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"deletedAt\": \"2015-01-23T23:50:07Z\",\n      \"isFavorite\": false,\n      \"lastUsedAt\": \"2015-01-23T23:50:07Z\",\n      \"location\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"nonDeletable\": true,\n      \"organization\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"subject\": \"string\",\n      \"templateItems\": [\n        {\n          \"applicationUid\": \"00000000-0000-0000-0000-000000000000\",\n          \"applicationUrl\": \"https://www.podium.com/\",\n          \"attachmentContentType\": \"string\",\n          \"attachmentUrl\": \"https://www.podium.com/\",\n          \"body\": \"string\",\n          \"data\": \"string\",\n          \"iconUrl\": \"https://www.podium.com/\",\n          \"keys\": [\n            {\n              \"name\": \"string\",\n              \"required\": true\n            },\n            {\n              \"name\": \"string\",\n              \"required\": false\n            }\n          ],\n          \"subtitle\": \"string\",\n          \"title\": \"string\",\n          \"type\": \"string\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        {\n          \"applicationUid\": \"00000000-0000-0000-0000-000000000000\",\n          \"applicationUrl\": \"https://www.podium.com/\",\n          \"attachmentContentType\": \"string\",\n          \"attachmentUrl\": \"https://www.podium.com/\",\n          \"body\": \"string\",\n          \"data\": \"string\",\n          \"iconUrl\": \"https://www.podium.com/\",\n          \"keys\": [\n            {\n              \"name\": \"string\",\n              \"required\": false\n            },\n            {\n              \"name\": \"string\",\n              \"required\": false\n            }\n          ],\n          \"subtitle\": \"string\",\n          \"title\": \"string\",\n          \"type\": \"string\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        }\n      ],\n      \"text\": \"string\",\n      \"title\": \"string\",\n      \"type\": \"custom\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\",\n      \"user\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"accessLevel\": \"location\",\n      \"attachmentUrl\": \"https://www.podium.com/\",\n      \"createdAt\": \"2015-01-23T23:50:07Z\",\n      \"deletedAt\": \"2015-01-23T23:50:07Z\",\n      \"isFavorite\": true,\n      \"lastUsedAt\": \"2015-01-23T23:50:07Z\",\n      \"location\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"nonDeletable\": true,\n      \"organization\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"subject\": \"string\",\n      \"templateItems\": [\n        {\n          \"applicationUid\": \"00000000-0000-0000-0000-000000000000\",\n          \"applicationUrl\": \"https://www.podium.com/\",\n          \"attachmentContentType\": \"string\",\n          \"attachmentUrl\": \"https://www.podium.com/\",\n          \"body\": \"string\",\n          \"data\": \"string\",\n          \"iconUrl\": \"https://www.podium.com/\",\n          \"keys\": [\n            {\n              \"name\": \"string\",\n              \"required\": true\n            },\n            {\n              \"name\": \"string\",\n              \"required\": false\n            }\n          ],\n          \"subtitle\": \"string\",\n          \"title\": \"string\",\n          \"type\": \"string\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        },\n        {\n          \"applicationUid\": \"00000000-0000-0000-0000-000000000000\",\n          \"applicationUrl\": \"https://www.podium.com/\",\n          \"attachmentContentType\": \"string\",\n          \"attachmentUrl\": \"https://www.podium.com/\",\n          \"body\": \"string\",\n          \"data\": \"string\",\n          \"iconUrl\": \"https://www.podium.com/\",\n          \"keys\": [\n            {\n              \"name\": \"string\",\n              \"required\": false\n            },\n            {\n              \"name\": \"string\",\n              \"required\": true\n            }\n          ],\n          \"subtitle\": \"string\",\n          \"title\": \"string\",\n          \"type\": \"string\",\n          \"uid\": \"00000000-0000-0000-0000-000000000000\"\n        }\n      ],\n      \"text\": \"string\",\n      \"title\": \"string\",\n      \"type\": \"custom\",\n      \"uid\": \"00000000-0000-0000-0000-000000000000\",\n      \"updatedAt\": \"2015-01-23T23:50:07Z\",\n      \"user\": {\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      \"variables\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30852d2e-1390-491a-9003-f1575b05ccd9",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "locationUid",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6578,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee6ba865-d8c4-48ce-a222-4354bfea202a",
+          "name": "Create a message template.",
+          "request": {
+            "name": "Create a message template.",
+            "description": {
+              "content": "Create a message template.\n\nRequired scope: `write_templates`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\",\n  \"accessLevel\": \"<string>\",\n  \"attachmentUrl\": \"<string>\",\n  \"locationUids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"nonDeletable\": false,\n  \"subject\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "994c2425-63ba-49ec-b752-ba810905ec27",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\",\n  \"accessLevel\": \"location\",\n  \"attachmentUrl\": \"https://www.podium.com/\",\n  \"locationUids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"nonDeletable\": false,\n  \"subject\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"accessLevel\": \"location\",\n    \"attachmentUrl\": \"https://www.podium.com/\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"deletedAt\": \"2015-01-23T23:50:07Z\",\n    \"isFavorite\": false,\n    \"lastUsedAt\": \"2015-01-23T23:50:07Z\",\n    \"location\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"nonDeletable\": false,\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"subject\": \"string\",\n    \"templateItems\": [\n      {\n        \"applicationUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"applicationUrl\": \"https://www.podium.com/\",\n        \"attachmentContentType\": \"string\",\n        \"attachmentUrl\": \"https://www.podium.com/\",\n        \"body\": \"string\",\n        \"data\": \"string\",\n        \"iconUrl\": \"https://www.podium.com/\",\n        \"keys\": [\n          {\n            \"name\": \"string\",\n            \"required\": true\n          },\n          {\n            \"name\": \"string\",\n            \"required\": false\n          }\n        ],\n        \"subtitle\": \"string\",\n        \"title\": \"string\",\n        \"type\": \"string\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"applicationUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"applicationUrl\": \"https://www.podium.com/\",\n        \"attachmentContentType\": \"string\",\n        \"attachmentUrl\": \"https://www.podium.com/\",\n        \"body\": \"string\",\n        \"data\": \"string\",\n        \"iconUrl\": \"https://www.podium.com/\",\n        \"keys\": [\n          {\n            \"name\": \"string\",\n            \"required\": true\n          },\n          {\n            \"name\": \"string\",\n            \"required\": false\n          }\n        ],\n        \"subtitle\": \"string\",\n        \"title\": \"string\",\n        \"type\": \"string\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"text\": \"string\",\n    \"title\": \"string\",\n    \"type\": \"custom\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\",\n    \"user\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"variables\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e0b10d4-8178-48a2-871e-ecb72b35dabe",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\",\n  \"accessLevel\": \"location\",\n  \"attachmentUrl\": \"https://www.podium.com/\",\n  \"locationUids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"nonDeletable\": false,\n  \"subject\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6578,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45008d51-674f-47f1-9a32-0b5aa10cbbda",
+          "name": "Delete a template",
+          "request": {
+            "name": "Delete a template",
+            "description": {
+              "content": "Deletes a template by the given uid. \n\nRequired scope: `write_templates`",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "templates",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Podium unique identifier for templates."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62f3c824-a4df-49ec-87db-fd0ab1ad1b37",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "templates",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for templates."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"accessLevel\": \"location\",\n    \"attachmentUrl\": \"https://www.podium.com/\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"deletedAt\": \"2015-01-23T23:50:07Z\",\n    \"isFavorite\": false,\n    \"lastUsedAt\": \"2015-01-23T23:50:07Z\",\n    \"location\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"nonDeletable\": false,\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"subject\": \"string\",\n    \"templateItems\": [\n      {\n        \"applicationUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"applicationUrl\": \"https://www.podium.com/\",\n        \"attachmentContentType\": \"string\",\n        \"attachmentUrl\": \"https://www.podium.com/\",\n        \"body\": \"string\",\n        \"data\": \"string\",\n        \"iconUrl\": \"https://www.podium.com/\",\n        \"keys\": [\n          {\n            \"name\": \"string\",\n            \"required\": true\n          },\n          {\n            \"name\": \"string\",\n            \"required\": false\n          }\n        ],\n        \"subtitle\": \"string\",\n        \"title\": \"string\",\n        \"type\": \"string\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"applicationUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"applicationUrl\": \"https://www.podium.com/\",\n        \"attachmentContentType\": \"string\",\n        \"attachmentUrl\": \"https://www.podium.com/\",\n        \"body\": \"string\",\n        \"data\": \"string\",\n        \"iconUrl\": \"https://www.podium.com/\",\n        \"keys\": [\n          {\n            \"name\": \"string\",\n            \"required\": true\n          },\n          {\n            \"name\": \"string\",\n            \"required\": false\n          }\n        ],\n        \"subtitle\": \"string\",\n        \"title\": \"string\",\n        \"type\": \"string\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"text\": \"string\",\n    \"title\": \"string\",\n    \"type\": \"custom\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\",\n    \"user\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"variables\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddee6abf-5ae4-4c73-b8aa-bdf209e636f7",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "templates",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Podium unique identifier for templates."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6578,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d279278a-e341-4724-843c-94b4488d2c4d",
+          "name": "Update a message template.",
+          "request": {
+            "name": "Update a message template.",
+            "description": {
+              "content": "update a message template.\n\nRequired scope: `write_templates`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "templates",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uid",
+                  "description": "(Required) Template uid"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\",\n  \"accessLevel\": \"<string>\",\n  \"attachmentUrl\": \"<string>\",\n  \"locationUids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"nonDeletable\": false,\n  \"subject\": \"<string>\",\n  \"uid\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5f584be4-1a42-4328-9e2d-6ed624e64797",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "templates",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Template uid"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\",\n  \"accessLevel\": \"location\",\n  \"attachmentUrl\": \"https://www.podium.com/\",\n  \"locationUids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"nonDeletable\": false,\n  \"subject\": \"<string>\",\n  \"uid\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"accessLevel\": \"location\",\n    \"attachmentUrl\": \"https://www.podium.com/\",\n    \"createdAt\": \"2015-01-23T23:50:07Z\",\n    \"deletedAt\": \"2015-01-23T23:50:07Z\",\n    \"isFavorite\": false,\n    \"lastUsedAt\": \"2015-01-23T23:50:07Z\",\n    \"location\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"nonDeletable\": false,\n    \"organization\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"subject\": \"string\",\n    \"templateItems\": [\n      {\n        \"applicationUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"applicationUrl\": \"https://www.podium.com/\",\n        \"attachmentContentType\": \"string\",\n        \"attachmentUrl\": \"https://www.podium.com/\",\n        \"body\": \"string\",\n        \"data\": \"string\",\n        \"iconUrl\": \"https://www.podium.com/\",\n        \"keys\": [\n          {\n            \"name\": \"string\",\n            \"required\": true\n          },\n          {\n            \"name\": \"string\",\n            \"required\": false\n          }\n        ],\n        \"subtitle\": \"string\",\n        \"title\": \"string\",\n        \"type\": \"string\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      },\n      {\n        \"applicationUid\": \"00000000-0000-0000-0000-000000000000\",\n        \"applicationUrl\": \"https://www.podium.com/\",\n        \"attachmentContentType\": \"string\",\n        \"attachmentUrl\": \"https://www.podium.com/\",\n        \"body\": \"string\",\n        \"data\": \"string\",\n        \"iconUrl\": \"https://www.podium.com/\",\n        \"keys\": [\n          {\n            \"name\": \"string\",\n            \"required\": true\n          },\n          {\n            \"name\": \"string\",\n            \"required\": false\n          }\n        ],\n        \"subtitle\": \"string\",\n        \"title\": \"string\",\n        \"type\": \"string\",\n        \"uid\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    ],\n    \"text\": \"string\",\n    \"title\": \"string\",\n    \"type\": \"custom\",\n    \"uid\": \"00000000-0000-0000-0000-000000000000\",\n    \"updatedAt\": \"2015-01-23T23:50:07Z\",\n    \"user\": {\n      \"uid\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"variables\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"metadata\": {\n    \"url\": \"https://www.podium.com/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c3cd163-dec1-4b31-a86a-4b27079cec1b",
+              "name": "Error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "templates",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uid",
+                      "description": "(Required) Template uid"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\",\n  \"accessLevel\": \"location\",\n  \"attachmentUrl\": \"https://www.podium.com/\",\n  \"locationUids\": [\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-000000000000\"\n  ],\n  \"nonDeletable\": false,\n  \"subject\": \"<string>\",\n  \"uid\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6578,\n  \"message\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.podium.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7302d133-cc5a-46a4-bcdd-db7652f24c21",
+    "name": "Messenger",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

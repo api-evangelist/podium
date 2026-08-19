@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Products",
+    "version": "2021.04.01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all products.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/products",
+            "params": [
+              {
+                "name": "locationUid",
+                "value": "",
+                "type": "query",
+                "description": "Podium unique identifier for location."
+              },
+              {
+                "name": "xid",
+                "value": "",
+                "type": "query",
+                "description": "External id of the product."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of items to return per request. Defaults to `10`."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Retrieves the page of items that comes after the `cursor`."
+              }
+            ]
+          },
+          "docs": "List of all the products that the caller has access to.Required scope: `read_products`."
+        },
+        {
+          "info": {
+            "name": "Get a product.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/products/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for product."
+              }
+            ]
+          },
+          "docs": "Get a product.Required scope: `read_products`."
+        },
+        {
+          "info": {
+            "name": "Deletes images from a product.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.podium.com/v4/products/:uid/delete_images",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for product."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete images from a product.Required scope: `write_products`."
+        },
+        {
+          "info": {
+            "name": "Upload images to a product.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.podium.com/v4/products/:uid/upload_images",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for product."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint allow developers to upload images to a productRequired scope: `write_products`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

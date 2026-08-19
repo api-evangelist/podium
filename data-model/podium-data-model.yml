@@ -1,0 +1,730 @@
+generated: '2026-08-14'
+method: derived
+source: openapi/ (12 definitions, 86 operations)
+note: 'Entity graph derived from the components.schemas of the 12 harvested OpenAPI definitions: $ref links become
+  has_one/has_many, and *Uid / *Uids fields become belongs_to/has_many id-references. Podium''s specs are split
+  per product area and do NOT share components, so cross-domain links (a message belonging to a conversation, a
+  conversation to a location) are expressed only as id-reference fields, never as $ref — that is a property of the
+  published contract, not of this derivation.'
+id_style:
+  format: uuid
+  field: uid
+  alternate: contacts also address by `identifier` (a phone/email based key)
+domains:
+- domain: Accounts
+  spec: openapi/podium-accounts-openapi.yml
+  operations:
+  - location.get
+  - location.index
+  - location.update
+  - organization.get
+  - user.get
+  - user.index
+- domain: Appointments
+  spec: openapi/podium-appointments-openapi.yml
+  operations:
+  - appointment.create
+- domain: Campaigns
+  spec: openapi/podium-campaigns-openapi.yml
+  operations:
+  - campaign.create
+  - campaign.delete
+  - campaign.get
+  - campaign.index
+  - campaign.update
+  - campaign_interaction.index
+  - message.create_campaign_message
+- domain: Contacts
+  spec: openapi/podium-contacts-openapi.yml
+  operations:
+  - contact.create
+  - contact.delete
+  - contact.get
+  - contact.index
+  - contact.opt_in
+  - contact.opt_out
+  - contact.update
+  - contact_attribute.create
+  - contact_attribute.delete
+  - contact_attribute.update
+  - contact_entity_attribute.create
+  - contact_entity_attribute.delete
+  - contact_entity_attribute.get
+  - contact_entity_attribute.index
+  - contact_entity_attribute.update
+  - contact_entity_tag.create
+  - contact_entity_tag.get
+  - contact_entity_tag.list
+  - contact_entity_tag.update
+  - contact_tag.create
+  - contact_tag.create (2)
+- domain: Conversations
+  spec: openapi/podium-conversations-openapi.yml
+  operations:
+  - conversation.get
+  - conversation.index
+  - conversation.update
+  - conversation_assignee.get
+  - conversation_assignee.update
+  - conversation_note.create_conversation_note
+  - lead_writeback.get
+- domain: Feedback (Surveys)
+  spec: openapi/podium-feedback-surveys-openapi.yml
+  operations:
+  - feedback.index
+  - feedback_creation.create
+- domain: Messenger
+  spec: openapi/podium-messenger-openapi.yml
+  operations:
+  - Template.create
+  - Template.delete
+  - Template.index
+  - Template.update
+  - message.get
+  - message.import
+  - message.index
+  - message.send
+  - message.send_with_attachment
+- domain: Payments
+  spec: openapi/podium-payments-openapi.yml
+  operations:
+  - Refund.create
+  - Refund.get
+  - invoice.cancel
+  - invoice.charge
+  - invoice.create
+  - invoice.get
+  - invoice.index
+  - invoice.refund
+  - invoice.setup
+  - payment.get
+  - reader.get
+- domain: Phones
+  spec: openapi/podium-phones-openapi.yml
+  operations:
+  - call.get
+- domain: Products
+  spec: openapi/podium-products-openapi.yml
+  operations:
+  - Product.get
+  - Product.index
+  - Product.upload_images
+  - product_image.delete
+- domain: Reviews
+  spec: openapi/podium-reviews-openapi.yml
+  operations:
+  - review.get
+  - review.index
+  - review_attribution.create
+  - review_attribution.delete
+  - review_invite.create
+  - review_invite.get
+  - review_invite.index
+  - review_response.create
+  - review_response.index
+  - review_response.update
+  - review_sites_summary.index
+  - review_summary.index
+- domain: Webhooks
+  spec: openapi/podium-webhooks-openapi.yml
+  operations:
+  - webhook.create
+  - webhook.delete
+  - webhook.get
+  - webhook.index
+  - webhook.update
+entity_count: 36
+entities:
+- schema: Error
+  source: openapi/podium-accounts-openapi.yml
+  title: Error
+  description: ''
+  fields:
+  - code
+  - message
+  - moreInfo
+- schema: Product
+  source: openapi/podium-products-openapi.yml
+  title: Product
+  description: ''
+  fields:
+  - archivedAt
+  - description
+  - images
+  - insertedAt
+  - name
+  - price
+  - uid
+  - updatedAt
+  - xid
+- schema: Refund
+  source: openapi/podium-payments-openapi.yml
+  title: Refund
+  description: Payment refund.
+  fields:
+  - amount
+  - cardBrand
+  - cardLast4
+  - createdAt
+  - location
+  - notes
+  - reason
+  - settledAt
+  - status
+  - uid
+- schema: Template
+  source: openapi/podium-messenger-openapi.yml
+  title: Template
+  description: Templates save you time and promote consistency in communication with your customers. Instead of
+    typing out a new message each time you try to schedule an appointment or answer a question about billin
+  fields:
+  - accessLevel
+  - attachmentUrl
+  - createdAt
+  - deletedAt
+  - isFavorite
+  - lastUsedAt
+  - location
+  - nonDeletable
+  - organization
+  - subject
+  - templateItems
+  - text
+  - title
+  - type
+  - uid
+  - updatedAt
+  - user
+  - variables
+- schema: appointment
+  source: openapi/podium-appointments-openapi.yml
+  title: appointment
+  description: ''
+  fields:
+  - assignedUser
+  - contactName
+  - contactPhoneNumber
+  - createdAt
+  - datetime
+  - durationMin
+  - location
+  - note
+  - status
+  - type
+  - uid
+  - updatedAt
+- schema: call
+  source: openapi/podium-phones-openapi.yml
+  title: call
+  description: A phone call.
+  fields:
+  - conversationUid
+  - customerPhoneNumber
+  - direction
+  - durationSeconds
+  - endedAt
+  - hasVoicemail
+  - isPrivate
+  - locationPhoneNumber
+  - locationUid
+  - organizationUid
+  - startedAt
+  - status
+  - uid
+  - userUid
+- schema: campaign
+  source: openapi/podium-campaigns-openapi.yml
+  title: campaign
+  description: A campaign.
+  fields:
+  - createdAt
+  - endedAt
+  - locations
+  - message
+  - name
+  - organization
+  - startedAt
+  - status
+  - uid
+  - updatedAt
+- schema: campaign_interaction
+  source: openapi/podium-campaigns-openapi.yml
+  title: campaign_interaction
+  description: A campaign interaction event, which is a record of how a user and a campaign interacted (i.e. a user
+    received a campaign message, or a user responded to a campaign message).
+  fields:
+  - campaign
+  - contact
+  - conversation
+  - createdAt
+  - interactionType
+  - location
+  - uid
+  - updatedAt
+- schema: contact
+  source: openapi/podium-contacts-openapi.yml
+  title: contact
+  description: A contact.
+  fields:
+  - address
+  - attributes
+  - channels
+  - conversations
+  - createdAt
+  - emails
+  - locations
+  - name
+  - organization
+  - phoneNumbers
+  - tags
+  - uid
+  - updatedAt
+- schema: contact_attribute
+  source: openapi/podium-contacts-openapi.yml
+  title: contact_attribute
+  description: Contact identifier
+  fields:
+  - identifier
+- schema: contact_entity_attribute
+  source: openapi/podium-contacts-openapi.yml
+  title: contact_entity_attribute
+  description: A contact attribute.
+  fields:
+  - createdAt
+  - dataType
+  - isEncrypted
+  - label
+  - ownerResource
+  - uid
+  - updatedAt
+- schema: contact_entity_tag
+  source: openapi/podium-contacts-openapi.yml
+  title: contact_entity_tag
+  description: A contact tag.
+  fields:
+  - createdAt
+  - description
+  - label
+  - organization
+  - uid
+  - updatedAt
+- schema: contact_tag
+  source: openapi/podium-contacts-openapi.yml
+  title: contact_tag
+  description: Contact identifier
+  fields:
+  - identifier
+- schema: contact_upsert
+  source: openapi/podium-contacts-openapi.yml
+  title: contact_upsert
+  description: Contact identifier
+  fields:
+  - identifier
+- schema: conversation
+  source: openapi/podium-conversations-openapi.yml
+  title: conversation
+  description: Messenger conversation.
+  fields:
+  - assignedUserUid
+  - assigneeUids
+  - channel
+  - closed
+  - contactName
+  - createdAt
+  - lastItemAt
+  - locationUid
+  - uid
+  - updatedAt
+- schema: conversation_assignee
+  source: openapi/podium-conversations-openapi.yml
+  title: conversation_assignee
+  description: Messenger conversation assignees.
+  fields:
+  - assignedUserUid
+  - assigneeType
+  - assigneeUid
+  - assignees
+- schema: conversation_note
+  source: openapi/podium-conversations-openapi.yml
+  title: conversation_note
+  description: Conversation note.
+  fields:
+  - body
+  - conversation
+  - createdAt
+  - location
+  - organization
+  - senderName
+  - uid
+  - updatedAt
+- schema: feedback
+  source: openapi/podium-feedback-surveys-openapi.yml
+  title: feedback
+  description: Feedback, now known as Surveys in the app, are internal surveys a business can collect from their
+    end clients. Typically, these are measured as NPS or CSAT.
+  fields:
+  - adjustedScore
+  - archived
+  - attributions
+  - channel
+  - createdAt
+  - currentStep
+  - customerName
+  - firstResponseReceivedAt
+  - flowUid
+  - location
+  - messages
+  - score
+  - uid
+  - updatedAt
+- schema: feedback_creation
+  source: openapi/podium-feedback-surveys-openapi.yml
+  title: feedback_creation
+  description: Feedback, now known as Surveys in the app, are internal surveys a business can collect from their
+    end clients. Typically, these are measured as NPS or CSAT.
+  fields:
+  - uid
+- schema: invoice
+  source: openapi/podium-payments-openapi.yml
+  title: invoice
+  description: Payment invoice.
+  fields:
+  - allowedPaymentMethods
+  - amount
+  - canceledAt
+  - canceledNote
+  - channel
+  - conversationUid
+  - createdAt
+  - currencyRef
+  - customerName
+  - invoiceNumber
+  - invoiceServiceChargeItems
+  - lineItems
+  - location
+  - paidAt
+  - paymentNet
+  - payments
+  - readerUid
+  - requester
+  - status
+  - surchargeAmount
+  - surchargeRate
+  - tipAmount
+  - uid
+- schema: lead_writeback
+  source: openapi/podium-conversations-openapi.yml
+  title: lead_writeback
+  description: 'A lead that has been writtenback to a connected CRM. The lead is passed to the CRM and no other
+    action is possible
+
+    from the Podium so is no `uid` or other identifers assigned to the lead.'
+  fields:
+  - conversation
+- schema: location
+  source: openapi/podium-accounts-openapi.yml
+  title: location
+  description: ''
+  fields:
+  - address
+  - addressDetails
+  - archived
+  - archivedAt
+  - createdAt
+  - displayName
+  - name
+  - organizationUid
+  - phoneNumber
+  - podiumPhoneNumber
+  - uid
+  - updatedAt
+- schema: message
+  source: openapi/podium-campaigns-openapi.yml
+  title: message
+  description: 'A message from a Podium conversation. Messages include each exchange within a conversation and include
+
+    conversations for all channels within Podium (Facebook Messenger, SMS text, GMB, etc).
+
+
+    ## Deprec'
+  fields:
+  - attachmentUrl
+  - body
+  - contact
+  - contactName
+  - conversation
+  - createdAt
+  - failureReason
+  - items
+  - location
+  - sender
+  - senderUid
+  - uid
+  - webchatUrl
+- schema: organization
+  source: openapi/podium-accounts-openapi.yml
+  title: organization
+  description: ''
+  fields:
+  - archived
+  - businessName
+  - createdAt
+  - uid
+  - updatedAt
+- schema: payment
+  source: openapi/podium-payments-openapi.yml
+  title: payment
+  description: ''
+  fields:
+  - bankAccountLast4
+  - bankAccountName
+  - cardBrand
+  - cardFunding
+  - cardLast4
+  - createdAt
+  - declineCode
+  - declineCodeMessage
+  - fee
+  - feeBillingType
+  - feeCollectedAt
+  - interchangeFee
+  - paidWithCardOnFile
+  - refunds
+  - settledAt
+  - status
+  - uid
+  - updatedAt
+- schema: product_async
+  source: openapi/podium-products-openapi.yml
+  title: product_async
+  description: Product identifier
+  fields:
+  - identifier
+- schema: product_image
+  source: openapi/podium-products-openapi.yml
+  title: product_image
+  description: ''
+  fields:
+  - isPrimary
+  - productUid
+  - uid
+  - url
+- schema: reader
+  source: openapi/podium-payments-openapi.yml
+  title: reader
+  description: ''
+  fields:
+  - createdAt
+  - label
+  - locationUid
+  - status
+  - uid
+  - updatedAt
+- schema: review
+  source: openapi/podium-reviews-openapi.yml
+  title: review
+  description: ''
+  fields:
+  - attributions
+  - author
+  - createdAt
+  - isRecommendation
+  - locations
+  - needsResponse
+  - responses
+  - review
+  - uid
+  - updatedAt
+- schema: review_attribution
+  source: openapi/podium-reviews-openapi.yml
+  title: review_attribution
+  description: A review attribution.
+  fields:
+  - createdAt
+  - editedByUser
+  - isDeleted
+  - reviewInvite
+  - siteReviewId
+  - uid
+  - updatedAt
+  - user
+- schema: review_invite
+  source: openapi/podium-reviews-openapi.yml
+  title: review_invite
+  description: A review invite.
+  fields:
+  - attributions
+  - channel
+  - conversationItemUid
+  - createdAt
+  - customerName
+  - deliveryStatus
+  - languages
+  - linkClicked
+  - linkClickedAt
+  - location
+  - sender
+  - shortUrl
+  - test
+  - uid
+  - updatedAt
+  - url
+- schema: review_response
+  source: openapi/podium-reviews-openapi.yml
+  title: review_response
+  description: A response to a review
+  fields:
+  - body
+  - isDeleted
+  - likeCount
+  - publishDate
+  - siteAuthorName
+  - source
+  - uid
+- schema: review_sites_summary
+  source: openapi/podium-reviews-openapi.yml
+  title: review_sites_summary
+  description: ''
+  fields:
+  - averageRating
+  - reviewCount
+  - siteName
+- schema: review_summary
+  source: openapi/podium-reviews-openapi.yml
+  title: review_summary
+  description: ''
+  fields:
+  - averageRating
+  - locationUid
+  - reviewCount
+- schema: user
+  source: openapi/podium-accounts-openapi.yml
+  title: user
+  description: ''
+  fields:
+  - archived
+  - createdAt
+  - email
+  - firstName
+  - lastName
+  - locations
+  - phone
+  - role
+  - uid
+  - updatedAt
+- schema: webhook
+  source: openapi/podium-webhooks-openapi.yml
+  title: webhook
+  description: A webhook.
+  fields:
+  - createdAt
+  - disabled
+  - eventTypes
+  - locationUid
+  - organizationUid
+  - secret
+  - uid
+  - updatedAt
+  - url
+relationship_count: 20
+relationships:
+- from: call
+  to: conversation
+  type: belongs_to
+  via: conversationUid
+  kind: id-reference
+- from: call
+  to: location
+  type: belongs_to
+  via: locationUid
+  kind: id-reference
+- from: call
+  to: organization
+  type: belongs_to
+  via: organizationUid
+  kind: id-reference
+- from: call
+  to: user
+  type: belongs_to
+  via: userUid
+  kind: id-reference
+- from: conversation
+  to: assignedUser
+  type: belongs_to
+  via: assignedUserUid
+  kind: id-reference
+- from: conversation
+  to: assignee
+  type: has_many
+  via: assigneeUids
+  kind: id-reference
+- from: conversation
+  to: location
+  type: belongs_to
+  via: locationUid
+  kind: id-reference
+- from: conversation_assignee
+  to: assignedUser
+  type: belongs_to
+  via: assignedUserUid
+  kind: id-reference
+- from: conversation_assignee
+  to: assignee
+  type: belongs_to
+  via: assigneeUid
+  kind: id-reference
+- from: feedback
+  to: flow
+  type: belongs_to
+  via: flowUid
+  kind: id-reference
+- from: invoice
+  to: conversation
+  type: belongs_to
+  via: conversationUid
+  kind: id-reference
+- from: invoice
+  to: reader
+  type: belongs_to
+  via: readerUid
+  kind: id-reference
+- from: location
+  to: organization
+  type: belongs_to
+  via: organizationUid
+  kind: id-reference
+- from: message
+  to: sender
+  type: belongs_to
+  via: senderUid
+  kind: id-reference
+- from: product_image
+  to: product
+  type: belongs_to
+  via: productUid
+  kind: id-reference
+- from: reader
+  to: location
+  type: belongs_to
+  via: locationUid
+  kind: id-reference
+- from: review_invite
+  to: conversationItem
+  type: belongs_to
+  via: conversationItemUid
+  kind: id-reference
+- from: review_summary
+  to: location
+  type: belongs_to
+  via: locationUid
+  kind: id-reference
+- from: webhook
+  to: location
+  type: belongs_to
+  via: locationUid
+  kind: id-reference
+- from: webhook
+  to: organization
+  type: belongs_to
+  via: organizationUid
+  kind: id-reference

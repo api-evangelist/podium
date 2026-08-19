@@ -1,0 +1,436 @@
+components:
+  responses: {}
+  schemas:
+    Error:
+      properties:
+        code:
+          description: Podium code for the error.
+          type: integer
+        message:
+          description: Specific details about the error.
+          nullable: true
+          type: string
+        moreInfo:
+          description: URL providing more information about the error.
+          type: string
+      title: Error
+      type: object
+    Product:
+      properties:
+        archivedAt:
+          description: When the product was archived.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        description:
+          description: Description of the product.
+          nullable: true
+          type: string
+        images:
+          description: List of images for this product.
+          items:
+            properties:
+              isPrimary:
+                description: Whether the image is the primary image or not
+                example: true
+                nullable: true
+                type: boolean
+              productUid:
+                description: Podium unique identifier for product.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type: string
+              uid:
+                description: Podium unique identifier for product image.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type: string
+              url:
+                description: URL where the image is stored in Podium
+                nullable: true
+                type: string
+            title: product_image
+            type: object
+          type: array
+        insertedAt:
+          description: When the product was inserted/created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        name:
+          description: Name of the product.
+          nullable: true
+          type: string
+        price:
+          description: Price of the product.
+          nullable: true
+          type: string
+        uid:
+          description: Podium unique identifier for product.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the product was updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          nullable: true
+          type: string
+        xid:
+          description: External id of the product.
+          nullable: true
+          type: string
+      title: Product
+      type: object
+    product_async:
+      description: Product identifier
+      properties:
+        identifier:
+          description: Identifier of the product that can be used for retrieval
+          type: string
+      title: product_async
+      type: object
+    product_image:
+      properties:
+        isPrimary:
+          description: Whether the image is the primary image or not
+          example: true
+          nullable: true
+          type: boolean
+        productUid:
+          description: Podium unique identifier for product.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        uid:
+          description: Podium unique identifier for product image.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        url:
+          description: URL where the image is stored in Podium
+          nullable: true
+          type: string
+      title: product_image
+      type: object
+info:
+  title: Products
+  version: 2021.04.01
+openapi: 3.0.0
+paths:
+  /v4/products:
+    get:
+      callbacks: {}
+      description: 'List of all the products that the caller has access to.Required scope: `read_products`.'
+      operationId: Product.index
+      parameters:
+      - description: Podium unique identifier for location.
+        in: query
+        name: locationUid
+        required: false
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      - description: External id of the product.
+        in: query
+        name: xid
+        required: false
+        schema:
+          type: string
+      - description: Max number of items to return per request. Defaults to `10`.
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: integer
+      - description: Retrieves the page of items that comes after the `cursor`.
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: Cursor used to access next or previous page in pagination.
+          example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/Product'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      nextCursor:
+                        description: Cursor to get next set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      previousCursor:
+                        description: Cursor to get previous set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      totalItems:
+                        description: Total number of items available.
+                        type: integer
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List all products.
+      tags:
+      - Product
+  /v4/products/{uid}:
+    get:
+      callbacks: {}
+      description: 'Get a product.Required scope: `read_products`.'
+      operationId: Product.get
+      parameters:
+      - description: Podium unique identifier for product.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Product'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a product.
+      tags:
+      - Product
+  /v4/products/{uid}/delete_images:
+    delete:
+      callbacks: {}
+      description: 'Delete images from a product.Required scope: `write_products`.'
+      operationId: product_image.delete
+      parameters:
+      - description: Podium unique identifier for product.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                locationUid:
+                  description: Podium unique identifier for location.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                uids:
+                  description: List of image uids to delete
+                  items:
+                    description: Podium unique identifier for product image.
+                    example: 00000000-0000-0000-0000-000000000000
+                    format: uuid
+                    type: string
+                  type: array
+              required:
+              - uids
+              - locationUid
+              type: object
+        description: Delete product images params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/product_image'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Deletes images from a product.
+      tags:
+      - Product
+  /v4/products/{uid}/upload_images:
+    post:
+      callbacks: {}
+      description: 'This endpoint allow developers to upload images to a productRequired scope: `write_products`.'
+      operationId: Product.upload_images
+      parameters:
+      - description: Podium unique identifier for product.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                images:
+                  description: List of images
+                  items:
+                    description: A product image
+                    properties:
+                      data:
+                        description: The base64 binary or the URL of the image
+                        nullable: false
+                        type: string
+                      isPrimary:
+                        description: Whether the image should be set as the primary image or not
+                        example: true
+                        nullable: true
+                        type: boolean
+                    type: object
+                  type: array
+                locationUid:
+                  description: Podium unique identifier for location.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+              required:
+              - images
+              - locationUid
+              type: object
+        description: Upload images params
+        required: true
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/product_async'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    nullable: true
+                    type: string
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Upload images to a product.
+      tags:
+      - Product
+security: []
+servers:
+- url: https://api.podium.com
+  variables: {}
+tags: []

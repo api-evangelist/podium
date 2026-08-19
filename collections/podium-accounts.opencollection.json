@@ -1,0 +1,206 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts",
+    "version": "2021.04.01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Location",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all locations.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/locations",
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "String you would like to search for in the `searchFields` parameter."
+              },
+              {
+                "name": "searchFields",
+                "value": "",
+                "type": "query",
+                "description": "A list of the fields where you want to search for the `search` parameters. e.g. ?searchFields[]=name&searchFields[]=displayname"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of items to return per request. Defaults to `10`."
+              },
+              {
+                "name": "updatedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Only return locations that have been updated after the given date."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Retrieves the page of items that comes after the `cursor`."
+              }
+            ]
+          },
+          "docs": "List of all the locations that the caller has access to.\n\nIf the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.\n\nRequired scope: `read_locations`."
+        },
+        {
+          "info": {
+            "name": "Get a location.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/locations/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for location."
+              }
+            ]
+          },
+          "docs": "Gets a single location by its uid.\n\nRequired scope: `read_locations`."
+        },
+        {
+          "info": {
+            "name": "Update a location.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.podium.com/v4/locations/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for location."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a single location by its uid. \n\nRequired scope: `write_locations`.\n\nBe aware: The `addressDetails` property follows the ISO convention. You might see errors\n\nif trying to update a location's address with an invalid address.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Organization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/organizations/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for organization."
+              }
+            ]
+          },
+          "docs": "Gets a single organization by its uid.\n\nRequired scope: `read_organizations`."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all users.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/users",
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "String you would like to search for in the `searchFields` parameter."
+              },
+              {
+                "name": "createdAt",
+                "value": "",
+                "type": "query",
+                "description": "Filter on the `createdAt` date."
+              },
+              {
+                "name": "searchFields",
+                "value": "",
+                "type": "query",
+                "description": "A list of the fields where you want to search for the `search` parameters. e.g. ?searchFields[]=name&searchFields[]=displayname"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of items to return per request. Defaults to `10`."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Retrieves the page of items that comes after the `cursor`."
+              },
+              {
+                "name": "includeAgents",
+                "value": "",
+                "type": "query",
+                "description": "Include users with ai_agent role. Defaults to true if not specified."
+              }
+            ]
+          },
+          "docs": "List of all the users that belong to any of the locations that the caller has access to.\n\nIf the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.\n\nRequired scope: `read_users`.\n"
+        },
+        {
+          "info": {
+            "name": "Get a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.podium.com/v4/users/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "Podium unique identifier for user."
+              }
+            ]
+          },
+          "docs": "Gets a user.\n\nRequired scope: `read_users`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

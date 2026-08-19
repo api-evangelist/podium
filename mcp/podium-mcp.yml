@@ -1,0 +1,621 @@
+generated: '2026-08-14'
+method: derived
+status: candidate
+source: openapi/ (12 definitions, 86 operations)
+note: Podium publishes NO MCP server. This is a CANDIDATE tool list derived one-to-one from the operationIds in
+  the harvested OpenAPI definitions, so an agent builder has a starting manifest — it is not a Podium product and
+  no MCPServer pointer is wired into apis.yml for it. Searches of Podium's docs, developer portal, GitHub organization
+  and the public MCP registries found no first-party server; the unrelated `podium-mcp` project on GitHub (hoainho/podium-mcp,
+  a mobile/canvas UI automation server) is a different Podium and must not be attributed here.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: oauth
+  verified: searched
+  note: No hosted endpoint and no stdio package exists. Auth is recorded as oauth because any server built against
+    this API would carry Podium's OAuth 2.0 authorization code flow (https://api.podium.com/oauth/authorize).
+server:
+  name: podium
+  transport: null
+  url: null
+  base_url: https://api.podium.com/v4/
+  authentication: authentication/podium-authentication.yml
+tool_count: 86
+tools:
+- name: location_get
+  description: Get a location.
+  category: Accounts
+  source_operation: openapi/podium-accounts-openapi.yml#location.get
+  http: GET /v4/locations/{uid}
+  scopes:
+  - read_locations
+- name: location_index
+  description: List all locations.
+  category: Accounts
+  source_operation: openapi/podium-accounts-openapi.yml#location.index
+  http: GET /v4/locations
+  scopes:
+  - read_locations
+- name: location_update
+  description: Update a location.
+  category: Accounts
+  source_operation: openapi/podium-accounts-openapi.yml#location.update
+  http: PATCH /v4/locations/{uid}
+  scopes:
+  - write_locations
+- name: organization_get
+  description: Get an organization.
+  category: Accounts
+  source_operation: openapi/podium-accounts-openapi.yml#organization.get
+  http: GET /v4/organizations/{uid}
+  scopes:
+  - read_organizations
+- name: user_get
+  description: Get a user.
+  category: Accounts
+  source_operation: openapi/podium-accounts-openapi.yml#user.get
+  http: GET /v4/users/{uid}
+  scopes:
+  - read_users
+- name: user_index
+  description: List all users.
+  category: Accounts
+  source_operation: openapi/podium-accounts-openapi.yml#user.index
+  http: GET /v4/users
+  scopes:
+  - read_users
+- name: appointment_create
+  description: Create an appointment.
+  category: Appointments
+  source_operation: openapi/podium-appointments-openapi.yml#appointment.create
+  http: POST /v4/appointments
+  scopes:
+  - write_appointments
+- name: campaign_create
+  description: Create a campaign.
+  category: Campaigns
+  source_operation: openapi/podium-campaigns-openapi.yml#campaign.create
+  http: POST /v4/campaigns
+  scopes:
+  - write_campaigns
+- name: campaign_delete
+  description: Delete a campaign.
+  category: Campaigns
+  source_operation: openapi/podium-campaigns-openapi.yml#campaign.delete
+  http: DELETE /v4/campaigns/{uid}
+  scopes:
+  - write_campaigns
+- name: campaign_get
+  description: Get a campaign.
+  category: Campaigns
+  source_operation: openapi/podium-campaigns-openapi.yml#campaign.get
+  http: GET /v4/campaigns/{uid}
+  scopes:
+  - read_campaigns
+- name: campaign_index
+  description: List all campaigns.
+  category: Campaigns
+  source_operation: openapi/podium-campaigns-openapi.yml#campaign.index
+  http: GET /v4/campaigns
+  scopes:
+  - read_campaigns
+- name: campaign_update
+  description: Update a campaign.
+  category: Campaigns
+  source_operation: openapi/podium-campaigns-openapi.yml#campaign.update
+  http: PUT /v4/campaigns/{uid}
+  scopes:
+  - write_campaigns
+- name: campaign_interaction_index
+  description: List campaign interactions
+  category: Campaigns
+  source_operation: openapi/podium-campaigns-openapi.yml#campaign_interaction.index
+  http: GET /v4/campaign_interactions
+  scopes:
+  - read_campaigns
+- name: message_create_campaign_message
+  description: Create a message for a given campaign
+  category: Campaigns
+  source_operation: openapi/podium-campaigns-openapi.yml#message.create_campaign_message
+  http: POST /v4/campaigns/{uid}/messages
+  scopes:
+  - write_campaign_messages
+- name: contact_create
+  description: Create a contact
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact.create
+  http: POST /v4/contacts
+  scopes:
+  - write_contacts
+- name: contact_delete
+  description: Delete a contact
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact.delete
+  http: DELETE /v4/contacts/{identifier}
+  scopes:
+  - write_contacts
+- name: contact_get
+  description: Retrieve a contact
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact.get
+  http: GET /v4/contacts/{identifier}
+  scopes:
+  - read_contacts
+- name: contact_index
+  description: List all contacts
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact.index
+  http: GET /v4/contacts
+  scopes:
+  - read_contacts
+- name: contact_opt_in
+  description: Opt in a contact
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact.opt_in
+  http: POST /v4/contacts/campaigns/opt_in
+  scopes: []
+- name: contact_opt_out
+  description: Opt out a contact
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact.opt_out
+  http: POST /v4/contacts/campaigns/opt_out
+  scopes: []
+- name: contact_update
+  description: Update a contact
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact.update
+  http: PATCH /v4/contacts/{identifier}
+  scopes:
+  - write_contacts
+- name: contact_attribute_create
+  description: Add a contact attribute to a contact
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact_attribute.create
+  http: POST /v4/contacts/{identifier}/attributes/{uid}
+  scopes:
+  - write_contacts
+- name: contact_attribute_delete
+  description: Remove an attribute from a contact
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact_attribute.delete
+  http: DELETE /v4/contacts/{identifier}/attributes/{uid}
+  scopes:
+  - write_contacts
+- name: contact_attribute_update
+  description: Update a contact attribute inside a contact
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact_attribute.update
+  http: PATCH /v4/contacts/{identifier}/attributes/{uid}
+  scopes:
+  - write_contacts
+- name: contact_entity_attribute_create
+  description: Create a contact attribute
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact_entity_attribute.create
+  http: POST /v4/contact_attributes
+  scopes:
+  - write_contacts
+- name: contact_entity_attribute_delete
+  description: Delete a contact attribute
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact_entity_attribute.delete
+  http: DELETE /v4/contact_attributes/{uid}
+  scopes:
+  - write_contacts
+- name: contact_entity_attribute_get
+  description: Gets a contact attribute by uid
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact_entity_attribute.get
+  http: GET /v4/contact_attributes/{uid}
+  scopes:
+  - read_contacts
+- name: contact_entity_attribute_index
+  description: List contact attributes
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact_entity_attribute.index
+  http: GET /v4/contact_attributes
+  scopes:
+  - read_contacts
+- name: contact_entity_attribute_update
+  description: Update a contact attribute
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact_entity_attribute.update
+  http: PATCH /v4/contact_attributes/{uid}
+  scopes:
+  - write_contacts
+- name: contact_entity_tag_create
+  description: Create a contact tag for an organization
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact_entity_tag.create
+  http: POST /v4/contact_tags
+  scopes:
+  - write_contacts
+- name: contact_entity_tag_get
+  description: Get a contact tag for an organization given an uid
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact_entity_tag.get
+  http: GET /v4/contact_tags/{uid}
+  scopes:
+  - read_contacts
+- name: contact_entity_tag_list
+  description: List all tags for the organization
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact_entity_tag.list
+  http: GET /v4/contact_tags
+  scopes:
+  - read_contacts
+- name: contact_entity_tag_update
+  description: Update a contact tag
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact_entity_tag.update
+  http: PATCH /v4/contact_tags/{uid}
+  scopes:
+  - write_contacts
+- name: contact_tag_create
+  description: Remove an existing tag from an existing contact
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact_tag.create
+  http: DELETE /v4/contacts/{identifier}/tags/{uid}
+  scopes:
+  - write_contacts
+- name: contact_tag_create_alt
+  description: Add an existing tag to an existing contact
+  category: Contacts
+  source_operation: openapi/podium-contacts-openapi.yml#contact_tag.create (2)
+  http: POST /v4/contacts/{identifier}/tags/{uid}
+  scopes:
+  - write_contacts
+- name: conversation_get
+  description: Get a conversation.
+  category: Conversations
+  source_operation: openapi/podium-conversations-openapi.yml#conversation.get
+  http: GET /v4/conversations/{uid}
+  scopes:
+  - read_messages
+- name: conversation_index
+  description: List conversations.
+  category: Conversations
+  source_operation: openapi/podium-conversations-openapi.yml#conversation.index
+  http: GET /v4/conversations
+  scopes:
+  - read_messages
+- name: conversation_update
+  description: Update a conversation.
+  category: Conversations
+  source_operation: openapi/podium-conversations-openapi.yml#conversation.update
+  http: PUT /v4/conversations/{uid}
+  scopes:
+  - write_messages
+- name: conversation_assignee_get
+  description: Get conversation assignees.
+  category: Conversations
+  source_operation: openapi/podium-conversations-openapi.yml#conversation_assignee.get
+  http: GET /v4/conversations/{uid}/assignees
+  scopes:
+  - read_messages
+- name: conversation_assignee_update
+  description: Update a conversation assignee.
+  category: Conversations
+  source_operation: openapi/podium-conversations-openapi.yml#conversation_assignee.update
+  http: PUT /v4/conversations/{uid}/assignees
+  scopes:
+  - write_messages
+- name: conversation_note_create_conversation_note
+  description: Create a note for given conversation.
+  category: Conversations
+  source_operation: openapi/podium-conversations-openapi.yml#conversation_note.create_conversation_note
+  http: POST /v4/conversations/{uid}/notes
+  scopes:
+  - write_messages
+- name: lead_writeback_get
+  description: Writeback lead
+  category: Conversations
+  source_operation: openapi/podium-conversations-openapi.yml#lead_writeback.get
+  http: POST /v4/conversations/{uid}/lead_writeback
+  scopes:
+  - write_writebacks
+- name: feedback_index
+  description: List all feedback surveys.
+  category: Feedback (Surveys)
+  source_operation: openapi/podium-feedback-surveys-openapi.yml#feedback.index
+  http: GET /v4/feedback
+  scopes:
+  - read_feedback
+- name: feedback_creation_create
+  description: Create a feedback survey.
+  category: Feedback (Surveys)
+  source_operation: openapi/podium-feedback-surveys-openapi.yml#feedback_creation.create
+  http: POST /v4/feedback
+  scopes:
+  - write_feedback
+- name: template_create
+  description: Create a message template.
+  category: Messenger
+  source_operation: openapi/podium-messenger-openapi.yml#Template.create
+  http: POST /v4/templates
+  scopes:
+  - write_templates
+- name: template_delete
+  description: Delete a template
+  category: Messenger
+  source_operation: openapi/podium-messenger-openapi.yml#Template.delete
+  http: DELETE /v4/templates/{uid}
+  scopes:
+  - write_templates
+- name: template_index
+  description: List all templates
+  category: Messenger
+  source_operation: openapi/podium-messenger-openapi.yml#Template.index
+  http: GET /v4/templates
+  scopes:
+  - read_templates
+- name: template_update
+  description: Update a message template.
+  category: Messenger
+  source_operation: openapi/podium-messenger-openapi.yml#Template.update
+  http: PUT /v4/templates/{uid}
+  scopes:
+  - write_templates
+- name: message_get
+  description: Retreive a message from a conversation
+  category: Messenger
+  source_operation: openapi/podium-messenger-openapi.yml#message.get
+  http: GET /v4/conversations/{conversation_uid}/messages/{uid}
+  scopes:
+  - read_messages
+- name: message_import
+  description: Import a message.
+  category: Messenger
+  source_operation: openapi/podium-messenger-openapi.yml#message.import
+  http: POST /v4/import/messages
+  scopes:
+  - write_messages
+- name: message_index
+  description: Retrieve messages from a conversation
+  category: Messenger
+  source_operation: openapi/podium-messenger-openapi.yml#message.index
+  http: GET /v4/conversations/{conversation_uid}/messages
+  scopes:
+  - read_messages
+- name: message_send
+  description: Send a message.
+  category: Messenger
+  source_operation: openapi/podium-messenger-openapi.yml#message.send
+  http: POST /v4/messages
+  scopes:
+  - write_messages
+- name: message_send_with_attachment
+  description: Send a message with attachment.
+  category: Messenger
+  source_operation: openapi/podium-messenger-openapi.yml#message.send_with_attachment
+  http: POST /v4/messages/attachment
+  scopes:
+  - write_messages
+- name: refund_create
+  description: Create a refund.
+  category: Payments
+  source_operation: openapi/podium-payments-openapi.yml#Refund.create
+  http: POST /v4/refunds
+  scopes:
+  - write_payments
+- name: refund_get
+  description: Get a refund.
+  category: Payments
+  source_operation: openapi/podium-payments-openapi.yml#Refund.get
+  http: GET /v4/refunds/{uid}
+  scopes:
+  - read_payments
+- name: invoice_cancel
+  description: Cancel an invoice.
+  category: Payments
+  source_operation: openapi/podium-payments-openapi.yml#invoice.cancel
+  http: POST /v4/invoices/{uid}/cancel
+  scopes:
+  - write_payments
+- name: invoice_charge
+  description: Charge an invoice.
+  category: Payments
+  source_operation: openapi/podium-payments-openapi.yml#invoice.charge
+  http: POST /v4/invoices/{uid}/charge
+  scopes:
+  - write_payments
+- name: invoice_create
+  description: Create an invoice.
+  category: Payments
+  source_operation: openapi/podium-payments-openapi.yml#invoice.create
+  http: POST /v4/invoices
+  scopes:
+  - write_payments
+- name: invoice_get
+  description: Get an invoice.
+  category: Payments
+  source_operation: openapi/podium-payments-openapi.yml#invoice.get
+  http: GET /v4/invoices/{uid}
+  scopes:
+  - read_payments
+- name: invoice_index
+  description: Get all invoices.
+  category: Payments
+  source_operation: openapi/podium-payments-openapi.yml#invoice.index
+  http: GET /v4/invoices
+  scopes:
+  - read_payments
+- name: invoice_refund
+  description: Refund an invoice
+  category: Payments
+  source_operation: openapi/podium-payments-openapi.yml#invoice.refund
+  http: POST /v4/invoices/{uid}/refund
+  scopes:
+  - write_payments
+- name: invoice_setup
+  description: Create invoice setup intent.
+  category: Payments
+  source_operation: openapi/podium-payments-openapi.yml#invoice.setup
+  http: POST /v4/invoices/{uid}/setup
+  scopes:
+  - write_payments
+- name: payment_get
+  description: Get a payment.
+  category: Payments
+  source_operation: openapi/podium-payments-openapi.yml#payment.get
+  http: GET /v4/payments/{uid}
+  scopes:
+  - read_payments
+- name: reader_get
+  description: Get a card reader.
+  category: Payments
+  source_operation: openapi/podium-payments-openapi.yml#reader.get
+  http: GET /v4/readers/{uid}
+  scopes:
+  - read_payments
+- name: call_get
+  description: Get a call.
+  category: Phones
+  source_operation: openapi/podium-phones-openapi.yml#call.get
+  http: GET /v4/calls/{uid}
+  scopes:
+  - read_phones
+- name: product_get
+  description: Get a product.
+  category: Products
+  source_operation: openapi/podium-products-openapi.yml#Product.get
+  http: GET /v4/products/{uid}
+  scopes:
+  - read_products
+- name: product_index
+  description: List all products.
+  category: Products
+  source_operation: openapi/podium-products-openapi.yml#Product.index
+  http: GET /v4/products
+  scopes:
+  - read_products
+- name: product_upload_images
+  description: Upload images to a product.
+  category: Products
+  source_operation: openapi/podium-products-openapi.yml#Product.upload_images
+  http: POST /v4/products/{uid}/upload_images
+  scopes:
+  - write_products
+- name: product_image_delete
+  description: Deletes images from a product.
+  category: Products
+  source_operation: openapi/podium-products-openapi.yml#product_image.delete
+  http: DELETE /v4/products/{uid}/delete_images
+  scopes:
+  - write_products
+- name: review_get
+  description: Get a review.
+  category: Reviews
+  source_operation: openapi/podium-reviews-openapi.yml#review.get
+  http: GET /v4/reviews/{uid}
+  scopes:
+  - read_reviews
+- name: review_index
+  description: List all reviews.
+  category: Reviews
+  source_operation: openapi/podium-reviews-openapi.yml#review.index
+  http: GET /v4/reviews
+  scopes:
+  - read_reviews
+- name: review_attribution_create
+  description: Attribute a user to a review
+  category: Reviews
+  source_operation: openapi/podium-reviews-openapi.yml#review_attribution.create
+  http: POST /v4/reviews/{uid}/attributions
+  scopes:
+  - write_reviews
+- name: review_attribution_delete
+  description: Remove a user attribution for a given review
+  category: Reviews
+  source_operation: openapi/podium-reviews-openapi.yml#review_attribution.delete
+  http: DELETE /v4/reviews/{uid}/attributions
+  scopes:
+  - write_reviews
+- name: review_invite_create
+  description: Create a review invite link.
+  category: Reviews
+  source_operation: openapi/podium-reviews-openapi.yml#review_invite.create
+  http: POST /v4/reviews/invites
+  scopes:
+  - write_reviews
+- name: review_invite_get
+  description: Get a review invite.
+  category: Reviews
+  source_operation: openapi/podium-reviews-openapi.yml#review_invite.get
+  http: GET /v4/reviews/invites/{uid}
+  scopes:
+  - read_reviews
+- name: review_invite_index
+  description: List all review invites.
+  category: Reviews
+  source_operation: openapi/podium-reviews-openapi.yml#review_invite.index
+  http: GET /v4/reviews/invites
+  scopes:
+  - read_reviews
+- name: review_response_create
+  description: Create response for a given review
+  category: Reviews
+  source_operation: openapi/podium-reviews-openapi.yml#review_response.create
+  http: POST /v4/reviews/{uid}/responses
+  scopes:
+  - write_reviews
+- name: review_response_index
+  description: List Responses of a given review
+  category: Reviews
+  source_operation: openapi/podium-reviews-openapi.yml#review_response.index
+  http: GET /v4/reviews/{uid}/responses
+  scopes:
+  - read_reviews
+- name: review_response_update
+  description: Update response for a given review
+  category: Reviews
+  source_operation: openapi/podium-reviews-openapi.yml#review_response.update
+  http: PATCH /v4/reviews/{review_uid}/responses/{uid}
+  scopes:
+  - write_reviews
+- name: review_sites_summary_index
+  description: Summary of all connected review sites.
+  category: Reviews
+  source_operation: openapi/podium-reviews-openapi.yml#review_sites_summary.index
+  http: GET /v4/reviews/sites/summary
+  scopes:
+  - read_reviews
+- name: review_summary_index
+  description: Summary of all reviews
+  category: Reviews
+  source_operation: openapi/podium-reviews-openapi.yml#review_summary.index
+  http: GET /v4/reviews/summary
+  scopes:
+  - read_reviews
+- name: webhook_create
+  description: Create a webhook.
+  category: Webhooks
+  source_operation: openapi/podium-webhooks-openapi.yml#webhook.create
+  http: POST /v4/webhooks
+  scopes: []
+- name: webhook_delete
+  description: Delete a webhook.
+  category: Webhooks
+  source_operation: openapi/podium-webhooks-openapi.yml#webhook.delete
+  http: DELETE /v4/webhooks/{uid}
+  scopes: []
+- name: webhook_get
+  description: Get a webhook.
+  category: Webhooks
+  source_operation: openapi/podium-webhooks-openapi.yml#webhook.get
+  http: GET /v4/webhooks/{uid}
+  scopes: []
+- name: webhook_index
+  description: List webhooks.
+  category: Webhooks
+  source_operation: openapi/podium-webhooks-openapi.yml#webhook.index
+  http: GET /v4/webhooks
+  scopes: []
+- name: webhook_update
+  description: Update a webhook.
+  category: Webhooks
+  source_operation: openapi/podium-webhooks-openapi.yml#webhook.update
+  http: PUT /v4/webhooks/{uid}
+  scopes: []
