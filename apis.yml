@@ -29,6 +29,15 @@ tags:
   - Reviews
   - Messaging
   - Payments
+  - Web Chat
+  - Local Business
+  - SMS
+  - Lead Generation
+tags_raw:
+  - Customer Communication
+  - Reviews
+  - Messaging
+  - Payments
   - Webchat
   - Local Business
   - SMS
@@ -50,6 +59,13 @@ apis:
     humanURL: https://docs.podium.com/reference/introduction
     baseURL: https://api.podium.com/v4/
     tags:
+      - Messaging
+      - Reviews
+      - Payments
+      - Contacts
+      - Webhook
+      - Automations
+    tags_raw:
       - Messaging
       - Reviews
       - Payments
