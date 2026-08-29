@@ -1,0 +1,81 @@
+slug: podium
+provider: Podium
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 7
+edges:
+- tag: Contact
+  spec_file: podium-contact-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.8
+  evidence: POST /v4/contacts  contact.create  Create a contact; POST /v4/contacts/campaigns/opt_in  contact.opt_in
+  reason: CRUD over customer contact records with attributes and tags — customer master data management
+    in a customer communication platform. Opt-in/opt-out hints at marketing consent but the core is contact
+    data.
+- tag: Feedback
+  spec_file: podium-feedback-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.8
+  evidence: POST /v4/feedback  feedback_creation.create  Create a feedback survey.
+  reason: Creates and lists customer feedback surveys — voice-of-customer/survey programme capability.
+- tag: Conversation
+  spec_file: podium-conversation-api-openapi.yml
+  capability_id: BC-430.10
+  capability_id_l1: BC-430
+  capability_name: Customer Inquiry Management
+  confidence: 0.75
+  evidence: GET /v4/conversations  conversation.index  List conversations.; POST /v4/conversations/{uid}/lead_writeback  lead_writeback.get  Writeback
+    lead
+  reason: Manages inbound customer text conversations with notes and lead writeback — customer inquiry
+    handling in a business messaging platform. Lead writeback adds some sales flavour, hence not higher.
+- tag: Contact Attribute
+  spec_file: podium-contact-attribute-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.7
+  evidence: POST /v4/contact_attributes  contact_entity_attribute.create  Create a contact attribute
+  reason: Defines custom attribute definitions on the contact record — schema/metadata for customer data.
+    Supports customer data management; slightly configuration-flavoured hence lower confidence.
+- tag: Invoice
+  spec_file: podium-invoice-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.7
+  evidence: POST /v4/invoices/{uid}/charge  invoice.charge  Charge an invoice.; POST /v4/invoices/{uid}/refund  invoice.refund
+  reason: Customer invoice creation, charging, cancellation and refund — customer invoicing and cash collection.
+    Maps to accounts receivable; not a subscription/telecom billing engine, so cross-industry AR is the
+    honest fit.
+- tag: Review
+  spec_file: podium-review-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.7
+  evidence: GET /v4/reviews  review.index  List all reviews.
+  reason: Podium is described as a platform to 'manage text-based conversations, reviews', and these operations
+    read customer reviews of the business — voice-of-customer/feedback capture. Reputation/PR is an alternative
+    reading, hence moderate confidence.
+- tag: Review Invite
+  spec_file: podium-review-invite-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.7
+  evidence: POST /v4/reviews/invites  review_invite.create  Create a review invite link.
+  reason: Soliciting reviews from customers via invite links is feedback solicitation, matching Customer
+    Feedback Management (surveys, voice-of-customer programmes).

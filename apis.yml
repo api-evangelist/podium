@@ -866,6 +866,9 @@ apis:
   - type: Pagination
     url: https://docs.podium.com/reference/pagination
 common:
+  - type: CapabilityMap
+    url: capabilities/podium-capability-edges.yml
+    name: Podium Business Capability Map
   - type: Overlay
     url: overlays/podium-accounts-overlay.yaml
   - type: Overlay
