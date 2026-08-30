@@ -1,0 +1,546 @@
+openapi: 3.2.0
+info:
+  title: Conversations Conversation API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Conversation
+paths:
+  /v4/conversations:
+    get:
+      callbacks: {}
+      description: "List all conversations. \n\nIf the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.\n\nRequired scope: `read_messages`."
+      operationId: conversation.index
+      parameters:
+      - description: Retrieves the page of items that comes after the `cursor`.
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: Cursor used to access next or previous page in pagination.
+          example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+          type: string
+      - description: Max number of items to return per request. Defaults to `10`.
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: integer
+      - description: Podium unique identifier for location.
+        in: query
+        name: locationUid
+        required: false
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/conversation'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List conversations.
+      tags:
+      - Conversation
+  /v4/conversations/{uid}:
+    get:
+      callbacks: {}
+      description: 'Gets a conversation that has previously been created.
+
+
+        Required scope: `read_messages`.'
+      operationId: conversation.get
+      parameters:
+      - description: Podium unique identifier for conversation.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/conversation'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a conversation.
+      tags:
+      - Conversation
+    put:
+      callbacks: {}
+      description: 'Update a conversation.
+
+
+        Required scope: `write_messages`.'
+      operationId: conversation.update
+      parameters:
+      - description: Podium unique identifier for conversation.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                assignedByName:
+                  description: The name used in conversation assignment managerial items
+                  type:
+                  - string
+                  - 'null'
+                assignedUserUid:
+                  description: Podium unique identifier for user.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type:
+                  - string
+                  - 'null'
+                closed:
+                  description: Whether the conversation is open or closed.
+                  example: false
+                  type: boolean
+                conversationAssigneeUids:
+                  description: List of assignee user UIDs
+                  items:
+                    description: Podium unique identifier for assignee user.
+                    example: 00000000-0000-0000-0000-000000000000
+                    format: uuid
+                    type: string
+                  type:
+                  - array
+                  - 'null'
+              type: object
+        description: Update conversation params
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/conversation'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Update a conversation.
+      tags:
+      - Conversation
+  /v4/conversations/{uid}/lead_writeback:
+    post:
+      callbacks: {}
+      description: 'Writeback lead to the connected CRM.
+
+
+        Required scope: `write_writebacks`.'
+      operationId: lead_writeback.get
+      parameters:
+      - description: Conversation uid of the lead.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/lead_writeback'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Writeback lead
+      tags:
+      - Conversation
+  /v4/conversations/{uid}/notes:
+    post:
+      callbacks: {}
+      description: 'Creates a note for the given conversation.
+
+
+        Required scope: `write_messages`.'
+      operationId: conversation_note.create_conversation_note
+      parameters:
+      - description: Podium unique identifier for conversation.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                body:
+                  description: Body of the note.
+                  example: This is a note
+                  type: string
+                senderName:
+                  description: Name of the person who created the note.
+                  example: John Doe
+                  type: string
+              required:
+              - body
+              - senderName
+              type: object
+        description: Create conversation note body params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/conversation_note'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create a note for given conversation.
+      tags:
+      - Conversation
+components:
+  schemas:
+    conversation_note:
+      description: Conversation note.
+      properties:
+        body:
+          description: Body of the note.
+          type: string
+        conversation:
+          description: Conversation that the conversation note belongs to.
+          properties:
+            uid:
+              description: Podium unique identifier for conversation.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        createdAt:
+          description: Time at which the resource was created. Date time is in Coordinated Universal Time (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        location:
+          description: Location that the conversation note belongs to.
+          properties:
+            uid:
+              description: Podium unique identifier for location.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        organization:
+          description: Organization that the conversation note belongs to.
+          properties:
+            uid:
+              description: Podium unique identifier for organization.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        senderName:
+          description: Name of the person who created the note.
+          type: string
+        uid:
+          description: Podium unique identifier for note.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type:
+          - string
+          - 'null'
+        updatedAt:
+          description: Time at which the resource was updated. Date time is in Coordinated Universal Time (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      title: conversation_note
+      type: object
+    conversation:
+      description: Messenger conversation.
+      properties:
+        assignedUserUid:
+          description: Podium unique identifier for user.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type:
+          - string
+          - 'null'
+        assigneeUids:
+          description: List of assignee user UIDs
+          items:
+            description: Podium unique identifier for assignee user.
+            example: 00000000-0000-0000-0000-000000000000
+            format: uuid
+            type: string
+          type: array
+        channel:
+          description: Channel that the conversation is in.
+          properties:
+            identifier:
+              description: Identifies the Messenger channel. Must be a valid email address or a phone number. Non-US/Canada numbers must include the country code (e.g. +61 for AUS)
+              example: email@email.com
+              type:
+              - string
+              - 'null'
+            type:
+              description: Messenger channel for the conversation.
+              enum:
+              - apple
+              - car_wars
+              - email
+              - facebook
+              - fallback_email
+              - google
+              - google_brand
+              - iframe
+              - instagram
+              - phone
+              - secure
+              - sms
+              - text
+              - whatsapp
+              example: email
+              type:
+              - string
+              - 'null'
+          type: object
+        closed:
+          description: Whether the conversation has been closed
+          type:
+          - boolean
+          - 'null'
+        contactName:
+          description: Name of the contact.
+          type:
+          - string
+          - 'null'
+        createdAt:
+          description: When the conversation was started.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        lastItemAt:
+          description: When the last conversation item was added.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        locationUid:
+          description: Podium unique identifier for location.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Podium unique identifier for conversation.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type:
+          - string
+          - 'null'
+        updatedAt:
+          description: When the conversation was last updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      title: conversation
+      type: object
+    lead_writeback:
+      description: 'A lead that has been writtenback to a connected CRM. The lead is passed to the CRM and no other action is possible
+
+        from the Podium so is no `uid` or other identifers assigned to the lead.
+
+        '
+      properties:
+        conversation:
+          description: Conversation that the conversation note belongs to.
+          properties:
+            uid:
+              description: Podium unique identifier for conversation.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+      title: lead_writeback
+      type: object

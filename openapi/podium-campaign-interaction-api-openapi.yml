@@ -1,0 +1,223 @@
+openapi: 3.2.0
+info:
+  title: Campaigns Campaign Interaction API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Campaign Interaction
+paths:
+  /v4/campaign_interactions:
+    get:
+      callbacks: {}
+      description: 'List the campaign interactions that the caller has access to.
+
+
+        If the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.
+
+
+        Interactions can be filtered by type, uid of the associated resource, or timestamp.
+
+
+        Required scope: `read_campaigns`.
+
+        '
+      operationId: campaign_interaction.index
+      parameters:
+      - description: ''
+        in: query
+        name: campaignUid
+        required: false
+        schema:
+          description: Campaign UUID
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      - description: ''
+        in: query
+        name: contactUid
+        required: false
+        schema:
+          description: Contact UUID
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      - description: ''
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: Cursor used to access next or previous page in pagination.
+          example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+          type: string
+      - description: The type of interaction this record represents
+        in: query
+        name: interactionType
+        required: false
+        schema:
+          items:
+            enum:
+            - sent
+            - queued
+            - failed
+            - feedback_left
+            - link_clicked
+            - opt_out
+            - payment_made
+            - response
+            - review_left
+            - resubscribe
+            - skipped
+            type: string
+          type: array
+      - description: Max number of items to return per request. Defaults to `10`.
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: integer
+      - description: ''
+        in: query
+        name: locationUid
+        required: false
+        schema:
+          description: Location UUID
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/campaign_interaction'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      nextCursor:
+                        description: Cursor to get next set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      previousCursor:
+                        description: Cursor to get previous set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      totalItems:
+                        description: Total number of items available.
+                        type: integer
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List campaign interactions
+      tags:
+      - Campaign Interaction
+components:
+  schemas:
+    campaign_interaction:
+      description: A campaign interaction event, which is a record of how a user and a campaign interacted (i.e. a user received a campaign message, or a user responded to a campaign message).
+      properties:
+        campaign:
+          description: Reference to the Campaign resource.
+          properties:
+            uid:
+              description: Podium unique identifier for the referenced resource.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type: string
+          type: object
+        contact:
+          description: Reference to the Contact resource.
+          properties:
+            uid:
+              description: Podium unique identifier for the referenced resource.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type: string
+          type: object
+        conversation:
+          description: Reference to the Conversation resource.
+          properties:
+            uid:
+              description: Podium unique identifier for the referenced resource.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        createdAt:
+          description: When the interaction occurred.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type: string
+        interactionType:
+          description: The type of campaign interaction this record represents
+          enum:
+          - sent
+          - queued
+          - failed
+          - feedback_left
+          - link_clicked
+          - opt_out
+          - payment_made
+          - response
+          - review_left
+          - resubscribe
+          - skipped
+          type:
+          - string
+          - 'null'
+        location:
+          description: Reference to the Location resource.
+          properties:
+            uid:
+              description: Podium unique identifier for the referenced resource.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type: string
+          type: object
+        uid:
+          description: Podium unique identifier for Campaign interaction uuid.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the interaction was last updated
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type: string
+      title: campaign_interaction
+      type: object

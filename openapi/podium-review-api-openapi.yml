@@ -1,0 +1,361 @@
+openapi: 3.2.0
+info:
+  title: Reviews Review API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Review
+paths:
+  /v4/reviews:
+    get:
+      callbacks: {}
+      description: 'List of all the reviews that you have access to. The reviews are sorted by `createdAt` date, with the most recent appearing first.
+
+
+        If the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.
+
+
+        Required scope: `read_reviews`.'
+      operationId: review.index
+      parameters:
+      - description: Filter on the `createdAt` date.
+        in: query
+        name: createdAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      - description: Retrieves the page of items that comes after the `cursor`.
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: Cursor used to access next or previous page in pagination.
+          example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+          type: string
+      - description: Max number of items to return per request. Defaults to `10`.
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: integer
+      - description: Filter on the `updatedAt` date.
+        in: query
+        name: updatedAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/review'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      nextCursor:
+                        description: Cursor to get next set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      previousCursor:
+                        description: Cursor to get previous set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      totalItems:
+                        description: Total number of items available.
+                        type: integer
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List all reviews.
+      tags:
+      - Review
+  /v4/reviews/{uid}:
+    get:
+      callbacks: {}
+      description: 'Gets a single review by its uid.
+
+
+        Required scope: `read_reviews`.'
+      operationId: review.get
+      parameters:
+      - description: Podium unique identifier for review.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/review'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a review.
+      tags:
+      - Review
+components:
+  schemas:
+    review:
+      properties:
+        attributions:
+          items:
+            description: Podium user that has been attributed to the review rating e.g. technician that visited the client would be associated to the review rating.
+            properties:
+              apiClientUid:
+                description: Podium unique identifier for api client.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type:
+                - string
+                - 'null'
+              reviewInvitationUid:
+                description: Podium unique identifier for review invitation.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type:
+                - string
+                - 'null'
+              userUid:
+                description: Podium unique identifier for user.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type:
+                - string
+                - 'null'
+            type: object
+          type: array
+        author:
+          description: Author of the review.
+          properties:
+            id:
+              description: Review site's unique identifier for the author.
+              example: '2412341'
+              type:
+              - string
+              - 'null'
+            name:
+              description: Name of the author.
+              example: Joe Orange
+              type:
+              - string
+              - 'null'
+          type: object
+        createdAt:
+          description: When the review was created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        isRecommendation:
+          description: Whether or not the review is recommendation based, as opposed to being a star rating.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        locations:
+          items:
+            description: Podium location that the review is associated to.
+            properties:
+              uid:
+                description: Podium unique identifier for location.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type:
+                - string
+                - 'null'
+            type: object
+          type: array
+        needsResponse:
+          description: Whether or not the review needs a response.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        responses:
+          items:
+            description: Response from the business to the reviewer.
+            properties:
+              body:
+                description: Response's body
+                example: Thanks Joe for leaving us a review!
+                type:
+                - string
+                - 'null'
+              createdAt:
+                description: When the response was created.
+                example: '2015-01-23T23:50:07Z'
+                format: date-time
+                type:
+                - string
+                - 'null'
+              siteAuthorName:
+                description: Name of the response author.
+                example: John Apple
+                type:
+                - string
+                - 'null'
+            type: object
+          type: array
+        review:
+          description: Review object
+          properties:
+            body:
+              description: Comments left as a part of the review.
+              example: We love our new sofa from Sofa Plus! It is comfortable and stylish.
+              type:
+              - string
+              - 'null'
+            rating:
+              description: Rating on 5 star scale. 5 = high; 1 = low. Note that recommendations have adjusted scores of 5 for recommended; 1 for not recommended.
+              example: 5
+              type:
+              - number
+              - 'null'
+            siteName:
+              description: Name of the review site.
+              example: Google
+              type:
+              - string
+              - 'null'
+            siteReviewId:
+              description: Review site's unique identifier for the review posted.
+              example: 2390afs293fj
+              type:
+              - string
+              - 'null'
+            url:
+              description: URL for the individual review that was posted.
+              example: https://www.podium.com/
+              type:
+              - string
+              - 'null'
+          type: object
+        uid:
+          description: Podium unique identifier for review.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the review was last updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      title: review
+      type: object

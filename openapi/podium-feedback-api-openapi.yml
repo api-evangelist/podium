@@ -1,0 +1,369 @@
+openapi: 3.2.0
+info:
+  title: (Surveys) Feedback API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Feedback
+paths:
+  /v4/feedback:
+    get:
+      callbacks: {}
+      description: 'List of all the feedback surveys that the caller has access to. The surveys are sorted by `createdAt` date, with the most recent appearing first.
+
+
+        If the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.
+
+
+        Required scope: `read_feedback`.'
+      operationId: feedback.index
+      parameters:
+      - description: Filter on the `createdAt` date.
+        in: query
+        name: createdAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      - description: Max number of items to return per request. Defaults to `10`.
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: integer
+      - description: Retrieves the page of items that comes after the `cursor`.
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: Cursor used to access next or previous page in pagination.
+          example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/feedback'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      nextCursor:
+                        description: Cursor to get next set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      previousCursor:
+                        description: Cursor to get previous set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      totalItems:
+                        description: Total number of items available.
+                        type: integer
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List all feedback surveys.
+      tags:
+      - Feedback
+    post:
+      callbacks: {}
+      description: 'Create a feedback survey. The survey is created asynchronously, so only the UID is returned.
+
+
+        Required scope: `write_feedback`.'
+      operationId: feedback_creation.create
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                customerName:
+                  description: The customer name.
+                  type: string
+                flowUid:
+                  description: flow
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                locationUid:
+                  description: location
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                phoneNumber:
+                  description: The customer phone number.
+                  type: string
+              required:
+              - customerName
+              - locationUid
+              - phoneNumber
+              type: object
+        description: Create feedback survey params
+        required: true
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/feedback_creation'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create a feedback survey.
+      tags:
+      - Feedback
+components:
+  schemas:
+    feedback:
+      description: 'Feedback, now known as Surveys in the app, are internal surveys a business can collect from their end clients. Typically, these are measured as NPS or CSAT.
+
+        '
+      properties:
+        adjustedScore:
+          description: Normalized value representing the survey score an individual responded with. Example with NPS scoring structure a 10 would be a 100 and a 5 would be -100.
+          example: 100
+          type:
+          - integer
+          - 'null'
+        archived:
+          description: If the survey response has been archived.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        attributions:
+          items:
+            description: Podium user who the survey is attributed to. For example, the user who was assigned to the customer that the survey was sent to. There may be more than one user who have a single survey attributed to them.
+            properties:
+              type:
+                description: Type of attribution that is assigned to sending the survey.
+                enum:
+                - integrated_send
+                - manual_tag
+                - final
+                type:
+                - string
+                - 'null'
+              userName:
+                description: Name of the user attributed to sending the survey.
+                example: John Apple
+                type:
+                - string
+                - 'null'
+              userUid:
+                description: Podium unique identifier for user.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type:
+                - string
+                - 'null'
+            type: object
+          type: array
+        channel:
+          description: Channel object
+          properties:
+            identifier:
+              description: Identifies the Messenger channel. Must be a valid email address or a phone number. Non-US/Canada numbers must include the country code (e.g. +61 for AUS)
+              example: email@email.com
+              type:
+              - string
+              - 'null'
+            type:
+              description: Messenger channel for the conversation.
+              enum:
+              - apple
+              - car_wars
+              - email
+              - facebook
+              - fallback_email
+              - google
+              - google_brand
+              - iframe
+              - instagram
+              - phone
+              - secure
+              - sms
+              - text
+              - whatsapp
+              example: email
+              type:
+              - string
+              - 'null'
+          type: object
+        createdAt:
+          description: When the survey was created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        currentStep:
+          description: Current step of the flow that the survey is on.
+          enum:
+          - start
+          - follow_up
+          - final
+          type:
+          - string
+          - 'null'
+        customerName:
+          description: Name of the customer who the survey was sent to.
+          example: Joe Orange
+          type:
+          - string
+          - 'null'
+        firstResponseReceivedAt:
+          description: When the first response to the survey was received.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        flowUid:
+          description: Podium unique identifier for survey flow.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type:
+          - string
+          - 'null'
+        location:
+          description: Location that the survey was sent from.
+          properties:
+            organizationUid:
+              description: Podium unique identifier for organization.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+            uid:
+              description: Podium unique identifier for location.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        messages:
+          items:
+            description: Message that the survey respondent sent.
+            example: wonderful.
+            type: string
+          type: array
+        score:
+          description: Score the respondent has responded with.
+          example: 5
+          type:
+          - integer
+          - 'null'
+        uid:
+          description: Podium unique identifier for feedback survey.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the survey was updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      title: feedback
+      type: object
+    feedback_creation:
+      description: 'Feedback, now known as Surveys in the app, are internal surveys a business can collect from their end clients. Typically, these are measured as NPS or CSAT.
+
+        '
+      properties:
+        uid:
+          description: Podium unique identifier for feedback survey.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      title: feedback_creation
+      type: object

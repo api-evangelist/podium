@@ -1,0 +1,581 @@
+openapi: 3.2.0
+info:
+  title: Messenger Template API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Template
+paths:
+  /v4/templates:
+    get:
+      callbacks: {}
+      description: 'List all templates.
+
+
+        Required scope: `read_templates`.'
+      operationId: Template.index
+      parameters:
+      - description: 'Filter by types: "custom", "review_invite", or "review_invite_backup", defaults to "custom"
+
+          '
+        in: query
+        name: types
+        required: false
+        schema:
+          items:
+            enum:
+            - custom
+            - review_invite
+            - review_invite_backup
+            type: string
+          type: array
+      - description: Podium unique identifier for location.
+        in: query
+        name: locationUid
+        required: false
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/Template'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List all templates
+      tags:
+      - Template
+    post:
+      callbacks: {}
+      description: 'Create a message template.
+
+
+        Required scope: `write_templates`.
+
+        '
+      operationId: Template.create
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                accessLevel:
+                  description: The access level of the template. Must be 'location' or 'organization'.
+                  enum:
+                  - location
+                  - organization
+                  example: location
+                  type: string
+                attachmentUrl:
+                  description: URL of template attachment.
+                  example: https://www.podium.com/
+                  type:
+                  - string
+                  - 'null'
+                locationUids:
+                  description: list of locations or empty list. Required when 'accessLevel' is 'location'.
+                  items:
+                    description: Podium unique identifier for location.
+                    example: 00000000-0000-0000-0000-000000000000
+                    format: uuid
+                    type: string
+                  type:
+                  - array
+                  - 'null'
+                nonDeletable:
+                  default: false
+                  description: If the template can be deleted.
+                  type: boolean
+                subject:
+                  description: The template subject.
+                  type: string
+                text:
+                  description: Text of the template message.
+                  type: string
+                title:
+                  description: Title of the template.
+                  type: string
+                type:
+                  description: Type of the template. Must be 'custom, 'review_invite', or 'review_invite_backup'
+                  enum:
+                  - custom
+                  - review_invite
+                  - review_invite_backup
+                  type: string
+              required:
+              - text
+              - title
+              - type
+              - accessLevel
+              type: object
+        description: Create template params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Template'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create a message template.
+      tags:
+      - Template
+  /v4/templates/{uid}:
+    delete:
+      callbacks: {}
+      description: "Deletes a template by the given uid. \n\nRequired scope: `write_templates`"
+      operationId: Template.delete
+      parameters:
+      - description: Podium unique identifier for templates.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Template'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Delete a template
+      tags:
+      - Template
+    put:
+      callbacks: {}
+      description: 'update a message template.
+
+
+        Required scope: `write_templates`.
+
+        '
+      operationId: Template.update
+      parameters:
+      - description: Template uid
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                accessLevel:
+                  description: The access level of the template. Must be 'location' or 'organization'.
+                  enum:
+                  - location
+                  - organization
+                  example: location
+                  type: string
+                attachmentUrl:
+                  description: URL of template attachment.
+                  example: https://www.podium.com/
+                  type:
+                  - string
+                  - 'null'
+                locationUids:
+                  description: list of locations or empty list. Required when 'accessLevel' is 'location'.
+                  items:
+                    description: Podium unique identifier for location.
+                    example: 00000000-0000-0000-0000-000000000000
+                    format: uuid
+                    type: string
+                  type:
+                  - array
+                  - 'null'
+                nonDeletable:
+                  default: false
+                  description: If the template can be deleted.
+                  type: boolean
+                subject:
+                  description: The template subject.
+                  type: string
+                text:
+                  description: Text of the template message.
+                  type: string
+                title:
+                  description: Title of the template.
+                  type: string
+                type:
+                  description: Type of the template. Must be 'custom, 'review_invite', or 'review_invite_backup'
+                  enum:
+                  - custom
+                  - review_invite
+                  - review_invite_backup
+                  type: string
+                uid:
+                  description: Podium unique identifier for The unique identifier of the template..
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type:
+                  - string
+                  - 'null'
+              required:
+              - text
+              - title
+              - type
+              - accessLevel
+              type: object
+        description: Update template params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Template'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Update a message template.
+      tags:
+      - Template
+components:
+  schemas:
+    Template:
+      description: 'Templates save you time and promote consistency in communication with your customers. Instead of typing out a new message each time you try to schedule an appointment or answer a question about billing, simply use a template.
+
+        '
+      properties:
+        accessLevel:
+          description: The access level of the template. If `locationUid` is filled, this property will be `LOCATION`.
+          enum:
+          - location
+          - organization
+          example: location
+          type:
+          - string
+          - 'null'
+        attachmentUrl:
+          description: URL of template attachment.
+          example: https://www.podium.com/
+          type:
+          - string
+          - 'null'
+        createdAt:
+          description: When the template was created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        deletedAt:
+          description: When the template was deleted.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        isFavorite:
+          description: Flag that indicates if this template is the favorite.
+          type:
+          - boolean
+          - 'null'
+        lastUsedAt:
+          description: When the template was last used.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        location:
+          description: Reference to the Location resource.
+          properties:
+            uid:
+              description: Podium unique identifier for the referenced resource.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type: string
+          type: object
+        nonDeletable:
+          description: Flag that indicates if template can be deleted or not.
+          type:
+          - boolean
+          - 'null'
+        organization:
+          description: Reference to the Organization resource.
+          properties:
+            uid:
+              description: Podium unique identifier for the referenced resource.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type: string
+          type: object
+        subject:
+          description: The subject of the template.
+          type:
+          - string
+          - 'null'
+        templateItems:
+          items:
+            description: The template items object.
+            properties:
+              applicationUid:
+                description: Podium unique identifier for The unique identifier for the application of the template item..
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type:
+                - string
+                - 'null'
+              applicationUrl:
+                description: The application URL of the template item.
+                example: https://www.podium.com/
+                type:
+                - string
+                - 'null'
+              attachmentContentType:
+                description: The application content-type of the template item.
+                type:
+                - string
+                - 'null'
+              attachmentUrl:
+                description: The attachment URL of the template item.
+                example: https://www.podium.com/
+                type:
+                - string
+                - 'null'
+              body:
+                description: The body of the template item.
+                type:
+                - string
+                - 'null'
+              data:
+                description: The data of the template item.
+                type:
+                - string
+                - 'null'
+              iconUrl:
+                description: The icon URL of the template item.
+                example: https://www.podium.com/
+                type:
+                - string
+                - 'null'
+              keys:
+                items:
+                  description: The template items object.
+                  properties:
+                    name:
+                      description: The name of the key.
+                      type:
+                      - string
+                      - 'null'
+                    required:
+                      description: Flag to indicate if key is required or not.
+                      type:
+                      - boolean
+                      - 'null'
+                  type: object
+                type:
+                - array
+                - 'null'
+              subtitle:
+                description: The subtitle of the template item.
+                type:
+                - string
+                - 'null'
+              title:
+                description: The title of the template item.
+                type:
+                - string
+                - 'null'
+              type:
+                description: The type of the template item.
+                type:
+                - string
+                - 'null'
+              uid:
+                description: Podium unique identifier for The unique identifier of the template Item..
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type:
+                - string
+                - 'null'
+            type: object
+          type:
+          - array
+          - 'null'
+        text:
+          description: The title of the template.
+          type:
+          - string
+          - 'null'
+        title:
+          description: The title of the template
+          type:
+          - string
+          - 'null'
+        type:
+          description: The type of the template
+          enum:
+          - custom
+          - review_invite
+          - review_invite_backup
+          example: custom
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Podium unique identifier for The unique identifier of the template..
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type:
+          - string
+          - 'null'
+        updatedAt:
+          description: The date/time the template was last updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        user:
+          description: Reference to the User resource.
+          properties:
+            uid:
+              description: Podium unique identifier for the referenced resource.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type: string
+          type: object
+        variables:
+          description: The template variables.
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+      title: Template
+      type: object

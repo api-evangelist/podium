@@ -1,0 +1,319 @@
+openapi: 3.2.0
+info:
+  title: Contacts Contact Tag API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Contact Tag
+paths:
+  /v4/contact_tags:
+    get:
+      callbacks: {}
+      description: 'List all tags for the organization.
+
+
+        Required scope: `read_contacts`.
+
+        '
+      operationId: contact_entity_tag.list
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/contact_entity_tag'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List all tags for the organization
+      tags:
+      - Contact Tag
+    post:
+      callbacks: {}
+      description: 'Create an organization level tag for a contact.
+
+
+        Required scope: `write_contacts`.
+
+        '
+      operationId: contact_entity_tag.create
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                description:
+                  description: The description of the tag
+                  example: High priority contacts
+                  type: string
+                label:
+                  description: The label value for the tag
+                  example: priority
+                  minLength: 1
+                  type: string
+              required:
+              - label
+              - description
+              type: object
+        description: Create contact tag params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_entity_tag'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create a contact tag for an organization
+      tags:
+      - Contact Tag
+  /v4/contact_tags/{uid}:
+    get:
+      callbacks: {}
+      description: 'Get a organization level tag given the provided uid.
+
+
+        Required scope: `read_contacts`.
+
+        '
+      operationId: contact_entity_tag.get
+      parameters:
+      - description: Contacts tags uid
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_entity_tag'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a contact tag for an organization given an uid
+      tags:
+      - Contact Tag
+    patch:
+      callbacks: {}
+      description: 'Update an organization level tag to be used on contacts.
+
+
+        Required scope: `write_contacts`.
+
+        '
+      operationId: contact_entity_tag.update
+      parameters:
+      - description: Podium unique identifier for tag.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              minProperties: 1
+              properties:
+                description:
+                  description: The description of the tag
+                  example: High priority contacts
+                  type: string
+                label:
+                  description: The label value for the tag
+                  example: priority
+                  type: string
+              type: object
+        description: Update contact tag params
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_entity_tag'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Update a contact tag
+      tags:
+      - Contact Tag
+components:
+  schemas:
+    contact_entity_tag:
+      description: A contact tag.
+      properties:
+        createdAt:
+          description: Time at which the resource was created. Date time is in Coordinated Universal Time (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        description:
+          description: Description of the tag.
+          type:
+          - string
+          - 'null'
+        label:
+          description: The label of the tag.
+          type:
+          - string
+          - 'null'
+        organization:
+          description: Reference to the organization resource.
+          properties:
+            uid:
+              description: Podium unique identifier for the referenced resource.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type: string
+          type:
+          - object
+          - 'null'
+        uid:
+          description: Podium unique identifier for tag.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type:
+          - string
+          - 'null'
+        updatedAt:
+          description: Time at which the resource was updated. Date time is in Coordinated Universal Time (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      title: contact_entity_tag
+      type: object

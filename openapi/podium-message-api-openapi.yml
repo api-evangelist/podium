@@ -1,0 +1,834 @@
+openapi: 3.2.0
+info:
+  title: Podium Message API
+  version: 2021.04.01
+  description: 'Operations tagged Message across 2 of this provider''s published API definitions: podium-campaigns-openapi.yml, podium-messenger-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Message
+paths:
+  /v4/campaigns/{uid}/messages:
+    post:
+      callbacks: {}
+      description: 'Send a message through a campaign.
+
+
+        Required scope: `write_campaign_messages`.'
+      operationId: message.create_campaign_message
+      parameters:
+      - description: Podium unique identifier for campaign.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                channelIdentifier:
+                  description: Identifies the Messenger channel. Must be a valid email address or a phone number. Non-US/Canada numbers must include the country code (e.g. +61 for AUS)
+                  example: email@email.com
+                  type: string
+              required:
+              - channelIdentifier
+              type: object
+        description: Create campaign message body params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/message'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create a message for a given campaign
+      tags:
+      - Message
+    servers:
+    - url: https://api.podium.com
+      variables: {}
+  /v4/conversations/{conversation_uid}/messages:
+    get:
+      callbacks: {}
+      description: 'Retrieve limited number of messages from a conversation.
+
+
+        Required scope: `read_messages`.'
+      operationId: message.index
+      parameters:
+      - description: Podium unique identifier for conversation.
+        in: path
+        name: conversation_uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      - description: ''
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: Cursor used to access next or previous page in pagination.
+          example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/message'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      nextCursor:
+                        description: Cursor to get next set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      previousCursor:
+                        description: Cursor to get previous set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      totalItems:
+                        description: Total number of items available.
+                        type: integer
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Retrieve messages from a conversation
+      tags:
+      - Message
+    servers:
+    - url: https://api.podium.com
+      variables: {}
+  /v4/conversations/{conversation_uid}/messages/{uid}:
+    get:
+      callbacks: {}
+      description: 'Retrieve a message from a conversation.
+
+
+        Required scope: `read_messages`.'
+      operationId: message.get
+      parameters:
+      - description: Podium unique identifier for message.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      - description: Podium unique identifier for conversation.
+        in: path
+        name: conversation_uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/message'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Retreive a message from a conversation
+      tags:
+      - Message
+    servers:
+    - url: https://api.podium.com
+      variables: {}
+  /v4/import/messages:
+    post:
+      callbacks: {}
+      description: 'Import a message from a different system. NOTE: This does not send a message to number, just imports it into a conversation on Podium''s system.
+
+
+        Required scope: `write_messages`.
+
+        '
+      operationId: message.import
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                body:
+                  description: Text of the message.
+                  example: Just a reminder that your appointment is today!
+                  type: string
+                channel:
+                  description: The channel that the message was sent to.
+                  properties:
+                    identifier:
+                      description: Identifies the Messenger channel. Must be a valid email address or a phone number. Non-US/Canada numbers must include the country code (e.g. +61 for AUS)
+                      example: email@email.com
+                      type: string
+                    type:
+                      description: Messenger channel for the conversation.
+                      enum:
+                      - email
+                      - phone
+                      example: email
+                      type: string
+                  required:
+                  - identifier
+                  - type
+                  type: object
+                contactName:
+                  description: Name of the contact that the message was sent to.
+                  example: Joe Orange
+                  type: string
+                direction:
+                  description: Direction of the message.
+                  enum:
+                  - inbound
+                  - outbound
+                  example: inbound
+                  type: string
+                locationUid:
+                  description: Podium unique identifier for location.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                publishedAt:
+                  description: When the mesage was originally published.
+                  example: '2015-01-23T23:50:07Z'
+                  format: date-time
+                  type: string
+                subject:
+                  description: Subject of the message.
+                  example: Appointment reminder
+                  type: string
+              required:
+              - body
+              - channel
+              - contactName
+              - direction
+              - locationUid
+              - publishedAt
+              type: object
+        description: Import message body params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/message'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Import a message.
+      tags:
+      - Message
+    servers:
+    - url: https://api.podium.com
+      variables: {}
+  /v4/messages:
+    post:
+      callbacks: {}
+      description: 'Send a message. A message can only be sent on behalf of a user if they have the necessary permissions to send
+
+        messages in: conversations assigned to them, conversations assigned to others, and unassigned conversations.
+
+
+        Required scope: `write_messages`.
+
+        '
+      operationId: message.send
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                body:
+                  description: Text of the message.
+                  example: Just a reminder that your appointment is today!
+                  type: string
+                channel:
+                  description: Channel to send the message to.
+                  properties:
+                    identifier:
+                      description: Identifies the Messenger channel. Must be a valid email address or a phone number. Non-US/Canada numbers must include the country code (e.g. +61 for AUS)
+                      example: email@email.com
+                      type: string
+                    type:
+                      description: Messenger channel for the conversation.
+                      enum:
+                      - email
+                      - phone
+                      example: email
+                      type: string
+                  required:
+                  - identifier
+                  - type
+                  type: object
+                contactName:
+                  description: Name of the contact to send the message to. If a contact already exists for the channel then their name will be updated.
+                  example: Joe Orange
+                  type: string
+                locationUid:
+                  description: Podium unique identifier for location.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                senderName:
+                  description: The name that will be credited with sending the message. This will appear under the sent message in the Podium app.
+                  example: Bot1234
+                  type: string
+                setOpenInbox:
+                  default: false
+                  description: new conversations will be created in a 'closed' state by default. This will override that setting going to 'open' inbox.
+                  example: true
+                  type: boolean
+                subject:
+                  description: Subject of the message.
+                  example: Appointment reminder
+                  type: string
+              required:
+              - body
+              - channel
+              - locationUid
+              type: object
+        description: Create message body params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/message'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Send a message.
+      tags:
+      - Message
+    servers:
+    - url: https://api.podium.com
+      variables: {}
+  /v4/messages/attachment:
+    post:
+      callbacks: {}
+      description: 'Send a message with an attachment. A message can only be sent on behalf of a user if they have the necessary permissions to send
+
+        messages in: conversations assigned to them, conversations assigned to others, and unassigned conversations.
+
+
+        Required scope: `write_messages`.
+
+        '
+      operationId: message.send_with_attachment
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              description: multipart request body
+              properties:
+                attachment:
+                  description: The attachment content.
+                  format: binary
+                  type:
+                  - string
+                  - 'null'
+                data:
+                  properties:
+                    body:
+                      description: Text of the message.
+                      example: Just a reminder that your appointment is today!
+                      type: string
+                    channel:
+                      description: Channel to send the message to.
+                      properties:
+                        identifier:
+                          description: Identifies the Messenger channel. Must be a valid email address or a phone number. Non-US/Canada numbers must include the country code (e.g. +61 for AUS)
+                          example: email@email.com
+                          type: string
+                        type:
+                          description: Messenger channel for the conversation.
+                          enum:
+                          - email
+                          - phone
+                          example: email
+                          type: string
+                      required:
+                      - identifier
+                      - type
+                      type: object
+                    contactName:
+                      description: Name of the contact to send the message to. If a contact already exists for the channel then their name will be updated.
+                      example: Joe Orange
+                      type: string
+                    locationUid:
+                      description: Podium unique identifier for location.
+                      example: 00000000-0000-0000-0000-000000000000
+                      format: uuid
+                      type: string
+                    senderName:
+                      description: The name that will be credited with sending the message. This will appear under the sent message in the Podium app.
+                      example: Bot1234
+                      type: string
+                    subject:
+                      description: Subject of the message.
+                      example: Appointment reminder
+                      type: string
+                  required:
+                  - body
+                  - channel
+                  - locationUid
+                  type: object
+              required:
+              - data
+              type: object
+        description: Create message with attachment body params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/message'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Send a message with attachment.
+      tags:
+      - Message
+    servers:
+    - url: https://api.podium.com
+      variables: {}
+components:
+  schemas:
+    message:
+      description: 'A message from a Podium conversation. Messages include each exchange within a conversation and include
+
+        conversations for all channels within Podium (Facebook Messenger, SMS text, GMB, etc).
+
+
+        ## Deprecations
+
+
+        The `contact` and `sender` object fields have been deprecated, they are currently only available in webhook
+
+        and will be completely removed at some point in the future.
+
+        '
+      properties:
+        attachmentUrl:
+          description: URL of message attachment. This field is deprecated, please refer to the attachmentUrl in the items array.
+          example: https://www.podium.com/
+          type:
+          - string
+          - 'null'
+        body:
+          description: Body of the message.
+          example: Hello there.
+          type:
+          - string
+          - 'null'
+        contact:
+          deprecated: true
+          description: To whom the message was sent or from whom it was received.
+          properties:
+            externalIdentifier:
+              description: Identifier of the contact that is used external to Podium.
+              example: 123-abc
+              type:
+              - string
+              - 'null'
+            name:
+              description: Name of the contact.
+              example: Joe Orange
+              type:
+              - string
+              - 'null'
+            uid:
+              description: Podium unique identifier for contact.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        contactName:
+          description: Name of the contact.
+          example: Joe Orange
+          type:
+          - string
+          - 'null'
+        conversation:
+          description: The conversation to which the message belongs.
+          properties:
+            assignedUserUid:
+              description: Podium unique identifier for user.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+            channel:
+              description: Channel that the conversation is in.
+              properties:
+                identifier:
+                  description: Identifies the Messenger channel. Must be a valid email address or a phone number. Non-US/Canada numbers must include the country code (e.g. +61 for AUS)
+                  example: email@email.com
+                  type:
+                  - string
+                  - 'null'
+                type:
+                  description: Messenger channel for the conversation.
+                  enum:
+                  - apple
+                  - car_wars
+                  - email
+                  - facebook
+                  - fallback_email
+                  - google
+                  - google_brand
+                  - iframe
+                  - instagram
+                  - phone
+                  - secure
+                  - sms
+                  - text
+                  - whatsapp
+                  example: email
+                  type:
+                  - string
+                  - 'null'
+              type: object
+            startedAt:
+              description: When the conversation was started.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type:
+              - string
+              - 'null'
+            uid:
+              description: Podium unique identifier for conversation.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        createdAt:
+          description: When the message was created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        failureReason:
+          description: If the message failed to send, this will be the reason.
+          example: Attempted to send SMS to a landline.
+          type:
+          - string
+          - 'null'
+        items:
+          items:
+            description: A list of all items associated with the message uid. This includes text bodies and attachments.
+            properties:
+              attachmentContentType:
+                description: MIME type of the message attachment.
+                example: image/png
+                type:
+                - string
+                - 'null'
+              attachmentUrl:
+                description: 'Public URL of the message attachment. NOTE: There is an expiry of 7 days on this URL.'
+                example: https://www.podium.com/image.png
+                type:
+                - string
+                - 'null'
+              body:
+                description: Body of the message.
+                example: https://www.podium.com/image.png
+                type:
+                - string
+                - 'null'
+              createdAt:
+                description: When the message item was created.
+                example: '2015-01-23T23:50:07Z'
+                format: date-time
+                type:
+                - string
+                - 'null'
+              deliveryStatus:
+                description: Status of the message item.
+                example: sent
+                type:
+                - string
+                - 'null'
+              encryptedAt:
+                description: When the item was encrypted. `null` if the item is not encrypted.
+                example: '2015-01-23T23:50:07Z'
+                format: date-time
+                type:
+                - string
+                - 'null'
+              sendBody:
+                description: The send body of the message item that the end consumer sees.
+                example: 'null'
+                type:
+                - string
+                - 'null'
+              sourceType:
+                description: The source type of the message item.
+                example: outbound
+                type:
+                - string
+                - 'null'
+              type:
+                description: The type of the message item.
+                example: attachment
+                type:
+                - string
+                - 'null'
+              uid:
+                description: Podium unique identifier for message item.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type: string
+            type:
+            - object
+            - 'null'
+          type: array
+        location:
+          description: Location from which the message was sent or to where the message was sent.
+          properties:
+            organizationUid:
+              description: Podium unique identifier for organization.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+            uid:
+              description: Podium unique identifier for location.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        sender:
+          deprecated: true
+          description: If the message was sent from Podium then this will be the Podium user who sent it.
+          properties:
+            uid:
+              description: Podium unique identifier for user.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        senderUid:
+          description: Podium unique identifier for user. If the message was sent from Podium then this will be the Podium user who sent it.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Podium unique identifier for message.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type:
+          - string
+          - 'null'
+        webchatUrl:
+          description: The page URL where the webchat widget was submitted from. Only present when the message originated from a website widget.
+          example: https://www.example.com/contact
+          type:
+          - string
+          - 'null'
+      title: message
+      type: object
+x-refined-from:
+- podium-campaigns-openapi.yml
+- podium-messenger-openapi.yml

@@ -1,0 +1,419 @@
+openapi: 3.2.0
+info:
+  title: Contacts Contact Attribute API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Contact Attribute
+paths:
+  /v4/contact_attributes:
+    get:
+      callbacks: {}
+      description: 'List contact attributes that are tied to the ownerResource on the token.
+
+
+        Required scope: `read_contacts`.
+
+        '
+      operationId: contact_entity_attribute.index
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/contact_entity_attribute'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List contact attributes
+      tags:
+      - Contact Attribute
+    post:
+      callbacks: {}
+      description: 'Create an application or organization level attribute to be used on contacts.
+
+
+        Required scope: `write_contacts`.
+
+        '
+      operationId: contact_entity_attribute.create
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                dataType:
+                  description: The data type of the attribute value
+                  enum:
+                  - ADDRESS
+                  - BOOLEAN
+                  - DATETIME
+                  - FLOAT
+                  - INTEGER
+                  - STRING
+                  - UUID
+                  - SINGLE_SELECT
+                  - MULTI_SELECT
+                  type: string
+                isEncrypted:
+                  default: true
+                  description: If the attribute is encrypted it cannot be used as a filter. Attributes that will have sensitive information, such as PII or PHI, should be encrypted. Defaults to true.
+                  type: boolean
+                label:
+                  description: The label of the attribute.
+                  example: Internal Contact ID
+                  minLength: 1
+                  type: string
+                ownerResourceType:
+                  enum:
+                  - PRODUCT
+                  - ORGANIZATION
+                  type: string
+              required:
+              - dataType
+              - label
+              - ownerResourceType
+              type: object
+        description: Create contact attribute params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_entity_attribute'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create a contact attribute
+      tags:
+      - Contact Attribute
+  /v4/contact_attributes/{uid}:
+    delete:
+      callbacks: {}
+      description: 'Delete a contact attribute with its uid.
+
+
+        Required scope: `write_contacts`.'
+      operationId: contact_entity_attribute.delete
+      parameters:
+      - description: Podium unique identifier for attribute.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_entity_attribute'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Delete a contact attribute
+      tags:
+      - Contact Attribute
+    get:
+      callbacks: {}
+      description: 'Gets an application or organization level attribute by its uid, to be used on contacts.
+
+
+        Required scope: `read_contacts`.
+
+        '
+      operationId: contact_entity_attribute.get
+      parameters:
+      - description: Contacts attribute uid
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_entity_attribute'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Gets a contact attribute by uid
+      tags:
+      - Contact Attribute
+    patch:
+      callbacks: {}
+      description: 'Update an application or organization level attribute to be used on contacts.
+
+
+        Required scope: `write_contacts`.
+
+        '
+      operationId: contact_entity_attribute.update
+      parameters:
+      - description: Podium unique identifier for attribute.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                dataType:
+                  description: The data type of the attribute value.
+                  enum:
+                  - ADDRESS
+                  - BOOLEAN
+                  - DATETIME
+                  - FLOAT
+                  - INTEGER
+                  - STRING
+                  - UUID
+                  - SINGLE_SELECT
+                  - MULTI_SELECT
+                  type: string
+                isEncrypted:
+                  description: If the attribute is encrypted it cannot be used as a filter. Attributes that will have sensitive information, such as PII or PHI, should be encrypted.
+                  type: boolean
+                label:
+                  description: The label of the attribute.
+                  example: Internal Contact ID
+                  type: string
+                ownerResourceType:
+                  description: Owner resource object
+                  enum:
+                  - PRODUCT
+                  - ORGANIZATION
+                  type: string
+              type: object
+        description: Update contact attribute params
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/contact_entity_attribute'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Update a contact attribute
+      tags:
+      - Contact Attribute
+components:
+  schemas:
+    contact_entity_attribute:
+      description: A contact attribute.
+      properties:
+        createdAt:
+          description: Time at which the resource was created. Date time is in Coordinated Universal Time (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type: string
+        dataType:
+          description: The data type of the attribute value
+          enum:
+          - ADDRESS
+          - BOOLEAN
+          - DATETIME
+          - FLOAT
+          - INTEGER
+          - STRING
+          - UUID
+          - SINGLE_SELECT
+          - MULTI_SELECT
+          type: string
+        isEncrypted:
+          default: true
+          description: If the attribute is encrypted it cannot be used as a filter. Attributes that will have sensitive information, such as PII or PHI, should be encrypted.
+          type: boolean
+        label:
+          description: The label of the attribute.
+          type: string
+        ownerResource:
+          properties:
+            type:
+              enum:
+              - PRODUCT
+              - ORGANIZATION
+              type:
+              - string
+              - 'null'
+            uid:
+              description: The unique identify of the owner resource. Either an application uid or organization uid.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        uid:
+          description: Podium unique identifier for attribute.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: Time at which the resource was updated. Date time is in Coordinated Universal Time (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type: string
+      title: contact_entity_attribute
+      type: object

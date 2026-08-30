@@ -1,0 +1,228 @@
+openapi: 3.2.0
+info:
+  title: Reviews Review Attribution API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Review Attribution
+paths:
+  /v4/reviews/{uid}/attributions:
+    delete:
+      callbacks: {}
+      description: 'Remove a user attribution from a review.
+
+
+        Required scope: `write_reviews`.'
+      operationId: review_attribution.delete
+      parameters:
+      - description: Podium unique identifier for review.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                userUid:
+                  description: Podium user identifier that review will be attributed to.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+              required:
+              - userUid
+              type: object
+        description: Delete review attribution body params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/review_attribution'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Remove a user attribution for a given review
+      tags:
+      - Review Attribution
+    post:
+      callbacks: {}
+      description: 'Attributes a user to a review.
+
+
+        Required scope: `write_reviews`.'
+      operationId: review_attribution.create
+      parameters:
+      - description: Podium unique identifier for review.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                locationUid:
+                  description: Podium location identifier that review attribution will be tied to.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                userUid:
+                  description: Podium user identifier that review will be attributed to.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+              required:
+              - locationUid
+              - userUid
+              type: object
+        description: Create review attribution body params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/review_attribution'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Attribute a user to a review
+      tags:
+      - Review Attribution
+components:
+  schemas:
+    review_attribution:
+      description: A review attribution.
+      properties:
+        createdAt:
+          description: When the review was attributed.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        editedByUser:
+          properties:
+            uid:
+              description: Podium unique identifier for user.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        isDeleted:
+          description: If the attribution is deleted
+          type:
+          - boolean
+          - 'null'
+        reviewInvite:
+          properties:
+            uid:
+              description: Podium unique identifier for review invite.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        siteReviewId:
+          description: Review site's unique identifier for the review posted.
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Podium unique identifier for review attribution.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type:
+          - string
+          - 'null'
+        updatedAt:
+          description: When the attribution was updated
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type: string
+        user:
+          properties:
+            uid:
+              description: Podium unique identifier for user.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+      title: review_attribution
+      type: object

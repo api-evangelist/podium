@@ -1,0 +1,214 @@
+openapi: 3.2.0
+info:
+  title: Appointments Appointment API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Appointment
+paths:
+  /v4/appointments:
+    post:
+      callbacks: {}
+      description: 'Create an appointment.
+
+
+        Required scope: `write_appointments`.'
+      operationId: appointment.create
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                assignedUserUid:
+                  description: Podium unique identifier for user.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                contactName:
+                  description: Name of the contact.
+                  example: John Doe
+                  type: string
+                contactPhoneNumber:
+                  description: Phone number of the contact. Phone number should be formatted as '+15555555555'
+                  example: '+17626765098'
+                  type: string
+                datetime:
+                  description: Date and time of the appointment.
+                  example: '2015-01-23T23:50:07Z'
+                  format: date-time
+                  type: string
+                durationMin:
+                  description: How many minutes long the appointment is.
+                  type: integer
+                locationUid:
+                  description: Podium unique identifier for location.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                note:
+                  description: Note that is attached to the appointment.
+                  example: Note for the appointment.
+                  maxLength: 500
+                  type: string
+                status:
+                  default: unconfirmed
+                  description: Status of the appointment.
+                  enum:
+                  - cancelled
+                  - completed
+                  - confirmed
+                  - no_show
+                  - unconfirmed
+                  type: string
+                type:
+                  default: in_person
+                  description: Type of appointment.
+                  enum:
+                  - in_person
+                  - virtual
+                  type: string
+              required:
+              - contactName
+              - contactPhoneNumber
+              - datetime
+              - locationUid
+              type: object
+        description: Create appointment params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/appointment'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create an appointment.
+      tags:
+      - Appointment
+components:
+  schemas:
+    appointment:
+      properties:
+        assignedUser:
+          description: Assigned user object
+          properties:
+            uid:
+              description: Podium unique identifier for user.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type: string
+          type:
+          - object
+          - 'null'
+        contactName:
+          description: Name of the contact.
+          type:
+          - string
+          - 'null'
+        contactPhoneNumber:
+          description: Phone number of the contact.
+          type:
+          - string
+          - 'null'
+        createdAt:
+          description: When the appointment was created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        datetime:
+          description: Date and time of the appointment.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        durationMin:
+          description: How many miuntes long the appointment is.
+          type:
+          - integer
+          - 'null'
+        location:
+          description: Location object
+          properties:
+            uid:
+              description: Podium unique identifier for location.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type: string
+          type:
+          - object
+          - 'null'
+        note:
+          description: Note that is attached to the appointment.
+          type:
+          - string
+          - 'null'
+        status:
+          description: Status of the appointment.
+          enum:
+          - cancelled
+          - completed
+          - confirmed
+          - no_show
+          - unconfirmed
+          type:
+          - string
+          - 'null'
+        type:
+          description: Type of appointment.
+          enum:
+          - in_person
+          - virtual
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Podium unique identifier for appointment.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the appointment was updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      title: appointment
+      type: object

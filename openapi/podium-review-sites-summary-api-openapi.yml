@@ -1,0 +1,132 @@
+openapi: 3.2.0
+info:
+  title: Reviews Review Sites Summary API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Review Sites Summary
+paths:
+  /v4/reviews/sites/summary:
+    get:
+      callbacks: {}
+      description: 'Returns a summary of reviews grouped by the site they are from.
+
+        NOTE: Our docs provider has a bug that doesn''t show the correct usage of the `locationUids` parameter.In order for the request to succeed, for each locationUid you are querying for add a `&locationUids[]` parameter to the url.For example: `https://api.podium.com/v4/reviews/sites/summary?locationUids[]=00000000-0000-0000-0000-000000000000&locationUids[]=00000000-0000-0000-0000-000000000001`
+
+        If no `locationUids` parameter is used then the data will be based on all locations that the caller has access to.
+
+
+        Required scope: `read_reviews`.'
+      operationId: review_sites_summary.index
+      parameters:
+      - description: Filter on the `createdAt` date.
+        in: query
+        name: createdAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      - description: List of locations to filter the results by.
+        in: query
+        name: locationUids
+        required: false
+        schema:
+          items:
+            example: 00000000-0000-0000-0000-000000000000
+            format: uuid
+            type: string
+          type: array
+      - description: Filter on the user uid that the reviews are attributed to.
+        in: query
+        name: userUid
+        required: false
+        schema:
+          description: Podium unique identifier for user.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/review_sites_summary'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Summary of all connected review sites.
+      tags:
+      - Review Sites Summary
+components:
+  schemas:
+    review_sites_summary:
+      properties:
+        averageRating:
+          description: Average of all review ratings.
+          example: 4.839542760372566
+          type: number
+        reviewCount:
+          description: Number of reviews.
+          example: 2362
+          type: integer
+        siteName:
+          description: Name of the site.
+          example: google
+          type: string
+      title: review_sites_summary
+      type: object

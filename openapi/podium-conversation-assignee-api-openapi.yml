@@ -1,0 +1,194 @@
+openapi: 3.2.0
+info:
+  title: Conversations Conversation Assignee API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Conversation Assignee
+paths:
+  /v4/conversations/{uid}/assignees:
+    get:
+      callbacks: {}
+      description: 'Get conversation assignees.
+
+
+        Required scope: `read_messages`.'
+      operationId: conversation_assignee.get
+      parameters:
+      - description: Podium unique identifier for conversation.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/conversation_assignee'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get conversation assignees.
+      tags:
+      - Conversation Assignee
+    put:
+      callbacks: {}
+      description: 'Update a conversation assignee.
+
+
+        Required scope: `write_messages`.'
+      operationId: conversation_assignee.update
+      parameters:
+      - description: Podium unique identifier for conversation.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Messenger conversation assignee.
+              properties:
+                assigneeUids:
+                  description: List of assignee user UIDs
+                  items:
+                    description: Podium unique identifier for assignee user.
+                    example: 00000000-0000-0000-0000-000000000000
+                    format: uuid
+                    type: string
+                  type: array
+                keepAiAssignment:
+                  description: Keep AI assignment - defaults to false
+                  type:
+                  - boolean
+                  - 'null'
+                name:
+                  description: User assigning the conversation (to be shown in the notification)
+                  type:
+                  - string
+                  - 'null'
+              type: object
+        description: Update conversation assignee params
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/conversation_assignee'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Update a conversation assignee.
+      tags:
+      - Conversation Assignee
+components:
+  schemas:
+    conversation_assignee:
+      description: Messenger conversation assignees.
+      properties:
+        assignedUserUid:
+          description: Podium unique identifier for user.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type:
+          - string
+          - 'null'
+        assigneeType:
+          description: Type of assignee
+          enum:
+          - user
+          type:
+          - string
+          - 'null'
+        assigneeUid:
+          description: Podium unique identifier for user.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type:
+          - string
+          - 'null'
+        assignees:
+          description: List of conversation assignees
+          items:
+            properties:
+              uid:
+                description: Podium unique identifier for assignee user.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type: string
+            type: object
+          type:
+          - array
+          - 'null'
+      title: conversation_assignee
+      type: object

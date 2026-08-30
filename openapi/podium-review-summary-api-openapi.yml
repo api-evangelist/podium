@@ -1,0 +1,131 @@
+openapi: 3.2.0
+info:
+  title: Reviews Review Summary API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Review Summary
+paths:
+  /v4/reviews/summary:
+    get:
+      callbacks: {}
+      description: 'Returns a summary of reviews for each location. If the`locationUids` parameter is not used then the data will be based on all locations that the caller has access to.
+
+
+        Required scope: `read_reviews`.'
+      operationId: review_summary.index
+      parameters:
+      - description: Filter on the `createdAt` date.
+        in: query
+        name: createdAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      - description: List of locations to filter the results by.
+        in: query
+        name: locationUids
+        required: false
+        schema:
+          items:
+            example: 00000000-0000-0000-0000-000000000000
+            format: uuid
+            type: string
+          type: array
+      - description: Filter on the user uid that the reviews are attributed to.
+        in: query
+        name: userUid
+        required: false
+        schema:
+          description: Podium unique identifier for user.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/review_summary'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Summary of all reviews
+      tags:
+      - Review Summary
+components:
+  schemas:
+    review_summary:
+      properties:
+        averageRating:
+          description: Average of all review ratings.
+          example: 4.839542760372566
+          type:
+          - number
+          - 'null'
+        locationUid:
+          description: Podium unique identifier for location.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        reviewCount:
+          description: Number of reviews.
+          example: 2362
+          type: integer
+      title: review_summary
+      type: object

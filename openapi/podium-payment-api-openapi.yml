@@ -1,0 +1,242 @@
+openapi: 3.2.0
+info:
+  title: Payments Payment API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Payment
+paths:
+  /v4/payments/{uid}:
+    get:
+      callbacks: {}
+      description: 'Gets a single payment by its uid.
+
+
+        Required scope: `read_payments`.'
+      operationId: payment.get
+      parameters:
+      - description: Podium unique identifier for payment.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/payment'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a payment.
+      tags:
+      - Payment
+components:
+  schemas:
+    payment:
+      properties:
+        bankAccountLast4:
+          description: Last four digits of the bank account used if bank transfers are used to make a payment.
+          example: '1234'
+          type:
+          - string
+          - 'null'
+        bankAccountName:
+          description: Name of the banking institute used if bank transfers are used to make a payment.
+          example: The Bank
+          type:
+          - string
+          - 'null'
+        cardBrand:
+          description: Card brand used if a card is used to make a payment.
+          example: visa
+          type:
+          - string
+          - 'null'
+        cardFunding:
+          description: Card type used if a card is used to make a payment.
+          example: CREDIT
+          type:
+          - string
+          - 'null'
+        cardLast4:
+          description: Last four digits of the card used if a card is used to make a payment.
+          example: '4242'
+          type:
+          - string
+          - 'null'
+        createdAt:
+          description: When the payment was made.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        declineCode:
+          description: Code returned by the payment processor if a card was used and the payment was declined.
+          example: card_not_supported
+          type:
+          - string
+          - 'null'
+        declineCodeMessage:
+          description: A more descriptive message about the declideCode attribute.
+          example: The card does not support this type of purchase.
+          type:
+          - string
+          - 'null'
+        fee:
+          description: Transaction fee removed at the time of the transaction, represented in cents.
+          example: 99
+          type:
+          - integer
+          - 'null'
+        feeBillingType:
+          description: How the transaction fee is billed.
+          example: MONTHLY
+          type:
+          - string
+          - 'null'
+        feeCollectedAt:
+          description: When the transaction fee was collected.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        interchangeFee:
+          description: Transaction fee that is removed at the beginning of the following month if a merchant is on Interchange+, represented in cents.
+          example: 50
+          type:
+          - integer
+          - 'null'
+        paidWithCardOnFile:
+          description: Whether the payment was made with a card on file.
+          example: true
+          type:
+          - boolean
+          - 'null'
+        refunds:
+          items:
+            description: A refund can be for the full or partial amount of the payment. Thus there can be multiple refunds per transaction.
+            properties:
+              amount:
+                description: Amount refunded on an invoice, represented in cents.
+                example: 100
+                type:
+                - integer
+                - 'null'
+              createdAt:
+                description: When the refund was initiated.
+                example: '2015-01-23T23:50:07Z'
+                format: date-time
+                type:
+                - string
+                - 'null'
+              notes:
+                items:
+                  description: Detailed note for why the refund was initiated.
+                  example: The product did not function properly.
+                  type:
+                  - string
+                  - 'null'
+                type: array
+              reason:
+                description: Generic reason for why the refund was intiated.
+                enum:
+                - accidental_charge
+                - canceled
+                - duplicate
+                - fraudulent
+                - requested_by_customer
+                - other
+                type:
+                - string
+                - 'null'
+              settledAt:
+                description: When the refund was fully completed. Refunds can take 5-10 days to appear in the customer’s bank account.
+                example: '2015-01-23T23:50:07Z'
+                format: date-time
+                type:
+                - string
+                - 'null'
+              status:
+                description: Current status of the refund.
+                enum:
+                - failed_charge_for_pending_refund_disputed
+                - failed_expired_or_cancelled
+                - failed_lost_or_stolen
+                - failed_unknown
+                - succeeded
+                type:
+                - string
+                - 'null'
+            type: object
+          type: array
+        settledAt:
+          description: When the money from the transaction was transferred into the merchant’s bank account.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        status:
+          description: Current status of the payment.
+          enum:
+          - failed
+          - paid
+          - partial_refund
+          - refunded
+          - refund_failed
+          - refund_pending
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Podium unique identifier for payment.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the payment was updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      title: payment
+      type: object

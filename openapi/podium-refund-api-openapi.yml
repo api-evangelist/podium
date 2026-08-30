@@ -1,0 +1,259 @@
+openapi: 3.2.0
+info:
+  title: Payments Refund API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Refund
+paths:
+  /v4/refunds:
+    post:
+      callbacks: {}
+      description: "Creates a refund. (see note)\n\n  **Use with caution.** This action creates an Unlinked Refund that is not associated with an\n  Podium Invoice or Payment. This current implementation *only works*\n  with a Podium Payment Card Reader, reading the customer's credit card data\n  before debiting the refunded amount.\n\n  **Balance requirements.** This action requires that your account have on hand an amount\n  equal to or greater than the amount of the refund. The amount for this refund will be\n  deducted from the amount still to pay out from the account. If the account does not have\n  sufficient funds, the refund will fail.\n\n  **Upcoming change:** When this resource supports refunding a Podium Invoice,\n  `/invoices/uid/refund` is planned to be deprecated.\n\n  Required scope: `write_payments`.\n"
+      operationId: Refund.create
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                accountUid:
+                  description: Podium unique identifier for bank account.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                amount:
+                  description: Amount to refund to the customer, represented in cents.
+                  example: 4186
+                  minimum: 1
+                  type: integer
+                channelIdentifier:
+                  description: Identifies the Messenger channel. Must be a valid email address or a phone number. Non-US/Canada numbers must include the country code (e.g. +61 for AUS)
+                  example: email@email.com
+                  type: string
+                customerName:
+                  description: Name of the customer who will receive the refund.
+                  example: Barry Grape
+                  type: string
+                locationUid:
+                  description: Podium unique identifier for location.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                readerUid:
+                  description: Podium unique identifier for card reader.
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                reason:
+                  description: Generic reason for why the refund was initiated.
+                  enum:
+                  - accidental_charge
+                  - canceled
+                  - duplicate
+                  - fraudulent
+                  - requested_by_customer
+                  - other
+                  type: string
+              required:
+              - amount
+              - channelIdentifier
+              - customerName
+              - locationUid
+              - readerUid
+              - reason
+              type: object
+        description: Create refund params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Refund'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create a refund.
+      tags:
+      - Refund
+  /v4/refunds/{uid}:
+    get:
+      callbacks: {}
+      description: 'Gets a refund that has previously been created.
+
+
+        Required scope: `read_payments`.'
+      operationId: Refund.get
+      parameters:
+      - description: Podium unique identifier for refund.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      - description: Podium unique identifier for location.
+        in: query
+        name: locationUid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Refund'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a refund.
+      tags:
+      - Refund
+components:
+  schemas:
+    Refund:
+      description: Payment refund.
+      properties:
+        amount:
+          description: Amount refunded to the customer, represented in cents.
+          example: 100
+          type:
+          - integer
+          - 'null'
+        cardBrand:
+          description: Brand of the card that is to receive the credited refund.
+          example: visa
+          type:
+          - string
+          - 'null'
+        cardLast4:
+          description: Last four digits of the card that is to receive the credited refund.
+          example: '4242'
+          type:
+          - string
+          - 'null'
+        createdAt:
+          description: When the refund was initiated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        location:
+          description: Location that the refund belongs to.
+          properties:
+            uid:
+              description: Podium unique identifier for location.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        notes:
+          items:
+            description: Detailed note for why the refund was initiated.
+            example: The product did not function properly.
+            type:
+            - string
+            - 'null'
+          type: array
+        reason:
+          description: Generic reason for why the refund was intiated.
+          enum:
+          - duplicate
+          - fraudulent
+          - requested_by_customer
+          type:
+          - string
+          - 'null'
+        settledAt:
+          description: When the refund was fully completed. Refunds can take 5-10 days to appear in the customer’s bank account.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        status:
+          description: Current status of the refund.
+          enum:
+          - created
+          - failed_charge_for_pending_refund_disputed
+          - failed_expired_or_cancelled
+          - failed_lost_or_stolen
+          - failed_unknown
+          - succeeded
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Podium unique identifier for refund.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      title: Refund
+      type: object

@@ -1,0 +1,105 @@
+openapi: 3.2.0
+info:
+  title: Accounts Organization API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Organization
+paths:
+  /v4/organizations/{uid}:
+    get:
+      callbacks: {}
+      description: 'Gets a single organization by its uid.
+
+
+        Required scope: `read_organizations`.'
+      operationId: organization.get
+      parameters:
+      - description: Podium unique identifier for organization.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/organization'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get an organization.
+      tags:
+      - Organization
+components:
+  schemas:
+    organization:
+      properties:
+        archived:
+          description: If the organization has been archived.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        businessName:
+          description: Business name of the organization that is displayed in the user interface.
+          example: Podium, Inc.
+          type:
+          - string
+          - 'null'
+        createdAt:
+          description: When the organization was created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Podium unique identifier for organization.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the organization was updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      title: organization
+      type: object

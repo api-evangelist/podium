@@ -1,0 +1,508 @@
+openapi: 3.2.0
+info:
+  title: Reviews Review Invite API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Review Invite
+paths:
+  /v4/reviews/invites:
+    get:
+      callbacks: {}
+      description: 'List of all the review invites that you have access to. The review invites are sorted by `createdAt` date, with the most recent appearing first.
+
+
+        If the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.
+
+
+        Required scope: `read_reviews`.'
+      operationId: review_invite.index
+      parameters:
+      - description: Filter on the `createdAt` date.
+        in: query
+        name: createdAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      - description: Filter by the senderUid
+        in: query
+        name: senderUid
+        required: false
+        schema:
+          description: Podium unique identifier for user.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      - description: Max number of items to return per request. Defaults to `10`.
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: integer
+      - description: Retrieves the page of items that comes after the `cursor`.
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: Cursor used to access next or previous page in pagination.
+          example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+          type: string
+      - description: Filter on the `updatedAt` date.
+        in: query
+        name: updatedAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/review_invite'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      nextCursor:
+                        description: Cursor to get next set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      previousCursor:
+                        description: Cursor to get previous set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      totalItems:
+                        description: Total number of items available.
+                        type: integer
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List all review invites.
+      tags:
+      - Review Invite
+    post:
+      callbacks: {}
+      description: 'Create a review invite link.
+
+
+        Required scope: `write_reviews`.'
+      operationId: review_invite.create
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  description: The customer email. Required if phoneNumber not present
+                  example: john.doe@podium.com
+                  type: string
+                locationUid:
+                  description: Podium location identifier that review invite link will be created for
+                  example: 00000000-0000-0000-0000-000000000000
+                  format: uuid
+                  type: string
+                phoneNumber:
+                  description: The customer phone number.
+                  example: '+17626765098'
+                  type: string
+              required:
+              - locationUid
+              type: object
+        description: Create review invite link params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/review_invite'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create a review invite link.
+      tags:
+      - Review Invite
+  /v4/reviews/invites/{uid}:
+    get:
+      callbacks: {}
+      description: 'Get a single review invite by its uid.
+
+
+        Required scope: `read_reviews`.'
+      operationId: review_invite.get
+      parameters:
+      - description: Podium unique identifier for review invite.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/review_invite'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a review invite.
+      tags:
+      - Review Invite
+components:
+  schemas:
+    review_invite:
+      description: A review invite.
+      properties:
+        attributions:
+          items:
+            description: Review that was created from the invite.
+            properties:
+              reviewAuthor:
+                description: Name of person who created the review.
+                example: Joe Orange
+                type:
+                - string
+                - 'null'
+              reviewBody:
+                description: Body of the review.
+                example: Great service!
+                type:
+                - string
+                - 'null'
+              reviewPublishedAt:
+                description: When the review was published.
+                example: '2015-01-23T23:50:07Z'
+                format: date-time
+                type:
+                - string
+                - 'null'
+              reviewRating:
+                description: Rating of the review.
+                example: 5
+                type:
+                - number
+                - 'null'
+              reviewUid:
+                description: Podium unique identifier for review.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type:
+                - string
+                - 'null'
+              siteName:
+                description: Name of the site that the review was published on.
+                example: google
+                type:
+                - string
+                - 'null'
+            type: object
+          type: array
+        channel:
+          description: Channel the review invite was sent through
+          properties:
+            identifier:
+              description: Identifies the Messenger channel. Must be a valid email address or a phone number. Non-US/Canada numbers must include the country code (e.g. +61 for AUS)
+              example: email@email.com
+              type:
+              - string
+              - 'null'
+            type:
+              description: Messenger channel for the conversation.
+              enum:
+              - apple
+              - car_wars
+              - email
+              - facebook
+              - fallback_email
+              - google
+              - google_brand
+              - iframe
+              - instagram
+              - phone
+              - secure
+              - sms
+              - text
+              - whatsapp
+              example: email
+              type:
+              - string
+              - 'null'
+          type: object
+        conversationItemUid:
+          description: Podium unique identifier for conversation item.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type:
+          - string
+          - 'null'
+        createdAt:
+          description: When the review invite was created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        customerName:
+          description: The name of the customer that the review invite was sent to.
+          example: John Apple
+          type:
+          - string
+          - 'null'
+        deliveryStatus:
+          description: Delivery status of the review invite.
+          enum:
+          - failed
+          - pending
+          - sent
+          - delivered
+          type:
+          - string
+          - 'null'
+        languages:
+          items:
+            description: Language of the review invite message.
+            example: en
+            type: string
+          type: array
+        linkClicked:
+          description: Whether or not the review invite link has been clicked.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        linkClickedAt:
+          description: When the review invite link was clicked.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        location:
+          description: Location that the review invite was created on behalf of.
+          properties:
+            organizationUid:
+              description: Podium unique identifier for organization.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+            uid:
+              description: Podium unique identifier for location.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        sender:
+          description: Podium user who sent the review invite
+          properties:
+            name:
+              description: Name of the employee that sent the review invite. If it was an automated invite the value will be `external`.
+              example: Jack Grape
+              type:
+              - string
+              - 'null'
+            sentThrough:
+              description: Podium product that the review invite was sent through.
+              enum:
+              - client_app
+              - feedback
+              - generated_link_only
+              - integrations
+              - payments
+              - email
+              - sms
+              - mms
+              - external
+              type:
+              - string
+              - 'null'
+            type:
+              description: Type of entity that sent the review invite.
+              enum:
+              - user
+              - integration
+              type:
+              - string
+              - 'null'
+            uid:
+              description: Podium unique identifier for user or integration.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        shortUrl:
+          description: Short form url to view the review invite in Podium.
+          example: https://podium.co/QDNrE1v
+          type:
+          - string
+          - 'null'
+        test:
+          description: Whether or not the review invite was a test.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        uid:
+          description: Podium unique identifier for review invite.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the review invite was updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        url:
+          description: Url to view the review invite in Podium.
+          example: http://app.podium.com/#/91f85f79-185c-46cb-830d-79f259bb2822?v2=true
+          type:
+          - string
+          - 'null'
+      title: review_invite
+      type: object

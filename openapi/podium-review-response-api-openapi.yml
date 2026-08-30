@@ -1,0 +1,272 @@
+openapi: 3.2.0
+info:
+  title: Reviews Review Response API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Review Response
+paths:
+  /v4/reviews/{review_uid}/responses/{uid}:
+    patch:
+      callbacks: {}
+      description: 'Update a review response.
+
+
+        Required scope: `write_reviews`.
+
+        '
+      operationId: review_response.update
+      parameters:
+      - description: Review UID you are updating the response for.
+        in: path
+        name: review_uid
+        required: true
+        schema:
+          description: Podium unique identifier for review.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      - description: Review response UID you are updating the response with.
+        in: path
+        name: uid
+        required: true
+        schema:
+          description: Podium unique identifier for review response.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                body:
+                  description: The review response body
+                  example: Body for test
+                  type: string
+              required:
+              - body
+              type: object
+        description: Update review response params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/review_response'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Update response for a given review
+      tags:
+      - Review Response
+  /v4/reviews/{uid}/responses:
+    get:
+      callbacks: {}
+      description: 'List the responses of a given review.
+
+
+        Required scope: `read_reviews`.'
+      operationId: review_response.index
+      parameters:
+      - description: Review UID you are requesting the responses of.
+        in: path
+        name: uid
+        required: true
+        schema:
+          description: Podium unique identifier for review.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/review_response'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List Responses of a given review
+      tags:
+      - Review Response
+    post:
+      callbacks: {}
+      description: 'Create a response for a given review.
+
+
+        Required scope: `write_reviews`.'
+      operationId: review_response.create
+      parameters:
+      - description: Review UID you are creating the response for
+        in: path
+        name: uid
+        required: true
+        schema:
+          description: Podium unique identifier for review.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                body:
+                  description: The review response body
+                  example: Body for test
+                  type: string
+              required:
+              - body
+              type: object
+        description: Create review response params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/review_response'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create response for a given review
+      tags:
+      - Review Response
+components:
+  schemas:
+    review_response:
+      description: A response to a review
+      properties:
+        body:
+          description: Body of the message.
+          example: Thank you for the kind review!
+          type:
+          - string
+          - 'null'
+        isDeleted:
+          description: Indicate whether the review response is deleted
+          example: false
+          type: boolean
+        likeCount:
+          description: Number of likes the review response has received
+          example: 0
+          type:
+          - integer
+          - 'null'
+        publishDate:
+          description: When the review response was published
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type: string
+        siteAuthorName:
+          description: Name of the author of the site
+          example: Happy Place Furniture
+          type:
+          - string
+          - 'null'
+        source:
+          description: Source of the review response
+          example: EXTERNAL
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Podium unique identifier for review_response.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      title: review_response
+      type: object

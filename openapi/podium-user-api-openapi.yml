@@ -1,0 +1,283 @@
+openapi: 3.2.0
+info:
+  title: Accounts User API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: User
+paths:
+  /v4/users:
+    get:
+      callbacks: {}
+      description: 'List of all the users that belong to any of the locations that the caller has access to.
+
+
+        If the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.
+
+
+        Required scope: `read_users`.
+
+        '
+      operationId: user.index
+      parameters:
+      - description: String you would like to search for in the `searchFields` parameter.
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+      - description: Filter on the `createdAt` date.
+        in: query
+        name: createdAt
+        required: false
+        schema:
+          additionalProperties: false
+          properties:
+            gt:
+              description: Greater than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            gte:
+              description: Greater than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lt:
+              description: Less than filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+            lte:
+              description: Less than or equal to filter.
+              example: '2015-01-23T23:50:07Z'
+              format: date-time
+              type: string
+          type: object
+        style: deepObject
+      - description: A list of the fields where you want to search for the `search` parameters. e.g. ?searchFields[]=name&searchFields[]=displayname
+        in: query
+        name: searchFields
+        required: false
+        schema:
+          default:
+          - fullName
+          items:
+            enum:
+            - address
+            - phone
+            - fullName
+            type: string
+          type: array
+      - description: Max number of items to return per request. Defaults to `10`.
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: integer
+      - description: Retrieves the page of items that comes after the `cursor`.
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: Cursor used to access next or previous page in pagination.
+          example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+          type: string
+      - description: Include users with ai_agent role. Defaults to true if not specified.
+        in: query
+        name: includeAgents
+        required: false
+        schema:
+          default: true
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/user'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      nextCursor:
+                        description: Cursor to get next set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      previousCursor:
+                        description: Cursor to get previous set of items.
+                        example: MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAw
+                        type: string
+                      totalItems:
+                        description: Total number of items available.
+                        type: integer
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List all users.
+      tags:
+      - User
+  /v4/users/{uid}:
+    get:
+      callbacks: {}
+      description: 'Gets a user.
+
+
+        Required scope: `read_users`.'
+      operationId: user.get
+      parameters:
+      - description: Podium unique identifier for user.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/user'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a user.
+      tags:
+      - User
+components:
+  schemas:
+    user:
+      properties:
+        archived:
+          description: Weather the current user is archived.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        createdAt:
+          description: When the user was created.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        email:
+          description: The email of the current user.
+          example: bob.ross@gmail.com
+          type:
+          - string
+          - 'null'
+        firstName:
+          description: The first name of the current user.
+          example: Bob
+          type:
+          - string
+          - 'null'
+        lastName:
+          description: The last name of the current user.
+          example: Ross
+          type:
+          - string
+          - 'null'
+        locations:
+          items:
+            description: All locations the user is assigned to.
+            properties:
+              uid:
+                description: Podium unique identifier for location.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type: string
+            type:
+            - object
+            - 'null'
+          type: array
+        phone:
+          description: The phone number of the user.
+          example: '+18013586533'
+          type:
+          - string
+          - 'null'
+        role:
+          description: The current positon of the user in the company.
+          example: Account Owner
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Podium unique identifier for user.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: When the user was updated.
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      title: user
+      type: object

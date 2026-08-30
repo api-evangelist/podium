@@ -1,0 +1,471 @@
+openapi: 3.2.0
+info:
+  title: Campaigns Campaign API
+  version: 2021.04.01
+servers:
+- url: https://api.podium.com
+  variables: {}
+security: []
+tags:
+- name: Campaign
+paths:
+  /v4/campaigns:
+    get:
+      callbacks: {}
+      description: 'List of all the campaigns that the caller has access to. The campaigns are sorted by the `updatedAt` date, in descending order
+
+
+        Campaigns can be filtered by their status using the `status` query parameter
+
+
+        Required scope: `read_campaigns`.'
+      operationId: campaign.index
+      parameters:
+      - description: Status of the campaign
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/campaign'
+                    type: array
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: List all campaigns.
+      tags:
+      - Campaign
+    post:
+      callbacks: {}
+      description: 'Create a campaign.
+
+
+        Required scope: `write_campaigns`.'
+      operationId: campaign.create
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                includeActiveConversations:
+                  default: false
+                  description: Should this message be sent to subscribers who have an active conversation in the Inbox?
+                  type: boolean
+                locations:
+                  description: List of location UIDs
+                  items:
+                    description: Podium unique identifier for location.
+                    example: 00000000-0000-0000-0000-000000000000
+                    format: uuid
+                    type: string
+                  type: array
+                message:
+                  description: The message sent to subscribers
+                  example: Get 50% off this memorial day weekend!
+                  type: string
+                name:
+                  description: The name of the campaign
+                  example: Memorial Day sale
+                  type: string
+                recentlySentSubscriberOverride:
+                  default: false
+                  description: Should this message be sent to subscribers who have received a campaign in the past 5 days?
+                  type: boolean
+                status:
+                  description: The current campaign status
+                  enum:
+                  - ACTIVE
+                  - COMPLETED
+                  - DRAFT
+                  - ERROR
+                  - INACTIVE
+                  - IN_PROGRESS
+                  - SCHEDULED
+                  - STOPPED
+                  - SUSPENDED
+                  - ARCHIVED
+                  type: string
+              required:
+              - locations
+              - name
+              - status
+              type: object
+        description: Create campaign params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/campaign'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Create a campaign.
+      tags:
+      - Campaign
+  /v4/campaigns/{uid}:
+    delete:
+      callbacks: {}
+      description: 'Delete an existing campaign.
+
+
+        Required scope: `write_campaigns`.'
+      operationId: campaign.delete
+      parameters:
+      - description: UID of the campaign
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/campaign'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Delete a campaign.
+      tags:
+      - Campaign
+    get:
+      callbacks: {}
+      description: "Get a single campaign for the given uid. \n\n\n        Required scope: `read_campaigns`."
+      operationId: campaign.get
+      parameters:
+      - description: UID of the campaign
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/campaign'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Get a campaign.
+      tags:
+      - Campaign
+    put:
+      callbacks: {}
+      description: 'update a campaign.
+
+
+        Required scope: `write_campaigns`.'
+      operationId: campaign.update
+      parameters:
+      - description: Podium unique identifier for a campaign.
+        in: path
+        name: uid
+        required: true
+        schema:
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                includeActiveConversations:
+                  default: false
+                  description: Should this message be sent to subscribers who have an active conversation in the Inbox?
+                  type: boolean
+                locations:
+                  description: List of location UIDs
+                  items:
+                    description: Podium unique identifier for location.
+                    example: 00000000-0000-0000-0000-000000000000
+                    format: uuid
+                    type: string
+                  type: array
+                message:
+                  description: The message sent to subscribers
+                  example: Get 50% off this memorial day weekend!
+                  type: string
+                name:
+                  description: The name of the campaign
+                  example: Memorial Day sale
+                  type: string
+                recentlySentSubscriberOverride:
+                  default: false
+                  description: Should this message be sent to subscribers who have received a campaign in the past 5 days?
+                  type: boolean
+                status:
+                  description: The current campaign status
+                  enum:
+                  - ACTIVE
+                  - COMPLETED
+                  - DRAFT
+                  - ERROR
+                  - INACTIVE
+                  - IN_PROGRESS
+                  - SCHEDULED
+                  - STOPPED
+                  - SUSPENDED
+                  - ARCHIVED
+                  type: string
+              required:
+              - locations
+              - name
+              - status
+              type: object
+        description: Update campaign params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/campaign'
+                  metadata:
+                    description: Additional response data.
+                    properties:
+                      url:
+                        description: The resource URL.
+                        example: https://www.podium.com/
+                        type: string
+                    type: object
+                type: object
+          description: Successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    description: Podium code for the error.
+                    type: integer
+                  message:
+                    description: Specific details about the error.
+                    type:
+                    - string
+                    - 'null'
+                  moreInfo:
+                    description: URL providing more information about the error.
+                    type: string
+                title: Error
+                type: object
+          description: Error response.
+      summary: Update a campaign.
+      tags:
+      - Campaign
+components:
+  schemas:
+    campaign:
+      description: A campaign.
+      properties:
+        createdAt:
+          description: Time at which the resource was created. Date time is in Coordinated Universal Time (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type: string
+        endedAt:
+          description: Time at which the campaign completed, stopped or errored. Date time is in Coordinated Universal Time (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        locations:
+          items:
+            description: Reference to the locations resource.
+            properties:
+              uid:
+                description: Podium unique identifier for the referenced resource.
+                example: 00000000-0000-0000-0000-000000000000
+                format: uuid
+                type: string
+            type: object
+          type: array
+        message:
+          description: The message sent to subscribers
+          example: Get 50% off this memorial day weekend!
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the campaign
+          example: Memorial Day sale
+          type: string
+        organization:
+          description: Reference to the organization resource.
+          properties:
+            uid:
+              description: Podium unique identifier for the referenced resource.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        startedAt:
+          description: Time at which the campaign messsages started sending. Date time is in Coordinated Universal Time (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        status:
+          description: The current campaign status
+          enum:
+          - ACTIVE
+          - COMPLETED
+          - DRAFT
+          - ERROR
+          - INACTIVE
+          - IN_PROGRESS
+          - SCHEDULED
+          - STOPPED
+          - SUSPENDED
+          - ARCHIVED
+          type: string
+        uid:
+          description: Podium unique identifier for campaign.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        updatedAt:
+          description: Time at which the resource was updated. Date time is in Coordinated Universal Time (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      title: campaign
+      type: object
