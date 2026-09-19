@@ -271,6 +271,8 @@ apis:
   humanURL: https://docs.podium.com/reference/introduction
   baseURL: https://api.podium.com/v4/
   tags:
+  - Conversations
+  tags_raw:
   - Conversation
   properties:
   - type: OpenAPI
@@ -361,6 +363,8 @@ apis:
   humanURL: https://docs.podium.com/reference/introduction
   baseURL: https://api.podium.com/v4/
   tags:
+  - Invoices
+  tags_raw:
   - Invoice
   properties:
   - type: OpenAPI
@@ -481,6 +485,8 @@ apis:
   humanURL: https://docs.podium.com/reference/introduction
   baseURL: https://api.podium.com/v4/
   tags:
+  - Payments
+  tags_raw:
   - Payment
   properties:
   - type: OpenAPI
@@ -781,6 +787,8 @@ apis:
   humanURL: https://docs.podium.com/reference/introduction
   baseURL: https://api.podium.com/v4/
   tags:
+  - Templates
+  tags_raw:
   - Template
   properties:
   - type: OpenAPI
