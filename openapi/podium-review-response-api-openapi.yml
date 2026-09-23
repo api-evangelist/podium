@@ -15,9 +15,7 @@ paths:
       description: 'Update a review response.
 
 
-        Required scope: `write_reviews`.
-
-        '
+        Required scope: `write_reviews`.'
       operationId: review_response.update
       parameters:
       - description: Review UID you are updating the response for.

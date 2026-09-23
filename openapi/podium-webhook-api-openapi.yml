@@ -15,9 +15,7 @@ paths:
       description: 'List webhooks that are tied to user who has authorized the application.
 
 
-        Required scope: none.
-
-        '
+        Required scope: none.'
       operationId: webhook.index
       parameters: []
       responses:
@@ -59,7 +57,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: List webhooks.
+      summary: List webhooks
       tags:
       - Webhook
     post:
@@ -69,9 +67,7 @@ paths:
         `organizationUid` is required. If both are given the `organizationUid` will be used.
 
 
-        Required scope: The required scope(s) will depend on the event type(s) you are subscribing too. See the WEBHOOK EVENT TYPES section.
-
-        '
+        Required scope: The required scope(s) will depend on the event type(s) you are subscribing too. See the WEBHOOK EVENT TYPES section.'
       operationId: webhook.create
       parameters: []
       requestBody:
@@ -175,7 +171,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Create a webhook.
+      summary: Create a webhook
       tags:
       - Webhook
   /v4/webhooks/{uid}:
@@ -184,9 +180,7 @@ paths:
       description: 'Deletes an existing webhook.
 
 
-        Required scope: none.
-
-        '
+        Required scope: none.'
       operationId: webhook.delete
       parameters:
       - description: Podium unique identifier for webhook.
@@ -234,7 +228,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Delete a webhook.
+      summary: Delete a webhook
       tags:
       - Webhook
     get:
@@ -242,9 +236,7 @@ paths:
       description: 'Get a webhook based on its uid.
 
 
-        Required scope: none.
-
-        '
+        Required scope: none.'
       operationId: webhook.get
       parameters:
       - description: Podium unique identifier for webhook.
@@ -292,7 +284,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Get a webhook.
+      summary: Get a webhook
       tags:
       - Webhook
     put:
@@ -304,9 +296,7 @@ paths:
         All other parameters not provided will be left unchanged.
 
 
-        Required scope: The required scope(s) will depend on the event type(s) you are subscribing too. See the WEBHOOK EVENT TYPES section.
-
-        '
+        Required scope: The required scope(s) will depend on the event type(s) you are subscribing too. See the WEBHOOK EVENT TYPES section.'
       operationId: webhook.update
       parameters:
       - description: Podium unique identifier for webhook.
@@ -408,7 +398,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Update a webhook.
+      summary: Update a webhook
       tags:
       - Webhook
 components:

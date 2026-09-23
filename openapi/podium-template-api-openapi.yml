@@ -87,9 +87,7 @@ paths:
       description: 'Create a message template.
 
 
-        Required scope: `write_templates`.
-
-        '
+        Required scope: `write_templates`.'
       operationId: Template.create
       parameters: []
       requestBody:
@@ -185,13 +183,16 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Create a message template.
+      summary: Create a message template
       tags:
       - Template
   /v4/templates/{uid}:
     delete:
       callbacks: {}
-      description: "Deletes a template by the given uid. \n\nRequired scope: `write_templates`"
+      description: 'Deletes a template by the given uid.
+
+
+        Required scope: `write_templates`'
       operationId: Template.delete
       parameters:
       - description: Podium unique identifier for templates.
@@ -247,9 +248,7 @@ paths:
       description: 'update a message template.
 
 
-        Required scope: `write_templates`.
-
-        '
+        Required scope: `write_templates`.'
       operationId: Template.update
       parameters:
       - description: Template uid
@@ -360,7 +359,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Update a message template.
+      summary: Update a message template
       tags:
       - Template
 components:

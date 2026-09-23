@@ -121,7 +121,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Get all invoices.
+      summary: Get all invoices
       tags:
       - Invoice
     post:
@@ -131,7 +131,6 @@ paths:
         Providing the `reader_uid` property will create a `card_present` invoice, but if no `reader_uid`
 
         is provided a `card_not_present` invoice will be created.
-
 
 
         ### Card Present Invoice
@@ -156,9 +155,7 @@ paths:
         recently created account is used.
 
 
-        Required scope: `write_payments`.
-
-        '
+        Required scope: `write_payments`.'
       operationId: invoice.create
       parameters: []
       requestBody:
@@ -270,7 +267,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Create an invoice.
+      summary: Create an invoice
       tags:
       - Invoice
   /v4/invoices/{uid}:
@@ -335,7 +332,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Get an invoice.
+      summary: Get an invoice
       tags:
       - Invoice
   /v4/invoices/{uid}/cancel:
@@ -412,7 +409,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Cancel an invoice.
+      summary: Cancel an invoice
       tags:
       - Invoice
   /v4/invoices/{uid}/charge:
@@ -498,7 +495,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Charge an invoice.
+      summary: Charge an invoice
       tags:
       - Invoice
   /v4/invoices/{uid}/refund:
@@ -668,7 +665,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Create invoice setup intent.
+      summary: Create invoice setup intent
       tags:
       - Invoice
 components:

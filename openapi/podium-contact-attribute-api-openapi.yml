@@ -15,9 +15,7 @@ paths:
       description: 'List contact attributes that are tied to the ownerResource on the token.
 
 
-        Required scope: `read_contacts`.
-
-        '
+        Required scope: `read_contacts`.'
       operationId: contact_entity_attribute.index
       parameters: []
       responses:
@@ -67,9 +65,7 @@ paths:
       description: 'Create an application or organization level attribute to be used on contacts.
 
 
-        Required scope: `write_contacts`.
-
-        '
+        Required scope: `write_contacts`.'
       operationId: contact_entity_attribute.create
       parameters: []
       requestBody:
@@ -213,9 +209,7 @@ paths:
       description: 'Gets an application or organization level attribute by its uid, to be used on contacts.
 
 
-        Required scope: `read_contacts`.
-
-        '
+        Required scope: `read_contacts`.'
       operationId: contact_entity_attribute.get
       parameters:
       - description: Contacts attribute uid
@@ -271,9 +265,7 @@ paths:
       description: 'Update an application or organization level attribute to be used on contacts.
 
 
-        Required scope: `write_contacts`.
-
-        '
+        Required scope: `write_contacts`.'
       operationId: contact_entity_attribute.update
       parameters:
       - description: Podium unique identifier for attribute.

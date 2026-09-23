@@ -63,7 +63,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Get conversation assignees.
+      summary: Get conversation assignees
       tags:
       - Conversation Assignee
     put:
@@ -148,7 +148,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Update a conversation assignee.
+      summary: Update a conversation assignee
       tags:
       - Conversation Assignee
 components:

@@ -15,9 +15,7 @@ paths:
       description: 'List all tags for the organization.
 
 
-        Required scope: `read_contacts`.
-
-        '
+        Required scope: `read_contacts`.'
       operationId: contact_entity_tag.list
       parameters: []
       responses:
@@ -67,9 +65,7 @@ paths:
       description: 'Create an organization level tag for a contact.
 
 
-        Required scope: `write_contacts`.
-
-        '
+        Required scope: `write_contacts`.'
       operationId: contact_entity_tag.create
       parameters: []
       requestBody:
@@ -139,9 +135,7 @@ paths:
       description: 'Get a organization level tag given the provided uid.
 
 
-        Required scope: `read_contacts`.
-
-        '
+        Required scope: `read_contacts`.'
       operationId: contact_entity_tag.get
       parameters:
       - description: Contacts tags uid
@@ -197,9 +191,7 @@ paths:
       description: 'Update an organization level tag to be used on contacts.
 
 
-        Required scope: `write_contacts`.
-
-        '
+        Required scope: `write_contacts`.'
       operationId: contact_entity_tag.update
       parameters:
       - description: Podium unique identifier for tag.

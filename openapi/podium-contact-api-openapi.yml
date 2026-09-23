@@ -87,9 +87,7 @@ paths:
       description: 'Create a contact. If a contact with the same phone number, email, or conversation uid is found it will update the contact.
 
 
-        Required scope: `write_contacts`.
-
-        '
+        Required scope: `write_contacts`.'
       operationId: contact.create
       parameters: []
       requestBody:
@@ -248,7 +246,14 @@ paths:
   /v4/contacts/campaigns/opt_in:
     post:
       callbacks: {}
-      description: "Opt in a contact into receiving campaign messages.\n         Note: this endpoint requires your application to be whitelisted.\n          Please contact our support team to get your application whitelisted.\n\nRequired scope: write_contacts"
+      description: 'Opt in a contact into receiving campaign messages.
+
+        Note: this endpoint requires your application to be whitelisted.
+
+        Please contact our support team to get your application whitelisted.
+
+
+        Required scope: write_contacts'
       operationId: contact.opt_in
       parameters: []
       requestBody:
@@ -333,7 +338,14 @@ paths:
   /v4/contacts/campaigns/opt_out:
     post:
       callbacks: {}
-      description: "Opt out a contact from receiving campaign messages.\n         Note: this endpoint requires your application to be whitelisted.\n          Please contact our support team to get your application whitelisted.\n\nRequired scope: write_contacts"
+      description: 'Opt out a contact from receiving campaign messages.
+
+        Note: this endpoint requires your application to be whitelisted.
+
+        Please contact our support team to get your application whitelisted.
+
+
+        Required scope: write_contacts'
       operationId: contact.opt_out
       parameters: []
       requestBody:
@@ -662,9 +674,7 @@ paths:
       description: 'Remove an attribute from a contact.
 
 
-        Required scope: `write_contacts`.
-
-        '
+        Required scope: `write_contacts`.'
       operationId: contact_attribute.delete
       parameters:
       - description: Contact identifier
@@ -727,9 +737,7 @@ paths:
       description: 'Update the value of an existing attribute inside an existing contact.
 
 
-        Required scope: `write_contacts`.
-
-        '
+        Required scope: `write_contacts`.'
       operationId: contact_attribute.update
       parameters:
       - description: Contact identifier
@@ -806,9 +814,7 @@ paths:
       description: 'Add an existing attribute to an existing contact.
 
 
-        Required scope: `write_contacts`.
-
-        '
+        Required scope: `write_contacts`.'
       operationId: contact_attribute.create
       parameters:
       - description: Contact identifier
@@ -886,9 +892,7 @@ paths:
       description: 'Remove an existing tag from an existing contact.
 
 
-        Required scope: `write_contacts`.
-
-        '
+        Required scope: `write_contacts`.'
       operationId: contact_tag.create
       parameters:
       - description: Contact identifier
@@ -951,9 +955,7 @@ paths:
       description: 'Add an existing tag to an existing contact.
 
 
-        Required scope: `write_contacts`.
-
-        '
+        Required scope: `write_contacts`.'
       operationId: contact_tag.create (2)
       parameters:
       - description: Contact identifier
@@ -1013,13 +1015,13 @@ paths:
       - Contact
 components:
   schemas:
-    contact_attribute:
+    contact_tag:
       description: Contact identifier
       properties:
         identifier:
           description: Identifier of the contact that can be used to retrieve the contact
           type: string
-      title: contact_attribute
+      title: contact_tag
       type: object
     contact:
       description: A contact.
@@ -1238,14 +1240,6 @@ components:
       type:
       - object
       - 'null'
-    contact_tag:
-      description: Contact identifier
-      properties:
-        identifier:
-          description: Identifier of the contact that can be used to retrieve the contact
-          type: string
-      title: contact_tag
-      type: object
     contact_upsert:
       description: Contact identifier
       properties:
@@ -1253,4 +1247,12 @@ components:
           description: Identifier of the contact that can be used to retrieve the contact
           type: string
       title: contact_upsert
+      type: object
+    contact_attribute:
+      description: Contact identifier
+      properties:
+        identifier:
+          description: Identifier of the contact that can be used to retrieve the contact
+          type: string
+      title: contact_attribute
       type: object

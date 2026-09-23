@@ -147,7 +147,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: List all reviews.
+      summary: List all reviews
       tags:
       - Review
   /v4/reviews/{uid}:
@@ -204,7 +204,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Get a review.
+      summary: Get a review
       tags:
       - Review
 components:

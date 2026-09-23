@@ -118,7 +118,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: List all feedback surveys.
+      summary: List all feedback surveys
       tags:
       - Feedback
     post:
@@ -194,11 +194,23 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Create a feedback survey.
+      summary: Create a feedback survey
       tags:
       - Feedback
 components:
   schemas:
+    feedback_creation:
+      description: 'Feedback, now known as Surveys in the app, are internal surveys a business can collect from their end clients. Typically, these are measured as NPS or CSAT.
+
+        '
+      properties:
+        uid:
+          description: Podium unique identifier for feedback survey.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+      title: feedback_creation
+      type: object
     feedback:
       description: 'Feedback, now known as Surveys in the app, are internal surveys a business can collect from their end clients. Typically, these are measured as NPS or CSAT.
 
@@ -354,16 +366,4 @@ components:
           - string
           - 'null'
       title: feedback
-      type: object
-    feedback_creation:
-      description: 'Feedback, now known as Surveys in the app, are internal surveys a business can collect from their end clients. Typically, these are measured as NPS or CSAT.
-
-        '
-      properties:
-        uid:
-          description: Podium unique identifier for feedback survey.
-          example: 00000000-0000-0000-0000-000000000000
-          format: uuid
-          type: string
-      title: feedback_creation
       type: object

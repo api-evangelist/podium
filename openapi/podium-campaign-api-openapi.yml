@@ -66,7 +66,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: List all campaigns.
+      summary: List all campaigns
       tags:
       - Campaign
     post:
@@ -165,7 +165,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Create a campaign.
+      summary: Create a campaign
       tags:
       - Campaign
   /v4/campaigns/{uid}:
@@ -222,12 +222,15 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Delete a campaign.
+      summary: Delete a campaign
       tags:
       - Campaign
     get:
       callbacks: {}
-      description: "Get a single campaign for the given uid. \n\n\n        Required scope: `read_campaigns`."
+      description: 'Get a single campaign for the given uid.
+
+
+        Required scope: `read_campaigns`.'
       operationId: campaign.get
       parameters:
       - description: UID of the campaign
@@ -275,7 +278,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Get a campaign.
+      summary: Get a campaign
       tags:
       - Campaign
     put:
@@ -382,7 +385,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Update a campaign.
+      summary: Update a campaign
       tags:
       - Campaign
 components:

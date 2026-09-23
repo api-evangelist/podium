@@ -63,7 +63,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Get an organization.
+      summary: Get an organization
       tags:
       - Organization
 components:

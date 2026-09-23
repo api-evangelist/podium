@@ -12,7 +12,33 @@ paths:
   /v4/refunds:
     post:
       callbacks: {}
-      description: "Creates a refund. (see note)\n\n  **Use with caution.** This action creates an Unlinked Refund that is not associated with an\n  Podium Invoice or Payment. This current implementation *only works*\n  with a Podium Payment Card Reader, reading the customer's credit card data\n  before debiting the refunded amount.\n\n  **Balance requirements.** This action requires that your account have on hand an amount\n  equal to or greater than the amount of the refund. The amount for this refund will be\n  deducted from the amount still to pay out from the account. If the account does not have\n  sufficient funds, the refund will fail.\n\n  **Upcoming change:** When this resource supports refunding a Podium Invoice,\n  `/invoices/uid/refund` is planned to be deprecated.\n\n  Required scope: `write_payments`.\n"
+      description: 'Creates a refund. (see note)
+
+
+        **Use with caution.** This action creates an Unlinked Refund that is not associated with an
+
+        Podium Invoice or Payment. This current implementation *only works*
+
+        with a Podium Payment Card Reader, reading the customer''s credit card data
+
+        before debiting the refunded amount.
+
+
+        **Balance requirements.** This action requires that your account have on hand an amount
+
+        equal to or greater than the amount of the refund. The amount for this refund will be
+
+        deducted from the amount still to pay out from the account. If the account does not have
+
+        sufficient funds, the refund will fail.
+
+
+        **Upcoming change:** When this resource supports refunding a Podium Invoice,
+
+        `/invoices/uid/refund` is planned to be deprecated.
+
+
+        Required scope: `write_payments`.'
       operationId: Refund.create
       parameters: []
       requestBody:
@@ -105,7 +131,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Create a refund.
+      summary: Create a refund
       tags:
       - Refund
   /v4/refunds/{uid}:
@@ -170,7 +196,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Get a refund.
+      summary: Get a refund
       tags:
       - Refund
 components:

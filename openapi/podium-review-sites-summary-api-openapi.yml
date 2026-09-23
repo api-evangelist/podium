@@ -109,7 +109,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Summary of all connected review sites.
+      summary: Summary of all connected review sites
       tags:
       - Review Sites Summary
 components:

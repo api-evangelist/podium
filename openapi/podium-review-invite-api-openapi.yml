@@ -156,7 +156,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: List all review invites.
+      summary: List all review invites
       tags:
       - Review Invite
     post:
@@ -227,7 +227,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Create a review invite link.
+      summary: Create a review invite link
       tags:
       - Review Invite
   /v4/reviews/invites/{uid}:
@@ -284,7 +284,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Get a review invite.
+      summary: Get a review invite
       tags:
       - Review Invite
 components:

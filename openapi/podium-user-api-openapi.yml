@@ -18,9 +18,7 @@ paths:
         If the `cursor` parameter is used then all other parameters will be ignored. This is to avoid confusion if passing both a `cursor` and other parameters which would change what data is being returned.
 
 
-        Required scope: `read_users`.
-
-        '
+        Required scope: `read_users`.'
       operationId: user.index
       parameters:
       - description: String you would like to search for in the `searchFields` parameter.
@@ -147,7 +145,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: List all users.
+      summary: List all users
       tags:
       - User
   /v4/users/{uid}:
@@ -204,7 +202,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Get a user.
+      summary: Get a user
       tags:
       - User
 components:

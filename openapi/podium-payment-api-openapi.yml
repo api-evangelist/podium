@@ -63,7 +63,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Get a payment.
+      summary: Get a payment
       tags:
       - Payment
 components:

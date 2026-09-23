@@ -21,9 +21,7 @@ paths:
         Interactions can be filtered by type, uid of the associated resource, or timestamp.
 
 
-        Required scope: `read_campaigns`.
-
-        '
+        Required scope: `read_campaigns`.'
       operationId: campaign_interaction.index
       parameters:
       - description: ''

@@ -97,7 +97,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: List all products.
+      summary: List all products
       tags:
       - Product
   /v4/products/{uid}:
@@ -151,7 +151,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Get a product.
+      summary: Get a product
       tags:
       - Product
   /v4/products/{uid}/delete_images:
@@ -232,7 +232,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Deletes images from a product.
+      summary: Deletes images from a product
       tags:
       - Product
   /v4/products/{uid}/upload_images:
@@ -319,7 +319,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Upload images to a product.
+      summary: Upload images to a product
       tags:
       - Product
 components:

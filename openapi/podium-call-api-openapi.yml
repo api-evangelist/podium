@@ -63,7 +63,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Get a call.
+      summary: Get a call
       tags:
       - Call
 components:

@@ -116,7 +116,7 @@ paths:
                 title: Error
                 type: object
           description: Error response.
-      summary: Create an appointment.
+      summary: Create an appointment
       tags:
       - Appointment
 components:
