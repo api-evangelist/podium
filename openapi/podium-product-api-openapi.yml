@@ -324,31 +324,6 @@ paths:
       - Product
 components:
   schemas:
-    product_image:
-      properties:
-        isPrimary:
-          description: Whether the image is the primary image or not
-          example: true
-          type:
-          - boolean
-          - 'null'
-        productUid:
-          description: Podium unique identifier for product.
-          example: 00000000-0000-0000-0000-000000000000
-          format: uuid
-          type: string
-        uid:
-          description: Podium unique identifier for product image.
-          example: 00000000-0000-0000-0000-000000000000
-          format: uuid
-          type: string
-        url:
-          description: URL where the image is stored in Podium
-          type:
-          - string
-          - 'null'
-      title: product_image
-      type: object
     Product:
       properties:
         archivedAt:
@@ -434,4 +409,29 @@ components:
           description: Identifier of the product that can be used for retrieval
           type: string
       title: product_async
+      type: object
+    product_image:
+      properties:
+        isPrimary:
+          description: Whether the image is the primary image or not
+          example: true
+          type:
+          - boolean
+          - 'null'
+        productUid:
+          description: Podium unique identifier for product.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        uid:
+          description: Podium unique identifier for product image.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type: string
+        url:
+          description: URL where the image is stored in Podium
+          type:
+          - string
+          - 'null'
+      title: product_image
       type: object

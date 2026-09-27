@@ -369,6 +369,26 @@ paths:
       - Conversation
 components:
   schemas:
+    lead_writeback:
+      description: 'A lead that has been writtenback to a connected CRM. The lead is passed to the CRM and no other action is possible
+
+        from the Podium so is no `uid` or other identifers assigned to the lead.
+
+        '
+      properties:
+        conversation:
+          description: Conversation that the conversation note belongs to.
+          properties:
+            uid:
+              description: Podium unique identifier for conversation.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+      title: lead_writeback
+      type: object
     conversation:
       description: Messenger conversation.
       properties:
@@ -529,24 +549,4 @@ components:
           - string
           - 'null'
       title: conversation_note
-      type: object
-    lead_writeback:
-      description: 'A lead that has been writtenback to a connected CRM. The lead is passed to the CRM and no other action is possible
-
-        from the Podium so is no `uid` or other identifers assigned to the lead.
-
-        '
-      properties:
-        conversation:
-          description: Conversation that the conversation note belongs to.
-          properties:
-            uid:
-              description: Podium unique identifier for conversation.
-              example: 00000000-0000-0000-0000-000000000000
-              format: uuid
-              type:
-              - string
-              - 'null'
-          type: object
-      title: lead_writeback
       type: object

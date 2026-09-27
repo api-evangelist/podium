@@ -956,7 +956,7 @@ paths:
 
 
         Required scope: `write_contacts`.'
-      operationId: contact_tag.create (2)
+      operationId: contact_tag.create(2)
       parameters:
       - description: Contact identifier
         example: john.doe@podium.com
@@ -1013,6 +1013,8 @@ paths:
       summary: Add an existing tag to an existing contact
       tags:
       - Contact
+      x-operation-id-source: normalized
+      x-operation-id-original: contact_tag.create (2)
 components:
   schemas:
     contact_tag:
@@ -1240,14 +1242,6 @@ components:
       type:
       - object
       - 'null'
-    contact_upsert:
-      description: Contact identifier
-      properties:
-        identifier:
-          description: Identifier of the contact that can be used to retrieve the contact
-          type: string
-      title: contact_upsert
-      type: object
     contact_attribute:
       description: Contact identifier
       properties:
@@ -1255,4 +1249,12 @@ components:
           description: Identifier of the contact that can be used to retrieve the contact
           type: string
       title: contact_attribute
+      type: object
+    contact_upsert:
+      description: Contact identifier
+      properties:
+        identifier:
+          description: Identifier of the contact that can be used to retrieve the contact
+          type: string
+      title: contact_upsert
       type: object
