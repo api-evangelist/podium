@@ -369,13 +369,12 @@ paths:
       - Conversation
 components:
   schemas:
-    lead_writeback:
-      description: 'A lead that has been writtenback to a connected CRM. The lead is passed to the CRM and no other action is possible
-
-        from the Podium so is no `uid` or other identifers assigned to the lead.
-
-        '
+    conversation_note:
+      description: Conversation note.
       properties:
+        body:
+          description: Body of the note.
+          type: string
         conversation:
           description: Conversation that the conversation note belongs to.
           properties:
@@ -387,7 +386,53 @@ components:
               - string
               - 'null'
           type: object
-      title: lead_writeback
+        createdAt:
+          description: Time at which the resource was created. Date time is in Coordinated Universal Time (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        location:
+          description: Location that the conversation note belongs to.
+          properties:
+            uid:
+              description: Podium unique identifier for location.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        organization:
+          description: Organization that the conversation note belongs to.
+          properties:
+            uid:
+              description: Podium unique identifier for organization.
+              example: 00000000-0000-0000-0000-000000000000
+              format: uuid
+              type:
+              - string
+              - 'null'
+          type: object
+        senderName:
+          description: Name of the person who created the note.
+          type: string
+        uid:
+          description: Podium unique identifier for note.
+          example: 00000000-0000-0000-0000-000000000000
+          format: uuid
+          type:
+          - string
+          - 'null'
+        updatedAt:
+          description: Time at which the resource was updated. Date time is in Coordinated Universal Time (UTC).
+          example: '2015-01-23T23:50:07Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      title: conversation_note
       type: object
     conversation:
       description: Messenger conversation.
@@ -485,12 +530,13 @@ components:
           - 'null'
       title: conversation
       type: object
-    conversation_note:
-      description: Conversation note.
+    lead_writeback:
+      description: 'A lead that has been writtenback to a connected CRM. The lead is passed to the CRM and no other action is possible
+
+        from the Podium so is no `uid` or other identifers assigned to the lead.
+
+        '
       properties:
-        body:
-          description: Body of the note.
-          type: string
         conversation:
           description: Conversation that the conversation note belongs to.
           properties:
@@ -502,51 +548,5 @@ components:
               - string
               - 'null'
           type: object
-        createdAt:
-          description: Time at which the resource was created. Date time is in Coordinated Universal Time (UTC).
-          example: '2015-01-23T23:50:07Z'
-          format: date-time
-          type:
-          - string
-          - 'null'
-        location:
-          description: Location that the conversation note belongs to.
-          properties:
-            uid:
-              description: Podium unique identifier for location.
-              example: 00000000-0000-0000-0000-000000000000
-              format: uuid
-              type:
-              - string
-              - 'null'
-          type: object
-        organization:
-          description: Organization that the conversation note belongs to.
-          properties:
-            uid:
-              description: Podium unique identifier for organization.
-              example: 00000000-0000-0000-0000-000000000000
-              format: uuid
-              type:
-              - string
-              - 'null'
-          type: object
-        senderName:
-          description: Name of the person who created the note.
-          type: string
-        uid:
-          description: Podium unique identifier for note.
-          example: 00000000-0000-0000-0000-000000000000
-          format: uuid
-          type:
-          - string
-          - 'null'
-        updatedAt:
-          description: Time at which the resource was updated. Date time is in Coordinated Universal Time (UTC).
-          example: '2015-01-23T23:50:07Z'
-          format: date-time
-          type:
-          - string
-          - 'null'
-      title: conversation_note
+      title: lead_writeback
       type: object

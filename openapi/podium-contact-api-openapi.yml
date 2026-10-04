@@ -1017,6 +1017,14 @@ paths:
       x-operation-id-original: contact_tag.create (2)
 components:
   schemas:
+    contact_upsert:
+      description: Contact identifier
+      properties:
+        identifier:
+          description: Identifier of the contact that can be used to retrieve the contact
+          type: string
+      title: contact_upsert
+      type: object
     contact:
       description: A contact.
       properties:
@@ -1249,12 +1257,4 @@ components:
           description: Identifier of the contact that can be used to retrieve the contact
           type: string
       title: contact_tag
-      type: object
-    contact_upsert:
-      description: Contact identifier
-      properties:
-        identifier:
-          description: Identifier of the contact that can be used to retrieve the contact
-          type: string
-      title: contact_upsert
       type: object
