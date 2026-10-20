@@ -15,6 +15,7 @@
   evidence: https://zapier.com/apps/jotform/integrations/podium/1270448/send-messages-in-podium-for-new-jotform-submissions
   template: https://zapier.com/apps/jotform/integrations/podium/1270448/send-messages-in-podium-for-new-jotform-submissions
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: podium-send-message-in-podium-for-new-lead-form-entries-in-google-ads
@@ -29,6 +30,7 @@
   evidence: https://zapier.com/apps/google-ads/integrations/podium/1005208/send-message-in-podium-for-new-lead-form-entries-in-google-ads
   template: https://zapier.com/apps/google-ads/integrations/podium/1005208/send-message-in-podium-for-new-lead-form-entries-in-google-ads
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: podium-send-podium-messages-for-new-mailchimp-subscribers-in-segments-or-tags
@@ -43,6 +45,7 @@
   evidence: https://zapier.com/apps/mailchimp/integrations/podium/1393961/send-podium-messages-for-new-mailchimp-subscribers-in-segments-or-tags
   template: https://zapier.com/apps/mailchimp/integrations/podium/1393961/send-podium-messages-for-new-mailchimp-subscribers-in-segments-or-tags
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: podium-create-new-google-sheets-rows-for-each-podium-review
@@ -57,6 +60,7 @@
   evidence: https://zapier.com/apps/google-sheets/integrations/podium/1230925/create-new-google-sheets-rows-for-each-podium-review
   template: https://zapier.com/apps/google-sheets/integrations/podium/1230925/create-new-google-sheets-rows-for-each-podium-review
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: podium-submit-gravity-forms-and-instantly-send-messages-in-podium
@@ -71,6 +75,7 @@
   evidence: https://zapier.com/apps/gravity-forms/integrations/podium/1588710/submit-gravity-forms-and-instantly-send-messages-in-podium
   template: https://zapier.com/apps/gravity-forms/integrations/podium/1588710/submit-gravity-forms-and-instantly-send-messages-in-podium
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: podium-send-channel-messages-in-slack-for-new-reviews-in-podium
@@ -85,6 +90,7 @@
   evidence: https://zapier.com/apps/podium/integrations/slack/1256875/send-channel-messages-in-slack-for-new-reviews-in-podium
   template: https://zapier.com/apps/podium/integrations/slack/1256875/send-channel-messages-in-slack-for-new-reviews-in-podium
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: podium-send-messages-in-podium-when-appointments-are-cancelled-in-boulevard
@@ -99,6 +105,7 @@
   evidence: https://zapier.com/apps/boulevard/integrations/podium/255563932/send-messages-in-podium-when-appointments-are-cancelled-in-boulevard
   template: https://zapier.com/apps/boulevard/integrations/podium/255563932/send-messages-in-podium-when-appointments-are-cancelled-in-boulevard
   source: template
+  relationship: ipaas-bridge
   status: pending-partner-spec
   arazzo: null
 - slug: podium-create-rows-in-google-sheets-for-new-podium-review-invites
@@ -113,276 +120,7 @@
   evidence: https://zapier.com/apps/google-sheets/integrations/podium/1257239/create-rows-in-google-sheets-for-new-podium-review-invites
   template: https://zapier.com/apps/google-sheets/integrations/podium/1257239/create-rows-in-google-sheets-for-new-podium-review-invites
   source: template
-  status: pending-generation
-  arazzo: null
-- slug: podium-monday-com
-  label: monday.com
-  partner_name: monday.com
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/monday
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: podium-hubspot
-  label: HubSpot
-  partner: hubspot
-  partner_name: HubSpot
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/hubspot
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: podium-pipedrive
-  label: Pipedrive
-  partner: pipedrive
-  partner_name: Pipedrive
-  category: CRM (Customer Relationship Management)
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/pipedrive
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: podium-airtable
-  label: Airtable
-  partner: airtable
-  partner_name: Airtable
-  category: Databases
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/airtable
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: podium-servicetitan
-  label: ServiceTitan
-  partner: servicetitan
-  partner_name: ServiceTitan
-  category: CRM (Customer Relationship Management)
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/servicetitan
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: podium-amazon-s3
-  label: Amazon S3
-  partner: amazon-s3
-  partner_name: Amazon S3
-  category: Amazon
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/amazon-s3
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: podium-google-calendar
-  label: Google Calendar
-  partner: google-calendar
-  partner_name: Google Calendar
-  category: Calendar
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/google-calendar
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: podium-microsoft-outlook
-  label: Microsoft Outlook
-  partner: microsoft-outlook
-  partner_name: Microsoft Outlook
-  category: Calendar
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/microsoft-outlook
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: podium-callrail
-  label: CallRail
-  partner: callrail
-  partner_name: CallRail
-  category: Call Tracking
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/callrail
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: podium-gmail
-  label: Gmail
-  partner: gmail
-  partner_name: Gmail
-  category: Email
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/gmail
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: podium-wpforms
-  label: WPForms
-  partner_name: WPForms
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/wpforms
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: podium-leadconnector
-  label: LeadConnector
-  partner_name: LeadConnector
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/leadconnector
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: podium-woocommerce
-  label: WooCommerce
-  partner: woocommerce
-  partner_name: WooCommerce
-  category: eCommerce
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/woocommerce
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: podium-aesthetic-record-emr
-  label: Aesthetic Record EMR
-  partner_name: Aesthetic Record EMR
-  category: Contact Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/aesthetic-record-emr
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: podium-trello
-  label: Trello
-  partner: trello
-  partner_name: Trello
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/trello
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: podium-jobber
-  label: Jobber
-  partner: jobber
-  partner_name: Jobber
-  category: Scheduling & Booking
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/jobber
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: podium-waiverforever
-  label: WaiverForever
-  partner_name: WaiverForever
-  category: Documents
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/waiverforever
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: podium-optinmonster
-  label: OptinMonster
-  partner: optinmonster
-  partner_name: OptinMonster
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/optinmonster
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: podium-acuity-scheduling
-  label: Acuity Scheduling
-  partner: acuity-scheduling
-  partner_name: Acuity Scheduling
-  category: Scheduling & Booking
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/acuity-scheduling
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: podium-ringcentral
-  label: RingCentral
-  partner: ringcentral
-  partner_name: RingCentral
-  category: Phone & SMS
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/ringcentral
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: podium-asana
-  label: Asana
-  partner: asana
-  partner_name: Asana
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/asana
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: podium-brokerengine
-  label: BrokerEngine
-  partner_name: BrokerEngine
-  category: CRM (Customer Relationship Management)
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/brokerengine
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: podium-klaviyo
-  label: Klaviyo
-  partner: klaviyo
-  partner_name: Klaviyo
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/podium/integrations/klaviyo
-  source: edge
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: podium-zapier
@@ -409,4 +147,298 @@
     beta: false
     builder: unknown (not in the directory record)
   status: not-a-workflow
+  arazzo: null
+- slug: podium-monday-com
+  label: monday.com
+  partner: monday-com
+  partner_name: monday.com
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/monday
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-hubspot
+  label: HubSpot
+  partner: hubspot
+  partner_name: HubSpot
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/hubspot
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-pipedrive
+  label: Pipedrive
+  partner: pipedrive
+  partner_name: Pipedrive
+  category: CRM (Customer Relationship Management)
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/pipedrive
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-airtable
+  label: Airtable
+  partner: airtable
+  partner_name: Airtable
+  category: Databases
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/airtable
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-servicetitan
+  label: ServiceTitan
+  partner: servicetitan
+  partner_name: ServiceTitan
+  category: CRM (Customer Relationship Management)
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/servicetitan
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-amazon-s3
+  label: Amazon S3
+  partner: amazon-s3
+  partner_name: Amazon S3
+  category: Amazon
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/amazon-s3
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-google-calendar
+  label: Google Calendar
+  partner: google-calendar
+  partner_name: Google Calendar
+  category: Calendar
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/google-calendar
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-microsoft-outlook
+  label: Microsoft Outlook
+  partner: microsoft-outlook
+  partner_name: Microsoft Outlook
+  category: Calendar
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/microsoft-outlook
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-callrail
+  label: CallRail
+  partner: callrail
+  partner_name: CallRail
+  category: Call Tracking
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/callrail
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-gmail
+  label: Gmail
+  partner: gmail
+  partner_name: Gmail
+  category: Email
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/gmail
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: podium-wpforms
+  label: WPForms
+  partner_name: WPForms
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/wpforms
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: podium-leadconnector
+  label: LeadConnector
+  partner_name: LeadConnector
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/leadconnector
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: podium-woocommerce
+  label: WooCommerce
+  partner: woocommerce
+  partner_name: WooCommerce
+  category: eCommerce
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/woocommerce
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-aesthetic-record-emr
+  label: Aesthetic Record EMR
+  partner_name: Aesthetic Record EMR
+  category: Contact Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/aesthetic-record-emr
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: podium-trello
+  label: Trello
+  partner: trello
+  partner_name: Trello
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/trello
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-jobber
+  label: Jobber
+  partner: jobber
+  partner_name: Jobber
+  category: Scheduling & Booking
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/jobber
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-waiverforever
+  label: WaiverForever
+  partner_name: WaiverForever
+  category: Documents
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/waiverforever
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: podium-klaviyo
+  label: Klaviyo
+  partner: klaviyo
+  partner_name: Klaviyo
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/klaviyo
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-optinmonster
+  label: OptinMonster
+  partner: optinmonster
+  partner_name: OptinMonster
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/optinmonster
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: podium-acuity-scheduling
+  label: Acuity Scheduling
+  partner: acuity-scheduling
+  partner_name: Acuity Scheduling
+  category: Scheduling & Booking
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/acuity-scheduling
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-asana
+  label: Asana
+  partner: asana
+  partner_name: Asana
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/asana
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-ringcentral
+  label: RingCentral
+  partner: ringcentral
+  partner_name: RingCentral
+  category: Phone & SMS
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/ringcentral
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: podium-brokerengine
+  label: BrokerEngine
+  partner_name: BrokerEngine
+  category: CRM (Customer Relationship Management)
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/podium/integrations/brokerengine
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
   arazzo: null
