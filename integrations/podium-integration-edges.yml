@@ -8,6 +8,11 @@ checked:
 - https://n8n.io/integrations/podium/
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/podium/integrations
+- https://500.co/api/startups
+- https://500.co/companies
+- https://www.antler.co/portfolio
+- https://www.techstars.com/portfolio
+- https://www.ycombinator.com/companies
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -429,6 +434,35 @@ edges:
   direction: third-party
   category: CRM (Customer Relationship Management)
   partner_url: https://brokerengine.com.au/
+- partner_name: Y Combinator
+  partner: y-combinator
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.ycombinator.com/companies/podium
+  category: accelerator portfolio participation
+  contract_reference:
+    register: Y Combinator company directory (ycombinator.com/companies/<slug>)
+    standard: null
+    spec_file: null
+    role: accelerator-portfolio-company
+    registered_name: Podium
+    register_id: https://www.ycombinator.com/companies/podium
+    register_country: US
+    register_website: https://podium.com
+    matched_domain: podium.com
+    matched_by: domain
+    signal_note: 'participation only: the accelerator''s own portfolio register lists the company (cohort / investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-accelerator-portfolios.py
+    detected: '2026-10-21'
+    batch: Winter 2016
+    year: '2014'
+    status: Active
+  detected_by: sweep-accelerator-portfolios.py
+  first_seen: '2026-10-21'
 templates:
 - title: Send messages in Podium for new Jotform submissions
   url: https://zapier.com/apps/jotform/integrations/podium/1270448/send-messages-in-podium-for-new-jotform-submissions
