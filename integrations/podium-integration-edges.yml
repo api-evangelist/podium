@@ -13,6 +13,7 @@ checked:
 - https://www.antler.co/portfolio
 - https://www.techstars.com/portfolio
 - https://www.ycombinator.com/companies
+- hubspot/integrations/hubspot-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -463,6 +464,23 @@ edges:
     status: Active
   detected_by: sweep-accelerator-portfolios.py
   first_seen: '2026-10-21'
+- partner_name: HubSpot (own)
+  partner: hubspot
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://ecosystem.hubspot.com/marketplace/listing/podium-796709
+  mirror_of: hubspot/integrations/hubspot-integration-edges.yml
+  apps:
+  - Podium
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: MARKETING_AUTOMATION
 templates:
 - title: Send messages in Podium for new Jotform submissions
   url: https://zapier.com/apps/jotform/integrations/podium/1270448/send-messages-in-podium-for-new-jotform-submissions
