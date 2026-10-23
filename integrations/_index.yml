@@ -485,3 +485,34 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: podium-hex
+  label: Hex
+  partner: hex-pm
+  partner_name: Hex
+  category: official SDK (Elixir/Erlang)
+  type: register
+  channel: package-registry
+  evidence: https://hex.pm/packages/podium_ex
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Hex (public registry JSON)
+    spec_file: null
+    language: Elixir/Erlang
+    packages:
+    - name: podium_ex
+      version: 0.7.0
+      released: '2020-02-13'
+      released_field: inserted_at
+      lapsed: true
+      page: https://hex.pm/packages/podium_ex
+      repo_leg: github-org:podium
+      publisher_leg: org:podium
+      matched_by: github-org
+    current: false
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-php-dart-elixir-package-registries.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null

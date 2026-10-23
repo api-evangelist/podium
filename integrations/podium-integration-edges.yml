@@ -14,6 +14,9 @@ checked:
 - https://www.techstars.com/portfolio
 - https://www.ycombinator.com/companies
 - hubspot/integrations/hubspot-integration-edges.yml
+- https://hex.pm/api
+- https://packagist.org/packages
+- https://pub.dev/api
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -481,6 +484,36 @@ edges:
   detected: '2026-10-21'
   detected_by: mirror-platform-listings.py
   category: MARKETING_AUTOMATION
+- partner_name: Hex
+  partner: hex-pm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (Elixir/Erlang)
+  evidence: https://hex.pm/packages/podium_ex
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: Hex (public registry JSON)
+    spec_file: null
+    language: Elixir/Erlang
+    packages:
+    - name: podium_ex
+      version: 0.7.0
+      released: '2020-02-13'
+      released_field: inserted_at
+      lapsed: true
+      page: https://hex.pm/packages/podium_ex
+      repo_leg: github-org:podium
+      publisher_leg: org:podium
+      matched_by: github-org
+    current: false
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-php-dart-elixir-package-registries.py
+    detected: '2026-10-22'
+  detected_by: sweep-php-dart-elixir-package-registries.py
+  first_seen: '2026-10-22'
 templates:
 - title: Send messages in Podium for new Jotform submissions
   url: https://zapier.com/apps/jotform/integrations/podium/1270448/send-messages-in-podium-for-new-jotform-submissions
